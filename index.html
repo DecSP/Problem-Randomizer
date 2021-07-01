@@ -4,39 +4,45 @@
 	<script src="jquery-3.6.0.min.js"></script>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="styles.css">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
 	<title>Problem Randomizer</title>
 </head>
 <body>
-	<div class="container">
-		<div>
-			<label for="Sites">Choose a site:</label>
-			<select name="Sites" id="site" onchange="getdata()">
-		    <option value="cf">Codeforces</option>
-		    <option value="ac">Atcoder (ABC only)</option>
-			</select>
+	<div class="randomizer">
+		<div class="container">	<!--  left half of form -->
+			<div class="input site">
+				<label for="Sites">Choose a site:</label>
+				<select name="Sites" id="site" onchange="getdata()">
+			    <option value="cf">Codeforces</option>
+			    <option value="ac">Atcoder (ABC only)</option>
+				</select>
+			</div>
+			<div class="input numb">
+				<label>Number of recent problems (0 is all):</label>
+				<br>
+				<input type="number" min="0" max="8000" value="0" step="50" id="rcnt">
+			</div>
+			<div class="input low">
+				<label>Lower bound:</label>
+				<input type="number" min="800" max="3500" value="800" step="100" id="lwr">
+				<div class="warn">Lower bound must be greater than or equals 800</div>
+			</div>
+			<div class="input up">
+				<label>Upper bound:</label>
+				<input type="number" min="800" max="3500" value="3500" step="100" id="upr">
+				<div class="warn">Upper bound must be less than or equals 3500</div>
+			</div>
+			<button disabled="false" id="btn" onclick="randomizing()">Randomize</button>
 		</div>
-		<div>
-			<label>Number of recent problems (0 is all):</label>
-			<input type="number" min="0" max="8000" value="0" step="50" id="rcnt">
+
+		<div class="output">	<!-- right half of form -->
+			<p id="problink"></p>
+			<p id="status">Idle</p>
 		</div>
-		<div>
-			<label>Lower bound:</label>
-			<input type="number" min="800" max="3500" value="800" step="100" id="lwr">
-			<div class="warn">Lower bound must be greater than or equals 800</div>
-		</div>
-		<div>
-			<label>Upper bound:</label>
-			<input type="number" min="800" max="3500" value="3500" step="100" id="upr">
-			<div class="warn">Upper bound must be less than or equals 3500</div>
-		</div>
-		<button disabled="false" id="btn" onclick="randomizing()">Randomize</button>
 	</div>
-	<p id="problink"></p>
-	<p id="status">Idle</p>
 	<script src="script.js"></script>
 </body>
 </html>
