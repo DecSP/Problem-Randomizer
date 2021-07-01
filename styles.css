@@ -2,8 +2,10 @@
 	padding: 0;
 	margin: 0;
 }
-.container{
+body{
 	font-family: 'Montserrat';
+}
+.container{
 	padding: 10px;
 	background-color: cyan;
 	font-size: 17px;
