@@ -1,21 +1,60 @@
-problemurl="https://codeforces.com/problemset/problem/"
-problem=""
-url = "https://codeforces.com/api/problemset.problems";
+sitesurl={"cf":"https://codeforces.com/problemset/problem/",
+			"ac":"https://atcoder.jp/contests/"
+		};
+apiurl={"cf":"https://codeforces.com/api/problemset.problems",
+			"ac":"https://kenkoooo.com/atcoder/resources/problems.json",
+			"ac2":"https://kenkoooo.com/atcoder/resources/problem-models.json"
+		};
+problem="abc199/tasks/abc199_d"
 var problemset;
-
-(function() {
-	$.getJSON(url,function(result){
-		console.log("oke");
+var choice;
+function cfget() {
+	$.getJSON(apiurl["cf"],function(result){
+		console.log("okecf");
 		problemset=result.result;
-		document.getElementById("btn").toggleAttribute("hidden");
+		document.getElementById("btn").disabled=false;
+		document.getElementById("status").innerHTML="Idle";
 	});
-} )();
+}
 
-function randomizing(){
+function acget() {
+	$.getJSON(apiurl["ac"],function(result){
+		problemset=result;
+		$.getJSON(apiurl["ac2"],function(result){
+			tmp=result;
+			for (i=0;i<problemset.length;++i){
+				if (problemset[i].id in tmp){
+					tmp2=tmp[problemset[i].id].difficulty;
+					contestname=problemset[i].contest_id;
+					if (typeof(tmp2)!="number") continue;
+					if (contestname.substr(0,3)=="abc" && parseInt(contestname.substr(3))>47)
+					problemset[i].rating=tmp[problemset[i].id].difficulty;
+				}
+			}
+			console.log("okeac");
+			document.getElementById("btn").disabled=false;
+			document.getElementById("status").innerHTML="Idle";
+		});
+	});
+}
+
+function getdata(){
+	choice=document.getElementById("site").value;
+	document.getElementById("btn").disabled=true;
+	document.getElementById("status").innerHTML="Fetching data...";
+	if (choice=="cf") cfget();
+	else if (choice=="ac") acget();
+
+}
+
+getdata();
+
+function randomizingcf(){
 	lwr=parseInt(document.getElementById("lwr").value)
 	upr=parseInt(document.getElementById("upr").value)
+	rcnt=parseInt(document.getElementById("rcnt").value)
 	l=[];
-	len=problemset.problems.length;
+	len=(rcnt==0)?problemset.problems.length:rcnt;
 	for (i=0;i<len;++i){
 		if ("rating" in problemset.problems[i]){
 			rating=problemset.problems[i].rating;
@@ -29,5 +68,32 @@ function randomizing(){
 	// console.log(problemset.problems[l[ridx]]);
 	problemobj=problemset.problems[l[ridx]];
 	problem=problemobj.contestId+'/'+problemobj.index;
-	document.getElementById("problink").innerHTML=`Problem: <a href="${problemurl}${problem}" target="_blank" rel="noopener noreferrer">${problemobj.name}</a> (Rating: ${problemobj.rating})`
+	document.getElementById("problink").innerHTML=`Problem: <a href="${sitesurl["cf"]}${problem}" target="_blank" rel="noopener noreferrer">${problemobj.name}</a> (Rating: ${problemobj.rating})`;
+}
+function randomizingac(){
+	lwr=parseInt(document.getElementById("lwr").value)
+	upr=parseInt(document.getElementById("upr").value)
+	rcnt=parseInt(document.getElementById("rcnt").value)
+	l=[];
+	len=problemset.length;
+	for (i=0;i<len;++i){
+		if ("rating" in problemset[i]){
+			rating=problemset[i].rating;
+			if (rating<=upr&&rating>=lwr) l.push(i);
+		}
+	}
+	
+	nlen=l.length;
+	ridx=Math.floor(Math.random()*nlen);
+	problemobj=problemset[l[ridx]];
+	problem=problemobj.contest_id+'/tasks/'+problemobj.id;
+	document.getElementById("problink").innerHTML=`Problem: <a href="${sitesurl["ac"]}${problem}" target="_blank" rel="noopener noreferrer">${problemobj.title}</a> (Rating: ${problemobj.rating})`;
+}
+function randomizing(){
+	if (choice=='cf') {
+		randomizingcf();
+	}
+	else if (choice=='ac') {
+		randomizingac();
+	}
 }

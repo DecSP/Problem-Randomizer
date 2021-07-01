@@ -6,10 +6,19 @@
 	<title>Problem Randomizer</title>
 </head>
 <body>
-Lower bound: <input type="text" id="lwr"><br>
-Upper bound: <input type="text" id="upr"><br>
-<button hidden id="btn" onclick="randomizing()">Randomize</button>
+
+	<label for="Sites">Choose a site:</label>
+	<select name="Sites" id="site" onchange="getdata()">
+    <option value="cf">Codeforces</option>
+    <option value="ac">Atcoder (ABC only)</option>
+	</select><br><br>
+
+Number of recent problems (0 is all): <input type="number" min="0" max="8000" value="0" step="50" id="rcnt"><br><br>
+Lower bound: <input type="number" min="800" max="3500" value="800" step="100" id="lwr"><br><br>
+Upper bound: <input type="number" min="800" max="3500" value="3500" step="100" id="upr"><br><br>
+<button disabled="false" id="btn" onclick="randomizing()">Randomize</button>
 <p id="problink"></p>
+<p id="status">Idle</p>
 <script src="script.js"></script>
 </body>
 </html>
