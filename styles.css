@@ -1,0 +1,51 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.container{
+	font-family: 'Montserrat';
+	padding: 10px;
+	background-color: cyan;
+	font-size: 17px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	text-align: center;
+}
+.container div{
+}
+.container .warn{
+	visibility: hidden;
+	position: absolute;
+	background-color: #f8f8f8;
+	width: 200px;
+	bottom: 5px;
+	left: 5px;
+	margin-right: 0px;
+	margin-top: 10px;
+	opacity: 0;
+}
+.container input{
+	outline: none;
+	font-size: 17px;
+}
+.container input:focus ~ .warn{
+	animation: 1.2s showwarn linear forwards;
+}
+@keyframes showwarn{
+	0%{opacity: 0; transform: translateX(-100px); visibility: visible;}
+	60%{opacity: 0; transform: translateX(-100px); visibility: visible;}
+	100%{opacity: 1; transform: translateX(0px); visibility: visible;}
+}
+
+
+/*=============== RESPONSIVE ===============*/
+@media (max-width: 500px){
+	.container{
+		justify-content: center;
+		row-gap: 10px;
+	}
+	.container div{
+		width: 70%;
+	}
+}
