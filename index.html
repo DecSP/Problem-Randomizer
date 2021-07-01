@@ -3,13 +3,28 @@
 <head>
 	<script src="jquery-3.6.0.min.js"></script>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 	<title>Problem Randomizer</title>
 </head>
 <body>
-Lower bound: <input type="text" id="lwr"><br>
-Upper bound: <input type="text" id="upr"><br>
-<button hidden id="btn" onclick="randomizing()">Randomize</button>
-<p id="problink"></p>
-<script src="script.js"></script>
+	<div class="container">
+		<div>
+			<label>Lower bound:</label>
+			<input type="number" min="800" max="3500" id="lwr">
+			<div class="warn">Lower bound must be greater than or equals 800</div>
+		</div>
+		<div>
+			<label>Upper bound:</label>
+			<input type="number" min="800" max="3500" id="upr">
+			<div class="warn">Upper bound must be less than or equals 3500</div>
+		</div>
+		<button hidden id="btn" onclick="randomizing()">Randomize</button>
+	</div>
+	<p id="problink"></p>
+	<script src="script.js"></script>
 </body>
 </html>
