@@ -5,9 +5,11 @@ apiurl={"cf":"https://codeforces.com/api/problemset.problems",
 			"ac":"https://kenkoooo.com/atcoder/resources/problems.json",
 			"ac2":"https://kenkoooo.com/atcoder/resources/problem-models.json"
 		};
-problem="abc199/tasks/abc199_d"
+var problem;
 var problemset;
 var choice;
+var timer;
+var timerrunning=false;
 function cfget() {
 	$.getJSON(apiurl["cf"],function(result){
 		console.log("okecf");
@@ -95,5 +97,27 @@ function randomizing(){
 	}
 	else if (choice=='ac') {
 		randomizingac();
+	}
+	if (timerrunning) {
+		timerrunning=false;
+		clearInterval(timer);
+		document.getElementById("timerstatus").innerHTML="";
+		document.getElementById("title").innerHTML='Problem Randomizer';
+	}
+	secs=parseInt(document.getElementById("timer").value)*60
+	if (secs>0){
+		timerrunning=true;
+		timer=setInterval(function(){
+			secs-=1;
+			document.getElementById("timerstatus").innerHTML=`Time left: ${parseInt((secs-secs%60)/60)}:${parseInt(secs%60)}`;
+			document.getElementById("title").innerHTML=`Time left: ${parseInt((secs-secs%60)/60)}:${parseInt(secs%60)}`;
+			if (secs<0){
+				clearInterval(timer);
+				timerrunning=false;
+				document.getElementById("timerstatus").innerHTML="";
+				document.getElementById("title").innerHTML='Problem Randomizer';
+				alert("Timeout");
+			}
+		},1000)
 	}
 }
