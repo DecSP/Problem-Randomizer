@@ -7,7 +7,6 @@ html{
 }
 body{
 	min-height: 100vh;
-	overflow: hidden;
 	background-image: radial-gradient(at bottom right, #85a5ad 35%, #7197a0 30%);
 }
 .randomizer{
