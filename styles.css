@@ -13,7 +13,7 @@ body{
 	box-sizing: border-box;
 	width: 60vw;
 	min-width: 400px;
-	margin: 70px auto;
+	margin: 55px auto;
 	padding: 15px;
 	display: flex;
 }
@@ -99,7 +99,7 @@ body{
 /*=============== MEDIA QUERIES ===============*/
 @media (max-width: 750px){
 	.randomizer{
-		margin: 35px auto;
+		margin: 30px auto;
 		justify-content: space-around;
 		flex-wrap: wrap;
 		row-gap: 15px;
