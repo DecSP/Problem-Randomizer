@@ -153,10 +153,8 @@ button:hover{
 		bottom: unset;
 	}
 	.output{
-		/*margin-top: 5px;
-		width: 28vw;*/
 		width: 100%;
-		min-width: 350px;
+		margin: 0 auto;
 	}
 	.time{
 		right: 0;
