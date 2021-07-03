@@ -125,3 +125,4 @@ function randomizing(){
 		document.getElementById("time").style.opacity = '0';
 	}
 }
+
