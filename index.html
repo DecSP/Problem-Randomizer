@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-	<title>Problem Randomizer</title>
+	<title id="title">Problem Randomizer</title>
 </head>
 <body>
 	<div class="randomizer">
@@ -35,11 +35,19 @@
 				<input type="number" min="800" max="3500" value="3500" step="100" id="upr">
 				<div class="warn">Upper bound must be less than or equals 3500</div>
 			</div>
-			<button disabled="false" id="btn" onclick="randomizing()">Randomize</button>
+			<div class="input timer">
+				<label>Timer in mins (0 for disable):</label>
+				<input type="number" min="0" max="180" value="0" step="10" id="timer">
+			</div>
+			<button disabled="false" id="btn" onclick="randomizing()">Randomize
+				<span>&raquo;</span></button>
 		</div>
 
 		<div class="output">	<!-- right half of form -->
 			<p id="problink"></p>
+			<div class="time" id="time">
+				<p id="timerstatus"></p><button id="finish">Solved</button>
+			</div>
 			<p id="status">Idle</p>
 		</div>
 	</div>
