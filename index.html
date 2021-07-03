@@ -39,12 +39,15 @@
 				<label>Timer in mins (0 for disable):</label>
 				<input type="number" min="0" max="180" value="0" step="10" id="timer">
 			</div>
-			<button disabled="false" id="btn" onclick="randomizing()">Randomize</button>
+			<button disabled="false" id="btn" onclick="randomizing()">Randomize
+				<span>&raquo;</span></button>
 		</div>
 
 		<div class="output">	<!-- right half of form -->
-			<p id="problink"></p><br>
-			<p id="timerstatus"></p>
+			<p id="problink"></p>
+			<div class="time" id="time">
+				<p id="timerstatus"></p><button id="finish">Finished</button>
+			</div>
 			<p id="status">Idle</p>
 		</div>
 	</div>

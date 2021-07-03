@@ -111,6 +111,7 @@ function randomizing(){
 			secs-=1;
 			document.getElementById("timerstatus").innerHTML=`Time left: ${parseInt((secs-secs%60)/60)}:${parseInt(secs%60)}`;
 			document.getElementById("title").innerHTML=`Time left: ${parseInt((secs-secs%60)/60)}:${parseInt(secs%60)}`;
+			document.getElementById("time").style.opacity = '1';
 			if (secs<0){
 				clearInterval(timer);
 				timerrunning=false;
@@ -120,4 +121,8 @@ function randomizing(){
 			}
 		},1000)
 	}
+	else if(secs == 0){
+		document.getElementById("time").style.opacity = '0';
+	}
 }
+
