@@ -8,7 +8,7 @@ html{
 body{
 	min-height: 100vh;
 	background-image: radial-gradient(at bottom right, #85a5ad 35%, #7197a0 30%);
-	padding: 0;
+	padding: 0px;
 	padding-top: 25px;
 	box-sizing: border-box;
 }
@@ -135,7 +135,7 @@ button:hover{
 /*=============== MEDIA QUERIES ===============*/
 @media (max-width: 750px){
 	body{
-		padding: 0px;
+		padding: 0;
 		padding-top: 20px;
 	}
 	.randomizer{
@@ -144,15 +144,18 @@ button:hover{
 		flex-wrap: wrap;
 	}
 	.container{
-		line-height: 20px;
+		width: 100%;
+		/*margin: 0 auto;*/
+		line-height: 22px;
 	}
 	.container .warn{
 		top: 5px;
 		bottom: unset;
 	}
 	.output{
-		margin-top: 5px;
-		width: 28vw;
+		/*margin-top: 5px;
+		width: 28vw;*/
+		width: 100%;
 		min-width: 350px;
 	}
 	.time{
