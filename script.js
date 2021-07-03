@@ -10,6 +10,9 @@ var problemset;
 var choice;
 var timer;
 var timerrunning=false;
+var timersecs;
+var secs;
+
 function cfget() {
 	$.getJSON(apiurl["cf"],function(result){
 		console.log("okecf");
@@ -101,10 +104,10 @@ function randomizing(){
 	if (timerrunning) {
 		timerrunning=false;
 		clearInterval(timer);
-		document.getElementById("timerstatus").innerHTML="";
 		document.getElementById("title").innerHTML='Problem Randomizer';
 	}
-	secs=parseInt(document.getElementById("timer").value)*60
+	secs=parseInt(document.getElementById("timer").value)*60;
+	timersecs=secs;
 	if (secs>0){
 		timerrunning=true;
 		timer=setInterval(function(){
@@ -115,7 +118,7 @@ function randomizing(){
 			if (secs<0){
 				clearInterval(timer);
 				timerrunning=false;
-				document.getElementById("timerstatus").innerHTML="";
+				document.getElementById("timerstatus").innerHTML=`You ran out of time! :(`;
 				document.getElementById("title").innerHTML='Problem Randomizer';
 				alert("Timeout");
 			}
@@ -123,6 +126,17 @@ function randomizing(){
 	}
 	else if(secs == 0){
 		document.getElementById("time").style.opacity = '0';
+	}
+}
+
+function finishProblem(){
+	if (timerrunning){
+		clearInterval(timer);
+		timerrunning=false;
+		document.getElementById("timerstatus").innerHTML=`You did it! :)`;	
+		document.getElementById("title").innerHTML='Problem Randomizer';
+		tmp=timersecs-secs;
+		alert(`Congrats! You took ${parseInt((tmp-tmp%60)/60)} minutes and ${parseInt(tmp%60)} seconds to solve it!`);
 	}
 }
 
