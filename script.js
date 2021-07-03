@@ -118,7 +118,7 @@ function randomizing(){
 			if (secs<0){
 				clearInterval(timer);
 				timerrunning=false;
-				document.getElementById("timerstatus").innerHTML=`You ran out of time! :(`;
+				document.getElementById("timerstatus").innerHTML=`Time is up! Try harder next time ^^`;
 				document.getElementById("title").innerHTML='Problem Randomizer';
 				alert("Timeout");
 			}
@@ -133,10 +133,10 @@ function finishProblem(){
 	if (timerrunning){
 		clearInterval(timer);
 		timerrunning=false;
-		document.getElementById("timerstatus").innerHTML=`You did it! :)`;	
+		document.getElementById("timerstatus").innerHTML=`Congratulations! You solved it ^^`;	
 		document.getElementById("title").innerHTML='Problem Randomizer';
 		tmp=timersecs-secs;
-		alert(`Congrats! You took ${parseInt((tmp-tmp%60)/60)} minutes and ${parseInt(tmp%60)} seconds to solve it!`);
+		alert(`Congratulations! You solved the problem in ${parseInt((tmp-tmp%60)/60)} minute(s) and ${parseInt(tmp%60)} second(s)!`);
 	}
 }
 
