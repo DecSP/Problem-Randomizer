@@ -48,7 +48,7 @@ body{
 	font-size: 18px;
 	border: none;
 	background-color: #c1dde0;
-	border-bottom: 2px solid #585858;
+	border-bottom: 1px solid #585858;
 	outline: none;
 }
 .input input:hover, .site select:hover{
