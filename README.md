@@ -3,5 +3,5 @@ Link: https://decsp.github.io/Problem-Randomizer/ \
 A trainer for competitive programmer.\
 Features:
   - Randomize problem in difficulty range of problems.
-  - Added problems from [codeforces.com](codeforces.com)
-  - Added problems from atcoder.jp
+  - Added problems from [Codeforces](codeforces.com)
+  - Added problems from [AtCoder](atcoder.jp)
