@@ -23,4 +23,4 @@
   - [X] Coding problems from Codeforces.
   - [X] Coding problems from AtCoder.
   - [X] Count-down timer provided.
-  - [X] Selecting number of recently added problems that you might get.
+  - [X] Select number of recently added problems that you might get.
