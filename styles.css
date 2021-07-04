@@ -19,7 +19,19 @@ body{
 	padding: 15px;
 	display: flex;
 }
+@keyframes appear{
+	0%{opacity: 0; transform: translateY(50px);}
+	30%{opacity: 0.7; transform: translateY(0px);}
+	40%{opacity: 1; transform: translateY(-15px);}
+	50%{opacity: 1; transform: translateY(-20px);}
+	60%{opacity: 1; transform: translateY(-22px);}
+	70%{opacity: 1; transform: translateY(-22px);}
+	80%{opacity: 1; transform: translateY(-22px);}
+	90%{opacity: 1; transform: translateY(-10px);}
+	100%{opacity: 1; transform: translateY(0px);}
+}
 .container{
+	animation: 0.8s appear linear;
 	width: 28vw;
 	min-width: 350px;
 	padding: 15px;
@@ -99,6 +111,22 @@ button:hover{
 	color: #101010;
 	box-sizing: border-box;
 	padding: 15px;
+}
+@keyframes appearop{
+	0%{opacity: 0; transform: translateX(-50px);}
+	30%{opacity: 0.7; transform: translateX(0px);}
+	40%{opacity: 1; transform: translateX(15px);}
+	50%{opacity: 1; transform: translateX(20px);}
+	60%{opacity: 1; transform: translateX(22px);}
+	70%{opacity: 1; transform: translateX(22px);}
+	80%{opacity: 1; transform: translateX(22px);}
+	90%{opacity: 1; transform: translateX(10px);}
+	100%{opacity: 1; transform: translateX(0px);}
+}
+.output p{
+	opacity: 0;
+	animation: 0.75s appearop linear forwards;
+	animation-delay: 0.8s;
 }
 .output p a{
 	color: #c1dde0;
