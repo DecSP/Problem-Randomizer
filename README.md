@@ -19,7 +19,7 @@
     - Selecting number of recently added problems that you might get.
 
 ## Features added:
-  - [X] Select Randomly coding problem base on difficulty range (800 - 3500).
+  - [X] Randomly Select coding problem base on difficulty range (800 - 3500).
   - [X] Coding problems from Codeforces.
   - [X] Coding problems from AtCoder.
   - [X] Count-down timer provided.
