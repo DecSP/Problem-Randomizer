@@ -1,6 +1,6 @@
 # Problem Randomizer
 ### *[Problem-Randomizer](https://decsp.github.io/Problem-Randomizer/) website.*
-> :metal: A trainer for competitive programmers\
+> :metal: A practice platform for competitive programmers\
 > using API key provided by [Codeforces](https://codeforces.com/) and [AtCoder](https://atcoder.jp/).
 
 \
