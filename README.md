@@ -18,9 +18,10 @@
     - Set count-down timer for evaluating your practice.
     - Selecting number of recently added problems that you might get.
 
-## Features added:
+## Features:
   - [X] Randomly Select coding problem base on difficulty range (800 - 3500).
   - [X] Coding problems from Codeforces.
   - [X] Coding problems from AtCoder.
   - [X] Count-down timer provided.
   - [X] Select number of recently added problems that you might get.
+  - [ ] Auto adjust mode and User specify mode.
