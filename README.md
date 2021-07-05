@@ -28,6 +28,7 @@
   - [ ] Auto adjust mode and User specify mode.
 
 ## Contributors
-[![Github Badge](https://img.shields.io/badge/-@DecSP-24292e?style=flat&logo=GitHub&Color=white&link=https://github.com/DecSP)](https://github.com/DecSP)\
+[![Github Badge](https://img.shields.io/badge/-@DecSP-24292e?style=flat&logo=GitHub&Color=white&link=https://github.com/DecSP)](https://github.com/DecSP)
+
 [![Github Badge](https://img.shields.io/badge/-@NguyenD--Nam-24292e?style=flat&logo=GitHub&Color=white&link=https://github.com/NguyenD-Nam)](https://github.com/NguyenD-Nam)
 <!-- [<img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=25px>  DecSP](https://github.com/DecSP) -->
