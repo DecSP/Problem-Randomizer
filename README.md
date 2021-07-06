@@ -24,11 +24,10 @@
   - [X] Coding problems from Codeforces.
   - [X] Coding problems from AtCoder.
   - [X] Count-down timer provided.
-  - [X] Select number of recently added problems that you might get.
   - [ ] Auto adjust mode and User specify mode.
 
-## Contributors
-[![Github Badge](https://img.shields.io/badge/-@DecSP-24292e?style=flat&logo=GitHub&Color=white&link=https://github.com/DecSP)](https://github.com/DecSP)
+## Authors
+<img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=26px /> [![Github Badge](https://img.shields.io/badge/-@DecSP-fff?style=for-the-badge&logo=Github&logoColor=bfbfbf&link=https://github.com/DecSP)](https://github.com/DecSP)
 
-[![Github Badge](https://img.shields.io/badge/-@NguyenD--Nam-24292e?style=flat&logo=GitHub&Color=white&link=https://github.com/NguyenD-Nam)](https://github.com/NguyenD-Nam)
+<img src="https://avatars.githubusercontent.com/u/69586735?v=4" width=26px /> [![Github Badge](https://img.shields.io/badge/-@NguyenD--Nam-fff?style=for-the-badge&logo=GitHub&logoColor=bfbfbf&link=https://github.com/NguyenD-Nam)](https://github.com/NguyenD-Nam)
 <!-- [<img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=25px>  DecSP](https://github.com/DecSP) -->
