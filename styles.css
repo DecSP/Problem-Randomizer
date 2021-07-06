@@ -168,7 +168,7 @@ button:hover{
 @media (max-width: 750px){
 	body{
 		padding: 0;
-		padding-top: 15px;
+		padding-top: 10px;
 	}
 	.randomizer{
 		margin: 0px auto;
