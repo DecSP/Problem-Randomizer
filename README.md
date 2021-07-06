@@ -27,7 +27,7 @@
   - [ ] Auto adjust mode and User specify mode.
 
 ## Authors
-<img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=26px /> [![Github Badge](https://img.shields.io/badge/-@DecSP-fff?style=for-the-badge&logo=Github&logoColor=bfbfbf&link=https://github.com/DecSP)](https://github.com/DecSP)
+<a href="https://github.com/DecSP"><img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=26px />![Github Badge](https://img.shields.io/badge/-@DecSP-fff?style=for-the-badge&logo=Github&logoColor=bfbfbf&link=https://github.com/DecSP)</a>
 
-<img src="https://avatars.githubusercontent.com/u/69586735?v=4" width=26px /> [![Github Badge](https://img.shields.io/badge/-@NguyenD--Nam-fff?style=for-the-badge&logo=GitHub&logoColor=bfbfbf&link=https://github.com/NguyenD-Nam)](https://github.com/NguyenD-Nam)
+<a href="https://github.com/NguyenD-Nam"><img src="https://avatars.githubusercontent.com/u/69586735?v=4" width=26px />![Github Badge](https://img.shields.io/badge/-@NguyenD--Nam-fff?style=for-the-badge&logo=GitHub&logoColor=bfbfbf&link=https://github.com/NguyenD-Nam)</a>
 <!-- [<img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=25px>  DecSP](https://github.com/DecSP) -->
