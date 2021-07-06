@@ -41,7 +41,7 @@ body{
 	box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
 	font-size: 18px;
-	line-height: 30px;
+	line-height: 25px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -65,6 +65,9 @@ body{
 }
 .input input:hover, .site select:hover{
 	background-color: #aad0d4;
+}
+#diff{
+	width: 100%;
 }
 
 button{
@@ -165,7 +168,7 @@ button:hover{
 @media (max-width: 750px){
 	body{
 		padding: 0;
-		padding-top: 20px;
+		padding-top: 15px;
 	}
 	.randomizer{
 		margin: 0px auto;
@@ -175,7 +178,7 @@ button:hover{
 	.container{
 		width: 100%;
 		/*margin: 0 auto;*/
-		line-height: 22px;
+		line-height: 20px;
 	}
 	.container .warn{
 		top: 5px;
