@@ -33,7 +33,7 @@ body{
 }
 .container{
 	animation: 0.8s appear linear;
-	animation-delay: 1.8s;
+	animation-delay: 2s;
 	width: 28vw;
 	min-width: 350px;
 	padding: 15px;
@@ -131,7 +131,7 @@ button:hover{
 .output p{
 	opacity: 0;
 	animation: 0.75s appearop linear forwards;
-	animation-delay: 2.6s;
+	animation-delay: 2.s;
 }
 .output p a{
 	color: #c1dde0;
@@ -174,17 +174,17 @@ button:hover{
 	background-color: #7197a0;
 	text-align: center;
 	animation: 2s introbanner linear forwards;
-	animation-delay: 0.8s;
+	animation-delay: 1s;
 }
 .intro img{
 	cursor: pointer;
 	width: 50%;
 	object-fit: cover;
 	animation: 0.8s introimg linear;
-	opacity: 0.85;
+	opacity: 0.85 !important;
 }
 .intro p{
-	font-size: 25px;
+	font-size: 25px !important;
 	color: #c1dde0;
 	margin-top: 15vh;
 }
