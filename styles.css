@@ -131,7 +131,7 @@ button:hover{
 .output p{
 	opacity: 0;
 	animation: 0.75s appearop linear forwards;
-	animation-delay: 2s;
+	animation-delay: 2.8s;
 }
 .output p a{
 	color: #c1dde0;
