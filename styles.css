@@ -33,7 +33,7 @@ body{
 }
 .container{
 	animation: 0.8s appear linear;
-	animation-delay: 2s;
+	animation-delay: 3s;
 	width: 28vw;
 	min-width: 350px;
 	padding: 15px;
@@ -131,7 +131,7 @@ button:hover{
 .output p{
 	opacity: 0;
 	animation: 0.75s appearop linear forwards;
-	animation-delay: 2.8s;
+	animation-delay: 3.8s;
 }
 .output p a{
 	color: #c1dde0;
@@ -171,34 +171,30 @@ button:hover{
 	z-index: 10;
 	opacity: 1;
 	top: 0vh;
-	background-color: #7197a0;
+	background-image: radial-gradient(at bottom right, #85a5ad 35%, #7197a0 30%);
 	text-align: center;
 	animation: 2s introbanner linear forwards;
-	animation-delay: 1s;
+	animation-delay: 2s;
 }
 .intro img{
 	cursor: pointer;
 	width: 50%;
+	margin-top: 20vh;
 	object-fit: cover;
-	animation: 0.8s introimg linear;
-	opacity: 0.85 !important;
-}
-.intro p{
-	font-size: 25px !important;
-	color: #c1dde0;
-	margin-top: 15vh;
+	animation: 2.5s introimg linear forwards;
+	opacity: 0 !important;
 }
 @keyframes introbanner{
 	0%{transform: translateY(0px); opacity: 1;}
 	20%{transform: translateY(0px); opacity: 1;}
 	50%{transform: translateY(0px); opacity: 1;}
-	65%{transform: translateY(50vh); opacity: 0;}
-	100%{transform: translateY(100vh); opacity: 0;}
+	65%{transform: translateY(0vh); opacity: 0;}
+	100%{transform: translateY(-100vh); opacity: 0;}
 }
 @keyframes introimg{
-	0%{opacity: 0;}
-	80%{opacity: 0.85;}
-	100%{opacity: 0.85;}
+	0%{opacity: 1;}
+	90%{opacity: 1;}
+	100%{opacity: 0;}
 }
 
 /*=============== MEDIA QUERIES ===============*/
@@ -234,8 +230,5 @@ button:hover{
 	}
 	.intro img{
 		width: 100%;
-	}
-	.intro p{
-		margin-top: 20vh;
 	}
 }
