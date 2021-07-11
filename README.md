@@ -27,7 +27,9 @@
   - [ ] Auto adjust mode and User specify mode.
 
 ## Authors
-<a href="https://github.com/DecSP"><img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=26px />![Github Badge](https://img.shields.io/badge/-@DecSP-fff?style=for-the-badge&logo=Github&logoColor=bfbfbf&link=https://github.com/DecSP)</a>
+<a title="" href="https://github.com/DecSP"><img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=26px />![Github Badge](https://img.shields.io/badge/-@DecSP-fff?style=for-the-badge&logo=Github&logoColor=bfbfbf&link=https://github.com/DecSP)</a>
+<sup>` Work with API `</sup>
 
-<a href="https://github.com/NguyenD-Nam"><img src="https://avatars.githubusercontent.com/u/69586735?v=4" width=26px />![Github Badge](https://img.shields.io/badge/-@NguyenD--Nam-fff?style=for-the-badge&logo=GitHub&logoColor=bfbfbf&link=https://github.com/NguyenD-Nam)</a>
+<a title="" href="https://github.com/NguyenD-Nam"><img src="https://avatars.githubusercontent.com/u/69586735?v=4" width=26px />![Github Badge](https://img.shields.io/badge/-@NguyenD--Nam-fff?style=for-the-badge&logo=GitHub&logoColor=bfbfbf&link=https://github.com/NguyenD-Nam)</a>
+<sup>` Front-end stuff `</sup>
 <!-- [<img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=25px>  DecSP](https://github.com/DecSP) -->
