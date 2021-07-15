@@ -1,5 +1,8 @@
-# Problem Randomizer
-## [Problem-Randomizer](https://decsp.github.io/Problem-Randomizer/) website.
+<div align="center">
+  <img src="img/intro.png" width=35%>
+</div>
+
+## [Problem-Randomizer](https://decsp.github.io/Problem-Randomizer/)
 > :metal: A practice platform for competitive programmers
 > using API key provided by [Codeforces](https://codeforces.com/) and [AtCoder](https://atcoder.jp/).
 
