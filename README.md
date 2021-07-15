@@ -29,6 +29,8 @@
   - [X] Count-down timer provided.
   - [ ] Auto adjust mode and User specify mode.
 
+<img src="img/screenshot.png" width=80%>
+
 ## Authors
 <a title="" href="https://github.com/DecSP"><img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=26px />![Github Badge](https://img.shields.io/badge/-@DecSP-fff?style=for-the-badge&logo=Github&logoColor=bfbfbf&link=https://github.com/DecSP)</a>
 <sup>` Work with API `</sup>
