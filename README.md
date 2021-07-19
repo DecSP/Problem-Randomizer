@@ -2,7 +2,7 @@
   <img src="img/intro.png" width=400px>
 </div>
 
-## [Problem-Randomizer](https://decsp.github.io/Problem-Randomizer/)
+## [Problem Randomizer](https://decsp.github.io/Problem-Randomizer/)
 > :metal: A practice platform for competitive programmers
 > using API key provided by [Codeforces](https://codeforces.com/) and [AtCoder](https://atcoder.jp/).
 
@@ -22,14 +22,14 @@
     - Set count-down timer for evaluating your practice.
     - Selecting number of recently added problems that you might get.
 
+<img src="img/screenshot.png" width=80%>
+
 ## Features:
   - [X] Randomly Select coding problem base on difficulty range (800 - 3500).
   - [X] Coding problems from Codeforces.
   - [X] Coding problems from AtCoder.
   - [X] Count-down timer provided.
   - [ ] Auto adjust mode and User specify mode.
-
-<img src="img/screenshot.png" width=80%>
 
 ## Authors
 <a title="" href="https://github.com/DecSP"><img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=26px />![Github Badge](https://img.shields.io/badge/-@DecSP-fff?style=for-the-badge&logo=Github&logoColor=bfbfbf&link=https://github.com/DecSP)</a>
