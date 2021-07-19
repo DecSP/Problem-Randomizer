@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="img/intro.png" width=35%>
+  <img src="img/intro.png" width=400px>
 </div>
 
 ## [Problem-Randomizer](https://decsp.github.io/Problem-Randomizer/)
