@@ -173,7 +173,8 @@ button:hover{
 	opacity: 1;
 	top: 0vh;
 	background-image: radial-gradient(at bottom right, #85a5ad 35%, #7197a0 30%);
-	text-align: center;
+	background-attachment: fixed;
+        text-align: center;
 	animation: 2s introbanner linear forwards;
 	animation-delay: 2s;
 }
