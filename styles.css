@@ -8,7 +8,8 @@ html{
 body{
 	min-height: 100vh;
 	background-image: radial-gradient(at bottom right, #85a5ad 35%, #7197a0 30%);
-	padding: 0px;
+	background-attachment: fixed;
+        padding: 0px;
 	padding-top: 25px;
 	box-sizing: border-box;
 }
