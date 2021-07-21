@@ -8,11 +8,11 @@
 
 \
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/DecSP/Problem-Randomizer/master)
-[<img src="https://img.shields.io/website?up_message=Github%20Pages&url=https%3A%2F%2Fdecsp.github.io%2FProblem-Randomizer%2F">](https://decsp.github.io/Problem-Randomizer/)
 ![GitHub](https://img.shields.io/github/license/DecSP/Problem-Randomizer)
-![GitHub language count](https://img.shields.io/github/languages/count/DecSP/Problem-Randomizer)
 ![GitHub contributors](https://img.shields.io/github/contributors/DecSP/Problem-Randomizer)
 <!-- ![GitHub top language](https://img.shields.io/github/languages/top/DecSP/Problem-Randomizer) -->
+<!-- ![GitHub language count](https://img.shields.io/github/languages/count/DecSP/Problem-Randomizer) -->
+<!-- [<img src="https://img.shields.io/website?up_message=Github%20Pages&url=https%3A%2F%2Fdecsp.github.io%2FProblem-Randomizer%2F">](https://decsp.github.io/Problem-Randomizer/) -->
 
 ## How it works:
   - Choose site (Codeforces or AtCoder).
