@@ -9,7 +9,7 @@
 
 > :metal: A practice platform for competitive programmers using API key provided by [Codeforces](https://codeforces.com/) and [AtCoder](https://atcoder.jp/).
 
-### [→ Problem Randomizer](https://decsp.github.io/Problem-Randomizer/)
+**[→ Problem Randomizer](https://decsp.github.io/Problem-Randomizer/)**
 
 ## How it works:
   - Choose site (Codeforces or AtCoder).
