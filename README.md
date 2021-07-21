@@ -1,18 +1,15 @@
-<div align="center">
-  <img src="img/intro.png" width=400px>
-</div>
+# <div align="center"><img src="img/intro.png" width=400px></div>
 
-## [Problem Randomizer](https://decsp.github.io/Problem-Randomizer/)
-> :metal: A practice platform for competitive programmers
-> using API key provided by [Codeforces](https://codeforces.com/) and [AtCoder](https://atcoder.jp/).
-
-\
-![GitHub branch checks state](https://img.shields.io/github/checks-status/DecSP/Problem-Randomizer/master)
-![GitHub](https://img.shields.io/github/license/DecSP/Problem-Randomizer)
-![GitHub contributors](https://img.shields.io/github/contributors/DecSP/Problem-Randomizer)
+![GitHub branch checks state](https://img.shields.io/github/checks-status/DecSP/Problem-Randomizer/master?color=c1dde0&style=flat-square)
+![GitHub](https://img.shields.io/github/license/DecSP/Problem-Randomizer?color=c1dde0&style=flat-square)
+![GitHub contributors](https://img.shields.io/github/contributors/DecSP/Problem-Randomizer?color=c1dde0&style=flat-square)
 <!-- ![GitHub top language](https://img.shields.io/github/languages/top/DecSP/Problem-Randomizer) -->
 <!-- ![GitHub language count](https://img.shields.io/github/languages/count/DecSP/Problem-Randomizer) -->
 <!-- [<img src="https://img.shields.io/website?up_message=Github%20Pages&url=https%3A%2F%2Fdecsp.github.io%2FProblem-Randomizer%2F">](https://decsp.github.io/Problem-Randomizer/) -->
+
+> :metal: A practice platform for competitive programmers using API key provided by [Codeforces](https://codeforces.com/) and [AtCoder](https://atcoder.jp/).
+
+### [→ Problem Randomizer](https://decsp.github.io/Problem-Randomizer/)
 
 ## How it works:
   - Choose site (Codeforces or AtCoder).
