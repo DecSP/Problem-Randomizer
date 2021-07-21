@@ -15,7 +15,7 @@
 <!-- ![GitHub top language](https://img.shields.io/github/languages/top/DecSP/Problem-Randomizer) -->
 
 ## How it works:
-  - Choose platform (Codeforces or AtCoder).
+  - Choose site (Codeforces or AtCoder).
   - Specify the range of difficulty (between 800 and 3500).
   - Click on "Randomize" to start selecting suitable coding problem.
   - *Optional*:
@@ -31,7 +31,7 @@
   - [X] Count-down timer provided.
   - [ ] Auto adjust mode and User specify mode.
 
-## Authors
+## Authors:
 <a title="" href="https://github.com/DecSP"><img src="https://avatars.githubusercontent.com/u/69586733?v=4" width=26px />![Github Badge](https://img.shields.io/badge/-@DecSP-fff?style=for-the-badge&logo=Github&logoColor=bfbfbf&link=https://github.com/DecSP)</a>
 <sup>` Work with API `</sup>
 
