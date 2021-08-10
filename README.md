@@ -13,7 +13,7 @@
 
 ## How it works:
   - Choose site (Codeforces or AtCoder).
-  - Specify the range of difficulty (between 800 and 3500).
+  - Specify the range of difficulty.
   - Click on "Randomize" to start selecting suitable coding problem.
   - *Optional*:
     - Set count-down timer for evaluating your practice.
