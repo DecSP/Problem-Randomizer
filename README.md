@@ -1,5 +1,5 @@
-<!-- # <div align="center"><img src="img/intro.png" width=400px></div> -->
-# Problem Randomizer
+# <div align="center"><img src="img/intro.png" width=400px></div>
+<!-- # Problem Randomizer -->
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/DecSP/Problem-Randomizer/master?color=c1dde0&style=flat-square)
 ![GitHub](https://img.shields.io/github/license/DecSP/Problem-Randomizer?color=c1dde0&style=flat-square)
 ![GitHub contributors](https://img.shields.io/github/contributors/DecSP/Problem-Randomizer?color=c1dde0&style=flat-square)
