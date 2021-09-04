@@ -7,7 +7,7 @@ html{
 }
 body{
 	min-height: 100vh;
-	background-image: radial-gradient(at bottom right, #85a5ad 35%, #7197a0 30%);
+	background-image: radial-gradient(137.5% 55% at bottom right, #85a5ad 35%, #7197a0 30%);
 	background-attachment: fixed;
     padding: 25px 0 0 0;
 	box-sizing: border-box;
