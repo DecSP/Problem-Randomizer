@@ -7,7 +7,7 @@ html{
 }
 body{
 	min-height: 100vh;
-	background-image: radial-gradient(137.5% 55% at bottom right, #85a5ad 35%, #7197a0 30%);
+	background-image: radial-gradient(137.5% 55% at bottom right, #85a5ad 80%, #7197a0 80%);
 	background-attachment: fixed;
     padding: 25px 0 0 0;
 	box-sizing: border-box;
@@ -155,7 +155,7 @@ button:hover{
 	z-index: 10;
 	opacity: 1;
 	top: 0;
-	background-image: radial-gradient(at bottom right, #85a5ad 35%, #7197a0 30%);
+	background-image: radial-gradient(at bottom right, 137.5% 55% #85a5ad 80%, #7197a0 80%);
 	background-attachment: fixed;
 	text-align: center;
 	animation: 2s introbanner linear forwards;
