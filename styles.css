@@ -9,8 +9,7 @@ body{
 	min-height: 100vh;
 	background-image: radial-gradient(at bottom right, #85a5ad 35%, #7197a0 30%);
 	background-attachment: fixed;
-        padding: 0px;
-	padding-top: 25px;
+    padding: 25px 0 0 0;
 	box-sizing: border-box;
 }
 .randomizer{
@@ -23,23 +22,16 @@ body{
 }
 @keyframes appear{
 	0%{opacity: 0; transform: translateY(50px);}
-	30%{opacity: 0.7; transform: translateY(0px);}
-	40%{opacity: 1; transform: translateY(-15px);}
-	50%{opacity: 1; transform: translateY(-20px);}
-	60%{opacity: 1; transform: translateY(-22px);}
-	70%{opacity: 1; transform: translateY(-22px);}
-	80%{opacity: 1; transform: translateY(-22px);}
-	90%{opacity: 1; transform: translateY(-10px);}
+	50%{opacity: 0; transform: translateY(50px);}
 	100%{opacity: 1; transform: translateY(0px);}
 }
 .container{
 	animation: 0.8s appear linear;
 	animation-delay: 3s;
-	width: 28vw;
-	min-width: 350px;
+	width: 370px;
 	padding: 15px;
 	box-sizing: border-box;
-	background-color: #c1dde0;
+	background: #c1dde0;
 	box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
 	font-size: 18px;
@@ -48,7 +40,6 @@ body{
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
-
 .input{
 	width: 100%;
 	margin-bottom: 35px;
@@ -61,12 +52,12 @@ body{
 	width: 100%;
 	font-size: 18px;
 	border: none;
-	background-color: #c1dde0;
+	background: #c1dde0;
 	border-bottom: 1px solid #585858;
 	outline: none;
 }
 .input input:hover, .site select:hover{
-	background-color: #aad0d4;
+	background: #aad0d4;
 }
 #diff{
 	width: 100%;
@@ -77,18 +68,18 @@ button{
 	border: none;
 	padding: 10px;
 	font-family: 'Montserrat';
-	background-color: #282b37;
+	background: #282b37;
 	color: #c1dde0;
 	cursor: pointer;
 }
 button:hover{
-	background-color: #15171e;
+	background: #15171e;
 }
 
 .container .warn{
 	visibility: hidden;
 	position: fixed;
-	background-color: #fff4f3;
+	background: #fff4f3;
 	width: 250px;
 	padding: 5px;
 	bottom: 5px;
@@ -107,13 +98,7 @@ button:hover{
 
 .output{
 	margin-left: 20px;
-	width: calc(60vw - 25vw - 30px - 20px - 30px);
-	/*	60vw of randomizer
-		25vw of container on the left
-		30px of randomizer padding
-		20px of output margin-left
-		30px of output padding
-	*/
+	width: calc(35vw - 80px);
 	color: #101010;
 	box-sizing: border-box;
 	padding: 15px;
@@ -123,9 +108,7 @@ button:hover{
 	30%{opacity: 0.7; transform: translateX(0px);}
 	40%{opacity: 1; transform: translateX(15px);}
 	50%{opacity: 1; transform: translateX(20px);}
-	60%{opacity: 1; transform: translateX(22px);}
 	70%{opacity: 1; transform: translateX(22px);}
-	80%{opacity: 1; transform: translateX(22px);}
 	90%{opacity: 1; transform: translateX(10px);}
 	100%{opacity: 1; transform: translateX(0px);}
 }
@@ -150,7 +133,7 @@ button:hover{
 	padding: 10px;
 	text-align: right;
 	font-size: 18px;
-	background-color: #282b37;
+	background: #282b37;
 	color: #c1dde0;
 	border-radius: 3px;
 	box-sizing: border-box;
@@ -158,11 +141,11 @@ button:hover{
 .time button{
 	margin-bottom: 0;
 	font-size: 15px;
-	background-color: #a3bcc2;
+	background: #a3bcc2;
 	color: #282b37;
 }
 .time button:hover{
-	background-color: #85a5ad;
+	background: #85a5ad;
 }
 
 .intro{
@@ -171,15 +154,14 @@ button:hover{
 	position: fixed;
 	z-index: 10;
 	opacity: 1;
-	top: 0vh;
+	top: 0;
 	background-image: radial-gradient(at bottom right, #85a5ad 35%, #7197a0 30%);
 	background-attachment: fixed;
-        text-align: center;
+	text-align: center;
 	animation: 2s introbanner linear forwards;
 	animation-delay: 2s;
 }
 .intro img{
-	cursor: pointer;
 	width: 50%;
 	margin-top: 20vh;
 	object-fit: cover;
@@ -200,20 +182,17 @@ button:hover{
 	100%{opacity: 0;}
 }
 
-/*=============== MEDIA QUERIES ===============*/
 @media (max-width: 750px){
 	body{
-		padding: 0;
-		padding-top: 10px;
+		padding: 10px 0 0 0;
 	}
 	.randomizer{
-		margin: 0px auto;
+		margin: 0 auto;
 		justify-content: space-around;
 		flex-wrap: wrap;
 	}
 	.container{
 		width: 100%;
-		/*margin: 0 auto;*/
 		line-height: 20px;
 	}
 	.container .warn{
