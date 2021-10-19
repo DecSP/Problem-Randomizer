@@ -2,37 +2,73 @@
 	padding: 0;
 	margin: 0;
 }
+::-webkit-scrollbar{
+	width: 9px;
+}
+::-webkit-scrollbar-track{
+	background: #d1edf0;
+	border-radius: 5px;
+}
+::-webkit-scrollbar-thumb{
+	background: #99c7cc;
+	border-radius: 5px;
+}
 html{
 	font-family: 'Montserrat';
 }
 body{
-	min-height: 100vh;
 	background-image: radial-gradient(137.5% 55% at bottom right, #85a5ad 80%, #7197a0 80%);
 	background-attachment: fixed;
-    padding: 25px 0 0 0;
+    padding: 0;
 	box-sizing: border-box;
+}
+.hdr{
+	padding: 10px 50px 10px 50px;
+	box-shadow: 0 4px 8px #00000030;
+	position: sticky;
+	top: 0;
+	z-index: 5;
+	background: #85a5ad;
+	display: flex;
+	justify-content: space-between;
+}
+.links{
+	height: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.links div{
+	display: flex;
+}
+.links div a{
+	color: #c1dde0;
+	font-size: 33px;
+	margin: 0 10px 0 10px;
+}
+.links div a img{
+	height: 35px;
 }
 .randomizer{
 	box-sizing: border-box;
 	width: 60vw;
-	min-width: 400px;
-	margin: 0px auto;
+	min-width: 380px;
+	margin: 10px auto;
 	padding: 15px;
 	display: flex;
 }
 @keyframes appear{
-	0%{opacity: 0; transform: translateY(50px);}
-	50%{opacity: 0; transform: translateY(50px);}
+	0%{opacity: 0; transform: translateY(35px);}
+	50%{opacity: 0; transform: translateY(35px);}
 	100%{opacity: 1; transform: translateY(0px);}
 }
 .container{
 	animation: 0.8s appear linear;
-	animation-delay: 3s;
-	width: 370px;
+	width: 380px;
 	padding: 15px;
 	box-sizing: border-box;
 	background: #c1dde0;
-	box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 4px 8px #00000030;
 	border-radius: 10px;
 	font-size: 18px;
 	line-height: 25px;
@@ -64,7 +100,7 @@ body{
 }
 
 button{
-	margin: 15px auto 15px;
+	margin: 10px auto 15px;
 	border: none;
 	padding: 10px;
 	font-family: 'Montserrat';
@@ -80,7 +116,7 @@ button:hover{
 	visibility: hidden;
 	position: fixed;
 	background: #fff4f3;
-	width: 250px;
+	width: 270px;
 	padding: 5px;
 	bottom: 5px;
 	left: 5px;
@@ -93,15 +129,18 @@ button:hover{
 @keyframes popup{
 	0%{opacity: 0; transform: translateX(-100px); visibility: visible;}
 	60%{opacity: 0; transform: translateX(-100px); visibility: visible;}
-	100%{opacity: 0.8; transform: translateX(0px); visibility: visible;}
+	100%{opacity: 0.85; transform: translateX(0px); visibility: visible;}
 }
 
 .output{
 	margin-left: 20px;
-	width: calc(35vw - 80px);
+	max-width: 300px;
 	color: #101010;
 	box-sizing: border-box;
 	padding: 15px;
+	max-height: 450px;
+	overflow-y: auto;
+	overflow-x: unset;
 }
 @keyframes appearop{
 	0%{opacity: 0; transform: translateX(-50px);}
@@ -115,13 +154,19 @@ button:hover{
 .output p{
 	opacity: 0;
 	animation: 0.75s appearop linear forwards;
-	animation-delay: 3.8s;
+	/*animation-delay: 3.8s;*/
 }
 .output p a{
 	color: #c1dde0;
 }
 .output p a:hover{
 	color: #aad0d4;
+}
+.item{
+	border-radius: 5px;
+	box-shadow: 0 2px 4px #00000030;
+	padding: 2px;
+	margin-bottom: 10px;
 }
 .time{
 	opacity: 0;
@@ -137,6 +182,7 @@ button:hover{
 	color: #c1dde0;
 	border-radius: 3px;
 	box-sizing: border-box;
+	z-index: 3;
 }
 .time button{
 	margin-bottom: 0;
@@ -148,65 +194,33 @@ button:hover{
 	background: #85a5ad;
 }
 
-.intro{
-	width: 100vw;
-	height: 100vh;
-	position: fixed;
-	z-index: 10;
-	opacity: 1;
-	top: 0;
-	background-image: radial-gradient(137.5% 55% at bottom right, #85a5ad 80%, #7197a0 80%);
-	background-attachment: fixed;
-	text-align: center;
-	animation: 2s introbanner linear forwards;
-	animation-delay: 2s;
-}
-.intro img{
-	width: 50%;
-	margin-top: 20vh;
-	object-fit: cover;
-	animation: 2.5s introimg linear forwards;
-	opacity: 0 !important;
-}
-@keyframes introbanner{
-	0%{transform: translateY(0px); opacity: 1;}
-	20%{transform: translateY(0px); opacity: 1;}
-	50%{transform: translateY(0px); opacity: 1;}
-	65%{transform: translateY(0vh); opacity: 0;}
-	100%{transform: translateY(-100vh); opacity: 0;}
-}
-@keyframes introimg{
-	0%{opacity: 0;}
-	10%{opacity: 1;}
-	97%{opacity: 1;}
-	100%{opacity: 0;}
-}
-
-@media (max-width: 750px){
-	body{
-		padding: 10px 0 0 0;
+@media (max-width: 850px){
+	.hdr{
+		padding: 10px 25px 10px 25px;
 	}
 	.randomizer{
-		margin: 0 auto;
 		justify-content: space-around;
 		flex-wrap: wrap;
 	}
 	.container{
 		width: 100%;
+		min-width: unset;
 		line-height: 20px;
 	}
 	.container .warn{
-		top: 5px;
+		top: 75px;
 		bottom: unset;
 	}
 	.output{
-		width: 100%;
-		margin: 0 auto;
+		width: 90%;
+		margin: 10px auto;
+		max-height: 300px;
 	}
 	.time{
+		position: sticky;
 		right: 0;
 		bottom: 0;
-		width: 100vw;
+		width: 100%;
 		border-radius: 0;
 		text-align: center;
 	}
