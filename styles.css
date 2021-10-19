@@ -51,8 +51,7 @@ body{
 }
 .randomizer{
 	box-sizing: border-box;
-	width: 60vw;
-	min-width: 380px;
+	width: 705px;
 	margin: 10px auto;
 	padding: 15px;
 	display: flex;
@@ -133,12 +132,12 @@ button:hover{
 }
 
 .output{
-	margin-left: 20px;
+	margin-left: 25px;
 	max-width: 300px;
 	color: #101010;
 	box-sizing: border-box;
 	padding: 15px;
-	max-height: 450px;
+	max-height: 390px;
 	overflow-y: auto;
 	overflow-x: unset;
 }
@@ -166,7 +165,7 @@ button:hover{
 	border-radius: 5px;
 	box-shadow: 0 2px 4px #00000030;
 	padding: 2px;
-	margin-bottom: 10px;
+	margin-bottom: 12px;
 }
 .time{
 	opacity: 0;
@@ -201,6 +200,7 @@ button:hover{
 	.randomizer{
 		justify-content: space-around;
 		flex-wrap: wrap;
+		width: 380px;
 	}
 	.container{
 		width: 100%;
@@ -212,9 +212,9 @@ button:hover{
 		bottom: unset;
 	}
 	.output{
-		width: 90%;
+		width: 93%;
 		margin: 10px auto;
-		max-height: 270px;
+		max-height: 273px;
 	}
 	.time{
 		position: sticky;
