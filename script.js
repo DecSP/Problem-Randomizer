@@ -12,6 +12,7 @@ var timer;
 var timerrunning=false;
 var timersecs;
 var secs;
+var ouput = '';
 
 function cfget() {
 	$.getJSON(apiurl["cf"],function(result){
@@ -73,7 +74,9 @@ function randomizingcf(){
 	// console.log(problemset.problems[l[ridx]]);
 	problemobj=problemset.problems[l[ridx]];
 	problem=problemobj.contestId+'/'+problemobj.index;
-	document.getElementById("problink").innerHTML=`Problem: <a href="${sitesurl["cf"]}${problem}" target="_blank" rel="noopener noreferrer">${problemobj.name}</a> (Rating: ${problemobj.rating})`;
+	output = `<div class="item">Problem: <a href="${sitesurl["cf"]}${problem}" target="_blank" rel="noopener noreferrer">${problemobj.name}</a> (Rating: ${problemobj.rating})</div>`;
+	// document.getElementById("problink").innerHTML=`Problem: <a href="${sitesurl["cf"]}${problem}" target="_blank" rel="noopener noreferrer">${problemobj.name}</a> (Rating: ${problemobj.rating})`;
+	document.getElementById("problink").innerHTML+=output;
 }
 function randomizingac(){
 	lwr=parseInt(document.getElementById("lwr").value)
@@ -92,7 +95,9 @@ function randomizingac(){
 	ridx=Math.floor(Math.random()*nlen);
 	problemobj=problemset[l[ridx]];
 	problem=problemobj.contest_id+'/tasks/'+problemobj.id;
-	document.getElementById("problink").innerHTML=`Problem: <a href="${sitesurl["ac"]}${problem}" target="_blank" rel="noopener noreferrer">${problemobj.title}</a> (Rating: ${problemobj.rating})`;
+	output=`<div class="item">Problem: <a href="${sitesurl["ac"]}${problem}" target="_blank" rel="noopener noreferrer">${problemobj.title}</a> (Rating: ${problemobj.rating})</div>`;
+	// document.getElementById("problink").innerHTML=`Problem: <a href="${sitesurl["ac"]}${problem}" target="_blank" rel="noopener noreferrer">${problemobj.title}</a> (Rating: ${problemobj.rating})`;
+	document.getElementById("problink").innerHTML += output;
 }
 function randomizing(){
 	if (choice=='cf') {
@@ -139,4 +144,3 @@ function finishProblem(){
 		alert(`Congratulations! You solved the problem in ${parseInt((tmp-tmp%60)/60)} minute(s) and ${parseInt(tmp%60)} second(s)!`);
 	}
 }
-

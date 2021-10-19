@@ -13,13 +13,23 @@
 	<meta property="og:title" content="Problem Randomizer"/>
 	<meta property="og:description" content="A practice platform for competitive programmers using API key provided by Codeforces and AtCoder."/>
 	<meta name="theme-color" content="#c1dde0">
-	
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
 	<title id="title">Problem Randomizer</title>
 </head>
 <body>
+	<div class="hdr">
+		<img src="img/logo.png" height="50px" style="border: 2px solid #7197a0; background: #7197a0; border-radius: 2px; box-sizing: border-box;">
+		<div class="links">
+			<div>
+				<a title="GitHub" href="https://github.com/DecSP/Problem-Randomizer" target="_blank"><i class="fab fa-github"></i></a>
+				<a title="Codeforces" href="https://codeforces.com/" target="_blank"><img src="https://www.saashub.com/images/app/service_logos/175/r59iw60rtoxu/large.png?1620450530"></a>
+				<a title="AtCoder" href="https://atcoder.jp/" target="_blank"><img src="https://img.atcoder.jp/assets/icon/avatar.png"></a>
+			</div>
+		</div>
+	</div>
 	<div class="randomizer">
 		<div class="container">	<!--  left half of form -->
 			<div class="input site">
@@ -29,25 +39,25 @@
 			    <option value="ac">Atcoder (ABC only)</option>
 				</select>
 			</div>
-			<div class="input numb">
-				<label>Number of recent problems (0 is all):</label>
-				<br>
-				<input type="number" min="0" max="8000" value="0" step="50" id="rcnt">
-			</div>
-			<label id="diff">Difficulty</label>
+			<label id="diff">Difficulty:</label>
 			<div class="input low">
-				<label>Lower bound:</label>
+				<label>Lower bound</label>
 				<input type="number" min="800" max="3500" value="800" step="100" id="lwr">
-				<div class="warn">Lower bound must be greater than or equals 800</div>
+				<div class="warn">Lower bound must be greater than or equals to 800</div>
 			</div>
 			<div class="input up">
-				<label>Upper bound:</label>
+				<label>Upper bound</label>
 				<input type="number" min="800" max="3500" value="3500" step="100" id="upr">
-				<div class="warn">Upper bound must be less than or equals 3500</div>
+				<div class="warn">Upper bound must be less than or equals to 3500</div>
 			</div>
 			<div class="input timer">
-				<label>Timer in minutes (0 for disable):</label>
+				<label>Timer in minutes (0 for disabling):</label>
 				<input type="number" min="0" max="180" value="0" step="5" id="timer">
+			</div>
+			<div class="input numb">
+				<label>Number of recent problems (0 for all):</label>
+				<br>
+				<input type="number" min="0" max="8000" value="0" step="50" id="rcnt">
 			</div>
 			<button disabled="false" id="btn" onclick="randomizing()">Randomize
 				<span>&raquo;</span></button>
@@ -55,14 +65,12 @@
 
 		<div class="output">	<!-- right half of form -->
 			<p id="problink"></p>
-			<div class="time" id="time">
-				<p id="timerstatus"></p><button id="finish" onclick="finishProblem()">Finish</button>
-			</div>
 			<p id="status">Idle</p>
 		</div>
 	</div>
-	<div class="intro">
-		<a href="https://github.com/DecSP/Problem-Randomizer" target="_blank"><img src="img/intro.png"></a>
+
+	<div class="time" id="time">
+		<p id="timerstatus"></p><button id="finish" onclick="finishProblem()">Finish</button>
 	</div>
 	<script src="script.js"></script>
 </body>
