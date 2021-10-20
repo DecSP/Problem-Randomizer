@@ -51,7 +51,7 @@ body{
 }
 .randomizer{
 	box-sizing: border-box;
-	width: 705px;
+	width: 735px;
 	margin: 10px auto;
 	padding: 15px;
 	display: flex;
@@ -137,7 +137,7 @@ button:hover{
 	color: #101010;
 	box-sizing: border-box;
 	padding: 15px;
-	max-height: 390px;
+	max-height: 370px;
 	overflow-y: auto;
 	overflow-x: unset;
 }
