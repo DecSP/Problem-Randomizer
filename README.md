@@ -19,7 +19,8 @@
     - Set count-down timer for evaluating your practice.
     - Selecting number of recently added problems that you might get. -->
 <br>
-<img src="img/screenshot.png" width=620px>
+
+<img src="img/screenshot.png" width="400px"> <img src="img/screenshot1.png" width="400px">
 
 ### Features:
   - [X] Randomly Select coding problem base on difficulty range (800 - 3500).
