@@ -13,6 +13,8 @@ var timerrunning=false;
 var timersecs;
 var secs;
 var ouput = '';
+const upr = document.getElementById('upr');
+const lwr = document.getElementById('lwr');
 
 function cfget() {
 	$.getJSON(apiurl["cf"],function(result){
@@ -20,7 +22,20 @@ function cfget() {
 		problemset=result.result;
 		document.getElementById("btn").disabled=false;
 		document.getElementById("status").innerHTML="Idle";
+
+		len=problemset.problems.length;
+		let mn=100000,mx=0;
+		for (i=0;i<len;++i){
+			if ("rating" in problemset.problems[i]){
+				rating=problemset.problems[i].rating;
+				mx=Math.max(mx,rating);
+				mn=Math.min(mn,rating);
+			}
+		}
+		lwr.value=upr.min=lwr.min=mn;
+		upr.value=upr.max=lwr.max=mx;
 	});
+	
 }
 
 function acget() {
@@ -28,20 +43,35 @@ function acget() {
 		problemset=result;
 		$.getJSON(apiurl["ac2"],function(result){
 			tmp=result;
+			let mn=100000,mx=0;
 			for (i=0;i<problemset.length;++i){
 				if (problemset[i].id in tmp){
 					tmp2=tmp[problemset[i].id].difficulty;
 					contestname=problemset[i].contest_id;
 					if (typeof(tmp2)!="number") continue;
-					if (contestname.substr(0,3)=="abc" && parseInt(contestname.substr(3))>47)
-					problemset[i].rating=tmp[problemset[i].id].difficulty;
+					if (!((contestname.substr(0,3)=="abc" && parseInt(contestname.substr(3))>47)||
+					(contestname.substr(0,3)=="arc" && parseInt(contestname.substr(3))>57) ||
+					(contestname.substr(0,3)=="agc" && parseInt(contestname.substr(3))>1) )) {
+						problemset[i].rating=0;
+						continue;
+					}
+					let rating=tmp[problemset[i].id].difficulty;
+					problemset[i].rating=rating;
+					if (rating<100) continue;
+					rating = Math.round(rating/100)*100;
+					mx=Math.max(mx,rating);
+					mn=Math.min(mn,rating);
 				}
 			}
 			console.log("okeac");
 			document.getElementById("btn").disabled=false;
 			document.getElementById("status").innerHTML="Idle";
+
+			lwr.value=upr.min=lwr.min=mn;
+			upr.value=upr.max=lwr.max=mx;
 		});
 	});
+	
 }
 
 function getdata(){
@@ -56,15 +86,13 @@ function getdata(){
 getdata();
 
 function randomizingcf(){
-	lwr=parseInt(document.getElementById("lwr").value)
-	upr=parseInt(document.getElementById("upr").value)
 	rcnt=parseInt(document.getElementById("rcnt").value)
 	l=[];
 	len=(rcnt==0)?problemset.problems.length:rcnt;
 	for (i=0;i<len;++i){
 		if ("rating" in problemset.problems[i]){
 			rating=problemset.problems[i].rating;
-			if (rating<=upr&&rating>=lwr) l.push(i);
+			if (rating<=upr.value&&rating>=lwr.value) l.push(i);
 		}
 	}
 	
@@ -79,15 +107,13 @@ function randomizingcf(){
 	document.getElementById("problink").innerHTML+=output;
 }
 function randomizingac(){
-	lwr=parseInt(document.getElementById("lwr").value)
-	upr=parseInt(document.getElementById("upr").value)
 	rcnt=parseInt(document.getElementById("rcnt").value)
 	l=[];
 	len=problemset.length;
 	for (i=0;i<len;++i){
 		if ("rating" in problemset[i]){
 			rating=problemset[i].rating;
-			if (rating<=upr&&rating>=lwr) l.push(i);
+			if (rating<=upr.value&&rating>=lwr.value) l.push(i);
 		}
 	}
 	

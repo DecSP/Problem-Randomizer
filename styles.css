@@ -110,7 +110,7 @@ button{
 button:hover{
 	background: #15171e;
 }
-
+/* 
 .container .warn{
 	visibility: hidden;
 	position: fixed;
@@ -124,7 +124,7 @@ button:hover{
 }
 .container input:focus ~ .warn{
 	animation: 1s popup linear forwards;
-}
+} */
 @keyframes popup{
 	0%{opacity: 0; transform: translateX(-100px); visibility: visible;}
 	60%{opacity: 0; transform: translateX(-100px); visibility: visible;}
@@ -207,10 +207,10 @@ button:hover{
 		min-width: unset;
 		line-height: 20px;
 	}
-	.container .warn{
+	/* .container .warn{
 		top: 75px;
 		bottom: unset;
-	}
+	} */
 	.output{
 		width: 93%;
 		margin: 10px auto;

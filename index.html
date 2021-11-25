@@ -36,19 +36,19 @@
 				<label for="Sites">Choose a site:</label>
 				<select name="Sites" id="site" onchange="getdata()">
 			    <option value="cf">Codeforces</option>
-			    <option value="ac">Atcoder (ABC only)</option>
+			    <option value="ac">Atcoder</option>
 				</select>
 			</div>
 			<label id="diff">Difficulty:</label>
 			<div class="input low">
 				<label>Lower bound</label>
-				<input type="number" min="800" max="3500" value="800" step="100" id="lwr">
-				<div class="warn">Lower bound must be greater than or equals to 800</div>
+				<input type="number" step="100" id="lwr">
+				<!-- <div class="warn">Lower bound must be greater than or equals to 800</div> -->
 			</div>
 			<div class="input up">
 				<label>Upper bound</label>
-				<input type="number" min="800" max="3500" value="3500" step="100" id="upr">
-				<div class="warn">Upper bound must be less than or equals to 3500</div>
+				<input type="number" step="100" id="upr">
+				<!-- <div class="warn">Upper bound must be less than or equals to 3500</div> -->
 			</div>
 			<div class="input timer">
 				<label>Timer in minutes (0 for disabling):</label>
