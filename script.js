@@ -17,33 +17,25 @@ const upr = document.getElementById('upr');
 const lwr = document.getElementById('lwr');
 
 function cfget() {
+	upr.min=lwr.min=800;
+	upr.max=lwr.max=3500;
 	$.getJSON(apiurl["cf"],function(result){
 		console.log("okecf");
 		problemset=result.result;
 		document.getElementById("btn").disabled=false;
 		document.getElementById("status").innerHTML="Idle";
 
-		len=problemset.problems.length;
-		let mn=100000,mx=0;
-		for (i=0;i<len;++i){
-			if ("rating" in problemset.problems[i]){
-				rating=problemset.problems[i].rating;
-				mx=Math.max(mx,rating);
-				mn=Math.min(mn,rating);
-			}
-		}
-		lwr.value=upr.min=lwr.min=mn;
-		upr.value=upr.max=lwr.max=mx;
 	});
 	
 }
 
 function acget() {
+	upr.min=lwr.min=100;
+	upr.max=lwr.max=4400;
 	$.getJSON(apiurl["ac"],function(result){
 		problemset=result;
 		$.getJSON(apiurl["ac2"],function(result){
 			tmp=result;
-			let mn=100000,mx=0;
 			for (i=0;i<problemset.length;++i){
 				if (problemset[i].id in tmp){
 					tmp2=tmp[problemset[i].id].difficulty;
@@ -57,18 +49,11 @@ function acget() {
 					}
 					let rating=tmp[problemset[i].id].difficulty;
 					problemset[i].rating=rating;
-					if (rating<100) continue;
-					rating = Math.round(rating/100)*100;
-					mx=Math.max(mx,rating);
-					mn=Math.min(mn,rating);
 				}
 			}
 			console.log("okeac");
 			document.getElementById("btn").disabled=false;
 			document.getElementById("status").innerHTML="Idle";
-
-			lwr.value=upr.min=lwr.min=mn;
-			upr.value=upr.max=lwr.max=mx;
 		});
 	});
 	
