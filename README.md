@@ -2,33 +2,80 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+```bash
+git clone git@github.com:nguyend-nam/typicode-users.git my-project
+cd my-project
+yarn
+```
+
+Then, you can run locally in development mode with live reload:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your favorite browser to see your project.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+.
+├── README.md                    # README file
+├── public/                      # Public folder
+│   └── images                   # Images used by the app
+├── lib/                         # Functions and schemas relating to API fetching
+│   └── apis.ts
+│   └── fetcher.ts
+│   └── schema.ts
+├── components/                  # Shared components
+│   └── X/
+│       └── index.ts
+│       └── X.tsx
+│       └── X.test.tsx
+│── pages/                       # Next JS pages
+│── styles/                      # Style folder
+│── hooks/                       # Custom hooks folder
+│── utils/                       # Utility folder
+├── tailwind.config.js           # Tailwind CSS configuration
+├── jest.config.js               # Jest configuration
+├── jest.setup.js                # Jest setup
+├── tsconfig.json                # TypeScript configuration
+└── package.json
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Unit Test
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+yarn test
+```
 
-## Learn More
+Please run this command, and you should see the coverage in the terminal.
 
-To learn more about Next.js, take a look at the following resources:
+![](public/images/test-coverage.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**You can also use the web view** of the test report in the file `test-output/jest-html-reporters.html` after running the test command.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![](public/images/test-report-1.png)
+![](public/images/test-report-2.png)
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Task 1: https://typicode-users.netlify.app/.
+- Task 2: https://typicode-users.netlify.app/counter
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tech stack
+
+### Core
+
+- [x] [React](https://reactjs.org/)
+- [x] [Next.js](https://nextjs.org/)
+- [x] [TypeScript](https://www.typescriptlang.org/)
+
+### UI & styling
+
+- [x] [TainwindCSS](https://tailwindcss.com/)
+- [x] [HeadlessUI](https://headlessui.com/)
+
+### Unit testing
+
+- [x] [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [x] [Jest](https://jestjs.io/)
+- [x] [jest-html-reporters](https://github.com/Hazyzh/jest-html-reporters)
