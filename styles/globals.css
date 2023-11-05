@@ -2,11 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./ant-reset.css";
+
+:root {
+  --primary-color: #0047ff;
+
+  --background-color: #fff;
+  --background-secondary-color: #f6f6f6;
+
+  --text-color: #000;
+  --text-secondary-color: #fff;
+
+  --border-color: #000;
+  --button-color: #000;
+
+  --container-max-width: 1240px;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: Poppins, sans-serif;
+  background-color: var(--background-color);
 }
 
 code {
@@ -22,21 +40,18 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.form-submit-button {
+  width: 100%;
+  height: 62px;
+  background-color: var(--button-color);
+  color: var(--text-secondary-color);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 
-.section-container {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.text-shadowed {
-  text-shadow: 0px 4px 4px #00000040;
+@media (max-width: 768px) {
+  .form-submit-button {
+    height: 52px;
+  }
 }

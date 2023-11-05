@@ -1,0 +1,100 @@
+.section-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.text-shadowed {
+  text-shadow: 0px 4px 4px #00000040;
+}
+
+.ant-form-item-row {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  flex-wrap: wrap !important;
+  height: 80px !important;
+}
+
+.ant-form-item-row > * {
+  width: 100% !important;
+}
+
+.ant-form-item-row > *:first-child {
+  text-align: left !important;
+}
+
+.ant-form-item-label {
+  padding-bottom: 8px !important;
+}
+
+.ant-form-item-label > label {
+  letter-spacing: 2px;
+  font-weight: 600;
+  height: max-content !important;
+
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ant-form-item-label > label:before,
+.ant-form-item-label > label:after {
+  display: none !important;
+}
+
+.ant-form-item-label > .ant-form-item-required {
+  position: relative !important;
+}
+
+.ant-form-item-label > .ant-form-item-required:after {
+  content: "*" !important;
+  position: absolute !important;
+  left: calc(100% + 2px) !important;
+  top: 4px !important;
+  display: block !important;
+  margin: 0 !important;
+  visibility: visible !important;
+}
+
+.ant-select-arrow,
+.ant-select-clear {
+  color: var(--text-color) !important;
+}
+
+.ant-select-selector,
+.ant-form-item-control-input-content > input {
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.ant-select-selector:focus,
+.ant-form-item-control-input-content > input:focus {
+  box-shadow: none !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  box-shadow: none !important;
+}
+
+.ant-select-dropdown {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  background-color: var(--background-secondary-color) !important;
+}
+
+.ant-select-item {
+  border-radius: 0 !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: transparent !important;
+}
+
+@media (max-width: 768px) {
+  .ant-form-item-row {
+    flex-direction: row !important;
+  }
+}
