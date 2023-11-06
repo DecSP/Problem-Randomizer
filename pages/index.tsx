@@ -9,6 +9,7 @@ import {
 // import useFetch from "../hooks/useFetch";
 // import { client } from "../lib/apis";
 import { QuestionSources, QUESTIONS_SOURCES } from "../types/questions-source";
+import { Icon } from "@iconify/react";
 
 const { Option } = Select;
 
@@ -51,75 +52,92 @@ const Home: NextPage = () => {
   // }
 
   content = (
-    <Form
-      autoComplete="off"
-      initialValues={{
-        lowerDiff: DIFFICULTY_LOWER_BOUND,
-        upperDiff: DIFFICULTY_UPPER_BOUND,
-        minutes: 0,
-        recentProportion: 0,
-      }}
-      onFinish={onSubmit}
-    >
-      <Row gutter={24}>
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <Form.Item<ProblemFormFields>
-            label="Choose a site"
-            name="source"
-            rules={[
-              { required: true, message: "Please select problem source" },
-            ]}
-          >
-            <Select placeholder="Choose a site" allowClear>
-              {Object.keys(QUESTIONS_SOURCES).map((key) => (
-                <Option value={key} key={key}>
-                  {QUESTIONS_SOURCES[key as QuestionSources]}
-                </Option>
-              ))}
-            </Select>
-          </Form.Item>
-        </Col>
+    <>
+      <Form
+        autoComplete="off"
+        initialValues={{
+          lowerDiff: DIFFICULTY_LOWER_BOUND,
+          upperDiff: DIFFICULTY_UPPER_BOUND,
+          minutes: 0,
+          recentProportion: 0,
+        }}
+        onFinish={onSubmit}
+      >
+        <Row gutter={24}>
+          <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+            <Form.Item<ProblemFormFields>
+              label="Choose a site"
+              name="source"
+              rules={[
+                { required: true, message: "Please select problem source" },
+              ]}
+            >
+              <Select
+                placeholder="Choose a site"
+                allowClear={{
+                  clearIcon: <Icon icon="ph:x-bold" />,
+                }}
+                suffixIcon={<Icon icon="zondicons:arrow-down" />}
+              >
+                {Object.keys(QUESTIONS_SOURCES).map((key) => (
+                  <Option value={key} key={key}>
+                    {QUESTIONS_SOURCES[key as QuestionSources]}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+          </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <Form.Item<ProblemFormFields>
-            label="Difficulty lower bound"
-            name="lowerDiff"
-          >
-            <Input type="number" min={DIFFICULTY_LOWER_BOUND} />
-          </Form.Item>
-        </Col>
+          <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+            <Form.Item<ProblemFormFields>
+              label="Difficulty lower bound"
+              name="lowerDiff"
+            >
+              <Input type="number" min={DIFFICULTY_LOWER_BOUND} />
+            </Form.Item>
+          </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <Form.Item<ProblemFormFields>
-            label="Difficulty upper bound"
-            name="upperDiff"
-          >
-            <Input type="number" min={0} max={DIFFICULTY_UPPER_BOUND} />
-          </Form.Item>
-        </Col>
+          <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+            <Form.Item<ProblemFormFields>
+              label="Difficulty upper bound"
+              name="upperDiff"
+            >
+              <Input type="number" min={0} max={DIFFICULTY_UPPER_BOUND} />
+            </Form.Item>
+          </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <Form.Item<ProblemFormFields> label="Timer (minutes)" name="minutes">
-            <Input type="number" min={0} />
-          </Form.Item>
-        </Col>
+          <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+            <Form.Item<ProblemFormFields>
+              label="Timer (minutes)"
+              name="minutes"
+            >
+              <Input type="number" min={0} />
+            </Form.Item>
+          </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <Form.Item<ProblemFormFields>
-            label="Number of recent problems (0 for all)"
-            name="recentProportion"
-          >
-            <Input type="number" min={0} />
-          </Form.Item>
-        </Col>
+          <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+            <Form.Item<ProblemFormFields>
+              label="Number of recent problems (0 for all)"
+              name="recentProportion"
+            >
+              <Input type="number" min={0} />
+            </Form.Item>
+          </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <button className="form-submit-button" type="submit">
-            Submit
-          </button>
-        </Col>
-      </Row>
-    </Form>
+          <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+            <button className="form-submit-button" type="submit">
+              Submit
+            </button>
+          </Col>
+        </Row>
+      </Form>
+
+      <div className="w-full flex justify-center p-6">
+        <div className="animate-spin w-max">
+          <Icon icon="vaadin:spinner-third" className="text-2xl" />
+        </div>
+      </div>
+    </>
   );
 
   return (

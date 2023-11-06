@@ -7,9 +7,15 @@ export const Header = () => {
     <header className="w-screen bg-transparent px-7 py-5 fixed top-0 z-40">
       <div className="section-container text-black flex justify-end items-center">
         <div className="flex items-center">
-          <button data-testid="help-button" className="text-2xl">
+          <a
+            href="https://github.com/DecSP/Problem-Randomizer"
+            target="_blank"
+            rel="noreferrer"
+            data-testid="help-button"
+            className="text-2xl"
+          >
             <Icon icon="codicon:github-inverted" />
-          </button>
+          </a>
         </div>
       </div>
     </header>
