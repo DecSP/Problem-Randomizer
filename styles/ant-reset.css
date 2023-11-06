@@ -7,11 +7,14 @@
   text-shadow: 0px 4px 4px #00000040;
 }
 
+.ant-form-item {
+  height: 80px !important;
+}
+
 .ant-form-item-row {
   flex-direction: column !important;
   align-items: flex-start !important;
   flex-wrap: wrap !important;
-  height: 80px !important;
 }
 
 .ant-form-item-row > * {
@@ -93,7 +96,7 @@
   background-color: transparent !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .ant-form-item-row {
     flex-direction: row !important;
   }
