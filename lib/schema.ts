@@ -33,3 +33,8 @@ export interface Company {
   catchPhrase: string;
   bs: string;
 }
+
+export interface CFProblemData {
+  problems: any[];
+  contests: any[];
+}
