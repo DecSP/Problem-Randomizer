@@ -34,12 +34,17 @@ interface Problem {
 const Home: NextPage = () => {
   const [prob, setProb] = useState<Problem>();
   const { data, isLoading } = useFetch({
-    api: () => client.getCF(),
+    api: async () => {
+      const proms = [client.getCF(), client.getAC()];
+      return await Promise.all(proms);
+    },
   });
 
   const onSubmit = async (values: ProblemFormFields) => {
     if (!data) return;
+
     if (values.source == "codeforces") {
+      const dataCF = data[0];
       const toProblemId = (problem: any) =>
         `${problem.contestId}/${problem.index}`;
       const getUserExcludedProblem = async (
@@ -48,9 +53,12 @@ const Home: NextPage = () => {
         const problemIds = new Set<string>();
         if (!user_text) return problemIds;
         const users = user_text.split(/\s+/);
-        for (const user of users) {
-          const subs = await client.getCFUserStatus(user).catch(() => []);
-          for (const sub of subs) {
+        const proms = users.map((user) =>
+          client.getCFUserStatus(user).catch(() => [])
+        );
+        const userSubs = await Promise.all(proms);
+        for (const userSub of userSubs) {
+          for (const sub of userSub) {
             sub.verdict === "OK" && problemIds.add(toProblemId(sub.problem));
           }
         }
@@ -61,7 +69,7 @@ const Home: NextPage = () => {
         values.user ?? ""
       );
 
-      const list = data.problems.filter(
+      const list = dataCF.problems.filter(
         (value: any) =>
           value.name &&
           value.rating &&
@@ -78,11 +86,29 @@ const Home: NextPage = () => {
         url: problemURL,
         name: problem.name,
         contestName:
-          data.contests.find((value) => value.id === problem.contestId).name ??
-          "Unknown contest",
+          dataCF.contests.find((value: any) => value.id === problem.contestId)
+            .name ?? "Unknown contest",
       });
     } else if (values.source === "atcoder") {
-      // TODO
+      const dataAC = data[1];
+      const list = dataAC.filter(
+        (value: any) =>
+          value.title &&
+          value.rating &&
+          (!values.lowerDiff || value.rating >= values.lowerDiff) &&
+          (!values.upperDiff || value.rating <= values.upperDiff)
+      );
+      console.log(list);
+      const problem = list[Math.floor(Math.random() * list.length)];
+      const AC = "https://atcoder.jp/contests/";
+      const problemURL = `${AC}${problem.contest_id + "/tasks/" + problem.id}`;
+      setProb({
+        type: "atcoder",
+        rating: problem.rating,
+        url: problemURL,
+        name: problem.name,
+        contestName: problem.contestName,
+      });
     }
   };
 

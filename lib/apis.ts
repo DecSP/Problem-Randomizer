@@ -44,11 +44,40 @@ export class Client {
     return data["result"];
   }
 
-  public async getAC(user: string) {
-    const data = await fetcher<any>(
-      `https://codeforces.com/api/user.status?handle=${user}`
+  public async getAC() {
+    const problemDataProm = fetcher<any>(
+      "https://kenkoooo.com/atcoder/resources/problems.json",
+      {
+        method: "GET",
+        headers: this.headers,
+      }
     );
-    return data["result"];
+    const problemModelDataProm = fetcher<any>(
+      "https://kenkoooo.com/atcoder/resources/problem-models.json",
+      {
+        method: "GET",
+        headers: this.headers,
+      }
+    );
+    const contestDataProm = fetcher<any>(
+      "https://kenkoooo.com/atcoder/resources/contests.json",
+      {
+        method: "GET",
+        headers: this.headers,
+      }
+    );
+    const contestMap = new Map<string, string>();
+    (await contestDataProm).forEach((element: any) => {
+      contestMap.set(element.id, element.title);
+    });
+    const problemModelData = await problemModelDataProm;
+    return (await problemDataProm)
+      .filter((item: any) => problemModelData.hasOwnProperty(item.id))
+      .map((item: any) => ({
+        ...item,
+        rating: problemModelData[item.id].difficulty,
+        contestName: contestMap.get(item.contest_id),
+      }));
   }
 }
 
