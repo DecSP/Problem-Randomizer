@@ -209,7 +209,7 @@ const Home: NextPage = () => {
           className="bg-slate-200"
           title={`${prob.name} - Rating ${prob.rating}`}
           extra={
-            <a className="text-gray-600" href={prob.url}>
+            <a className="text-gray-600" href={prob.url} target="_blank">
               Go to problem
             </a>
           }
