@@ -98,7 +98,6 @@ const Home: NextPage = () => {
           (!values.lowerDiff || value.rating >= values.lowerDiff) &&
           (!values.upperDiff || value.rating <= values.upperDiff)
       );
-      console.log(list);
       const problem = list[Math.floor(Math.random() * list.length)];
       const AC = "https://atcoder.jp/contests/";
       const problemURL = `${AC}${problem.contest_id + "/tasks/" + problem.id}`;
