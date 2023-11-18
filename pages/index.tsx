@@ -1,4 +1,4 @@
-import { Form, Select, Input, Row, Col } from "antd";
+import { Form, Select, Input, Row, Col, Card } from "antd";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Header } from "../components/Header/Header";
@@ -6,10 +6,11 @@ import {
   DIFFICULTY_LOWER_BOUND,
   DIFFICULTY_UPPER_BOUND,
 } from "../constants/difficulty";
-// import useFetch from "../hooks/useFetch";
-// import { client } from "../lib/apis";
+import useFetch from "../hooks/useFetch";
+import { client } from "../lib/apis";
 import { QuestionSources, QUESTIONS_SOURCES } from "../types/questions-source";
 import { Icon } from "@iconify/react";
+import { useState } from "react";
 
 const { Option } = Select;
 
@@ -19,15 +20,70 @@ type ProblemFormFields = {
   upperDiff?: number;
   minutes?: number;
   recentProportion?: number;
+  user?: string;
 };
 
-const Home: NextPage = () => {
-  // const { data, isLoading } = useFetch({
-  //   api: () => client.getUsers(),
-  // });
+interface Problem {
+  type: QuestionSources;
+  contestName: string;
+  url: string;
+  name: string;
+  rating: number;
+}
 
-  const onSubmit = (values: ProblemFormFields) => {
-    console.log(values);
+const Home: NextPage = () => {
+  const [prob, setProb] = useState<Problem>();
+  const { data, isLoading } = useFetch({
+    api: () => client.getCF(),
+  });
+
+  const onSubmit = async (values: ProblemFormFields) => {
+    if (!data) return;
+    if (values.source == "codeforces") {
+      const toProblemId = (problem: any) =>
+        `${problem.contestId}/${problem.index}`;
+      const getUserExcludedProblem = async (
+        user_text: string
+      ): Promise<Set<string>> => {
+        const problemIds = new Set<string>();
+        if (!user_text) return problemIds;
+        const users = user_text.split(/\s+/);
+        for (const user of users) {
+          const subs = await client.getCFUserStatus(user).catch(() => []);
+          for (const sub of subs) {
+            sub.verdict === "OK" && problemIds.add(toProblemId(sub.problem));
+          }
+        }
+        return problemIds;
+      };
+
+      const userExcludedProblem = await getUserExcludedProblem(
+        values.user ?? ""
+      );
+
+      const list = data.problems.filter(
+        (value: any) =>
+          value.name &&
+          value.rating &&
+          (!values.lowerDiff || value.rating >= values.lowerDiff) &&
+          (!values.upperDiff || value.rating <= values.upperDiff) &&
+          !userExcludedProblem.has(toProblemId(value))
+      );
+      const problem = list[Math.floor(Math.random() * list.length)];
+      const CF = "https://codeforces.com/problemset/problem/";
+      const problemURL = `${CF}${problem.contestId + "/" + problem.index}`;
+      setProb({
+        type: "codeforces",
+        rating: problem.rating,
+        url: problemURL,
+        name: problem.name,
+        contestName:
+          data.contests.find((value) => value.id === problem.contestId).name ??
+          "Unknown contest",
+      });
+    } else if (values.source === "atcoder") {
+      // TODO
+    }
   };
 
   let content: JSX.Element | null = null;
@@ -125,6 +181,15 @@ const Home: NextPage = () => {
           </Col>
 
           <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+            <Form.Item<ProblemFormFields>
+              label="Users to exclude solved problems"
+              name="user"
+            >
+              <Input type="text" />
+            </Form.Item>
+          </Col>
+
+          <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
             <button className="form-submit-button" type="submit">
               Submit
             </button>
@@ -132,11 +197,27 @@ const Home: NextPage = () => {
         </Row>
       </Form>
 
-      <div className="w-full flex justify-center p-6">
-        <div className="animate-spin w-max">
-          <Icon icon="vaadin:spinner-third" className="text-2xl" />
+      {isLoading && (
+        <div className="w-full flex justify-center p-6">
+          <div className="animate-spin w-max">
+            <Icon icon="vaadin:spinner-third" className="text-2xl" />
+          </div>
         </div>
-      </div>
+      )}
+      {prob && (
+        <Card
+          className="bg-slate-200"
+          title={`${prob.name} - Rating ${prob.rating}`}
+          extra={
+            <a className="text-gray-600" href={prob.url} target="_blank">
+              Go to problem
+            </a>
+          }
+        >
+          <p>Source: {QUESTIONS_SOURCES[prob.type]}</p>
+          <p>Contest: {prob.contestName}</p>
+        </Card>
+      )}
     </>
   );
 
