@@ -65,6 +65,10 @@
   color: var(--text-color) !important;
 }
 
+.ant-select-selector {
+  background-color: transparent !important;
+}
+
 .ant-select-selector,
 .ant-form-item-control-input-content > input {
   border: none !important;
