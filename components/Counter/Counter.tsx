@@ -62,7 +62,7 @@ export const Counter = (props: CounterProps) => {
   return (
     <div
       className={cx(
-        "flex flex-col items-end gap-4 bg-white border border-gray-100 p-4 min-w-[96px] w-max transition-all duration-300 text-center max-w-xl break-all",
+        "flex flex-col items-end gap-4 bg-white border border-gray-100 p-4 min-w-[96px] w-max opacity-75 hover:opacity-100 transition-opacity duration-300 text-center max-w-xl break-all",
         className
       )}
     >

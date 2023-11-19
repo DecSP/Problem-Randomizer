@@ -272,14 +272,14 @@ const Home: NextPage = () => {
         </div>
 
         <section className="relative">
-          <div className="section-container px-10 md:px-[90px] py-[40px]">
+          <div className="section-container px-6 md:px-[90px] py-[40px]">
             <h1 className="text-2xl leading-9 mb-10">Problem Randomizer</h1>
             {filter}
           </div>
         </section>
 
         <section>
-          <div className="section-container px-10 md:px-[90px] pb-[80px]">
+          <div className="section-container px-6 md:px-[90px] pb-[80px]">
             {isLoading && (
               <div className="w-full flex justify-center p-6">
                 <div className="animate-spin w-max">
@@ -289,7 +289,7 @@ const Home: NextPage = () => {
             )}
 
             {prob.length ? (
-              <div className="py-4 flex flex-col items-stretch gap-4">
+              <div className="flex flex-col items-stretch gap-4">
                 {prob.map((p, index) => (
                   <Card
                     key={p.url}
@@ -301,11 +301,13 @@ const Home: NextPage = () => {
                     title={`${p.name} - Rating ${p.rating}`}
                     extra={
                       <a
-                        className="text-gray-600 hover:text-gray-400"
+                        className="text-gray-600 hover:text-gray-500"
                         href={p.url}
                         target="_blank"
                       >
-                        Go to problem
+                        <span className="!text-xs md:!text-sm">
+                          Go to problem
+                        </span>
                       </a>
                     }
                     headStyle={{
