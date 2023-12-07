@@ -59,7 +59,7 @@ const Home: NextPage = () => {
     });
 
     const list = data.filter(
-      (value: any) =>
+      (value: Problem) =>
         value.name &&
         value.rating &&
         (!values.lowerDiff || value.rating >= values.lowerDiff) &&
