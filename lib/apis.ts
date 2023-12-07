@@ -4,7 +4,8 @@ import { QuestionSources } from "../types/questions-source";
 
 type Headers = Record<string, string>;
 
-const BASE_URL = "https://problem-randomizer-be.onrender.com";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 export class Client {
   headers: Headers = {
     "Content-Type": "application/json",
