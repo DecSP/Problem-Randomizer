@@ -1,6 +1,7 @@
-export type QuestionSources = "codeforces" | "atcoder";
+export type QuestionSources = "codeforces" | "atcoder" | "cses";
 
 export const QUESTIONS_SOURCES: Record<QuestionSources, string> = {
   codeforces: "Codeforces",
-  atcoder: "Atcoder",
+  atcoder: "AtCoder",
+  cses: "CSES",
 };
