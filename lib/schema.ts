@@ -1,3 +1,4 @@
+import { QuestionSources } from "../types/questions-source";
 export interface IconProps {
   height?: number;
   width?: number;
@@ -34,7 +35,10 @@ export interface Company {
   bs: string;
 }
 
-export interface CFProblemData {
-  problems: any[];
-  contests: any[];
+export interface Problem {
+  source_type: QuestionSources;
+  name: string;
+  contest_name: string;
+  url: string;
+  rating: number;
 }

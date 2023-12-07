@@ -10,9 +10,10 @@ import useFetch from "../hooks/useFetch";
 import { client } from "../lib/apis";
 import { QuestionSources, QUESTIONS_SOURCES } from "../types/questions-source";
 import { Icon } from "@iconify/react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import cx from "classnames";
 import { Counter } from "../components/Counter";
+import { Problem } from "../lib/schema";
 
 const { Option } = Select;
 
@@ -25,26 +26,18 @@ type ProblemFormFields = {
   user?: string;
 };
 
-interface Problem {
-  type: QuestionSources;
-  contestName: string;
-  url: string;
-  name: string;
-  rating: number;
-}
-
 const Home: NextPage = () => {
   const [prob, setProb] = useState<Problem[]>([]);
+  const [probType, setProbType] = useState<QuestionSources>("codeforces");
+
   const [timerConfig, setTimerConfig] = useState({
     show: false,
     minutes: 0,
     isCounting: false,
   });
   const { data, isLoading } = useFetch({
-    api: async () => {
-      const proms = [client.getCF(), client.getAC()];
-      return await Promise.all(proms);
-    },
+    api: () => client.getProblems(probType),
+    keys: [probType],
   });
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
@@ -65,78 +58,15 @@ const Home: NextPage = () => {
       isCounting: false,
     });
 
-    if (values.source == "codeforces") {
-      const dataCF = data[0];
-      const toProblemId = (problem: any) =>
-        `${problem.contestId}/${problem.index}`;
-      const getUserExcludedProblem = async (
-        user_text: string
-      ): Promise<Set<string>> => {
-        const problemIds = new Set<string>();
-        if (!user_text) return problemIds;
-        const users = user_text.split(/\s+/);
-        const proms = users.map((user) =>
-          client.getCFUserStatus(user).catch(() => [])
-        );
-        const userSubs = await Promise.all(proms);
-        for (const userSub of userSubs) {
-          for (const sub of userSub) {
-            sub.verdict === "OK" && problemIds.add(toProblemId(sub.problem));
-          }
-        }
-        return problemIds;
-      };
-
-      const userExcludedProblem = await getUserExcludedProblem(
-        values.user ?? ""
-      );
-
-      const list = dataCF.problems.filter(
-        (value: any) =>
-          value.name &&
-          value.rating &&
-          (!values.lowerDiff || value.rating >= values.lowerDiff) &&
-          (!values.upperDiff || value.rating <= values.upperDiff) &&
-          !userExcludedProblem.has(toProblemId(value))
-      );
-      const problem = list[Math.floor(Math.random() * list.length)];
-      const CF = "https://codeforces.com/problemset/problem/";
-      const problemURL = `${CF}${problem.contestId + "/" + problem.index}`;
-      setProb([
-        {
-          type: "codeforces",
-          rating: problem.rating,
-          url: problemURL,
-          name: problem.name,
-          contestName:
-            dataCF.contests.find((value: any) => value.id === problem.contestId)
-              .name ?? "Unknown contest",
-        },
-        ...prob,
-      ]);
-    } else if (values.source === "atcoder") {
-      const dataAC = data[1];
-      const list = dataAC.filter(
-        (value: any) =>
-          value.title &&
-          value.rating &&
-          (!values.lowerDiff || value.rating >= values.lowerDiff) &&
-          (!values.upperDiff || value.rating <= values.upperDiff)
-      );
-      const problem = list[Math.floor(Math.random() * list.length)];
-      const AC = "https://atcoder.jp/contests/";
-      const problemURL = `${AC}${problem.contest_id + "/tasks/" + problem.id}`;
-      setProb([
-        {
-          type: "atcoder",
-          rating: problem.rating,
-          url: problemURL,
-          name: problem.name,
-          contestName: problem.contestName,
-        },
-        ...prob,
-      ]);
-    }
+    const list = data.filter(
+      (value: any) =>
+        value.name &&
+        value.rating &&
+        (!values.lowerDiff || value.rating >= values.lowerDiff) &&
+        (!values.upperDiff || value.rating <= values.upperDiff)
+    );
+    const problem = list[Math.floor(Math.random() * list.length)];
+    setProb([problem, ...prob]);
 
     if (values?.minutes && values?.minutes > 0) {
       startTimer(values?.minutes);
@@ -177,6 +107,9 @@ const Home: NextPage = () => {
                 clearIcon: <Icon icon="ph:x-bold" />,
               }}
               suffixIcon={<Icon icon="zondicons:arrow-down" />}
+              onChange={(value) => {
+                setProbType(value);
+              }}
             >
               {Object.keys(QUESTIONS_SOURCES).map((key) => (
                 <Option value={key} key={key}>
@@ -314,8 +247,8 @@ const Home: NextPage = () => {
                       borderColor: "rgb(229, 231, 235)",
                     }}
                   >
-                    <p>Source: {QUESTIONS_SOURCES[p.type]}</p>
-                    <p>Contest: {p.contestName}</p>
+                    <p>Source: {QUESTIONS_SOURCES[p.source_type]}</p>
+                    <p>Contest: {p.contest_name}</p>
                   </Card>
                 ))}
               </div>
