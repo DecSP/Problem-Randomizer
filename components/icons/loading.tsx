@@ -1,12 +1,12 @@
-import { IconProps } from "../../lib/schema";
+import { IconProps } from '../../lib/schema'
 
 export const IconLoading = (props: IconProps) => {
-  const { height, width, className, ...rest } = props;
+  const { height, width, className, ...rest } = props
   return (
     <span className={className} {...rest}>
       <svg
-        width={width || "64"}
-        height={height || "64"}
+        width={width || '64'}
+        height={height || '64'}
         viewBox="0 0 64 64"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -21,5 +21,5 @@ export const IconLoading = (props: IconProps) => {
         />
       </svg>
     </span>
-  );
-};
+  )
+}

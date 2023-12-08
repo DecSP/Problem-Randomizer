@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from '@testing-library/react'
 import {
   IconCheckFilled,
   IconClose,
@@ -6,47 +6,47 @@ import {
   IconHelp,
   IconLoading,
   IconNotification,
-} from ".";
+} from '.'
 
-describe("Icons component", () => {
+describe('Icons component', () => {
   test.each([
     {
       Component: IconCheckFilled,
-      name: "IconCheckFilled",
-      defaultSize: "24",
+      name: 'IconCheckFilled',
+      defaultSize: '24',
     },
-    { Component: IconClose, name: "IconClose", defaultSize: "24" },
-    { Component: IconCopy, name: "IconCopy", defaultSize: "24" },
-    { Component: IconHelp, name: "IconHelp", defaultSize: "24" },
-    { Component: IconCopy, name: "IconCopy", defaultSize: "24" },
-    { Component: IconLoading, name: "IconLoading", defaultSize: "64" },
+    { Component: IconClose, name: 'IconClose', defaultSize: '24' },
+    { Component: IconCopy, name: 'IconCopy', defaultSize: '24' },
+    { Component: IconHelp, name: 'IconHelp', defaultSize: '24' },
+    { Component: IconCopy, name: 'IconCopy', defaultSize: '24' },
+    { Component: IconLoading, name: 'IconLoading', defaultSize: '64' },
     {
       Component: IconNotification,
-      name: "IconNotification",
-      defaultSize: "24",
+      name: 'IconNotification',
+      defaultSize: '24',
     },
   ])(
-    "Renders $name with default height and width",
+    'Renders $name with default height and width',
     ({ Component, defaultSize }) => {
-      const { container } = render(<Component />);
-      const svgElement = container.querySelector("svg");
+      const { container } = render(<Component />)
+      const svgElement = container.querySelector('svg')
 
-      expect(svgElement).toHaveAttribute("height", defaultSize);
-    }
-  );
+      expect(svgElement).toHaveAttribute('height', defaultSize)
+    },
+  )
 
   test.each([
-    { Component: IconCheckFilled, name: "IconCheckFilled" },
-    { Component: IconClose, name: "IconClose" },
-    { Component: IconCopy, name: "IconCopy" },
-    { Component: IconHelp, name: "IconHelp" },
-    { Component: IconCopy, name: "IconCopy" },
-    { Component: IconLoading, name: "IconLoading" },
-    { Component: IconNotification, name: "IconNotification" },
-  ])("Renders $name with specified height and width", ({ Component }) => {
-    const { container } = render(<Component height={100} width={100} />);
-    const svgElement = container.querySelector("svg");
+    { Component: IconCheckFilled, name: 'IconCheckFilled' },
+    { Component: IconClose, name: 'IconClose' },
+    { Component: IconCopy, name: 'IconCopy' },
+    { Component: IconHelp, name: 'IconHelp' },
+    { Component: IconCopy, name: 'IconCopy' },
+    { Component: IconLoading, name: 'IconLoading' },
+    { Component: IconNotification, name: 'IconNotification' },
+  ])('Renders $name with specified height and width', ({ Component }) => {
+    const { container } = render(<Component height={100} width={100} />)
+    const svgElement = container.querySelector('svg')
 
-    expect(svgElement).toHaveAttribute("height", "100");
-  });
-});
+    expect(svgElement).toHaveAttribute('height', '100')
+  })
+})

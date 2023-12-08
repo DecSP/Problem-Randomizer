@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint --fix .",
+    "format": "npx prettier --write .",
     "test": "jest --env=jsdom --coverage"
   },
   "dependencies": {

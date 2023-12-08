@@ -1,11 +1,11 @@
 export default async function fetcher<T>(
   info: RequestInfo,
-  init?: RequestInit
+  init?: RequestInit,
 ) {
   try {
-    const resp = await fetch(info, init);
-    return (await resp.json()) as Promise<T>;
+    const resp = await fetch(info, init)
+    return (await resp.json()) as Promise<T>
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }

@@ -1,23 +1,23 @@
-import Image, { ImageProps } from "next/image";
-import cx from "classnames";
+import Image, { ImageProps } from 'next/image'
+import cx from 'classnames'
 
 interface AvatarProps extends Partial<ImageProps> {
-  size?: "32" | "100";
-  className?: string;
+  size?: '32' | '100'
+  className?: string
 }
 
-const getAvatarContainerClassName = (size: AvatarProps["size"]) => {
+const getAvatarContainerClassName = (size: AvatarProps['size']) => {
   switch (size) {
-    case "100":
-      return "w-[100px] h-[100px]";
-    case "32":
+    case '100':
+      return 'w-[100px] h-[100px]'
+    case '32':
     default:
-      return "w-[32px] h-[32px]";
+      return 'w-[32px] h-[32px]'
   }
-};
+}
 
 export const Avatar = ({
-  size = "32",
+  size = '32',
   className,
   alt,
   src,
@@ -26,9 +26,9 @@ export const Avatar = ({
   return (
     <div
       className={cx(
-        "rounded-full overflow-hidden relative",
+        'rounded-full overflow-hidden relative',
         getAvatarContainerClassName(size),
-        className
+        className,
       )}
     >
       <div className="bg-slate-200 rounded-full animate-pulse absolute h-full w-full" />
@@ -37,10 +37,10 @@ export const Avatar = ({
         className="absolute"
         height={size}
         width={size}
-        src={src || "/images/avatar-image.png"}
-        alt={alt || ""}
+        src={src || '/images/avatar-image.png'}
+        alt={alt || ''}
         {...rest}
       />
     </div>
-  );
-};
+  )
+}

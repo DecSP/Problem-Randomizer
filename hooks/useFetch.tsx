@@ -1,41 +1,41 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
 interface UseFetchParams<T> {
-  api: () => Promise<T>;
-  keys?: string[];
+  api: () => Promise<T>
+  keys?: string[]
 }
 
 function useFetch<T>(params: UseFetchParams<T>) {
-  const { api, keys } = params;
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const [data, setData] = useState<T>();
+  const { api, keys } = params
+  const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
+  const [data, setData] = useState<T>()
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(true)
     const fetchData = async () => {
       try {
-        const res = await api();
+        const res = await api()
         if (res) {
-          setData(res);
+          setData(res)
         }
       } catch (error) {
-        setIsError(true);
-        console.log(error);
+        setIsError(true)
+        console.log(error)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
-    };
+    }
 
-    fetchData();
+    fetchData()
     // eslint-disable-next-line
-  }, keys ?? []);
+  }, keys ?? [])
 
   return {
     isError,
     isLoading,
     data,
-  };
+  }
 }
 
-export default useFetch;
+export default useFetch

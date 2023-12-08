@@ -1,28 +1,28 @@
-import { useState } from "react";
-import { GetUsersData } from "../../lib/schema";
-import { UserInfoModal } from "../UserInfoModal";
-import cx from "classnames";
-import { Avatar } from "../Avatar";
+import { useState } from 'react'
+import { GetUsersData } from '../../lib/schema'
+import { UserInfoModal } from '../UserInfoModal'
+import cx from 'classnames'
+import { Avatar } from '../Avatar'
 
 export interface UserCardProps {
-  data: Partial<GetUsersData>;
-  className?: string;
+  data: Partial<GetUsersData>
+  className?: string
 }
 
 export const UserCard = (props: UserCardProps) => {
-  const { data, className } = props;
-  const [open, setOpen] = useState(false);
+  const { data, className } = props
+  const [open, setOpen] = useState(false)
 
   const openModal = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   return (
     <>
       <div
         className={cx(
-          "rounded-[10px] bg-white hover:bg-white--hover p-6 w-max transition-all duration-300 flex flex-col items-center gap-[17px]",
-          className
+          'rounded-[10px] bg-white hover:bg-white--hover p-6 w-max transition-all duration-300 flex flex-col items-center gap-[17px]',
+          className,
         )}
       >
         <Avatar size="100" alt={`${data?.name} logo`} />
@@ -46,5 +46,5 @@ export const UserCard = (props: UserCardProps) => {
 
       <UserInfoModal open={open} setOpen={setOpen} data={data} />
     </>
-  );
-};
+  )
+}
