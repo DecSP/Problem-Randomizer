@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint --fix .",
+    "format": "npx prettier --write .",
     "test": "jest --env=jsdom --coverage"
   },
   "dependencies": {
@@ -14,12 +16,16 @@
     "@iconify/react": "^4.1.1",
     "antd": "^5.11.0",
     "classnames": "^2.3.2",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.6.0",
     "jest-html-reporters": "~3.0.11",
     "next": "13.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.8.0",
+    "@commitlint/config-conventional": "^17.8.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.1.2",
@@ -32,9 +38,19 @@
     "eslint-config-next": "13.5.4",
     "jest": "^29.1.2",
     "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^15.2.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3",
     "ts-jest": "^29.0.3",
     "typescript": "5.2.2"
+  },
+  "lint-staged": {
+    "**/*.{json,css,scss,md}": [
+      "npx prettier --write"
+    ],
+    "**/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "npx eslint --fix"
+    ]
   }
 }

@@ -1,23 +1,23 @@
-import { Dispatch, SetStateAction, Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { GetUsersData } from "../../lib/schema";
-import { IconClose, IconCopy, IconCheckFilled } from "../icons/";
-import useClipboard from "../../hooks/useClipboard";
+import { Dispatch, SetStateAction, Fragment } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
+import { GetUsersData } from '../../lib/schema'
+import { IconClose, IconCopy, IconCheckFilled } from '../icons/'
+import useClipboard from '../../hooks/useClipboard'
 
 export interface UserInfoModalProps {
-  data: Partial<GetUsersData>;
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
+  data: Partial<GetUsersData>
+  open: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export const UserInfoModal = (props: UserInfoModalProps) => {
-  const { data, open, setOpen } = props;
+  const { data, open, setOpen } = props
 
   const closeModal = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
-  const { onCopy, hasCopied } = useClipboard(JSON.stringify(data));
+  const { onCopy, hasCopied } = useClipboard(JSON.stringify(data))
 
   return (
     <Transition appear show={open} as={Fragment}>
@@ -88,5 +88,5 @@ export const UserInfoModal = (props: UserInfoModalProps) => {
         </div>
       </Dialog>
     </Transition>
-  );
-};
+  )
+}

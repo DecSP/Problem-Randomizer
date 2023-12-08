@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./ant-reset.css";
+@import './ant-reset.css';
 
 :root {
   --primary-color: #0047ff;

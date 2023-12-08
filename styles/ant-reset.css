@@ -52,7 +52,7 @@
 }
 
 .ant-form-item-label > label.ant-form-item-required:after {
-  content: "*" !important;
+  content: '*' !important;
   position: absolute !important;
   left: calc(100% + 2px) !important;
   top: 0 !important;

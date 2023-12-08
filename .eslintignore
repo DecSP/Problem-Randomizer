@@ -1,0 +1,16 @@
+.next/*
+*.json
+*.md
+*.css
+node_modules
+dist
+public/*
+tests/*
+scripts/*
+*.config.js
+.DS_Store
+coverage
+.next
+build
+!.commitlintrc.cjs
+jest.config.js

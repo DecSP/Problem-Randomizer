@@ -1,42 +1,42 @@
 /* eslint-disable */
-const nextJest = require("next/jest");
+const nextJest = require('next/jest')
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
-  dir: "./",
-});
+  dir: './',
+})
 
 // Add any custom config to be passed to Jest
 const customJestConfig = {
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
-  testEnvironment: "jest-environment-jsdom",
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  testEnvironment: 'jest-environment-jsdom',
   transformIgnorePatterns: [
-    "/node_modules/",
-    "^.+\\.module\\.(css|sass|scss)$",
+    '/node_modules/',
+    '^.+\\.module\\.(css|sass|scss)$',
   ],
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   collectCoverage: false,
   globals: {
-    "ts-jest": {
-      tsConfig: "tsconfig.jest.json",
+    'ts-jest': {
+      tsConfig: 'tsconfig.jest.json',
       babelConfig: true,
       diagnostics: false,
     },
   },
-  preset: "ts-jest",
-  collectCoverageFrom: ["components/**/*.tsx"],
+  preset: 'ts-jest',
+  collectCoverageFrom: ['components/**/*.tsx'],
   reporters: [
-    "default",
+    'default',
     [
-      "jest-html-reporters",
+      'jest-html-reporters',
       {
-        publicPath: "./test-output",
-        filename: "jest-html-reporters.html",
+        publicPath: './test-output',
+        filename: 'jest-html-reporters.html',
         expand: true,
       },
     ],
   ],
-};
+}
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-module.exports = createJestConfig(customJestConfig);
+module.exports = createJestConfig(customJestConfig)

@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -14,7 +15,8 @@ Then, you can run locally in development mode with live reload:
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your favorite browser to see your project.
+Open [http://localhost:3000](http://localhost:3000) with your favorite browser
+to see your project.
 
 ```
 .
@@ -51,10 +53,10 @@ Please run this command, and you should see the coverage in the terminal.
 
 ![](public/images/test-coverage.png)
 
-**You can also use the web view** of the test report in the file `test-output/jest-html-reporters.html` after running the test command.
+**You can also use the web view** of the test report in the file
+`test-output/jest-html-reporters.html` after running the test command.
 
-![](public/images/test-report-1.png)
-![](public/images/test-report-2.png)
+![](public/images/test-report-1.png) ![](public/images/test-report-2.png)
 
 ## Deployment
 

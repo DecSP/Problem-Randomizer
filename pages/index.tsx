@@ -1,85 +1,85 @@
-import { Form, Select, Input, Row, Col, Card } from "antd";
-import type { NextPage } from "next";
-import Head from "next/head";
-import { Header } from "../components/Header/Header";
+import { Form, Select, Input, Row, Col, Card } from 'antd'
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import { Header } from '../components/Header/Header'
 import {
   DIFFICULTY_LOWER_BOUND,
   DIFFICULTY_UPPER_BOUND,
-} from "../constants/difficulty";
-import useFetch from "../hooks/useFetch";
-import { client } from "../lib/apis";
-import { QuestionSources, QUESTIONS_SOURCES } from "../types/questions-source";
-import { Icon } from "@iconify/react";
-import { useState } from "react";
-import cx from "classnames";
-import { Counter } from "../components/Counter";
-import { Problem } from "../lib/schema";
+} from '../constants/difficulty'
+import useFetch from '../hooks/useFetch'
+import { client } from '../lib/apis'
+import { QuestionSources, QUESTIONS_SOURCES } from '../types/questions-source'
+import { Icon } from '@iconify/react'
+import { useState } from 'react'
+import cx from 'classnames'
+import { Counter } from '../components/Counter'
+import { Problem } from '../lib/schema'
 
-const { Option } = Select;
+const { Option } = Select
 
 type ProblemFormFields = {
-  source?: QuestionSources;
-  lowerDiff?: number;
-  upperDiff?: number;
-  minutes?: number;
-  recentProportion?: number;
-  user?: string;
-};
+  source?: QuestionSources
+  lowerDiff?: number
+  upperDiff?: number
+  minutes?: number
+  recentProportion?: number
+  user?: string
+}
 
 const Home: NextPage = () => {
-  const [prob, setProb] = useState<Problem[]>([]);
-  const [probType, setProbType] = useState<QuestionSources>("codeforces");
+  const [prob, setProb] = useState<Problem[]>([])
+  const [probType, setProbType] = useState<QuestionSources>('codeforces')
 
   const [timerConfig, setTimerConfig] = useState({
     show: false,
     minutes: 0,
     isCounting: false,
-  });
+  })
   const { data, isLoading } = useFetch({
     api: () => client.getProblems(probType),
     keys: [probType],
-  });
-  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
+  })
+  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false)
 
   const startTimer = (minutes: number) => {
     setTimerConfig({
       show: true,
       minutes,
       isCounting: true,
-    });
-  };
+    })
+  }
 
   const onSubmit = async (values: ProblemFormFields) => {
-    if (!data) return;
+    if (!data) return
 
     setTimerConfig({
       show: false,
       minutes: 0,
       isCounting: false,
-    });
+    })
 
     const list = data.filter(
       (value: Problem) =>
         value.name &&
         value.rating &&
         (!values.lowerDiff || value.rating >= values.lowerDiff) &&
-        (!values.upperDiff || value.rating <= values.upperDiff)
-    );
-    const problem = list[Math.floor(Math.random() * list.length)];
-    setProb([problem, ...prob]);
+        (!values.upperDiff || value.rating <= values.upperDiff),
+    )
+    const problem = list[Math.floor(Math.random() * list.length)]
+    setProb([problem, ...prob])
 
     if (values?.minutes && values?.minutes > 0) {
-      startTimer(values?.minutes);
+      startTimer(values?.minutes)
     } else {
       setTimerConfig({
         show: false,
         minutes: 0,
         isCounting: false,
-      });
+      })
     }
-  };
+  }
 
-  let filter: JSX.Element | null = null;
+  let filter: JSX.Element | null = null
 
   filter = (
     <Form
@@ -98,7 +98,7 @@ const Home: NextPage = () => {
             label="Choose a site"
             name="source"
             rules={[
-              { required: true, message: "Please select problem source" },
+              { required: true, message: 'Please select problem source' },
             ]}
           >
             <Select
@@ -108,7 +108,7 @@ const Home: NextPage = () => {
               }}
               suffixIcon={<Icon icon="zondicons:arrow-down" />}
               onChange={(value) => {
-                setProbType(value);
+                setProbType(value)
               }}
             >
               {Object.keys(QUESTIONS_SOURCES).map((key) => (
@@ -174,10 +174,10 @@ const Home: NextPage = () => {
         <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
           <button
             className={cx(
-              "form-submit-button transition-opacity duration-300",
+              'form-submit-button transition-opacity duration-300',
               {
-                "!opacity-40 cursor-not-allowed": isLoading || isTimerRunning,
-              }
+                '!opacity-40 cursor-not-allowed': isLoading || isTimerRunning,
+              },
             )}
             type="submit"
             disabled={isLoading || isTimerRunning}
@@ -187,7 +187,7 @@ const Home: NextPage = () => {
         </Col>
       </Row>
     </Form>
-  );
+  )
 
   return (
     <div>
@@ -226,9 +226,9 @@ const Home: NextPage = () => {
                 {prob.map((p, index) => (
                   <Card
                     key={p.url}
-                    className={cx("!rounded-none border-gray-200", {
-                      "bg-white": index === 0,
-                      "bg-gray-100 opacity-50 hover:bg-white hover:opacity-100":
+                    className={cx('!rounded-none border-gray-200', {
+                      'bg-white': index === 0,
+                      'bg-gray-100 opacity-50 hover:bg-white hover:opacity-100':
                         index > 0,
                     })}
                     title={`${p.name} - Rating ${p.rating}`}
@@ -244,7 +244,7 @@ const Home: NextPage = () => {
                       </a>
                     }
                     headStyle={{
-                      borderColor: "rgb(229, 231, 235)",
+                      borderColor: 'rgb(229, 231, 235)',
                     }}
                   >
                     <p>Source: {QUESTIONS_SOURCES[p.source_type]}</p>
@@ -267,7 +267,7 @@ const Home: NextPage = () => {
         ) : null}
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

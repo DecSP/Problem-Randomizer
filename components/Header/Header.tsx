@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from '@iconify/react'
 
 export const Header = () => {
   return (
@@ -17,5 +17,5 @@ export const Header = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
