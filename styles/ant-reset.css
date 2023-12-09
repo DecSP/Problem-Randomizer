@@ -102,6 +102,23 @@
   background-color: transparent !important;
 }
 
+.ant-checkbox-inner {
+  border-radius: 0 !important;
+  border-color: #9ca3af !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner:hover,
+.ant-checkbox-checked .ant-checkbox-inner {
+  border-color: #ffffff !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    to right,
+    rgb(59 130 246),
+    rgb(29 78 216),
+    rgb(124 58 237)
+  );
+}
+
 @media (max-width: 575px) {
   .ant-form-item-row {
     flex-direction: row !important;
