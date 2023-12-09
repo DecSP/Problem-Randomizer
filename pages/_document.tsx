@@ -8,6 +8,11 @@ export default function Document() {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="summary" name="twitter:card" />
         <meta content="#E5E7EB" name="theme-color" />
+        <meta content="/images/og.png" property="og:image" />
+        <meta
+          content="https://problem-randomizer-decsp.vercel.app/"
+          property="og:url"
+        />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
