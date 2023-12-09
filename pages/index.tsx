@@ -15,23 +15,25 @@ import {
 import { SelectedProblemsDrawer } from '../components/SelectedProblemsDrawer'
 import { ProblemCard } from '../components/ProblemCard'
 import { useProblemContext } from '../context/problem'
+import { WalkthroughDrawer } from '../components/WalkthroughDrawer'
 
 const Home: NextPage = () => {
   const { problems, setProblems } = useProblemContext()
   const [prob, setProb] = useState<Problem[]>([])
   const [probType, setProbType] = useState<QuestionSources>('codeforces')
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isProblemsDrawerOpen, setIsProblemsDrawerOpen] = useState(false)
+  const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false)
   const [isEverOpened, setIsEverOpened] = useState(false)
 
   useEffect(() => {
-    if (!isEverOpened && isDrawerOpen) {
+    if (!isEverOpened && isProblemsDrawerOpen) {
       setIsEverOpened(true)
     }
-  }, [isDrawerOpen, isEverOpened])
+  }, [isProblemsDrawerOpen, isEverOpened])
 
   useEffect(() => {
     if (!isEverOpened && problems.length > 0) {
-      setIsDrawerOpen(true)
+      setIsProblemsDrawerOpen(true)
       setIsEverOpened(true)
     }
   }, [isEverOpened, problems.length])
@@ -41,10 +43,10 @@ const Home: NextPage = () => {
   }, [prob, setProblems])
 
   const openDrawer = () => {
-    setIsDrawerOpen(true)
+    setIsProblemsDrawerOpen(true)
   }
   const closeDrawer = () => {
-    setIsDrawerOpen(false)
+    setIsProblemsDrawerOpen(false)
   }
 
   const [isSSR, setIsSSR] = useState(true)
@@ -107,18 +109,29 @@ const Home: NextPage = () => {
       <div>
         <Head>
           <title>Problem Randomizer</title>
-          <meta name="description" content="Problem Randomizer" />
-          <link rel="icon" href="/favicon.ico" />
+          <meta
+            name="description"
+            content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
+          />
+          <link rel="icon" href="/images/prob-rand-logo.png" />
         </Head>
 
         <Header />
 
-        <main className="relative min-h-screen pt-[72px] bg-white">
+        <main className="relative min-h-screen pt-[84px] bg-white">
           <section className="relative">
             <div className="section-container px-6 md:px-[90px] py-[40px]">
-              <h1 className="text-2xl w-max leading-9 mb-10 bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
-                Problem Randomizer
-              </h1>
+              <div className="flex items-center gap-2 mb-10">
+                <h1 className="text-2xl w-max leading-9 bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
+                  Problem Randomizer
+                </h1>
+                <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
+                  <Icon
+                    icon="ri:question-line"
+                    className="text-gray-400 text-lg"
+                  />
+                </button>
+              </div>
               <ProblemFilterForm
                 onSubmit={onSubmit}
                 setProbType={setProbType}
@@ -167,7 +180,15 @@ const Home: NextPage = () => {
         </button>
       </div>
 
-      <SelectedProblemsDrawer open={isDrawerOpen} onClose={closeDrawer} />
+      <SelectedProblemsDrawer
+        open={isProblemsDrawerOpen}
+        onClose={closeDrawer}
+      />
+
+      <WalkthroughDrawer
+        open={isWalkthroughDrawerOpen}
+        onClose={() => setIsWalkthroughDrawerOpen(false)}
+      />
     </>
   ) : null
 }

@@ -99,7 +99,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         </Col>
 
         {/* <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <Form.Item<ProblemFormFields> label="Timer (minutes)" name="minutes">
+          <Form.Item<ProblemFormFields> label="Time (minutes)" name="minutes">
             <Input type="number" min={0} className="!bg-transparent" />
           </Form.Item>
         </Col> */}

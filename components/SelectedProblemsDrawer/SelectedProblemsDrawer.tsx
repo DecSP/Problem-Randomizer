@@ -44,7 +44,7 @@ const DrawerWrapper = ({
       footer={
         <Form autoComplete="off">
           <Form.Item<ProblemFormFields>
-            label="Timer (minutes)"
+            label="Time (minutes)"
             name="minutes"
             className="!-mb-2"
           >
@@ -75,7 +75,7 @@ export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
       </div>
     ) : (
       <div className="w-full h-full flex justify-center items-center font-semibold tracking-[2px]">
-        No problem added
+        No problems added
       </div>
     )
 
