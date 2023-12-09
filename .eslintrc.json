@@ -1,6 +1,5 @@
 {
   "extends": ["next", "prettier"],
-  "plugins": ["react", "jest"],
   "rules": {
     "no-unused-vars": "error",
     "react/self-closing-comp": [
@@ -10,5 +9,6 @@
         "html": true
       }
     ]
-  }
+  },
+  "plugins": ["react", "jest"]
 }
