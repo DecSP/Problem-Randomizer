@@ -98,22 +98,13 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
           </Form.Item>
         </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+        {/* <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
           <Form.Item<ProblemFormFields> label="Timer (minutes)" name="minutes">
             <Input type="number" min={0} className="!bg-transparent" />
           </Form.Item>
-        </Col>
+        </Col> */}
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <Form.Item<ProblemFormFields>
-            label="Number of recent problems (0 for all)"
-            name="recentProportion"
-          >
-            <Input type="number" min={0} className="!bg-transparent" />
-          </Form.Item>
-        </Col>
-
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+        <Col span={24} lg={{ span: 12 }} xl={{ span: 16 }}>
           <Form.Item<ProblemFormFields>
             label="Users to exclude solved problems"
             name="user"
@@ -125,7 +116,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
           <button
             className={cx(
-              'form-submit-button transition-opacity duration-300',
+              'form-submit-button transition-opacity duration-300 p-0.5 bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
               {
                 '!opacity-40 cursor-not-allowed': disabled,
               },
@@ -133,7 +124,9 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             type="submit"
             disabled={disabled}
           >
-            Submit
+            <div className="w-full h-full flex items-center justify-center bg-white text-black">
+              Submit
+            </div>
           </button>
         </Col>
       </Row>

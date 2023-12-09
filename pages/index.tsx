@@ -17,10 +17,24 @@ import { ProblemCard } from '../components/ProblemCard'
 import { useProblemContext } from '../context/problem'
 
 const Home: NextPage = () => {
+  const { problems, setProblems } = useProblemContext()
   const [prob, setProb] = useState<Problem[]>([])
   const [probType, setProbType] = useState<QuestionSources>('codeforces')
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const { setProblems } = useProblemContext()
+  const [isEverOpened, setIsEverOpened] = useState(false)
+
+  useEffect(() => {
+    if (!isEverOpened && isDrawerOpen) {
+      setIsEverOpened(true)
+    }
+  }, [isDrawerOpen, isEverOpened])
+
+  useEffect(() => {
+    if (!isEverOpened && problems.length > 0) {
+      setIsDrawerOpen(true)
+      setIsEverOpened(true)
+    }
+  }, [isEverOpened, problems.length])
 
   useEffect(() => {
     setProblems(prob)
@@ -99,14 +113,12 @@ const Home: NextPage = () => {
 
         <Header />
 
-        <main className="relative min-h-screen pt-[72px]">
-          <div className="absolute top-0 left-0 w-screen h-full">
-            <div className="sticky top-0 w-full h-screen bg-gradient-to-b from-white via-white to-gray-300" />
-          </div>
-
+        <main className="relative min-h-screen pt-[72px] bg-white">
           <section className="relative">
             <div className="section-container px-6 md:px-[90px] py-[40px]">
-              <h1 className="text-2xl leading-9 mb-10">Problem Randomizer</h1>
+              <h1 className="text-2xl w-max leading-9 mb-10 bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
+                Problem Randomizer
+              </h1>
               <ProblemFilterForm
                 onSubmit={onSubmit}
                 setProbType={setProbType}
@@ -116,7 +128,7 @@ const Home: NextPage = () => {
           </section>
 
           <section>
-            <div className="section-container px-6 md:px-[90px] pb-[80px]">
+            <div className="section-container px-6 md:px-[90px] pb-[88px]">
               {isLoading && (
                 <div className="w-full flex justify-center p-6">
                   <div className="animate-spin w-max">
@@ -126,7 +138,7 @@ const Home: NextPage = () => {
               )}
 
               {prob.length ? (
-                <div className="flex flex-col items-stretch gap-4">
+                <div className="flex flex-col items-stretch gap-6">
                   {prob.map((p) => (
                     <ProblemCard key={p.url} problem={p} />
                   ))}
@@ -144,15 +156,15 @@ const Home: NextPage = () => {
               onStop={() => setIsTimerRunning(false)}
             />
           ) : null}
-
-          <button
-            className="fixed bottom-4 right-0 text-white bg-black px-4 py-2"
-            type="submit"
-            onClick={openDrawer}
-          >
-            Selected problems
-          </button>
         </main>
+
+        <button
+          className="fixed bottom-6 right-0 text-white bg-black px-4 py-2 border-l border-y border-gray-600"
+          type="submit"
+          onClick={openDrawer}
+        >
+          Selected Problems
+        </button>
       </div>
 
       <SelectedProblemsDrawer open={isDrawerOpen} onClose={closeDrawer} />

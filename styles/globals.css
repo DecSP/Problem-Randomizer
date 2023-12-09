@@ -50,6 +50,12 @@ a {
   letter-spacing: 2px;
 }
 
+.bg-clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 @media (max-width: 768px) {
   .form-submit-button {
     height: 52px;
