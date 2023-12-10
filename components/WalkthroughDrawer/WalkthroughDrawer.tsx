@@ -52,9 +52,9 @@ export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
         width={80}
         height={80}
         priority
-        className="pb-2"
+        className="pb-2 select-none"
       />
-      <h2 className="font-medium text-xl pb-2">
+      <h2 className="font-medium text-xl pb-2 text-center">
         Welcome to Problem Randomizer
       </h2>
       <p className="w-full">

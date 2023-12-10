@@ -121,7 +121,7 @@ const Home: NextPage = () => {
 
         <main className="relative pt-[84px] bg-white">
           <section className="relative">
-            <div className="section-container px-6 md:px-[90px] py-[40px]">
+            <div className="section-container px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
               <div className="flex items-center gap-2 mb-10">
                 <h1 className="text-2xl w-max leading-9 bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
                   Problem Randomizer
@@ -129,7 +129,7 @@ const Home: NextPage = () => {
                 <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
                   <Icon
                     icon="ri:question-line"
-                    className="text-neutral-400 text-lg"
+                    className="!text-neutral-500 hover:!text-neutral-400 transition-colors duration-[250] text-lg"
                   />
                 </button>
               </div>
@@ -172,11 +172,12 @@ const Home: NextPage = () => {
           ) : null}
 
           <button
-            className="fixed bottom-6 right-0 text-white bg-black px-4 py-2 border-l border-y border-neutral-600 z-30"
+            className="fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
             type="submit"
             onClick={openDrawer}
           >
-            Selected Problems
+            <Icon icon="ri:arrow-right-s-line" className="shrink-0" /> View
+            Selected
           </button>
 
           <SelectedProblemsDrawer

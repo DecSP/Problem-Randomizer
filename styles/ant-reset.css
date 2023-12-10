@@ -64,7 +64,7 @@
 
 .ant-select-arrow,
 .ant-select-clear {
-  color: var(--text-color) !important;
+  color: #000000 !important;
 }
 
 .ant-select-selector {
@@ -75,7 +75,7 @@
 .ant-form-item-control-input-content > input {
   border: none !important;
   border-radius: 0 !important;
-  border-bottom: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid #000000 !important;
 }
 
 .ant-select-selector:focus,
@@ -91,7 +91,7 @@
   box-shadow: none !important;
   border-radius: 0 !important;
   padding: 0 !important;
-  background-color: var(--background-secondary-color) !important;
+  background-color: #f6f6f6 !important;
 }
 
 .ant-select-item {

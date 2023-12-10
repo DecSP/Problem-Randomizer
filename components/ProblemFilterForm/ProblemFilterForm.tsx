@@ -116,7 +116,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
           <button
             className={cx(
-              'form-submit-button transition-opacity duration-300 p-0.5 bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
+              'form-submit-button transition-[padding] duration-[250] p-0.5 hover:p-1 bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
               {
                 '!opacity-40 cursor-not-allowed': disabled,
               },
@@ -124,7 +124,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             type="submit"
             disabled={disabled}
           >
-            <div className="w-full h-full flex items-center justify-center bg-white text-black">
+            <div className="w-full h-full flex items-center justify-center bg-white text-black transition-colors duration-[250]">
               Submit
             </div>
           </button>
