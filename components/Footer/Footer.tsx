@@ -10,13 +10,14 @@ export const Footer = () => {
       <div className="h-0.5 w-full bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600" />
       <footer className="w-screen bg-white/60 backdrop-blur-sm px-7 pt-8 pb-[88px]">
         <div className="section-container flex justify-between items-start w-full gap-12 flex-wrap">
-          <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start">
+          <div className="flex flex-col sm:flex-row gap-6 md:gap-12 items-start">
             <Image
               src="/images/prob-rand-logo.png"
               alt="Problem Randomizer Logo"
               width={44}
               height={44}
               priority
+              className="select-none"
             />
 
             <div>
@@ -24,12 +25,12 @@ export const Footer = () => {
                 Resources
               </h3>
               <ul className="mt-2 flex flex-col gap-1">
-                <li className="text-sm text-neutral-600">
+                <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href="#" rel="noreferrer" target="_blank">
                     Organization
                   </a>
                 </li>
-                <li className="text-sm text-neutral-600">
+                <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
                     Walkthrough
                   </button>
@@ -42,7 +43,7 @@ export const Footer = () => {
                 Problem sources
               </h3>
               <ul className="mt-2 flex flex-col gap-1">
-                <li className="text-sm text-neutral-600">
+                <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a
                     href="https://codeforces.com/"
                     rel="noreferrer"
@@ -51,7 +52,7 @@ export const Footer = () => {
                     Codeforces
                   </a>
                 </li>
-                <li className="text-sm text-neutral-600">
+                <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a
                     href="https://atcoder.jp/"
                     rel="noreferrer"
@@ -60,7 +61,7 @@ export const Footer = () => {
                     AtCoder
                   </a>
                 </li>
-                <li className="text-sm text-neutral-600">
+                <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href="https://cses.fi/" rel="noreferrer" target="_blank">
                     CSES
                   </a>
@@ -69,7 +70,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="text-sm text-neutral-600">
+          <div className="text-sm text-neutral-600 text-center">
             Copyright &copy; 2023 Problem Randomizer, All rights reserved.
           </div>
         </div>
