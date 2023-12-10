@@ -16,6 +16,7 @@ import { SelectedProblemsDrawer } from '../components/SelectedProblemsDrawer'
 import { ProblemCard } from '../components/ProblemCard'
 import { useProblemContext } from '../context/problem'
 import { WalkthroughDrawer } from '../components/WalkthroughDrawer'
+import { Footer } from '../components/Footer'
 
 const Home: NextPage = () => {
   const { problems, setProblems } = useProblemContext()
@@ -118,7 +119,7 @@ const Home: NextPage = () => {
 
         <Header />
 
-        <main className="relative min-h-screen pt-[84px] bg-white">
+        <main className="relative pt-[84px] bg-white">
           <section className="relative">
             <div className="section-container px-6 md:px-[90px] py-[40px]">
               <div className="flex items-center gap-2 mb-10">
@@ -128,7 +129,7 @@ const Home: NextPage = () => {
                 <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
                   <Icon
                     icon="ri:question-line"
-                    className="text-gray-400 text-lg"
+                    className="text-neutral-400 text-lg"
                   />
                 </button>
               </div>
@@ -140,7 +141,7 @@ const Home: NextPage = () => {
             </div>
           </section>
 
-          <section>
+          <section className="min-h-[160px]">
             <div className="section-container px-6 md:px-[90px] pb-[88px]">
               {isLoading && (
                 <div className="w-full flex justify-center p-6">
@@ -169,26 +170,28 @@ const Home: NextPage = () => {
               onStop={() => setIsTimerRunning(false)}
             />
           ) : null}
+
+          <button
+            className="fixed bottom-6 right-0 text-white bg-black px-4 py-2 border-l border-y border-neutral-600 z-30"
+            type="submit"
+            onClick={openDrawer}
+          >
+            Selected Problems
+          </button>
+
+          <SelectedProblemsDrawer
+            open={isProblemsDrawerOpen}
+            onClose={closeDrawer}
+          />
+
+          <WalkthroughDrawer
+            open={isWalkthroughDrawerOpen}
+            onClose={() => setIsWalkthroughDrawerOpen(false)}
+          />
         </main>
 
-        <button
-          className="fixed bottom-6 right-0 text-white bg-black px-4 py-2 border-l border-y border-gray-600"
-          type="submit"
-          onClick={openDrawer}
-        >
-          Selected Problems
-        </button>
+        <Footer />
       </div>
-
-      <SelectedProblemsDrawer
-        open={isProblemsDrawerOpen}
-        onClose={closeDrawer}
-      />
-
-      <WalkthroughDrawer
-        open={isWalkthroughDrawerOpen}
-        onClose={() => setIsWalkthroughDrawerOpen(false)}
-      />
     </>
   ) : null
 }

@@ -31,7 +31,7 @@ const DrawerWrapper = ({
       onClose={onClose}
       width={width}
       rootClassName={rootClassName}
-      className="!bg-gray-100"
+      className="!bg-neutral-100"
       styles={{
         header: {
           backgroundColor: '#FFFFFF',

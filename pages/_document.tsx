@@ -5,13 +5,18 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="summary" name="twitter:card" />
         <meta content="#E5E7EB" name="theme-color" />
         <meta content="/images/og.png" property="og:image" />
         <meta
           content="https://problem-randomizer-decsp.vercel.app/"
           property="og:url"
+        />
+        <meta content="Problem Randomizer" property="og:site_name" />
+        <meta content="Problem Randomizer" property="og:title" />
+        <meta
+          content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
+          name="description"
         />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />

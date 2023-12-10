@@ -33,13 +33,13 @@ export const ProblemCard = ({
 
   return (
     <Card
-      className="!rounded-none border-gray-200 bg-white"
+      className="!rounded-none border-neutral-200 bg-white"
       title={`${problem.name} - Rating ${problem.rating}`}
       extra={
         showCheckbox ? (
           <>
             {/* <a
-            className="text-gray-600 hover:text-gray-500"
+            className="text-neutral-600 hover:text-neutral-500"
             href={problem.url}
             target="_blank"
           >
