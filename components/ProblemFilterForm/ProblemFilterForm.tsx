@@ -33,7 +33,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
   const { onSubmit, setProbType, disabled = false } = props
   const [form] = Form.useForm()
 
-  const validateDiffBound = () => {
+  const revalidateDiffBound = () => {
     form.validateFields(['lowerDiff', 'upperDiff'])
   }
 
@@ -127,7 +127,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     ? Number(event.target.value)
                     : DIFFICULTY_LOWER_BOUND,
                 )
-                validateDiffBound()
+                revalidateDiffBound()
               }}
             />
           </Form.Item>
@@ -154,7 +154,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             <Input
               type="number"
               className="!bg-transparent"
-              onChange={validateDiffBound}
+              onChange={revalidateDiffBound}
             />
           </Form.Item>
         </Col>
