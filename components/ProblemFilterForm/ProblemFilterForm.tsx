@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react'
 import { Form, Row, Col, Select, Input } from 'antd'
 import cx from 'classnames'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import {
   DIFFICULTY_LOWER_BOUND,
   DIFFICULTY_UPPER_BOUND,
@@ -31,9 +31,34 @@ const { Option } = Select
 
 export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
   const { onSubmit, setProbType, disabled = false } = props
+  const [form] = Form.useForm()
+
+  const revalidateDiffBound = () => {
+    form.validateFields(['lowerDiff', 'upperDiff'])
+  }
+
+  const diffBoundValidator = (
+    value: string,
+    left: number,
+    right: number,
+    // eslint-disable-next-line
+    callback: (error?: string | undefined) => void,
+    message: string,
+  ) => {
+    const intValue = parseInt(value)
+
+    if (isNaN(intValue) || intValue < left || intValue > right) {
+      callback(message)
+    } else {
+      callback()
+    }
+  }
+
+  const [lowerBound, setLowerBound] = useState(DIFFICULTY_LOWER_BOUND)
 
   return (
     <Form
+      form={form}
       autoComplete="off"
       initialValues={{
         lowerDiff: DIFFICULTY_LOWER_BOUND,
@@ -42,6 +67,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         recentProportion: 0,
       }}
       onFinish={onSubmit}
+      noValidate
     >
       <Row gutter={24}>
         <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
@@ -75,11 +101,34 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
           <Form.Item<ProblemFormFields>
             label="Difficulty lower bound"
             name="lowerDiff"
+            rules={[
+              {
+                validator: (_rule, value, callback) => {
+                  diffBoundValidator(
+                    value,
+                    DIFFICULTY_LOWER_BOUND,
+                    DIFFICULTY_UPPER_BOUND,
+                    callback,
+                    `Upper bound must be between ${DIFFICULTY_LOWER_BOUND} and ${DIFFICULTY_UPPER_BOUND}`,
+                  )
+                },
+              },
+            ]}
           >
             <Input
               type="number"
-              min={DIFFICULTY_LOWER_BOUND}
               className="!bg-transparent"
+              onChange={(event) => {
+                setLowerBound(
+                  event?.target?.value &&
+                    typeof event.target.value === 'string' &&
+                    Number(event.target.value) > DIFFICULTY_LOWER_BOUND &&
+                    Number(event.target.value) <= DIFFICULTY_UPPER_BOUND
+                    ? Number(event.target.value)
+                    : DIFFICULTY_LOWER_BOUND,
+                )
+                revalidateDiffBound()
+              }}
             />
           </Form.Item>
         </Col>
@@ -88,12 +137,24 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
           <Form.Item<ProblemFormFields>
             label="Difficulty upper bound"
             name="upperDiff"
+            rules={[
+              {
+                validator: (_rule, value, callback) => {
+                  diffBoundValidator(
+                    value,
+                    lowerBound,
+                    DIFFICULTY_UPPER_BOUND,
+                    callback,
+                    `Lower bound must be between ${lowerBound} and ${DIFFICULTY_UPPER_BOUND}`,
+                  )
+                },
+              },
+            ]}
           >
             <Input
               type="number"
-              min={0}
-              max={DIFFICULTY_UPPER_BOUND}
               className="!bg-transparent"
+              onChange={revalidateDiffBound}
             />
           </Form.Item>
         </Col>
