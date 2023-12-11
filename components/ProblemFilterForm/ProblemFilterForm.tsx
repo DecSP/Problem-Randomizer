@@ -33,6 +33,27 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
   const { onSubmit, setProbType, disabled = false } = props
   const [form] = Form.useForm()
 
+  const validateDiffBound = () => {
+    form.validateFields(['lowerDiff', 'upperDiff'])
+  }
+
+  const diffBoundValidator = (
+    value: string,
+    left: number,
+    right: number,
+    // eslint-disable-next-line
+    callback: (error?: string | undefined) => void,
+    message: string,
+  ) => {
+    const intValue = parseInt(value)
+
+    if (isNaN(intValue) || intValue < left || intValue > right) {
+      callback(message)
+    } else {
+      callback()
+    }
+  }
+
   const [lowerBound, setLowerBound] = useState(DIFFICULTY_LOWER_BOUND)
 
   return (
@@ -83,19 +104,13 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             rules={[
               {
                 validator: (_rule, value, callback) => {
-                  const intValue = parseInt(value)
-
-                  if (
-                    isNaN(intValue) ||
-                    intValue < DIFFICULTY_LOWER_BOUND ||
-                    intValue > DIFFICULTY_UPPER_BOUND
-                  ) {
-                    callback(
-                      `Upper bound must be between ${DIFFICULTY_LOWER_BOUND} and ${DIFFICULTY_UPPER_BOUND}`,
-                    )
-                  } else {
-                    callback()
-                  }
+                  diffBoundValidator(
+                    value,
+                    DIFFICULTY_LOWER_BOUND,
+                    DIFFICULTY_UPPER_BOUND,
+                    callback,
+                    `Upper bound must be between ${DIFFICULTY_LOWER_BOUND} and ${DIFFICULTY_UPPER_BOUND}`,
+                  )
                 },
               },
             ]}
@@ -112,7 +127,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     ? Number(event.target.value)
                     : DIFFICULTY_LOWER_BOUND,
                 )
-                form.validateFields(['lowerDiff', 'upperDiff'])
+                validateDiffBound()
               }}
             />
           </Form.Item>
@@ -125,19 +140,13 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             rules={[
               {
                 validator: (_rule, value, callback) => {
-                  const intValue = parseInt(value)
-
-                  if (
-                    isNaN(intValue) ||
-                    intValue < lowerBound ||
-                    intValue > DIFFICULTY_UPPER_BOUND
-                  ) {
-                    callback(
-                      `Lower bound must be between ${lowerBound} and ${DIFFICULTY_UPPER_BOUND}`,
-                    )
-                  } else {
-                    callback()
-                  }
+                  diffBoundValidator(
+                    value,
+                    lowerBound,
+                    DIFFICULTY_UPPER_BOUND,
+                    callback,
+                    `Lower bound must be between ${lowerBound} and ${DIFFICULTY_UPPER_BOUND}`,
+                  )
                 },
               },
             ]}
@@ -145,9 +154,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             <Input
               type="number"
               className="!bg-transparent"
-              onChange={() => {
-                form.validateFields(['lowerDiff', 'upperDiff'])
-              }}
+              onChange={validateDiffBound}
             />
           </Form.Item>
         </Col>
