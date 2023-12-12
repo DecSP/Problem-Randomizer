@@ -17,6 +17,7 @@ import { ProblemCard } from '../components/ProblemCard'
 import { useProblemContext } from '../context/problem'
 import { WalkthroughDrawer } from '../components/WalkthroughDrawer'
 import { Footer } from '../components/Footer'
+import { notification } from 'antd'
 
 const Home: NextPage = () => {
   const { problems, setProblems } = useProblemContext()
@@ -76,7 +77,9 @@ const Home: NextPage = () => {
   }
 
   const onSubmit = async (values: ProblemFormFields) => {
-    if (!data) return
+    if (!data || (data || []).length === 0) {
+      return
+    }
 
     setTimerConfig({
       show: false,
@@ -84,14 +87,26 @@ const Home: NextPage = () => {
       isCounting: false,
     })
 
-    const list = data.filter(
+    const problemsInDiffBound = (data || []).filter(
       (value: Problem) =>
         value.name &&
         value.rating &&
         (!values.lowerDiff || value.rating >= values.lowerDiff) &&
         (!values.upperDiff || value.rating <= values.upperDiff),
     )
-    const problem = list[Math.floor(Math.random() * list.length)]
+
+    if (problemsInDiffBound.length === 0) {
+      notification.info({
+        message: 'No problems meet the filter conditions',
+      })
+
+      return
+    }
+
+    const problem =
+      problemsInDiffBound[
+        Math.floor(Math.random() * problemsInDiffBound.length)
+      ]
     setProb([problem, ...prob])
 
     if (values?.minutes && values?.minutes > 0) {
@@ -154,7 +169,7 @@ const Home: NextPage = () => {
               {prob.length ? (
                 <div className="flex flex-col items-stretch gap-6">
                   {prob.map((p) => (
-                    <ProblemCard key={p.url} problem={p} />
+                    <ProblemCard key={p?.url} problem={p} />
                   ))}
                 </div>
               ) : null}

@@ -119,6 +119,26 @@
   );
 }
 
+.ant-notification-notice-wrapper {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border: 2px solid rgb(124 58 237);
+}
+
+.ant-notification-notice {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ant-notification-notice-content {
+  max-height: 48px !important;
+  padding-right: 32px !important;
+}
+
+.ant-notification-notice-icon-info > svg {
+  color: rgb(29 78 216) !important;
+}
+
 @media (max-width: 575px) {
   .ant-form-item-row {
     flex-direction: row !important;
