@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
     <>
       <div className="h-0.5 w-full bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600" />
-      <footer className="w-screen bg-white/60 backdrop-blur-sm px-7 pt-8 pb-[88px]">
+      <footer className="w-screen bg-white/60 backdrop-blur-sm px-7 pt-12 md:pt-16 pb-[88px]">
         <div className="section-container flex justify-between items-start w-full gap-12 flex-wrap">
           <div className="flex flex-col sm:flex-row gap-6 md:gap-12 items-start">
             <Image
@@ -71,7 +71,11 @@ export const Footer = () => {
           </div>
 
           <div className="text-sm text-neutral-600 text-center">
-            Copyright &copy; 2023 Problem Randomizer, All rights reserved.
+            Copyright &copy; 2023{' '}
+            <span className="font-bold" style={{ fontFamily: 'Space Mono' }}>
+              Problem Randomizer
+            </span>
+            , All rights reserved.
           </div>
         </div>
       </footer>

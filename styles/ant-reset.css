@@ -139,6 +139,10 @@
   color: rgb(29 78 216) !important;
 }
 
+.ant-card-head-wrapper {
+  gap: 8px !important;
+}
+
 @media (max-width: 575px) {
   .ant-form-item-row {
     flex-direction: row !important;

@@ -55,7 +55,11 @@ export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
         className="pb-2 select-none"
       />
       <h2 className="font-medium text-xl pb-2 text-center">
-        Welcome to Problem Randomizer
+        Welcome to
+        <br />
+        <span className="font-bold" style={{ fontFamily: 'Space Mono' }}>
+          Problem Randomizer
+        </span>
       </h2>
       <p className="w-full">
         Create problem set and test your programming skills with just a few

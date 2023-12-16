@@ -95,7 +95,7 @@ const Home: NextPage = () => {
         (!values.upperDiff || value.rating <= values.upperDiff),
     )
 
-    if (problemsInDiffBound.length === 0) {
+    if ((data || []).length > 0 && problemsInDiffBound.length === 0) {
       notification.info({
         message: 'No problems meet the filter conditions',
       })
@@ -134,17 +134,24 @@ const Home: NextPage = () => {
 
         <Header />
 
-        <main className="relative pt-[84px] bg-white">
+        <main className="relative pt-[76px] bg-white">
           <section className="relative">
             <div className="section-container px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
-              <div className="flex items-center gap-2 mb-10">
-                <h1 className="text-2xl w-max leading-9 bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
-                  Problem Randomizer
+              <div className="inline-flex max-w-full flex-wrap items-center gap-2 mb-10">
+                <h1 className="text-2xl w-max break-words leading-9">
+                  <span
+                    className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600"
+                    style={{
+                      fontFamily: 'Space Mono',
+                    }}
+                  >
+                    Problem Randomizer
+                  </span>
                 </h1>
                 <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
                   <Icon
-                    icon="ri:question-line"
-                    className="!text-neutral-500 hover:!text-neutral-400 transition-colors duration-[250] text-lg"
+                    icon="ant-design:question-circle-outlined"
+                    className="!text-neutral-500 hover:!text-neutral-400 transition-colors duration-[250] text-base"
                   />
                 </button>
               </div>
@@ -156,7 +163,13 @@ const Home: NextPage = () => {
             </div>
           </section>
 
-          <section className="min-h-[160px]">
+          <section
+            className="min-h-[160px]"
+            style={{
+              backgroundImage:
+                'linear-gradient(to bottom, #FFF, #F5F5F5 160px)',
+            }}
+          >
             <div className="section-container px-6 md:px-[90px] pb-[88px]">
               {isLoading && (
                 <div className="w-full flex justify-center p-6">

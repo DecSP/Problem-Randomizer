@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export const Header = () => {
   return (
-    <header className="w-screen bg-white/60 backdrop-blur-sm px-6 py-5 fixed top-0 z-40">
+    <header className="w-screen bg-neutral-100/60 backdrop-blur-sm px-6 py-4 fixed top-0 z-40">
       <div className="section-container text-black flex justify-between items-center">
         <Image
           src="/images/prob-rand-logo.png"
