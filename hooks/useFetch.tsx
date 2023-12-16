@@ -1,41 +1,25 @@
-import { useEffect, useState } from 'react'
+import useSWR, { Key } from 'swr'
+import { Fetcher, SWRConfiguration } from 'swr/core/dist'
+import { useState, useEffect } from 'react'
 
-interface UseFetchParams<T> {
-  api: () => Promise<T>
-  keys?: string[]
-}
+function useFetch<Data = any, Error = any>(
+  fn: Fetcher<Data> | null = null,
+  key: Key,
+  config?: SWRConfiguration<Data, Error>,
+) {
+  const { data, error, ...rest } = useSWR<Data, Error>(key, fn, config)
+  const [internalData, setInternalData] = useState<Data>()
 
-function useFetch<T>(params: UseFetchParams<T>) {
-  const { api, keys } = params
-  const [isLoading, setIsLoading] = useState(true)
-  const [isError, setIsError] = useState(false)
-  const [data, setData] = useState<T>()
+  const isFirstLoading = !internalData && !error
+  const loading = !data && !error
 
   useEffect(() => {
-    setIsLoading(true)
-    const fetchData = async () => {
-      try {
-        const res = await api()
-        if (res) {
-          setData(res)
-        }
-      } catch (error) {
-        setIsError(true)
-        console.log(error)
-      } finally {
-        setIsLoading(false)
-      }
+    if (data) {
+      setInternalData(data)
     }
+  }, [data])
 
-    fetchData()
-    // eslint-disable-next-line
-  }, keys ?? [])
-
-  return {
-    isError,
-    isLoading,
-    data,
-  }
+  return { data: internalData, isFirstLoading, loading, error, ...rest }
 }
 
 export default useFetch

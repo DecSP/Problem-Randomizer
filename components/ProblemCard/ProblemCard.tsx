@@ -2,9 +2,9 @@ import { Card, Checkbox } from 'antd'
 import { useEffect, useState } from 'react'
 import { useProblemContext } from '../../context/problem'
 import { Problem } from '../../lib/schema'
-import { QUESTIONS_SOURCES } from '../../types/questions-source'
 import cx from 'classnames'
 import { Icon } from '@iconify/react'
+import { ProblemSourceBadge } from '../ProblemSourceBadge'
 
 type ProblemCardProps = {
   problem: Problem
@@ -88,12 +88,12 @@ export const ProblemCard = ({
         borderColor: 'rgb(229, 231, 235)',
       }}
     >
+      <ProblemSourceBadge
+        source={problem?.source_type}
+        className="mb-1.5 w-max"
+      />
       <p>
         <b className="!font-bold !text-xs">Rating:</b> {problem?.rating}
-      </p>
-      <p>
-        <b className="!font-bold !text-xs">Source:</b>{' '}
-        {QUESTIONS_SOURCES[problem?.source_type]}
       </p>
       <p>
         <b className="!font-bold !text-xs">Contest:</b> {problem?.contest_name}

@@ -1,4 +1,4 @@
-import { QuestionSources } from '../types/questions-source'
+import { ProblemSources } from '../types/problem-source'
 export interface IconProps {
   height?: number
   width?: number
@@ -36,7 +36,7 @@ export interface Company {
 }
 
 export interface Problem {
-  source_type: QuestionSources
+  source_type: ProblemSources
   name: string
   contest_name: string
   url: string

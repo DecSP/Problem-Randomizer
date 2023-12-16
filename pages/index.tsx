@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { Header } from '../components/Header/Header'
 import useFetch from '../hooks/useFetch'
 import { client } from '../lib/apis'
-import { QuestionSources } from '../types/questions-source'
+import { ProblemSources } from '../types/problem-source'
 import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 import { Counter } from '../components/Counter'
@@ -22,7 +22,9 @@ import { notification } from 'antd'
 const Home: NextPage = () => {
   const { problems, setProblems } = useProblemContext()
   const [prob, setProb] = useState<Problem[]>([])
-  const [probType, setProbType] = useState<QuestionSources>('codeforces')
+  const [probType, setProbType] = useState<ProblemSources | undefined>(
+    undefined,
+  )
   const [isProblemsDrawerOpen, setIsProblemsDrawerOpen] = useState(false)
   const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false)
   const [isEverOpened, setIsEverOpened] = useState(false)
@@ -62,10 +64,10 @@ const Home: NextPage = () => {
     minutes: 0,
     isCounting: false,
   })
-  const { data, isLoading } = useFetch({
-    api: () => client.getProblems(probType),
-    keys: [probType],
-  })
+  const { data, isLoading } = useFetch(
+    () => (probType ? client.getProblems(probType) : undefined),
+    probType ? [probType] : undefined,
+  )
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false)
 
   const startTimer = (minutes: number) => {
@@ -151,7 +153,7 @@ const Home: NextPage = () => {
                 <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
                   <Icon
                     icon="ant-design:question-circle-outlined"
-                    className="!text-neutral-500 hover:!text-neutral-400 transition-colors duration-[250] text-base"
+                    className="!text-neutral-500 hover:!text-neutral-400 transition-colors duration-[250] text-sm"
                   />
                 </button>
               </div>
