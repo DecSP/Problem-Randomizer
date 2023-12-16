@@ -75,7 +75,7 @@ export const Footer = () => {
             <span className="font-bold" style={{ fontFamily: 'Space Mono' }}>
               Problem Randomizer
             </span>
-            , All rights reserved.
+            . All rights reserved.
           </div>
         </div>
       </footer>

@@ -1,6 +1,6 @@
 import fetcher from './fetcher'
 import { GetUsersData, Problem } from './schema'
-import { QuestionSources } from '../types/questions-source'
+import { ProblemSources } from '../types/problem-source'
 
 type Headers = Record<string, string>
 
@@ -21,7 +21,7 @@ export class Client {
     )
   }
 
-  public async getProblems(source_type: QuestionSources) {
+  public async getProblems(source_type: ProblemSources) {
     return fetcher<Problem[]>(`${BASE_URL}/api/problems/${source_type}/`, {
       method: 'GET',
     })

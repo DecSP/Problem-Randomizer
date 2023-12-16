@@ -6,13 +6,11 @@ import {
   DIFFICULTY_LOWER_BOUND,
   DIFFICULTY_UPPER_BOUND,
 } from '../../constants/difficulty'
-import {
-  QUESTIONS_SOURCES,
-  QuestionSources,
-} from '../../types/questions-source'
+import { ProblemSources } from '../../types/problem-source'
+import { PROBLEM_SOURCES } from '../../constants/problem-source'
 
 export type ProblemFormFields = {
-  source?: QuestionSources
+  source?: ProblemSources
   lowerDiff?: number
   upperDiff?: number
   minutes?: number
@@ -23,7 +21,7 @@ export type ProblemFormFields = {
 type ProblemFilterFormProps = {
   // eslint-disable-next-line
   onSubmit: (values: ProblemFormFields) => Promise<void>
-  setProbType: Dispatch<SetStateAction<QuestionSources>>
+  setProbType: Dispatch<SetStateAction<ProblemSources | undefined>>
   disabled?: boolean
 }
 
@@ -87,10 +85,11 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
               onChange={(value) => {
                 setProbType(value)
               }}
+              disabled={disabled}
             >
-              {Object.keys(QUESTIONS_SOURCES).map((key) => (
+              {Object.keys(PROBLEM_SOURCES).map((key) => (
                 <Option value={key} key={key}>
-                  {QUESTIONS_SOURCES[key as QuestionSources]}
+                  {PROBLEM_SOURCES[key as ProblemSources]}
                 </Option>
               ))}
             </Select>
