@@ -68,7 +68,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
       noValidate
     >
       <Row gutter={24}>
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+        <Col span={24} xl={{ span: 8 }}>
           <Form.Item<ProblemFormFields>
             label="Choose a site"
             name="source"
@@ -96,7 +96,11 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
           </Form.Item>
         </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+        <Col span={24} className="mb-2 block md:hidden">
+          <span className="font-semibold tracking-[2px]">Difficulty</span>
+        </Col>
+
+        <Col span={12} xl={{ span: 8 }} className="hidden md:block">
           <Form.Item<ProblemFormFields>
             label="Difficulty lower bound"
             name="lowerDiff"
@@ -108,7 +112,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     DIFFICULTY_LOWER_BOUND,
                     DIFFICULTY_UPPER_BOUND,
                     callback,
-                    `Upper bound must be between ${DIFFICULTY_LOWER_BOUND} and ${DIFFICULTY_UPPER_BOUND}`,
+                    `Lower bound must be between ${DIFFICULTY_LOWER_BOUND} and ${DIFFICULTY_UPPER_BOUND}`,
                   )
                 },
               },
@@ -132,7 +136,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
           </Form.Item>
         </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+        <Col span={12} xl={{ span: 8 }} className="hidden md:block">
           <Form.Item<ProblemFormFields>
             label="Difficulty upper bound"
             name="upperDiff"
@@ -144,7 +148,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     lowerBound,
                     DIFFICULTY_UPPER_BOUND,
                     callback,
-                    `Lower bound must be between ${lowerBound} and ${DIFFICULTY_UPPER_BOUND}`,
+                    `Upper bound must be between ${lowerBound} and ${DIFFICULTY_UPPER_BOUND}`,
                   )
                 },
               },
@@ -158,11 +162,67 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
           </Form.Item>
         </Col>
 
-        {/* <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <Form.Item<ProblemFormFields> label="Time (minutes)" name="minutes">
-            <Input type="number" min={0} className="!bg-transparent" />
+        <Col span={12} xl={{ span: 8 }} className="md:hidden block">
+          <Form.Item<ProblemFormFields>
+            label="Lower bound"
+            name="lowerDiff"
+            rules={[
+              {
+                validator: (_rule, value, callback) => {
+                  diffBoundValidator(
+                    value,
+                    DIFFICULTY_LOWER_BOUND,
+                    DIFFICULTY_UPPER_BOUND,
+                    callback,
+                    `Must be between ${DIFFICULTY_LOWER_BOUND} and ${DIFFICULTY_UPPER_BOUND}`,
+                  )
+                },
+              },
+            ]}
+          >
+            <Input
+              type="number"
+              className="!bg-transparent"
+              onChange={(event) => {
+                setLowerBound(
+                  event?.target?.value &&
+                    typeof event.target.value === 'string' &&
+                    Number(event.target.value) > DIFFICULTY_LOWER_BOUND &&
+                    Number(event.target.value) <= DIFFICULTY_UPPER_BOUND
+                    ? Number(event.target.value)
+                    : DIFFICULTY_LOWER_BOUND,
+                )
+                revalidateDiffBound()
+              }}
+            />
           </Form.Item>
-        </Col> */}
+        </Col>
+
+        <Col span={12} xl={{ span: 8 }} className="md:hidden block">
+          <Form.Item<ProblemFormFields>
+            label="Upper bound"
+            name="upperDiff"
+            rules={[
+              {
+                validator: (_rule, value, callback) => {
+                  diffBoundValidator(
+                    value,
+                    lowerBound,
+                    DIFFICULTY_UPPER_BOUND,
+                    callback,
+                    `Must be between ${lowerBound} and ${DIFFICULTY_UPPER_BOUND}`,
+                  )
+                },
+              },
+            ]}
+          >
+            <Input
+              type="number"
+              className="!bg-transparent"
+              onChange={revalidateDiffBound}
+            />
+          </Form.Item>
+        </Col>
 
         <Col span={24} lg={{ span: 12 }} xl={{ span: 16 }}>
           <Form.Item<ProblemFormFields>
