@@ -1,4 +1,3 @@
-import { Icon } from '@iconify/react'
 import { Form } from 'antd'
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
@@ -8,6 +7,7 @@ import {
   CreateContestForm,
   CreateContestFormFields,
 } from '../../components/pages/contest/CreateContestForm'
+import { useProblemContext } from '../../context/problem'
 
 const CreateContestPage = () => {
   const [isSSR, setIsSSR] = useState(true)
@@ -17,10 +17,32 @@ const CreateContestPage = () => {
   }, [])
 
   const [form] = Form.useForm()
+  const { selectedProblemUrls } = useProblemContext()
+
+  const [isFieldFilled, setIsFieldFilled] = useState(false)
+  const [isContestValid, setIsContestValid] = useState(false)
+
+  const handleValuesChange = (_: any, values: CreateContestFormFields) => {
+    const isFieldFilled = values.title !== ''
+
+    setIsFieldFilled(isFieldFilled)
+  }
+
+  useEffect(() => {
+    if (isFieldFilled && selectedProblemUrls.length > 0) {
+      setIsContestValid(true)
+    } else {
+      setIsContestValid(false)
+    }
+  }, [isFieldFilled, selectedProblemUrls.length])
 
   const onSubmit = (value: CreateContestFormFields) => {
-    console.log(value)
-    return Promise.resolve()
+    if (isContestValid) {
+      console.log(value)
+      return Promise.resolve()
+    } else {
+      return Promise.resolve()
+    }
   }
 
   return !isSSR ? (
@@ -47,22 +69,16 @@ const CreateContestPage = () => {
                   </span>
                 </h1>
 
-                <CreateContestForm formInstance={form} onSubmit={onSubmit} />
+                <CreateContestForm
+                  formInstance={form}
+                  onSubmit={onSubmit}
+                  handleValuesChange={handleValuesChange}
+                  isContestValid={isContestValid}
+                />
               </div>
             </div>
           </section>
         </main>
-
-        <button
-          className="fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
-          type="submit"
-        >
-          <Icon
-            icon="material-symbols-light:arrow-right"
-            className="shrink-0 text-3xl"
-          />{' '}
-          Start Contest
-        </button>
 
         <Footer />
       </div>

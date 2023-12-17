@@ -4,6 +4,7 @@ import { useProblemContext } from '../../../../context/problem'
 import { ColumnsType } from 'antd/es/table'
 import { Problem } from '../../../../lib/schema'
 import { ProblemSourceBadge } from '../../../ProblemSourceBadge'
+import cx from 'classnames'
 
 export type CreateContestFormFields = {
   title?: string
@@ -17,10 +18,23 @@ type ProblemFilterFormProps = {
   // eslint-disable-next-line
   onSubmit: (values: CreateContestFormFields) => Promise<void>
   disabled?: boolean
+  handleValuesChange?: (
+    // eslint-disable-next-line
+    changedValues: any,
+    // eslint-disable-next-line
+    values: CreateContestFormFields,
+  ) => void
+  isContestValid?: boolean
 }
 
 export const CreateContestForm = (props: ProblemFilterFormProps) => {
-  const { formInstance, onSubmit, disabled = false } = props
+  const {
+    formInstance,
+    onSubmit,
+    disabled = false,
+    handleValuesChange,
+    isContestValid = false,
+  } = props
   const { selectedProblemUrls, problems, removeProblem } = useProblemContext()
 
   const tableColumn: ColumnsType<Problem> = [
@@ -29,7 +43,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       dataIndex: 'name',
       key: 'name',
       render: (value: any) => (
-        <div className="min-w-[200px]">
+        <div className="w-[200px]">
           <span>{value || ''}</span>
         </div>
       ),
@@ -51,7 +65,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       dataIndex: 'contest_name',
       key: 'contest_name',
       render: (value: any) => (
-        <div className="min-w-[200px]">
+        <div className="w-[200px]">
           <span className="block truncate">{value || ''}</span>
         </div>
       ),
@@ -80,6 +94,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
           </a>
         </div>
       ),
+      fixed: 'right',
     },
   ]
 
@@ -90,6 +105,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       </h2>
 
       <Form
+        onValuesChange={handleValuesChange}
         form={formInstance}
         autoComplete="off"
         initialValues={{
@@ -151,6 +167,22 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
             </Form.Item>
           </Col>
         </Row>
+
+        <button
+          className={cx(
+            'fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30',
+            {
+              'cursor-not-allowed !bg-neutral-700': !isContestValid,
+            },
+          )}
+          type="submit"
+        >
+          <Icon
+            icon="material-symbols-light:arrow-right"
+            className="shrink-0 text-3xl"
+          />{' '}
+          Start Contest
+        </button>
       </Form>
 
       <h2 className="text-xl w-max break-words leading-9 mb-6 font-medium">
@@ -171,6 +203,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
             </div>
           ),
         }}
+        rowKey="url"
         rootClassName="w-full overflow-auto border"
       />
     </>
