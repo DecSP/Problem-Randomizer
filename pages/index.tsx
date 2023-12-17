@@ -5,7 +5,7 @@ import useFetch from '../hooks/useFetch'
 import { client } from '../lib/apis'
 import { ProblemSources } from '../types/problem-source'
 import { Icon } from '@iconify/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Counter } from '../components/Counter'
 import { Problem } from '../lib/schema'
 import {
@@ -20,14 +20,19 @@ import { Footer } from '../components/Footer'
 import { notification } from 'antd'
 
 const Home: NextPage = () => {
-  const { problems, setProblems } = useProblemContext()
-  const [prob, setProb] = useState<Problem[]>([])
+  const { problems = [], setProblems } = useProblemContext()
+  const [prob, setProb] = useState<Problem[]>(problems)
   const [probType, setProbType] = useState<ProblemSources | undefined>(
     undefined,
   )
   const [isProblemsDrawerOpen, setIsProblemsDrawerOpen] = useState(false)
   const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false)
   const [isEverOpened, setIsEverOpened] = useState(false)
+
+  const allSpawnedProblemsUrl = useMemo(
+    () => prob.map((problem) => problem.url),
+    [prob],
+  )
 
   useEffect(() => {
     if (!isEverOpened && isProblemsDrawerOpen) {
@@ -41,10 +46,6 @@ const Home: NextPage = () => {
       setIsEverOpened(true)
     }
   }, [isEverOpened, problems.length])
-
-  useEffect(() => {
-    setProblems(prob)
-  }, [prob, setProblems])
 
   const openDrawer = () => {
     setIsProblemsDrawerOpen(true)
@@ -89,26 +90,40 @@ const Home: NextPage = () => {
       isCounting: false,
     })
 
-    const problemsInDiffBound = (data || []).filter(
-      (value: Problem) =>
-        value.name &&
-        value.rating &&
-        (!values.lowerDiff || value.rating >= values.lowerDiff) &&
-        (!values.upperDiff || value.rating <= values.upperDiff),
-    )
+    const problemsMeetingFilters = (data || [])
+      .filter((problem) => !allSpawnedProblemsUrl.includes(problem.url))
+      .filter(
+        (value: Problem) =>
+          value.name &&
+          value.rating &&
+          (!values.lowerDiff || value.rating >= values.lowerDiff) &&
+          (!values.upperDiff || value.rating <= values.upperDiff),
+      )
 
-    if ((data || []).length > 0 && problemsInDiffBound.length === 0) {
-      notification.info({
-        message: 'No problems meet the filter conditions',
-      })
+    if ((data || []).length > 0) {
+      if (allSpawnedProblemsUrl.length >= (data || []).length) {
+        notification.info({
+          message: 'We have spawned all problems from this source',
+        })
 
-      return
+        return
+      }
+
+      if (problemsMeetingFilters.length === 0) {
+        notification.info({
+          message: 'No problems meet the filter conditions',
+        })
+
+        return
+      }
     }
 
     const problem =
-      problemsInDiffBound[
-        Math.floor(Math.random() * problemsInDiffBound.length)
+      problemsMeetingFilters[
+        Math.floor(Math.random() * problemsMeetingFilters.length)
       ]
+
+    setProblems([problem, ...prob])
     setProb([problem, ...prob])
 
     if (values?.minutes && values?.minutes > 0) {
@@ -140,7 +155,7 @@ const Home: NextPage = () => {
           <section className="relative">
             <div className="section-container px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
               <div className="inline-flex max-w-full flex-wrap items-center gap-2 mb-10">
-                <h1 className="text-2xl w-max break-words leading-9">
+                <h1 className="text-2xl w-max font-bold break-words leading-9">
                   <span
                     className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600"
                     style={{

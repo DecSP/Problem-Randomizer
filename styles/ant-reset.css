@@ -143,6 +143,10 @@
   gap: 8px !important;
 }
 
+.ant-table-container thead tr th {
+  border-radius: 0 !important;
+}
+
 @media (max-width: 575px) {
   .ant-form-item-row {
     flex-direction: row !important;

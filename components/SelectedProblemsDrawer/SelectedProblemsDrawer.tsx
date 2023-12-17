@@ -1,9 +1,11 @@
-import { Drawer, Form, Input } from 'antd'
+import { Drawer } from 'antd'
 import { ReactNode } from 'react'
 import { useProblemContext } from '../../context/problem'
 import { ProblemCard } from '../ProblemCard'
-import { ProblemFormFields } from '../ProblemFilterForm'
+// import { ProblemFormFields } from '../ProblemFilterForm'
 import cx from 'classnames'
+import { useRouter } from 'next/router'
+import { ROUTES } from '../../constants/routes'
 
 type SelectedProblemsDrawerProps = {
   open?: boolean
@@ -28,10 +30,11 @@ const DrawerWrapper = ({
   selectedProblems,
 }: SelectedProblemsDrawerWrapperProps) => {
   const disabled = selectedProblems.length === 0
+  const { push } = useRouter()
 
-  const onSubmit = (values: { minutes: string }) => {
-    console.log(JSON.stringify(values))
-  }
+  // const onSubmit = (values: { minutes: string }) => {
+  //   console.log(JSON.stringify(values))
+  // }
 
   return (
     <Drawer
@@ -58,35 +61,48 @@ const DrawerWrapper = ({
         },
       }}
       footer={
-        <Form autoComplete="off" onFinish={onSubmit}>
-          <Form.Item<ProblemFormFields>
-            label="Time (minutes)"
-            name="minutes"
-            className="!-mb-2"
-          >
-            <Input
-              type="number"
-              min={0}
-              className="!bg-transparent"
+        <>
+          {/* <Form autoComplete="off" onFinish={onSubmit}>
+            <Form.Item<ProblemFormFields>
+              label="Time (minutes)"
+              name="minutes"
+              className="!-mb-2"
+            >
+              <Input
+                type="number"
+                min={0}
+                className="!bg-transparent"
+                disabled={disabled}
+              />
+            </Form.Item>
+
+            <button
+              className={cx(
+                'form-submit-button mt-4 hover:opacity-80 !h-12 transition-all duration-[250] bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
+                {
+                  '!opacity-100 cursor-not-allowed': disabled,
+                },
+              )}
+              type="submit"
               disabled={disabled}
-            />
-          </Form.Item>
+            >
+              Start Solving
+            </button>
+          </Form> */}
 
           <button
             className={cx(
-              'form-submit-button mt-4 hover:opacity-80 !h-12 transition-all duration-[250] bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
+              'form-submit-button hover:opacity-80 !h-12 transition-all duration-[250] bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
               {
                 '!opacity-100 cursor-not-allowed': disabled,
               },
             )}
-            type="submit"
+            onClick={() => push(ROUTES.CREATE_CONTEST)}
             disabled={disabled}
           >
-            {/* <div className="w-full h-full flex items-center justify-center bg-white text-black transition-colors duration-[250]"> */}
-            Start Solving
-            {/* </div> */}
+            Continue
           </button>
-        </Form>
+        </>
       }
     >
       {children}

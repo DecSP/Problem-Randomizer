@@ -14,7 +14,6 @@ export type ProblemFormFields = {
   lowerDiff?: number
   upperDiff?: number
   minutes?: number
-  recentProportion?: number
   user?: string
 }
 
@@ -62,7 +61,6 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         lowerDiff: DIFFICULTY_LOWER_BOUND,
         upperDiff: DIFFICULTY_UPPER_BOUND,
         minutes: 0,
-        recentProportion: 0,
       }}
       onFinish={onSubmit}
       noValidate
