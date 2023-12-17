@@ -1,5 +1,11 @@
 import Image from 'next/image'
 import { useState } from 'react'
+import {
+  AT_CODER_URL,
+  CODEFORCES_URL,
+  CSES_URL,
+  GITHUB_ORG_URL,
+} from '../../constants/urls'
 import { WalkthroughDrawer } from '../WalkthroughDrawer'
 
 export const Footer = () => {
@@ -26,7 +32,7 @@ export const Footer = () => {
               </h3>
               <ul className="mt-2 flex flex-col gap-1">
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
-                  <a href="#" rel="noreferrer" target="_blank">
+                  <a href={GITHUB_ORG_URL} rel="noreferrer" target="_blank">
                     Organization
                   </a>
                 </li>
@@ -44,25 +50,17 @@ export const Footer = () => {
               </h3>
               <ul className="mt-2 flex flex-col gap-1">
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
-                  <a
-                    href="https://codeforces.com/"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
+                  <a href={CODEFORCES_URL} rel="noreferrer" target="_blank">
                     Codeforces
                   </a>
                 </li>
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
-                  <a
-                    href="https://atcoder.jp/"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
+                  <a href={AT_CODER_URL} rel="noreferrer" target="_blank">
                     AtCoder
                   </a>
                 </li>
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
-                  <a href="https://cses.fi/" rel="noreferrer" target="_blank">
+                  <a href={CSES_URL} rel="noreferrer" target="_blank">
                     CSES
                   </a>
                 </li>

@@ -1,5 +1,5 @@
 import fetcher from './fetcher'
-import { GetUsersData, Problem } from './schema'
+import { Problem } from './schema'
 import { ProblemSources } from '../types/problem-source'
 
 type Headers = Record<string, string>
@@ -9,16 +9,6 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 export class Client {
   headers: Headers = {
     'Content-Type': 'application/json',
-  }
-
-  public getUsers() {
-    return fetcher<GetUsersData[]>(
-      'https://jsonplaceholder.typicode.com/users',
-      {
-        method: 'GET',
-        headers: this.headers,
-      },
-    )
   }
 
   public async getProblems(source_type: ProblemSources) {

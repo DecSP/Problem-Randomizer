@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://problem-randomizer-decsp.vercel.app/">
+  <a href="https://problem-randomizer.vercel.app/">
     <img src="public/images/prob-rand-logo.png" alt="Problem Randomizer logo" width="100" />
   </a>
 </p>

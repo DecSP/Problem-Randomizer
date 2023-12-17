@@ -9,7 +9,7 @@ export default function Document() {
         <meta content="#E5E7EB" name="theme-color" />
         <meta content="/images/og.png" property="og:image" />
         <meta
-          content="https://problem-randomizer-decsp.vercel.app/"
+          content="https://problem-randomizer.vercel.app/"
           property="og:url"
         />
         <meta content="Problem Randomizer" property="og:site_name" />

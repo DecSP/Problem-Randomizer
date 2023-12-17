@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
+import { GITHUB_ORG_URL } from '../../constants/urls'
 
 export const Header = () => {
   return (
@@ -15,7 +16,7 @@ export const Header = () => {
         />
         <div className="flex items-center">
           <a
-            href="https://github.com/DecSP/Problem-Randomizer"
+            href={GITHUB_ORG_URL}
             target="_blank"
             rel="noreferrer"
             data-testid="help-button"
