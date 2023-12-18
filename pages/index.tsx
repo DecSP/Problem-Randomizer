@@ -155,11 +155,11 @@ const Home: NextPage = () => {
           <section className="relative">
             <div className="section-container px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
               <div className="inline-flex max-w-full flex-wrap items-center gap-2 mb-10">
-                <h1 className="text-2xl w-max font-bold break-words leading-9">
+                <h1 className="text-2xl w-max font-medium break-words leading-9">
                   <span
                     className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600"
                     style={{
-                      fontFamily: 'Space Mono',
+                      fontFamily: 'Space Grotesk',
                     }}
                   >
                     Problem Randomizer
@@ -217,7 +217,7 @@ const Home: NextPage = () => {
           ) : null}
 
           <button
-            className="fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
+            className="text-base fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
             type="submit"
             onClick={openDrawer}
           >

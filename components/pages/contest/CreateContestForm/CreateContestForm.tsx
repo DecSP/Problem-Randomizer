@@ -125,7 +125,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
               label="Contest title"
               name="title"
               rules={[
-                { required: true, message: 'Please define contest title' },
+                { required: true, message: 'Please input contest title' },
               ]}
             >
               <Input type="text" className="!bg-transparent" />
@@ -180,17 +180,14 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
 
         <button
           className={cx(
-            'fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30',
+            'text-base fixed flex items-center gap-2 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30',
             {
               'cursor-not-allowed !bg-neutral-700': !isContestValid,
             },
           )}
           type="submit"
         >
-          <Icon
-            icon="material-symbols-light:arrow-right"
-            className="shrink-0 text-3xl"
-          />{' '}
+          <Icon icon="ri:code-s-slash-line" className="shrink-0 text-sm" />{' '}
           Start Contest
         </button>
       </Form>

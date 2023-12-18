@@ -69,7 +69,7 @@ const CreateContestPage = () => {
           <section>
             <div className="section-container">
               <div className="px-6 md:px-[90px] pt-[40px] pb-[88px]">
-                <h1 className="text-2xl w-max break-words font-semibold leading-9 mb-10">
+                <h1 className="text-2xl w-max break-words font-medium leading-9 mb-10">
                   <span className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
                     Create Contest
                   </span>

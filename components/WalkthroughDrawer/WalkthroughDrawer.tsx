@@ -57,7 +57,7 @@ export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
       <h2 className="font-medium text-xl pb-2 text-center">
         Welcome to
         <br />
-        <span className="font-bold" style={{ fontFamily: 'Space Mono' }}>
+        <span className="font-medium" style={{ fontFamily: 'Space Grotesk' }}>
           Problem Randomizer
         </span>
       </h2>

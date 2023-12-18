@@ -70,7 +70,10 @@ export const Footer = () => {
 
           <div className="text-sm text-neutral-600 text-center">
             Copyright &copy; 2023{' '}
-            <span className="font-bold" style={{ fontFamily: 'Space Mono' }}>
+            <span
+              className="font-medium"
+              style={{ fontFamily: 'Space Grotesk' }}
+            >
               Problem Randomizer
             </span>
             . All rights reserved.
