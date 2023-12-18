@@ -5,6 +5,7 @@ import { ColumnsType } from 'antd/es/table'
 import { Problem } from '../../../../lib/schema'
 import { ProblemSourceBadge } from '../../../ProblemSourceBadge'
 import cx from 'classnames'
+import { Empty } from '../../../Empty'
 
 export type CreateContestFormFields = {
   title?: string
@@ -116,7 +117,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
         }}
         onFinish={onSubmit}
         noValidate
-        className="mb-14"
+        className="mb-14 p-6 border bg-white w-full lg:w-2/3"
       >
         <Row gutter={24}>
           <Col span={24} lg={{ span: 12 }}>
@@ -126,6 +127,15 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
               rules={[
                 { required: true, message: 'Please define contest title' },
               ]}
+            >
+              <Input type="text" className="!bg-transparent" />
+            </Form.Item>
+          </Col>
+
+          <Col span={24} lg={{ span: 24 }} className="block lg:hidden">
+            <Form.Item<CreateContestFormFields>
+              label="Contest description"
+              name="description"
             >
               <Input type="text" className="!bg-transparent" />
             </Form.Item>
@@ -145,7 +155,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
             </Form.Item>
           </Col>
 
-          <Col span={24}>
+          <Col span={24} lg={{ span: 24 }} className="lg:block hidden">
             <Form.Item<CreateContestFormFields>
               label="Contest description"
               name="description"
@@ -162,7 +172,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
               className="!mb-0 !h-14"
             >
               <Checkbox className="">
-                <div className="h-6 overflow-hidden">Is public</div>
+                <div className="h-6 overflow-hidden select-none">Is public</div>
               </Checkbox>
             </Form.Item>
           </Col>
@@ -190,18 +200,11 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       </h2>
 
       <Table
-        columns={tableColumn}
+        columns={selectedProblemUrls.length ? tableColumn : []}
         dataSource={problems.filter((p) => selectedProblemUrls.includes(p.url))}
         pagination={false}
         locale={{
-          emptyText: (
-            <div className="flex flex-col items-center p-4 gap-4">
-              <Icon icon="carbon:code-hide" className="text-6xl" />
-              <span className="font-semibold tracking-[2px]">
-                No problem added
-              </span>
-            </div>
-          ),
+          emptyText: <Empty message="No problems added" />,
         }}
         rowKey="url"
         rootClassName="w-full overflow-auto border"

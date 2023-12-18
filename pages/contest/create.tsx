@@ -59,10 +59,16 @@ const CreateContestPage = () => {
 
         <Header />
 
-        <main className="relative pt-[76px] bg-white">
+        <main
+          className="relative pt-[76px]"
+          style={{
+            backgroundImage:
+              'linear-gradient(to bottom, #FFF 200px, #F5F5F5 360px)',
+          }}
+        >
           <section>
             <div className="section-container">
-              <div className="px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
+              <div className="px-6 md:px-[90px] pt-[40px] pb-[88px]">
                 <h1 className="text-2xl w-max break-words font-semibold leading-9 mb-10">
                   <span className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
                     Create Contest

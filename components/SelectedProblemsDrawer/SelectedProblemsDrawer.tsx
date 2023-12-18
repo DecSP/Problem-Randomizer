@@ -6,6 +6,7 @@ import { ProblemCard } from '../ProblemCard'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { ROUTES } from '../../constants/routes'
+import { Empty } from '../Empty'
 
 type SelectedProblemsDrawerProps = {
   open?: boolean
@@ -126,8 +127,8 @@ export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
         })}
       </div>
     ) : (
-      <div className="w-full h-full flex justify-center items-center font-semibold tracking-[2px]">
-        No problems added
+      <div className="flex items-center h-full justify-center">
+        <Empty message="No problems added" />
       </div>
     )
 
