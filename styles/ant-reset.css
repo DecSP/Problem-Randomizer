@@ -147,6 +147,10 @@
   border-radius: 0 !important;
 }
 
+.ant-table-row {
+  background-color: #fff !important;
+}
+
 @media (max-width: 575px) {
   .ant-form-item-row {
     flex-direction: row !important;
