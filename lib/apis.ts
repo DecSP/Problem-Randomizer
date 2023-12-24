@@ -12,7 +12,7 @@ export class Client {
   }
 
   public async getProblems(source_type: ProblemSources) {
-    return fetcher<Problem[]>(`${BASE_URL}/api/problems/${source_type}/`, {
+    return fetcher<Problem[]>(`${BASE_URL}/api/problems/by-source/${source_type}/`, {
       method: 'GET',
     })
   }
