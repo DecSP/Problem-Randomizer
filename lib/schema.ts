@@ -6,6 +6,7 @@ export interface IconProps {
 }
 
 export interface Problem {
+  id: number
   source_type: ProblemSources
   name: string
   contest_name: string
