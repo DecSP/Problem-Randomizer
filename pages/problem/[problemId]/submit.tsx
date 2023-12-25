@@ -5,6 +5,7 @@ import { client } from '../../../lib/apis'
 import { Icon } from '@iconify/react'
 
 const SubmitSolution = () => {
+  const ws_url = process.env.NEXT_PUBLIC_WS_URL
   const router = useRouter()
   const { problemId } = router.query
   const [code, setCode] = useState('')
@@ -20,7 +21,8 @@ const SubmitSolution = () => {
 
   useEffect(() => {
     // Connect to the WebSocket server
-    const ws = new WebSocket('ws://localhost:8000/ws/') // Replace with your WebSocket URL
+    if (!ws_url) return
+    const ws = new WebSocket(ws_url) // Replace with your WebSocket URL
 
     // Event handler for when the connection is opened
     ws.onopen = () => {
@@ -46,7 +48,7 @@ const SubmitSolution = () => {
         ws.close()
       }
     }
-  }, [])
+  }, [ws_url])
 
   const sendMessage = () => {
     if (!data) return
