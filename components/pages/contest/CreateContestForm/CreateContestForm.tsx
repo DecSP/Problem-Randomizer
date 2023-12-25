@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react'
+import Link from 'next/link'
 import { Form, Row, Col, Input, Checkbox, Table, FormInstance } from 'antd'
 import { useProblemContext } from '../../../../context/problem'
 import { ColumnsType } from 'antd/es/table'
@@ -6,12 +7,14 @@ import { Problem } from '../../../../lib/schema'
 import { ProblemSourceBadge } from '../../../ProblemSourceBadge'
 import cx from 'classnames'
 import { Empty } from '../../../Empty'
+import { ROUTES } from '../../../../constants/routes'
 
 export type CreateContestFormFields = {
   title?: string
   description?: string
   isPublic?: boolean
   minutes?: number
+  penalty?: number
 }
 
 type ProblemFilterFormProps = {
@@ -114,13 +117,14 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
           description: '',
           isPublic: false,
           minutes: 0,
+          penalty: 0,
         }}
         onFinish={onSubmit}
         noValidate
         className="mb-14 p-6 border bg-white w-full lg:w-2/3"
       >
         <Row gutter={24}>
-          <Col span={24} lg={{ span: 12 }}>
+          <Col span={24}>
             <Form.Item<CreateContestFormFields>
               label="Contest title"
               name="title"
@@ -132,7 +136,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
             </Form.Item>
           </Col>
 
-          <Col span={24} lg={{ span: 24 }} className="block lg:hidden">
+          <Col span={24}>
             <Form.Item<CreateContestFormFields>
               label="Contest description"
               name="description"
@@ -155,12 +159,17 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
             </Form.Item>
           </Col>
 
-          <Col span={24} lg={{ span: 24 }} className="lg:block hidden">
+          <Col span={24} lg={{ span: 12 }}>
             <Form.Item<CreateContestFormFields>
-              label="Contest description"
-              name="description"
+              label="Penalty (minutes)"
+              name="penalty"
             >
-              <Input type="text" className="!bg-transparent" />
+              <Input
+                type="number"
+                min={0}
+                className="!bg-transparent"
+                disabled={disabled}
+              />
             </Form.Item>
           </Col>
 
@@ -201,7 +210,16 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
         dataSource={problems.filter((p) => selectedProblemUrls.includes(p.url))}
         pagination={false}
         locale={{
-          emptyText: <Empty message="No problems added" />,
+          emptyText: (
+            <div>
+              <Empty message="No problems added" />
+              <Link href={ROUTES.RANDOMIZER}>
+                <button className="bg-black text-white px-4 py-2 hover:opacity-60 transition-opacity duration-300">
+                  Spawn some problems
+                </button>
+              </Link>
+            </div>
+          ),
         }}
         rowKey="url"
         rootClassName="w-full overflow-auto border"
