@@ -15,19 +15,19 @@ export const ProblemCard = ({
   problem,
   showCheckbox = true,
 }: ProblemCardProps) => {
-  const { addProblem, removeProblem, selectedProblemUrls } = useProblemContext()
+  const { addProblem, removeProblem, selectedProblemIds } = useProblemContext()
 
   const [isSelected, setIsSelected] = useState(false)
 
   useEffect(() => {
-    setIsSelected((selectedProblemUrls || []).includes(problem?.url))
-  }, [problem?.url, selectedProblemUrls])
+    setIsSelected((selectedProblemIds || []).includes(problem?.id))
+  }, [problem?.id, selectedProblemIds])
 
   const onChange = () => {
     if (!isSelected) {
-      addProblem(problem?.url)
+      addProblem(problem?.id)
     } else {
-      removeProblem(problem?.url)
+      removeProblem(problem?.id)
     }
 
     setIsSelected(!isSelected)

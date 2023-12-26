@@ -14,38 +14,38 @@ export type SidebarVariant = 'main' | 'app-detail'
 type ProblemContextValue = {
   problems: Problem[]
   setProblems: Dispatch<SetStateAction<Problem[]>>
-  selectedProblemUrls: string[]
+  selectedProblemIds: number[]
   // eslint-disable-next-line
-  addProblem: (problem: string) => void
+  addProblem: (problem: number) => void
   // eslint-disable-next-line
-  removeProblem: (problem: string) => void
+  removeProblem: (problem: number) => void
 }
 
 const ProblemContext = createContext<ProblemContextValue | undefined>(undefined)
 
 function ProblemContextProvider({ children }: { children: ReactNode }) {
-  const [problemUrls, setProblemUrls] = useState<string[]>([])
+  const [problemIds, setProblemIds] = useState<number[]>([])
   const [problems, setProblems] = useState<Problem[]>([])
 
-  const addProblem = (problem: string) => {
-    setProblemUrls([...problemUrls, problem])
+  const addProblem = (problem: number) => {
+    setProblemIds([...problemIds, problem])
   }
 
-  const removeProblem = (problem: string) => {
-    const newProblems = problemUrls.filter((p) => p !== problem)
-    setProblemUrls(newProblems)
+  const removeProblem = (problem: number) => {
+    const newProblems = problemIds.filter((p) => p !== problem)
+    setProblemIds(newProblems)
   }
 
   const contextValue: ProblemContextValue = useMemo(
     () => ({
       problems,
       setProblems,
-      selectedProblemUrls: problemUrls,
+      selectedProblemIds: problemIds,
       addProblem,
       removeProblem,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [problemUrls],
+    [problemIds],
   )
 
   return (

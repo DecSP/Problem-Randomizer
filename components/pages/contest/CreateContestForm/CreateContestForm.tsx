@@ -39,7 +39,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
     handleValuesChange,
     isContestValid = false,
   } = props
-  const { selectedProblemUrls, problems, removeProblem } = useProblemContext()
+  const { selectedProblemIds, problems, removeProblem } = useProblemContext()
 
   const tableColumn: ColumnsType<Problem> = [
     {
@@ -84,7 +84,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       key: 'actions',
       render: (row) => (
         <div className="flex items-center justify-end gap-2">
-          <button onClick={() => removeProblem(row.url)}>
+          <button onClick={() => removeProblem(row.id)}>
             <Icon
               icon="la:trash"
               className="shrink-0 text-lg text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
@@ -206,8 +206,8 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       </h2>
 
       <Table
-        columns={selectedProblemUrls.length ? tableColumn : []}
-        dataSource={problems.filter((p) => selectedProblemUrls.includes(p.url))}
+        columns={selectedProblemIds.length ? tableColumn : []}
+        dataSource={problems.filter((p) => selectedProblemIds.includes(p.id))}
         pagination={false}
         locale={{
           emptyText: (
@@ -221,7 +221,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
             </div>
           ),
         }}
-        rowKey="url"
+        rowKey="id"
         rootClassName="w-full overflow-auto border"
       />
     </>

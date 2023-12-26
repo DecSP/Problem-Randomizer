@@ -19,7 +19,7 @@ type SelectedProblemsDrawerWrapperProps = {
   onClose: () => void
   rootClassName?: string
   width?: string | number
-  selectedProblems: string[]
+  selectedProblems: number[]
 }
 
 const DrawerWrapper = ({
@@ -113,16 +113,16 @@ const DrawerWrapper = ({
 
 export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
   const { open, onClose } = props
-  const { selectedProblemUrls, problems } = useProblemContext()
+  const { selectedProblemIds, problems } = useProblemContext()
 
   const drawerInner =
-    selectedProblemUrls.length > 0 ? (
+    selectedProblemIds.length > 0 ? (
       <div className="flex flex-col gap-4">
-        {selectedProblemUrls.map((p) => {
-          const currentProblem = problems.find((problem) => problem.url === p)
+        {selectedProblemIds.map((p) => {
+          const currentProblem = problems.find((problem) => problem.id === p)
 
           return currentProblem ? (
-            <ProblemCard key={currentProblem?.url} problem={currentProblem} />
+            <ProblemCard key={currentProblem?.id} problem={currentProblem} />
           ) : null
         })}
       </div>
@@ -137,7 +137,7 @@ export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
       <DrawerWrapper
         open={open}
         onClose={onClose}
-        selectedProblems={selectedProblemUrls}
+        selectedProblems={selectedProblemIds}
         rootClassName="hidden md:block"
       >
         {drawerInner}
@@ -146,7 +146,7 @@ export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
       <DrawerWrapper
         open={open}
         onClose={onClose}
-        selectedProblems={selectedProblemUrls}
+        selectedProblems={selectedProblemIds}
         width="100%"
         rootClassName="block md:hidden"
       >

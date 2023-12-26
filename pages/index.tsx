@@ -29,8 +29,8 @@ const Home: NextPage = () => {
   const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false)
   const [isEverOpened, setIsEverOpened] = useState(false)
 
-  const allSpawnedProblemsUrl = useMemo(
-    () => prob.map((problem) => problem.url),
+  const allSpawnedProblemsId = useMemo(
+    () => prob.map((problem) => problem.id),
     [prob],
   )
 
@@ -91,7 +91,7 @@ const Home: NextPage = () => {
     })
 
     const problemsMeetingFilters = (data || [])
-      .filter((problem) => !allSpawnedProblemsUrl.includes(problem.url))
+      .filter((problem) => !allSpawnedProblemsId.includes(problem.id))
       .filter(
         (value: Problem) =>
           value.name &&
@@ -101,7 +101,7 @@ const Home: NextPage = () => {
       )
 
     if ((data || []).length > 0) {
-      if (allSpawnedProblemsUrl.length >= (data || []).length) {
+      if (allSpawnedProblemsId.length >= (data || []).length) {
         notification.info({
           message: 'We have spawned all problems from this source',
         })
@@ -199,7 +199,7 @@ const Home: NextPage = () => {
               {prob.length ? (
                 <div className="flex flex-col items-stretch gap-6">
                   {prob.map((p) => (
-                    <ProblemCard key={p?.url} problem={p} />
+                    <ProblemCard key={p?.id} problem={p} />
                   ))}
                 </div>
               ) : null}

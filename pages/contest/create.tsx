@@ -17,7 +17,7 @@ const CreateContestPage = () => {
   }, [])
 
   const [form] = Form.useForm()
-  const { selectedProblemUrls } = useProblemContext()
+  const { selectedProblemIds } = useProblemContext()
 
   const [isFieldFilled, setIsFieldFilled] = useState(false)
   const [isContestValid, setIsContestValid] = useState(false)
@@ -29,12 +29,12 @@ const CreateContestPage = () => {
   }
 
   useEffect(() => {
-    if (isFieldFilled && selectedProblemUrls.length > 0) {
+    if (isFieldFilled && selectedProblemIds.length > 0) {
       setIsContestValid(true)
     } else {
       setIsContestValid(false)
     }
-  }, [isFieldFilled, selectedProblemUrls.length])
+  }, [isFieldFilled, selectedProblemIds.length])
 
   const onSubmit = (value: CreateContestFormFields) => {
     if (isContestValid) {
