@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "npx husky install",
-    "dev": "yarn prepare && next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "npx eslint .",
