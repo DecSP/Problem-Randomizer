@@ -5,9 +5,9 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import {
   DIFFICULTY_LOWER_BOUND,
   DIFFICULTY_UPPER_BOUND,
-} from '../../constants/difficulty'
-import { ProblemSources } from '../../types/problem-source'
-import { PROBLEM_SOURCES } from '../../constants/problem-source'
+} from '@/constants/difficulty'
+import { ProblemSources } from '@/types/problem-source'
+import { PROBLEM_SOURCES } from '@/constants/problem-source'
 
 export type ProblemFormFields = {
   source?: ProblemSources

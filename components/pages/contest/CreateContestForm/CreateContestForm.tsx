@@ -1,13 +1,13 @@
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { Form, Row, Col, Input, Checkbox, Table, FormInstance } from 'antd'
-import { useProblemContext } from '../../../../context/problem'
+import { useProblemContext } from '@/context/problem'
 import { ColumnsType } from 'antd/es/table'
-import { Problem } from '../../../../lib/schema'
-import { ProblemSourceBadge } from '../../../ProblemSourceBadge'
+import { Problem } from '@/lib/schema'
+import { ProblemSourceBadge } from '@/components/ProblemSourceBadge'
 import cx from 'classnames'
-import { Empty } from '../../../Empty'
-import { ROUTES } from '../../../../constants/routes'
+import { Empty } from '@/components/Empty'
+import { ROUTES } from '@/constants/routes'
 
 export type CreateContestFormFields = {
   title?: string

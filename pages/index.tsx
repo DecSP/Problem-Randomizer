@@ -139,105 +139,102 @@ const Home: NextPage = () => {
 
   return !isSSR ? (
     <>
-      <div>
-        <Head>
-          <title>Problem Randomizer</title>
-          <meta
-            name="description"
-            content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
-          />
-          <link rel="icon" href="/images/prob-rand-logo.png" />
-        </Head>
+      <Head>
+        <title>Problem Randomizer</title>
+        <meta
+          name="description"
+          content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
+        />
+        <link rel="icon" href="/images/prob-rand-logo.png" />
+      </Head>
 
-        <Header />
+      <Header />
 
-        <main className="relative pt-[76px] bg-white">
-          <section className="relative">
-            <div className="section-container px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
-              <div className="inline-flex max-w-full flex-wrap items-center gap-2 mb-10">
-                <h1 className="text-2xl w-max font-medium break-words leading-9">
-                  <span
-                    className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600"
-                    style={{
-                      fontFamily: 'Space Grotesk',
-                    }}
-                  >
-                    Problem Randomizer
-                  </span>
-                </h1>
-                <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
-                  <Icon
-                    icon="ant-design:question-circle-outlined"
-                    className="!text-neutral-500 hover:!text-neutral-400 transition-colors duration-[250] text-sm"
-                  />
-                </button>
-              </div>
-              <ProblemFilterForm
-                onSubmit={onSubmit}
-                setProbType={setProbType}
-                disabled={isLoading || isTimerRunning}
-              />
+      <main className="relative pt-[76px] bg-white">
+        <section className="relative">
+          <div className="section-container px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
+            <div className="inline-flex max-w-full flex-wrap items-center gap-2 mb-10">
+              <h1 className="text-2xl w-max font-medium break-words leading-9">
+                <span
+                  className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600"
+                  style={{
+                    fontFamily: 'Space Grotesk',
+                  }}
+                >
+                  Problem Randomizer
+                </span>
+              </h1>
+              <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
+                <Icon
+                  icon="ant-design:question-circle-outlined"
+                  className="!text-neutral-500 hover:!text-neutral-400 transition-colors duration-[250] text-sm"
+                />
+              </button>
             </div>
-          </section>
-
-          <section
-            className="min-h-[160px]"
-            style={{
-              backgroundImage:
-                'linear-gradient(to bottom, #FFF, #F5F5F5 160px)',
-            }}
-          >
-            <div className="section-container px-6 md:px-[90px] pb-[88px]">
-              {isLoading && (
-                <div className="w-full flex justify-center p-6">
-                  <div className="animate-spin w-max">
-                    <Icon icon="vaadin:spinner-third" className="text-2xl" />
-                  </div>
-                </div>
-              )}
-
-              {prob.length ? (
-                <div className="flex flex-col items-stretch gap-6">
-                  {prob.map((p) => (
-                    <ProblemCard key={p?.id} problem={p} />
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </section>
-
-          {timerConfig.show ? (
-            <Counter
-              interval={1}
-              minutes={timerConfig.minutes}
-              className="fixed bottom-0 right-0"
-              onStart={() => setIsTimerRunning(true)}
-              onStop={() => setIsTimerRunning(false)}
+            <ProblemFilterForm
+              onSubmit={onSubmit}
+              setProbType={setProbType}
+              disabled={isLoading || isTimerRunning}
             />
-          ) : null}
+          </div>
+        </section>
 
-          <button
-            className="text-base fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
-            type="submit"
-            onClick={openDrawer}
-          >
-            <Icon icon="ri:arrow-right-s-line" className="shrink-0" /> View
-            Selected
-          </button>
+        <section
+          className="min-h-[160px]"
+          style={{
+            backgroundImage: 'linear-gradient(to bottom, #FFF, #F5F5F5 160px)',
+          }}
+        >
+          <div className="section-container px-6 md:px-[90px] pb-[88px]">
+            {isLoading && (
+              <div className="w-full flex justify-center p-6">
+                <div className="animate-spin w-max">
+                  <Icon icon="vaadin:spinner-third" className="text-2xl" />
+                </div>
+              </div>
+            )}
 
-          <SelectedProblemsDrawer
-            open={isProblemsDrawerOpen}
-            onClose={closeDrawer}
+            {prob.length ? (
+              <div className="flex flex-col items-stretch gap-6">
+                {prob.map((p) => (
+                  <ProblemCard key={p?.id} problem={p} />
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
+
+        {timerConfig.show ? (
+          <Counter
+            interval={1}
+            minutes={timerConfig.minutes}
+            className="fixed bottom-0 right-0"
+            onStart={() => setIsTimerRunning(true)}
+            onStop={() => setIsTimerRunning(false)}
           />
+        ) : null}
 
-          <WalkthroughDrawer
-            open={isWalkthroughDrawerOpen}
-            onClose={() => setIsWalkthroughDrawerOpen(false)}
-          />
-        </main>
+        <button
+          className="text-base fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
+          type="submit"
+          onClick={openDrawer}
+        >
+          <Icon icon="ri:arrow-right-s-line" className="shrink-0" /> View
+          Selected
+        </button>
 
-        <Footer />
-      </div>
+        <SelectedProblemsDrawer
+          open={isProblemsDrawerOpen}
+          onClose={closeDrawer}
+        />
+
+        <WalkthroughDrawer
+          open={isWalkthroughDrawerOpen}
+          onClose={() => setIsWalkthroughDrawerOpen(false)}
+        />
+      </main>
+
+      <Footer />
     </>
   ) : null
 }

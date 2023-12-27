@@ -1,11 +1,11 @@
 import { Drawer } from 'antd'
 import { ReactNode } from 'react'
-import { useProblemContext } from '../../context/problem'
+import { useProblemContext } from '@/context/problem'
 import { ProblemCard } from '../ProblemCard'
 // import { ProblemFormFields } from '../ProblemFilterForm'
 import cx from 'classnames'
 import { useRouter } from 'next/router'
-import { ROUTES } from '../../constants/routes'
+import { ROUTES } from '@/constants/routes'
 import { Empty } from '../Empty'
 
 type SelectedProblemsDrawerProps = {
