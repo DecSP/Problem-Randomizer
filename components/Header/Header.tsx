@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
-import { GITHUB_ORG_URL } from '../../constants/urls'
+import { GITHUB_ORG_URL } from '@/constants/urls'
 
 export const Header = () => {
   return (

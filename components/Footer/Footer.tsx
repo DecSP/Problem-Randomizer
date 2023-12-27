@@ -5,7 +5,7 @@ import {
   CODEFORCES_URL,
   CSES_URL,
   GITHUB_ORG_URL,
-} from '../../constants/urls'
+} from '@/constants/urls'
 import { WalkthroughDrawer } from '../WalkthroughDrawer'
 
 export const Footer = () => {

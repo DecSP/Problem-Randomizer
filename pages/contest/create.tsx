@@ -1,13 +1,13 @@
 import { Form } from 'antd'
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
-import { Footer } from '../../components/Footer'
-import { Header } from '../../components/Header'
+import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
 import {
   CreateContestForm,
   CreateContestFormFields,
-} from '../../components/pages/contest/CreateContestForm'
-import { useProblemContext } from '../../context/problem'
+} from '@/components/pages/contest/CreateContestForm'
+import { useProblemContext } from '@/context/problem'
 
 const CreateContestPage = () => {
   const [isSSR, setIsSSR] = useState(true)
