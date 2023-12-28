@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 
 type WalkthroughDrawerProps = {
   open?: boolean;
-  onClose: () => void;
+  onClose: () => void
 }
 
 type WalkthroughDrawerWrapperProps = {
@@ -12,7 +12,7 @@ type WalkthroughDrawerWrapperProps = {
   open?: boolean;
   onClose: () => void;
   rootClassName?: string;
-  width?: string | number;
+  width?: string | number
 }
 
 const DrawerWrapper = ({

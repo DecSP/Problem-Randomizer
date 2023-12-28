@@ -5,7 +5,7 @@ import { ProblemSources } from '@/types/problem-source'
 
 export type ProblemSourceBadgeProps = {
   source: ProblemSources;
-  className?: string;
+  className?: string
 }
 
 export const ProblemSourceBadge = (props: ProblemSourceBadgeProps) => {

@@ -10,7 +10,7 @@ import { ProblemSourceBadge } from '../ProblemSourceBadge'
 
 type ProblemCardProps = {
   problem: Problem;
-  showCheckbox?: boolean;
+  showCheckbox?: boolean
 }
 
 export const ProblemCard = ({

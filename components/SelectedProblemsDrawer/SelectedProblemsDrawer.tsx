@@ -12,7 +12,7 @@ import { ProblemCard } from '../ProblemCard'
 
 type SelectedProblemsDrawerProps = {
   open?: boolean;
-  onClose: () => void;
+  onClose: () => void
 }
 
 type SelectedProblemsDrawerWrapperProps = {
@@ -21,7 +21,7 @@ type SelectedProblemsDrawerWrapperProps = {
   onClose: () => void;
   rootClassName?: string;
   width?: string | number;
-  selectedProblems: number[];
+  selectedProblems: number[]
 }
 
 const DrawerWrapper = ({

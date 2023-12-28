@@ -2,7 +2,7 @@ import { ProblemSources } from '../types/problem-source'
 export interface IconProps {
   height?: number;
   width?: number;
-  className?: string;
+  className?: string
 }
 
 export interface Problem {
@@ -11,5 +11,5 @@ export interface Problem {
   name: string;
   contest_name: string;
   url: string;
-  rating: number;
+  rating: number
 }

@@ -43,7 +43,7 @@
           {
             "multiline": {
               "delimiter": "semi",
-              "requireLast": true
+              "requireLast": false
             },
             "singleline": {
               "delimiter": "semi",

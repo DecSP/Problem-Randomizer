@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export type LoginFormFields = {
   name: string;
-  password: string;
+  password: string
 }
 
 // const { Option } = Select

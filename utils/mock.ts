@@ -7,7 +7,7 @@ export function mockNextUseRouter(props: {
   pathname: string;
   query?: string;
   asPath?: string;
-  push: () => void;
+  push: () => void
 }) {
   useRouter.mockImplementationOnce(() => ({
     route: props.route,

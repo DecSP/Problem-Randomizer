@@ -7,7 +7,7 @@ interface CounterProps {
   className?: string;
   onStart?: () => void;
   onPause?: () => void;
-  onStop?: () => void;
+  onStop?: () => void
 }
 
 export const Counter = (props: CounterProps) => {

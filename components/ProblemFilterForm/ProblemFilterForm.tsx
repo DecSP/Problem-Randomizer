@@ -16,14 +16,14 @@ export type ProblemFormFields = {
   lowerDiff?: number;
   upperDiff?: number;
   minutes?: number;
-  user?: string;
+  user?: string
 }
 
 type ProblemFilterFormProps = {
   // eslint-disable-next-line
   onSubmit: (values: ProblemFormFields) => Promise<void>
   setProbType: Dispatch<SetStateAction<ProblemSources | undefined>>;
-  disabled?: boolean;
+  disabled?: boolean
 }
 
 const { Option } = Select

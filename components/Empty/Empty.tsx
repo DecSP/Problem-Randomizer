@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react'
 
 export type EmptyProps = {
-  message: string;
+  message: string
 }
 
 export const Empty = ({ message }: EmptyProps) => {

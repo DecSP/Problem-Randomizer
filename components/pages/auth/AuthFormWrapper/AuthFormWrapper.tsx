@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { ReactNode } from 'react'
 
 export type AuthFormWrapperProps = {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export const AuthFormWrapper = (props: AuthFormWrapperProps) => {

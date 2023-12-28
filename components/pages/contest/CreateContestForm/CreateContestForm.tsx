@@ -15,7 +15,7 @@ export type CreateContestFormFields = {
   description?: string;
   isPublic?: boolean;
   minutes?: number;
-  penalty?: number;
+  penalty?: number
 }
 
 type ProblemFilterFormProps = {
@@ -29,7 +29,7 @@ type ProblemFilterFormProps = {
     // eslint-disable-next-line
     values: CreateContestFormFields,
   ) => void;
-  isContestValid?: boolean;
+  isContestValid?: boolean
 }
 
 export const CreateContestForm = (props: ProblemFilterFormProps) => {

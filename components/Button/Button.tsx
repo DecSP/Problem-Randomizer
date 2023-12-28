@@ -3,7 +3,7 @@ import React from 'react'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'solid' | 'outline';
-  color?: 'black' | 'white' | 'primary';
+  color?: 'black' | 'white' | 'primary'
 }
 
 export const Button = (props: ButtonProps) => {
