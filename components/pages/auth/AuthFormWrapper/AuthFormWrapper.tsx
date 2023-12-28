@@ -24,7 +24,7 @@ export const AuthFormWrapper = (props: AuthFormWrapperProps) => {
         </div>
         <div className="p-6 md:py-10 md:px-6 h-auto bg-neutral-100/40 backdrop-blur-md md:max-w-xs flex flex-row justify-center md:justify-start md:flex-col items-center gap-4 md:gap-8">
           <Image
-            src="/images/prob-rand-logo-gradient.png"
+            src="/images/prob-rand-logo.png"
             alt="Problem Randomizer Logo"
             width={80}
             height={80}
