@@ -46,49 +46,47 @@ const CreateContestPage = () => {
   }
 
   return !isSSR ? (
-    <>
-      <div>
-        <Head>
-          <title>Create Contest | Problem Randomizer</title>
-          <meta
-            name="description"
-            content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
-          />
-          <link rel="icon" href="/images/prob-rand-logo.png" />
-        </Head>
+    <div>
+      <Head>
+        <title>Create Contest | Problem Randomizer</title>
+        <meta
+          name="description"
+          content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
+        />
+        <link rel="icon" href="/images/prob-rand-logo.png" />
+      </Head>
 
-        <Header />
+      <Header />
 
-        <main
-          className="relative pt-[76px]"
-          style={{
-            backgroundImage:
-              'linear-gradient(to bottom, #FFF 200px, #F5F5F5 360px)',
-          }}
-        >
-          <section>
-            <div className="section-container">
-              <div className="px-6 md:px-[90px] pt-[40px] pb-[88px]">
-                <h1 className="text-2xl w-max break-words font-medium leading-9 mb-10">
-                  <span className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
-                    Create Contest
-                  </span>
-                </h1>
+      <main
+        className="relative pt-[76px]"
+        style={{
+          backgroundImage:
+            'linear-gradient(to bottom, #FFF 200px, #F5F5F5 360px)',
+        }}
+      >
+        <section>
+          <div className="section-container">
+            <div className="px-6 md:px-[90px] pt-[40px] pb-[88px]">
+              <h1 className="text-2xl w-max break-words font-medium leading-9 mb-10">
+                <span className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
+                  Create Contest
+                </span>
+              </h1>
 
-                <CreateContestForm
-                  formInstance={form}
-                  onSubmit={onSubmit}
-                  handleValuesChange={handleValuesChange}
-                  isContestValid={isContestValid}
-                />
-              </div>
+              <CreateContestForm
+                formInstance={form}
+                onSubmit={onSubmit}
+                handleValuesChange={handleValuesChange}
+                isContestValid={isContestValid}
+              />
             </div>
-          </section>
-        </main>
+          </div>
+        </section>
+      </main>
 
-        <Footer />
-      </div>
-    </>
+      <Footer />
+    </div>
   ) : null
 }
 
