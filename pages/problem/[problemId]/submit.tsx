@@ -1,8 +1,9 @@
+import { Icon } from '@iconify/react'
 import { useRouter } from 'next/router'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+
 import useFetch from '@/hooks/useFetch'
 import { client } from '@/lib/apis'
-import { Icon } from '@iconify/react'
 
 const SubmitSolution = () => {
   const ws_url = process.env.NEXT_PUBLIC_WS_URL

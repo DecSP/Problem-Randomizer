@@ -1,6 +1,14 @@
 {
-  "extends": ["next", "prettier"],
-  "rules": {},
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "overrides": [
     {
       "files": ["**/*.ts?(x)", "**/*.js?(x)"],
@@ -17,9 +25,84 @@
             "component": true,
             "html": true
           }
+        ],
+        "semi": "off",
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/space-before-function-paren": ["off", "never"],
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/no-var-requires": 0,
+        "unicode-bom": 0,
+        "react/jsx-curly-brace-presence": [
+          "warn",
+          { "props": "never", "children": "never" }
+        ],
+        "@typescript-eslint/no-extraneous-class": "off",
+        "@typescript-eslint/member-delimiter-style": [
+          "off",
+          {
+            "multiline": {
+              "delimiter": "semi",
+              "requireLast": false
+            },
+            "singleline": {
+              "delimiter": "semi",
+              "requireLast": false
+            },
+            "multilineDetection": "brackets"
+          }
+        ],
+        "@typescript-eslint/no-this-alias": [
+          "error",
+          {
+            "allowDestructuring": true,
+            // Allow const { props, state } = this; false by default
+            "allowedNames": ["me"]
+            // Allow const me= this; [] by default
+          }
+        ],
+        "@typescript-eslint/consistent-type-assertions": "warn",
+        "@typescript-eslint/no-useless-constructor": "off",
+        "no-debugger": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "simple-import-sort/imports": "warn",
+        "simple-import-sort/exports": "warn",
+        "unused-imports/no-unused-imports": "warn",
+        "react/jsx-sort-props": [
+          "warn",
+          {
+            "callbacksLast": true,
+            "shorthandFirst": true,
+            "multiline": "ignore",
+            "ignoreCase": true,
+            "noSortAlphabetically": true,
+            "reservedFirst": true,
+            "locale": "auto"
+          }
         ]
       }
     }
   ],
-  "plugins": ["react", "jest"]
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "simple-import-sort",
+    "unused-imports",
+    "jest"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

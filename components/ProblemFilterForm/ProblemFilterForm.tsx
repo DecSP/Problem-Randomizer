@@ -1,13 +1,15 @@
 import { Icon } from '@iconify/react'
-import { Form, Row, Col, Select, Input } from 'antd'
-import cx from 'classnames'
+import { Col, Form, Input, Row, Select } from 'antd'
 import { Dispatch, SetStateAction, useState } from 'react'
+
 import {
   DIFFICULTY_LOWER_BOUND,
   DIFFICULTY_UPPER_BOUND,
 } from '@/constants/difficulty'
-import { ProblemSources } from '@/types/problem-source'
 import { PROBLEM_SOURCES } from '@/constants/problem-source'
+import { ProblemSources } from '@/types/problem-source'
+
+import { Button } from '../Button'
 
 export type ProblemFormFields = {
   source?: ProblemSources
@@ -55,6 +57,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
 
   return (
     <Form
+      noValidate
       form={form}
       autoComplete="off"
       initialValues={{
@@ -63,7 +66,6 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         minutes: 0,
       }}
       onFinish={onSubmit}
-      noValidate
     >
       <Row gutter={24}>
         <Col span={24} xl={{ span: 8 }}>
@@ -80,13 +82,13 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                 clearIcon: <Icon icon="ph:x-bold" />,
               }}
               suffixIcon={<Icon icon="zondicons:arrow-down" />}
+              disabled={disabled}
               onChange={(value) => {
                 setProbType(value)
               }}
-              disabled={disabled}
             >
               {Object.keys(PROBLEM_SOURCES).map((key) => (
-                <Option value={key} key={key}>
+                <Option key={key} value={key}>
                   {PROBLEM_SOURCES[key as ProblemSources]}
                 </Option>
               ))}
@@ -232,20 +234,9 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         </Col>
 
         <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <button
-            className={cx(
-              'form-submit-button transition-[padding] duration-[250] p-0.5 hover:p-1 bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
-              {
-                '!opacity-40 cursor-not-allowed': disabled,
-              },
-            )}
-            type="submit"
-            disabled={disabled}
-          >
-            <div className="w-full h-full flex items-center justify-center bg-white text-black transition-colors duration-[250]">
-              Submit
-            </div>
-          </button>
+          <Button variant="outline" type="submit" disabled={disabled}>
+            Submit
+          </Button>
         </Col>
       </Row>
     </Form>

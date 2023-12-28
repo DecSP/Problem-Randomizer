@@ -1,6 +1,7 @@
 import { Form } from 'antd'
 import Head from 'next/head'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import {
@@ -76,9 +77,9 @@ const CreateContestPage = () => {
 
               <CreateContestForm
                 formInstance={form}
-                onSubmit={onSubmit}
                 handleValuesChange={handleValuesChange}
                 isContestValid={isContestValid}
+                onSubmit={onSubmit}
               />
             </div>
           </div>

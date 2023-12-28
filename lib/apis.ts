@@ -1,6 +1,6 @@
+import { ProblemSources } from '../types/problem-source'
 import fetcher from './fetcher'
 import { Problem } from './schema'
-import { ProblemSources } from '../types/problem-source'
 
 type Headers = Record<string, string>
 

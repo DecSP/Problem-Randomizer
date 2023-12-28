@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
 import cx from 'classnames'
+import { useEffect, useState } from 'react'
 
 interface CounterProps {
   interval: number
@@ -57,7 +57,6 @@ export const Counter = (props: CounterProps) => {
     if (count <= 0) {
       onStop?.()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count])
 
   return (
@@ -72,18 +71,17 @@ export const Counter = (props: CounterProps) => {
           <>
             {count <= 0 ? (
               <button
+                className="bg-black text-white h-auto px-2 py-1 text-sm md:text-base"
                 onClick={() => {
                   internalOnStart()
                   setCount(minutes * 60)
                 }}
-                className="bg-black text-white h-auto px-2 py-1 text-sm md:text-base"
               >
                 Restart
               </button>
             ) : null}
 
             <button
-              onClick={internalOnStart}
               className={cx(
                 'bg-black text-white h-auto px-2 py-1 text-sm md:text-base',
                 {
@@ -91,22 +89,23 @@ export const Counter = (props: CounterProps) => {
                 },
               )}
               disabled={count <= 0}
+              onClick={internalOnStart}
             >
               Start
             </button>
           </>
         ) : (
           <button
-            onClick={isPaused ? internalOnStart : internalOnPause}
             className="bg-black text-white h-auto px-2 py-1 text-sm md:text-base"
+            onClick={isPaused ? internalOnStart : internalOnPause}
           >
             {isPaused ? 'Resume' : 'Pause'}
           </button>
         )}
         {isStopped || count <= 0 ? null : (
           <button
-            onClick={internalOnStopped}
             className="bg-black text-white h-auto px-2 py-1 text-sm md:text-base"
+            onClick={internalOnStopped}
           >
             Stop
           </button>

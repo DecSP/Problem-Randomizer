@@ -1,13 +1,14 @@
 import { Icon } from '@iconify/react'
-import Link from 'next/link'
-import { Form, Row, Col, Input, Checkbox, Table, FormInstance } from 'antd'
-import { useProblemContext } from '@/context/problem'
+import { Checkbox, Col, Form, FormInstance, Input, Row, Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import { Problem } from '@/lib/schema'
-import { ProblemSourceBadge } from '@/components/ProblemSourceBadge'
 import cx from 'classnames'
+import Link from 'next/link'
+
 import { Empty } from '@/components/Empty'
+import { ProblemSourceBadge } from '@/components/ProblemSourceBadge'
 import { ROUTES } from '@/constants/routes'
+import { useProblemContext } from '@/context/problem'
+import { Problem } from '@/lib/schema'
 
 export type CreateContestFormFields = {
   title?: string
@@ -109,7 +110,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       </h2>
 
       <Form
-        onValuesChange={handleValuesChange}
+        noValidate
         form={formInstance}
         autoComplete="off"
         initialValues={{
@@ -119,9 +120,9 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
           minutes: 0,
           penalty: 0,
         }}
-        onFinish={onSubmit}
-        noValidate
         className="mb-14 p-6 border bg-white w-full lg:w-2/3"
+        onValuesChange={handleValuesChange}
+        onFinish={onSubmit}
       >
         <Row gutter={24}>
           <Col span={24}>

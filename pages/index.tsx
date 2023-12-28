@@ -1,23 +1,26 @@
+import { Icon } from '@iconify/react'
+import { notification } from 'antd'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Header } from '../components/Header/Header'
-import useFetch from '../hooks/useFetch'
-import { client } from '../lib/apis'
-import { ProblemSources } from '../types/problem-source'
-import { Icon } from '@iconify/react'
 import { useEffect, useMemo, useState } from 'react'
+
+import { Button } from '@/components/Button'
+
 import { Counter } from '../components/Counter'
-import { Problem } from '../lib/schema'
+import { Footer } from '../components/Footer'
+import { Header } from '../components/Header/Header'
+import { ProblemCard } from '../components/ProblemCard'
 import {
   ProblemFilterForm,
   ProblemFormFields,
 } from '../components/ProblemFilterForm'
 import { SelectedProblemsDrawer } from '../components/SelectedProblemsDrawer'
-import { ProblemCard } from '../components/ProblemCard'
-import { useProblemContext } from '../context/problem'
 import { WalkthroughDrawer } from '../components/WalkthroughDrawer'
-import { Footer } from '../components/Footer'
-import { notification } from 'antd'
+import { useProblemContext } from '../context/problem'
+import useFetch from '../hooks/useFetch'
+import { client } from '../lib/apis'
+import { Problem } from '../lib/schema'
+import { ProblemSources } from '../types/problem-source'
 
 const Home: NextPage = () => {
   const { problems = [], setProblems } = useProblemContext()
@@ -172,9 +175,9 @@ const Home: NextPage = () => {
               </button>
             </div>
             <ProblemFilterForm
-              onSubmit={onSubmit}
               setProbType={setProbType}
               disabled={isLoading || isTimerRunning}
+              onSubmit={onSubmit}
             />
           </div>
         </section>
@@ -214,14 +217,15 @@ const Home: NextPage = () => {
           />
         ) : null}
 
-        <button
-          className="text-base !rounded-none fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
+        <Button
+          color="black"
+          className="text-base fixed flex items-center gap-1 bottom-6 right-0"
           type="submit"
           onClick={openDrawer}
         >
-          <Icon icon="ri:arrow-right-s-line" className="shrink-0" /> View
-          Selected
-        </button>
+          <Icon icon="ri:arrow-right-s-line" className="shrink-0" />
+          View Selected
+        </Button>
 
         <SelectedProblemsDrawer
           open={isProblemsDrawerOpen}

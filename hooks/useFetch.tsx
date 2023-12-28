@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react'
 import useSWR, { Key } from 'swr'
 import { Fetcher, SWRConfiguration } from 'swr/core/dist'
-import { useState, useEffect } from 'react'
 
 function useFetch<Data = any, Error = any>(
   fn: Fetcher<Data> | null = null,

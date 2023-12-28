@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import cx from 'classnames'
+
 import { PROBLEM_SOURCES } from '@/constants/problem-source'
 import { ProblemSources } from '@/types/problem-source'
 

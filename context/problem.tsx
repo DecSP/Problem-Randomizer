@@ -7,6 +7,7 @@ import {
   useMemo,
   useState,
 } from 'react'
+
 import { Problem } from '../lib/schema'
 
 export type SidebarVariant = 'main' | 'app-detail'
@@ -44,7 +45,6 @@ function ProblemContextProvider({ children }: { children: ReactNode }) {
       addProblem,
       removeProblem,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [problemIds],
   )
 
@@ -59,8 +59,8 @@ const useProblemContext = () =>
   useContext(ProblemContext) as ProblemContextValue
 
 export {
-  type ProblemContextValue,
   ProblemContext,
   ProblemContextProvider,
+  type ProblemContextValue,
   useProblemContext,
 }

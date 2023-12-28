@@ -1,9 +1,11 @@
+import { Icon } from '@iconify/react'
 import { Card, Checkbox } from 'antd'
+import cx from 'classnames'
 import { useEffect, useState } from 'react'
+
 import { useProblemContext } from '@/context/problem'
 import { Problem } from '@/lib/schema'
-import cx from 'classnames'
-import { Icon } from '@iconify/react'
+
 import { ProblemSourceBadge } from '../ProblemSourceBadge'
 
 type ProblemCardProps = {
@@ -50,9 +52,9 @@ export const ProblemCard = ({
       extra={
         showCheckbox ? (
           <Checkbox
-            onChange={onChange}
             className="flex-row-reverse"
             checked={isSelected}
+            onChange={onChange}
           >
             <div className="h-6 overflow-hidden">
               <div

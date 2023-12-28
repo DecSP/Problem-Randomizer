@@ -1,8 +1,9 @@
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
+
 import { Footer } from '../components/Footer'
 import { AuthFormWrapper } from '../components/pages/auth/AuthFormWrapper'
 import { SignUpForm } from '../components/pages/auth/SignUpForm'
-import { useState, useEffect } from 'react'
 
 const SignUpPage = () => {
   const [isSSR, setIsSSR] = useState(true)

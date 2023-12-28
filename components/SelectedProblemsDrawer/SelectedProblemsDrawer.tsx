@@ -1,12 +1,14 @@
 import { Drawer } from 'antd'
-import { ReactNode } from 'react'
-import { useProblemContext } from '@/context/problem'
-import { ProblemCard } from '../ProblemCard'
 // import { ProblemFormFields } from '../ProblemFilterForm'
-import cx from 'classnames'
 import { useRouter } from 'next/router'
+import { ReactNode } from 'react'
+
 import { ROUTES } from '@/constants/routes'
+import { useProblemContext } from '@/context/problem'
+
+import { Button } from '../Button'
 import { Empty } from '../Empty'
+import { ProblemCard } from '../ProblemCard'
 
 type SelectedProblemsDrawerProps = {
   open?: boolean
@@ -41,7 +43,6 @@ const DrawerWrapper = ({
     <Drawer
       placement="right"
       open={open}
-      onClose={onClose}
       width={width}
       rootClassName={rootClassName}
       className="!bg-neutral-100"
@@ -91,20 +92,15 @@ const DrawerWrapper = ({
             </button>
           </Form> */}
 
-          <button
-            className={cx(
-              'form-submit-button hover:opacity-80 !h-12 transition-all duration-[250] bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
-              {
-                '!opacity-100 cursor-not-allowed': disabled,
-              },
-            )}
-            onClick={() => push(ROUTES.CREATE_CONTEST)}
+          <Button
             disabled={disabled}
+            onClick={() => push(ROUTES.CREATE_CONTEST)}
           >
             Continue
-          </button>
+          </Button>
         </>
       }
+      onClose={onClose}
     >
       {children}
     </Drawer>
@@ -136,19 +132,19 @@ export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
     <>
       <DrawerWrapper
         open={open}
-        onClose={onClose}
         selectedProblems={selectedProblemIds}
         rootClassName="hidden md:block"
+        onClose={onClose}
       >
         {drawerInner}
       </DrawerWrapper>
 
       <DrawerWrapper
         open={open}
-        onClose={onClose}
         selectedProblems={selectedProblemIds}
         width="100%"
         rootClassName="block md:hidden"
+        onClose={onClose}
       >
         {drawerInner}
       </DrawerWrapper>
