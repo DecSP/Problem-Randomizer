@@ -1,14 +1,25 @@
 {
   "extends": ["next", "prettier"],
-  "rules": {
-    "no-unused-vars": "error",
-    "react/self-closing-comp": [
-      "error",
-      {
-        "component": true,
-        "html": true
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)", "**/*.js?(x)"],
+      "rules": {
+        "react/jsx-no-useless-fragment": [
+          "error",
+          { "allowExpressions": true }
+        ],
+        "no-nested-ternary": "error",
+        "no-unused-vars": "error",
+        "react/self-closing-comp": [
+          "error",
+          {
+            "component": true,
+            "html": true
+          }
+        ]
       }
-    ]
-  },
+    }
+  ],
   "plugins": ["react", "jest"]
 }

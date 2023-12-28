@@ -3,7 +3,7 @@ import React from 'react'
 
 type ButtonProps = {
   variant?: 'solid' | 'outline'
-  color?: 'black' | 'white'
+  color?: 'black' | 'white' | 'primary'
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
@@ -11,7 +11,7 @@ type ButtonProps = {
 export const PrButton = (props: ButtonProps) => {
   const {
     variant = 'solid',
-    color = 'white',
+    color = 'primary',
     leftIcon,
     rightIcon,
     children,
@@ -21,19 +21,31 @@ export const PrButton = (props: ButtonProps) => {
 
   const baseClasses = 'transition-all duration-[250] p-0.5'
   const hoverClasses =
-    variant === 'solid' && color === 'white' ? 'hover:p-1' : 'hover:opacity-80'
-  const disabledClasses = rest.disabled
-    ? color === 'black'
-      ? '!opacity-40 cursor-not-allowed'
-      : '!opacity-100 cursor-not-allowed'
-    : ''
+    variant === 'solid' && color === 'primary'
+      ? 'hover:p-1'
+      : 'hover:opacity-80'
 
-  const variantClasses =
-    variant === 'solid'
-      ? color === 'white'
-        ? 'form-submit-button transition-[padding] duration-[250] p-0.5 hover:p-1 bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600' //solid white
-        : 'text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30' //solid black
-      : 'form-submit-button transition-[padding] duration-[250] p-0.5 hover:p-1 bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600'
+  let disabledClasses = ''
+
+  if (rest.disabled) {
+    if (color === 'black') {
+      disabledClasses = '!opacity-40 cursor-not-allowed'
+    } else {
+      disabledClasses = '!opacity-100 cursor-not-allowed'
+    }
+  }
+
+  let variantClasses =
+    'form-submit-button transition-[padding] duration-[250] p-0.5 hover:p-1 bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600'
+  if (variant === 'solid') {
+    if (color === 'primary') {
+      variantClasses =
+        'form-submit-button transition-[padding] duration-[250] p-0.5 hover:p-1 bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600'
+    } else {
+      variantClasses =
+        'text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30'
+    }
+  }
 
   const buttonClasses = cx(
     baseClasses,
