@@ -1,49 +1,50 @@
-import { Form } from 'antd'
-import Head from 'next/head'
-import { useState, useEffect } from 'react'
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
+import { Form } from 'antd';
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+
+import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
 import {
   CreateContestForm,
   CreateContestFormFields,
-} from '@/components/pages/contest/CreateContestForm'
-import { useProblemContext } from '@/context/problem'
+} from '@/components/pages/contest/CreateContestForm';
+import { useProblemContext } from '@/context/problem';
 
 const CreateContestPage = () => {
-  const [isSSR, setIsSSR] = useState(true)
+  const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
-    setIsSSR(false)
-  }, [])
+    setIsSSR(false);
+  }, []);
 
-  const [form] = Form.useForm()
-  const { selectedProblemIds } = useProblemContext()
+  const [form] = Form.useForm();
+  const { selectedProblemIds } = useProblemContext();
 
-  const [isFieldFilled, setIsFieldFilled] = useState(false)
-  const [isContestValid, setIsContestValid] = useState(false)
+  const [isFieldFilled, setIsFieldFilled] = useState(false);
+  const [isContestValid, setIsContestValid] = useState(false);
 
   const handleValuesChange = (_: any, values: CreateContestFormFields) => {
-    const isFieldFilled = values.title !== ''
+    const isFieldFilled = values.title !== '';
 
-    setIsFieldFilled(isFieldFilled)
-  }
+    setIsFieldFilled(isFieldFilled);
+  };
 
   useEffect(() => {
     if (isFieldFilled && selectedProblemIds.length > 0) {
-      setIsContestValid(true)
+      setIsContestValid(true);
     } else {
-      setIsContestValid(false)
+      setIsContestValid(false);
     }
-  }, [isFieldFilled, selectedProblemIds.length])
+  }, [isFieldFilled, selectedProblemIds.length]);
 
   const onSubmit = (value: CreateContestFormFields) => {
     if (isContestValid) {
-      console.log(value)
-      return Promise.resolve()
+      console.log(value);
+      return Promise.resolve();
     } else {
-      return Promise.resolve()
+      return Promise.resolve();
     }
-  }
+  };
 
   return !isSSR ? (
     <div>
@@ -76,9 +77,9 @@ const CreateContestPage = () => {
 
               <CreateContestForm
                 formInstance={form}
-                onSubmit={onSubmit}
                 handleValuesChange={handleValuesChange}
                 isContestValid={isContestValid}
+                onSubmit={onSubmit}
               />
             </div>
           </div>
@@ -87,7 +88,7 @@ const CreateContestPage = () => {
 
       <Footer />
     </div>
-  ) : null
-}
+  ) : null;
+};
 
-export default CreateContestPage
+export default CreateContestPage;

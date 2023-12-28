@@ -1,8 +1,8 @@
-import { Icon } from '@iconify/react'
+import { Icon } from '@iconify/react';
 
 export type EmptyProps = {
-  message: string
-}
+  message: string;
+};
 
 export const Empty = ({ message }: EmptyProps) => {
   return (
@@ -10,5 +10,5 @@ export const Empty = ({ message }: EmptyProps) => {
       <Icon icon="carbon:code-hide" className="text-6xl" />
       <span className="font-semibold tracking-[2px]">{message}</span>
     </div>
-  )
-}
+  );
+};

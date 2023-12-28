@@ -1,1 +1,1 @@
-export * from './ProblemSourceBadge'
+export * from './ProblemSourceBadge';

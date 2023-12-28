@@ -1,12 +1,12 @@
-import Image from 'next/image'
-import { ReactNode } from 'react'
+import Image from 'next/image';
+import { ReactNode } from 'react';
 
 export type AuthFormWrapperProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 export const AuthFormWrapper = (props: AuthFormWrapperProps) => {
-  const { children } = props
+  const { children } = props;
 
   return (
     <div className="flex flex-col items-center gap-6">
@@ -24,19 +24,19 @@ export const AuthFormWrapper = (props: AuthFormWrapperProps) => {
         </div>
         <div className="p-6 md:py-10 md:px-6 h-auto bg-neutral-100/40 backdrop-blur-md md:max-w-xs flex flex-row justify-center md:justify-start md:flex-col items-center gap-4 md:gap-8">
           <Image
+            priority
             src="/images/prob-rand-logo.png"
             alt="Problem Randomizer Logo"
             width={80}
             height={80}
-            priority
             className="select-none md:mt-14 hidden md:block"
           />
           <Image
+            priority
             src="/images/prob-rand-logo-gradient.png"
             alt="Problem Randomizer Logo"
             width={52}
             height={52}
-            priority
             className="select-none md:mt-14 block md:hidden"
           />
 
@@ -56,5 +56,5 @@ export const AuthFormWrapper = (props: AuthFormWrapperProps) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

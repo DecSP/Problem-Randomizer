@@ -1,38 +1,40 @@
-import { Icon } from '@iconify/react'
-import { Form, Row, Col, Select, Input } from 'antd'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Icon } from '@iconify/react';
+import { Col, Form, Input, Row, Select } from 'antd';
+import { Dispatch, SetStateAction, useState } from 'react';
+
 import {
   DIFFICULTY_LOWER_BOUND,
   DIFFICULTY_UPPER_BOUND,
-} from '@/constants/difficulty'
-import { ProblemSources } from '@/types/problem-source'
-import { PROBLEM_SOURCES } from '@/constants/problem-source'
-import { PrButton } from '../Button'
+} from '@/constants/difficulty';
+import { PROBLEM_SOURCES } from '@/constants/problem-source';
+import { ProblemSources } from '@/types/problem-source';
+
+import { Button } from '../Button';
 
 export type ProblemFormFields = {
-  source?: ProblemSources
-  lowerDiff?: number
-  upperDiff?: number
-  minutes?: number
-  user?: string
-}
+  source?: ProblemSources;
+  lowerDiff?: number;
+  upperDiff?: number;
+  minutes?: number;
+  user?: string;
+};
 
 type ProblemFilterFormProps = {
   // eslint-disable-next-line
   onSubmit: (values: ProblemFormFields) => Promise<void>
-  setProbType: Dispatch<SetStateAction<ProblemSources | undefined>>
-  disabled?: boolean
-}
+  setProbType: Dispatch<SetStateAction<ProblemSources | undefined>>;
+  disabled?: boolean;
+};
 
-const { Option } = Select
+const { Option } = Select;
 
 export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
-  const { onSubmit, setProbType, disabled = false } = props
-  const [form] = Form.useForm()
+  const { onSubmit, setProbType, disabled = false } = props;
+  const [form] = Form.useForm();
 
   const revalidateDiffBound = () => {
-    form.validateFields(['lowerDiff', 'upperDiff'])
-  }
+    form.validateFields(['lowerDiff', 'upperDiff']);
+  };
 
   const diffBoundValidator = (
     value: string,
@@ -42,19 +44,20 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
     callback: (error?: string | undefined) => void,
     message: string,
   ) => {
-    const intValue = parseInt(value)
+    const intValue = parseInt(value);
 
     if (isNaN(intValue) || intValue < left || intValue > right) {
-      callback(message)
+      callback(message);
     } else {
-      callback()
+      callback();
     }
-  }
+  };
 
-  const [lowerBound, setLowerBound] = useState(DIFFICULTY_LOWER_BOUND)
+  const [lowerBound, setLowerBound] = useState(DIFFICULTY_LOWER_BOUND);
 
   return (
     <Form
+      noValidate
       form={form}
       autoComplete="off"
       initialValues={{
@@ -63,7 +66,6 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         minutes: 0,
       }}
       onFinish={onSubmit}
-      noValidate
     >
       <Row gutter={24}>
         <Col span={24} xl={{ span: 8 }}>
@@ -80,13 +82,13 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                 clearIcon: <Icon icon="ph:x-bold" />,
               }}
               suffixIcon={<Icon icon="zondicons:arrow-down" />}
-              onChange={(value) => {
-                setProbType(value)
-              }}
               disabled={disabled}
+              onChange={(value) => {
+                setProbType(value);
+              }}
             >
               {Object.keys(PROBLEM_SOURCES).map((key) => (
-                <Option value={key} key={key}>
+                <Option key={key} value={key}>
                   {PROBLEM_SOURCES[key as ProblemSources]}
                 </Option>
               ))}
@@ -111,7 +113,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     DIFFICULTY_UPPER_BOUND,
                     callback,
                     `Lower bound must be between ${DIFFICULTY_LOWER_BOUND} and ${DIFFICULTY_UPPER_BOUND}`,
-                  )
+                  );
                 },
               },
             ]}
@@ -127,8 +129,8 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     Number(event.target.value) <= DIFFICULTY_UPPER_BOUND
                     ? Number(event.target.value)
                     : DIFFICULTY_LOWER_BOUND,
-                )
-                revalidateDiffBound()
+                );
+                revalidateDiffBound();
               }}
             />
           </Form.Item>
@@ -147,7 +149,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     DIFFICULTY_UPPER_BOUND,
                     callback,
                     `Upper bound must be between ${lowerBound} and ${DIFFICULTY_UPPER_BOUND}`,
-                  )
+                  );
                 },
               },
             ]}
@@ -173,7 +175,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     DIFFICULTY_UPPER_BOUND,
                     callback,
                     `Must be between ${DIFFICULTY_LOWER_BOUND} and ${DIFFICULTY_UPPER_BOUND}`,
-                  )
+                  );
                 },
               },
             ]}
@@ -189,8 +191,8 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     Number(event.target.value) <= DIFFICULTY_UPPER_BOUND
                     ? Number(event.target.value)
                     : DIFFICULTY_LOWER_BOUND,
-                )
-                revalidateDiffBound()
+                );
+                revalidateDiffBound();
               }}
             />
           </Form.Item>
@@ -209,7 +211,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
                     DIFFICULTY_UPPER_BOUND,
                     callback,
                     `Must be between ${lowerBound} and ${DIFFICULTY_UPPER_BOUND}`,
-                  )
+                  );
                 },
               },
             ]}
@@ -232,11 +234,11 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         </Col>
 
         <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <PrButton variant="outline" type="submit" disabled={disabled}>
+          <Button variant="outline" type="submit" disabled={disabled}>
             Submit
-          </PrButton>
+          </Button>
         </Col>
       </Row>
     </Form>
-  )
-}
+  );
+};

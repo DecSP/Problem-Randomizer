@@ -1,26 +1,28 @@
-import { Drawer } from 'antd'
-import { ReactNode } from 'react'
-import { useProblemContext } from '@/context/problem'
-import { ProblemCard } from '../ProblemCard'
+import { Drawer } from 'antd';
 // import { ProblemFormFields } from '../ProblemFilterForm'
-import { useRouter } from 'next/router'
-import { ROUTES } from '@/constants/routes'
-import { Empty } from '../Empty'
-import { PrButton } from '../Button'
+import { useRouter } from 'next/router';
+import { ReactNode } from 'react';
+
+import { ROUTES } from '@/constants/routes';
+import { useProblemContext } from '@/context/problem';
+
+import { Button } from '../Button';
+import { Empty } from '../Empty';
+import { ProblemCard } from '../ProblemCard';
 
 type SelectedProblemsDrawerProps = {
-  open?: boolean
-  onClose: () => void
-}
+  open?: boolean;
+  onClose: () => void;
+};
 
 type SelectedProblemsDrawerWrapperProps = {
-  children: ReactNode
-  open?: boolean
-  onClose: () => void
-  rootClassName?: string
-  width?: string | number
-  selectedProblems: number[]
-}
+  children: ReactNode;
+  open?: boolean;
+  onClose: () => void;
+  rootClassName?: string;
+  width?: string | number;
+  selectedProblems: number[];
+};
 
 const DrawerWrapper = ({
   open,
@@ -30,8 +32,8 @@ const DrawerWrapper = ({
   width,
   selectedProblems,
 }: SelectedProblemsDrawerWrapperProps) => {
-  const disabled = selectedProblems.length === 0
-  const { push } = useRouter()
+  const disabled = selectedProblems.length === 0;
+  const { push } = useRouter();
 
   // const onSubmit = (values: { minutes: string }) => {
   //   console.log(JSON.stringify(values))
@@ -41,7 +43,6 @@ const DrawerWrapper = ({
     <Drawer
       placement="right"
       open={open}
-      onClose={onClose}
       width={width}
       rootClassName={rootClassName}
       className="!bg-neutral-100"
@@ -91,61 +92,62 @@ const DrawerWrapper = ({
             </button>
           </Form> */}
 
-          <PrButton
-            onClick={() => push(ROUTES.CREATE_CONTEST)}
+          <Button
             disabled={disabled}
+            onClick={() => push(ROUTES.CREATE_CONTEST)}
           >
             Continue
-          </PrButton>
+          </Button>
         </>
       }
+      onClose={onClose}
     >
       {children}
     </Drawer>
-  )
-}
+  );
+};
 
 export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
-  const { open, onClose } = props
-  const { selectedProblemIds, problems } = useProblemContext()
+  const { open, onClose } = props;
+  const { selectedProblemIds, problems } = useProblemContext();
 
   const drawerInner =
     selectedProblemIds.length > 0 ? (
       <div className="flex flex-col gap-4">
         {selectedProblemIds.map((p) => {
-          const currentProblem = problems.find((problem) => problem.id === p)
+          const currentProblem = problems.find((problem) => problem.id === p);
 
           return currentProblem ? (
             <ProblemCard key={currentProblem?.id} problem={currentProblem} />
-          ) : null
+          ) : null;
         })}
       </div>
     ) : (
       <div className="flex items-center h-full justify-center">
         <Empty message="No problems added" />
       </div>
-    )
+    );
 
   return (
     <>
       <DrawerWrapper
         open={open}
-        onClose={onClose}
         selectedProblems={selectedProblemIds}
         rootClassName="hidden md:block"
+        onClose={onClose}
       >
         {drawerInner}
       </DrawerWrapper>
 
       <DrawerWrapper
         open={open}
-        onClose={onClose}
         selectedProblems={selectedProblemIds}
         width="100%"
         rootClassName="block md:hidden"
+        onClose={onClose}
       >
         {drawerInner}
       </DrawerWrapper>
     </>
-  )
-}
+  );
+};

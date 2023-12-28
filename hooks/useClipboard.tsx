@@ -1,21 +1,21 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const useClipboard = (value: string) => {
-  const [hasCopied, setHasCopied] = useState(false)
+  const [hasCopied, setHasCopied] = useState(false);
 
   const onCopy = () => {
     if (!hasCopied) {
-      navigator.clipboard.writeText(value)
+      navigator.clipboard.writeText(value);
 
-      setHasCopied(true)
+      setHasCopied(true);
 
       setTimeout(() => {
-        setHasCopied(false)
-      }, 3000)
+        setHasCopied(false);
+      }, 3000);
     }
-  }
+  };
 
-  return { onCopy, hasCopied }
-}
+  return { onCopy, hasCopied };
+};
 
-export default useClipboard
+export default useClipboard;

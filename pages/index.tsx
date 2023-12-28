@@ -1,95 +1,97 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { Header } from '../components/Header/Header'
-import useFetch from '../hooks/useFetch'
-import { client } from '../lib/apis'
-import { ProblemSources } from '../types/problem-source'
-import { Icon } from '@iconify/react'
-import { useEffect, useMemo, useState } from 'react'
-import { Counter } from '../components/Counter'
-import { Problem } from '../lib/schema'
+import { Icon } from '@iconify/react';
+import { notification } from 'antd';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { useEffect, useMemo, useState } from 'react';
+
+import { Button } from '@/components/Button';
+
+import { Counter } from '../components/Counter';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header/Header';
+import { ProblemCard } from '../components/ProblemCard';
 import {
   ProblemFilterForm,
   ProblemFormFields,
-} from '../components/ProblemFilterForm'
-import { SelectedProblemsDrawer } from '../components/SelectedProblemsDrawer'
-import { ProblemCard } from '../components/ProblemCard'
-import { useProblemContext } from '../context/problem'
-import { WalkthroughDrawer } from '../components/WalkthroughDrawer'
-import { Footer } from '../components/Footer'
-import { notification } from 'antd'
-import { PrButton } from '@/components/Button'
+} from '../components/ProblemFilterForm';
+import { SelectedProblemsDrawer } from '../components/SelectedProblemsDrawer';
+import { WalkthroughDrawer } from '../components/WalkthroughDrawer';
+import { useProblemContext } from '../context/problem';
+import useFetch from '../hooks/useFetch';
+import { client } from '../lib/apis';
+import { Problem } from '../lib/schema';
+import { ProblemSources } from '../types/problem-source';
 
 const Home: NextPage = () => {
-  const { problems = [], setProblems } = useProblemContext()
-  const [prob, setProb] = useState<Problem[]>(problems)
+  const { problems = [], setProblems } = useProblemContext();
+  const [prob, setProb] = useState<Problem[]>(problems);
   const [probType, setProbType] = useState<ProblemSources | undefined>(
     undefined,
-  )
-  const [isProblemsDrawerOpen, setIsProblemsDrawerOpen] = useState(false)
-  const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false)
-  const [isEverOpened, setIsEverOpened] = useState(false)
+  );
+  const [isProblemsDrawerOpen, setIsProblemsDrawerOpen] = useState(false);
+  const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false);
+  const [isEverOpened, setIsEverOpened] = useState(false);
 
   const allSpawnedProblemsId = useMemo(
     () => prob.map((problem) => problem.id),
     [prob],
-  )
+  );
 
   useEffect(() => {
     if (!isEverOpened && isProblemsDrawerOpen) {
-      setIsEverOpened(true)
+      setIsEverOpened(true);
     }
-  }, [isProblemsDrawerOpen, isEverOpened])
+  }, [isProblemsDrawerOpen, isEverOpened]);
 
   useEffect(() => {
     if (!isEverOpened && problems.length > 0) {
-      setIsProblemsDrawerOpen(true)
-      setIsEverOpened(true)
+      setIsProblemsDrawerOpen(true);
+      setIsEverOpened(true);
     }
-  }, [isEverOpened, problems.length])
+  }, [isEverOpened, problems.length]);
 
   const openDrawer = () => {
-    setIsProblemsDrawerOpen(true)
-  }
+    setIsProblemsDrawerOpen(true);
+  };
   const closeDrawer = () => {
-    setIsProblemsDrawerOpen(false)
-  }
+    setIsProblemsDrawerOpen(false);
+  };
 
-  const [isSSR, setIsSSR] = useState(true)
+  const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
-    setIsSSR(false)
-  }, [])
+    setIsSSR(false);
+  }, []);
 
   const [timerConfig, setTimerConfig] = useState({
     show: false,
     minutes: 0,
     isCounting: false,
-  })
+  });
   const { data, isLoading } = useFetch(
     () => (probType ? client.getProblems(probType) : undefined),
     probType ? [probType] : undefined,
-  )
-  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false)
+  );
+  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
   const startTimer = (minutes: number) => {
     setTimerConfig({
       show: true,
       minutes,
       isCounting: true,
-    })
-  }
+    });
+  };
 
   const onSubmit = async (values: ProblemFormFields) => {
     if (!data || (data || []).length === 0) {
-      return
+      return;
     }
 
     setTimerConfig({
       show: false,
       minutes: 0,
       isCounting: false,
-    })
+    });
 
     const problemsMeetingFilters = (data || [])
       .filter((problem) => !allSpawnedProblemsId.includes(problem.id))
@@ -99,44 +101,44 @@ const Home: NextPage = () => {
           value.rating &&
           (!values.lowerDiff || value.rating >= values.lowerDiff) &&
           (!values.upperDiff || value.rating <= values.upperDiff),
-      )
+      );
 
     if ((data || []).length > 0) {
       if (allSpawnedProblemsId.length >= (data || []).length) {
         notification.info({
           message: 'We have spawned all problems from this source',
-        })
+        });
 
-        return
+        return;
       }
 
       if (problemsMeetingFilters.length === 0) {
         notification.info({
           message: 'No problems meet the filter conditions',
-        })
+        });
 
-        return
+        return;
       }
     }
 
     const problem =
       problemsMeetingFilters[
         Math.floor(Math.random() * problemsMeetingFilters.length)
-      ]
+      ];
 
-    setProblems([problem, ...prob])
-    setProb([problem, ...prob])
+    setProblems([problem, ...prob]);
+    setProb([problem, ...prob]);
 
     if (values?.minutes && values?.minutes > 0) {
-      startTimer(values?.minutes)
+      startTimer(values?.minutes);
     } else {
       setTimerConfig({
         show: false,
         minutes: 0,
         isCounting: false,
-      })
+      });
     }
-  }
+  };
 
   return !isSSR ? (
     <>
@@ -173,9 +175,9 @@ const Home: NextPage = () => {
               </button>
             </div>
             <ProblemFilterForm
-              onSubmit={onSubmit}
               setProbType={setProbType}
               disabled={isLoading || isTimerRunning}
+              onSubmit={onSubmit}
             />
           </div>
         </section>
@@ -215,7 +217,7 @@ const Home: NextPage = () => {
           />
         ) : null}
 
-        <PrButton
+        <Button
           color="black"
           className="text-base fixed flex items-center gap-1 bottom-6 right-0"
           type="submit"
@@ -223,7 +225,7 @@ const Home: NextPage = () => {
         >
           <Icon icon="ri:arrow-right-s-line" className="shrink-0" />
           View Selected
-        </PrButton>
+        </Button>
 
         <SelectedProblemsDrawer
           open={isProblemsDrawerOpen}
@@ -238,7 +240,7 @@ const Home: NextPage = () => {
 
       <Footer />
     </>
-  ) : null
-}
+  ) : null;
+};
 
-export default Home
+export default Home;

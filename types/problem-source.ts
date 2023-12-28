@@ -1,1 +1,1 @@
-export type ProblemSources = 'codeforces' | 'atcoder' | 'cses'
+export type ProblemSources = 'codeforces' | 'atcoder' | 'cses';

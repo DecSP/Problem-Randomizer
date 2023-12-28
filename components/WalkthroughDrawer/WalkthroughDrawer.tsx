@@ -1,19 +1,19 @@
-import { Drawer } from 'antd'
-import Image from 'next/image'
-import { ReactNode } from 'react'
+import { Drawer } from 'antd';
+import Image from 'next/image';
+import { ReactNode } from 'react';
 
 type WalkthroughDrawerProps = {
-  open?: boolean
-  onClose: () => void
-}
+  open?: boolean;
+  onClose: () => void;
+};
 
 type WalkthroughDrawerWrapperProps = {
-  children: ReactNode
-  open?: boolean
-  onClose: () => void
-  rootClassName?: string
-  width?: string | number
-}
+  children: ReactNode;
+  open?: boolean;
+  onClose: () => void;
+  rootClassName?: string;
+  width?: string | number;
+};
 
 const DrawerWrapper = ({
   open,
@@ -26,7 +26,6 @@ const DrawerWrapper = ({
     <Drawer
       placement="right"
       open={open}
-      onClose={onClose}
       width={width}
       rootClassName={rootClassName}
       className="!bg-neutral-100"
@@ -35,23 +34,24 @@ const DrawerWrapper = ({
           backgroundColor: '#FFFFFF',
         },
       }}
+      onClose={onClose}
     >
       {children}
     </Drawer>
-  )
-}
+  );
+};
 
 export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
-  const { open, onClose } = props
+  const { open, onClose } = props;
 
   const drawerInner = (
     <div className="flex flex-col items-center gap-4">
       <Image
+        priority
         src="/images/prob-rand-logo.png"
         alt="Problem Randomizer Logo"
         width={80}
         height={80}
-        priority
         className="pb-2 select-none"
       />
       <h2 className="font-medium text-xl pb-2 text-center">
@@ -74,26 +74,26 @@ export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
         <li>Set your timer (optional) and start solving the problem set.</li>
       </ul>
     </div>
-  )
+  );
 
   return (
     <>
       <DrawerWrapper
         open={open}
-        onClose={onClose}
         rootClassName="hidden md:block"
+        onClose={onClose}
       >
         {drawerInner}
       </DrawerWrapper>
 
       <DrawerWrapper
         open={open}
-        onClose={onClose}
         width="100%"
         rootClassName="block md:hidden"
+        onClose={onClose}
       >
         {drawerInner}
       </DrawerWrapper>
     </>
-  )
-}
+  );
+};

@@ -1,15 +1,17 @@
-import Image from 'next/image'
-import { useState } from 'react'
+import Image from 'next/image';
+import { useState } from 'react';
+
 import {
   AT_CODER_URL,
   CODEFORCES_URL,
   CSES_URL,
   GITHUB_ORG_URL,
-} from '@/constants/urls'
-import { WalkthroughDrawer } from '../WalkthroughDrawer'
+} from '@/constants/urls';
+
+import { WalkthroughDrawer } from '../WalkthroughDrawer';
 
 export const Footer = () => {
-  const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false)
+  const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false);
 
   return (
     <>
@@ -18,11 +20,11 @@ export const Footer = () => {
         <div className="section-container flex justify-between items-start w-full gap-12 flex-wrap">
           <div className="flex flex-col sm:flex-row gap-6 md:gap-12 items-start">
             <Image
+              priority
               src="/images/prob-rand-logo.png"
               alt="Problem Randomizer Logo"
               width={44}
               height={44}
-              priority
               className="select-none"
             />
 
@@ -86,5 +88,5 @@ export const Footer = () => {
         onClose={() => setIsWalkthroughDrawerOpen(false)}
       />
     </>
-  )
-}
+  );
+};

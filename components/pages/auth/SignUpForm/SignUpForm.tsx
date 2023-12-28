@@ -1,18 +1,18 @@
-import { Icon } from '@iconify/react'
-import { Form, Row, Col, Input } from 'antd'
+import { Icon } from '@iconify/react';
+import { Col, Form, Input, Row } from 'antd';
 // import cx from 'classnames'
-import { useState } from 'react'
+import { useState } from 'react';
 
 export type SignUpFormFields = {
-  name: string
-  password: string
-}
+  name: string;
+  password: string;
+};
 
 // const { Option } = Select
 
 export const SignUpForm = () => {
-  const [form] = Form.useForm()
-  const [isRevealingPassword, setIsRevealingPassword] = useState(false)
+  const [form] = Form.useForm();
+  const [isRevealingPassword, setIsRevealingPassword] = useState(false);
 
   //   const revalidateDiffBound = () => {
   //     form.validateFields(['lowerDiff', 'upperDiff'])
@@ -37,20 +37,20 @@ export const SignUpForm = () => {
 
   return (
     <Form
+      noValidate
       form={form}
-      autoComplete="off"
       initialValues={{
         name: '',
         password: '',
         retypePassword: '',
       }}
       //   onFinish={}
-      noValidate
+      autoComplete="off"
     >
       <Row gutter={24}>
         <Col span={24}>
           <Form.Item<SignUpFormFields> label="Username" name="name">
-            <Input type="text" className="!bg-transparent" autoFocus />
+            <Input autoFocus type="text" className="!bg-transparent" />
           </Form.Item>
         </Col>
 
@@ -66,8 +66,8 @@ export const SignUpForm = () => {
             />
           </Form.Item>
           <button
-            onClick={() => setIsRevealingPassword((open) => !open)}
             className="w-5 h-5 flex justify-center items-center"
+            onClick={() => setIsRevealingPassword((open) => !open)}
           >
             {isRevealingPassword ? (
               <Icon icon="bi:eye" className="text-base" />
@@ -87,5 +87,5 @@ export const SignUpForm = () => {
         </Col>
       </Row>
     </Form>
-  )
-}
+  );
+};

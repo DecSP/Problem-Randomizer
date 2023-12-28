@@ -1,1 +1,1 @@
-export * from './ProblemCard'
+export * from './ProblemCard';

@@ -1,1 +1,1 @@
-export * from './CreateContestForm'
+export * from './CreateContestForm';
