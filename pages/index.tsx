@@ -215,7 +215,7 @@ const Home: NextPage = () => {
         ) : null}
 
         <button
-          className="text-base fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
+          className="text-base !rounded-none fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
           type="submit"
           onClick={openDrawer}
         >

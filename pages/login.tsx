@@ -2,9 +2,16 @@ import Head from 'next/head'
 import { Footer } from '../components/Footer'
 import { AuthFormWrapper } from '../components/pages/auth/AuthFormWrapper'
 import { LoginForm } from '../components/pages/auth/LoginForm'
+import { useState, useEffect } from 'react'
 
 const LoginPage = () => {
-  return (
+  const [isSSR, setIsSSR] = useState(true)
+
+  useEffect(() => {
+    setIsSSR(false)
+  }, [])
+
+  return !isSSR ? (
     <>
       <Head>
         <title>Login | Problem Randomizer</title>
@@ -34,7 +41,7 @@ const LoginPage = () => {
 
       <Footer />
     </>
-  )
+  ) : null
 }
 
 export default LoginPage

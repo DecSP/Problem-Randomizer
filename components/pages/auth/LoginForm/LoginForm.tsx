@@ -50,7 +50,7 @@ export const LoginForm = () => {
       <Row gutter={24}>
         <Col span={24}>
           <Form.Item<LoginFormFields> label="Username" name="name">
-            <Input type="text" className="!bg-transparent" />
+            <Input type="text" className="!bg-transparent" autoFocus />
           </Form.Item>
         </Col>
 
@@ -65,7 +65,10 @@ export const LoginForm = () => {
               className="!bg-transparent"
             />
           </Form.Item>
-          <button onClick={() => setIsRevealingPassword((open) => !open)}>
+          <button
+            onClick={() => setIsRevealingPassword((open) => !open)}
+            className="w-5 h-5 flex justify-center items-center"
+          >
             {isRevealingPassword ? (
               <Icon icon="bi:eye" className="text-base" />
             ) : (
