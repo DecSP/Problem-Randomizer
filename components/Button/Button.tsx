@@ -4,16 +4,12 @@ import React from 'react'
 type ButtonProps = {
   variant?: 'solid' | 'outline'
   color?: 'black' | 'white' | 'primary'
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export const PrButton = (props: ButtonProps) => {
   const {
     variant = 'solid',
     color = 'primary',
-    leftIcon,
-    rightIcon,
     children,
     className,
     ...rest
@@ -58,17 +54,11 @@ export const PrButton = (props: ButtonProps) => {
   return (
     <button className={buttonClasses} {...rest}>
       {variant === 'outline' ? (
-        <div className="w-full h-full flex items-center justify-center bg-white text-black transition-colors duration-[250]">
-          {leftIcon && <div className="mr-2">{leftIcon}</div>}
+        <div className="w-full h-full flex items-center justify-center bg-white text-black transition-colors duration-[250] gap-2">
           {children}
-          {rightIcon && <div className="ml-2">{rightIcon}</div>}
         </div>
       ) : (
-        <div className="flex justify-center items-center">
-          {leftIcon && <div className="mr-2">{leftIcon}</div>}
-          {children}
-          {rightIcon && <div className="ml-2">{rightIcon}</div>}
-        </div>
+        <div className="flex justify-center items-center gap-2">{children}</div>
       )}
     </button>
   )

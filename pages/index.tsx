@@ -18,6 +18,7 @@ import { useProblemContext } from '../context/problem'
 import { WalkthroughDrawer } from '../components/WalkthroughDrawer'
 import { Footer } from '../components/Footer'
 import { notification } from 'antd'
+import { PrButton } from '@/components/Button'
 
 const Home: NextPage = () => {
   const { problems = [], setProblems } = useProblemContext()
@@ -214,14 +215,15 @@ const Home: NextPage = () => {
           />
         ) : null}
 
-        <button
-          className="text-base fixed flex items-center gap-1 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30"
+        <PrButton
+          color="black"
+          className="text-base fixed flex items-center gap-1 bottom-6 right-0"
           type="submit"
           onClick={openDrawer}
         >
-          <Icon icon="ri:arrow-right-s-line" className="shrink-0" /> View
-          Selected
-        </button>
+          <Icon icon="ri:arrow-right-s-line" className="shrink-0" />
+          View Selected
+        </PrButton>
 
         <SelectedProblemsDrawer
           open={isProblemsDrawerOpen}

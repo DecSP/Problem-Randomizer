@@ -3,10 +3,10 @@ import { ReactNode } from 'react'
 import { useProblemContext } from '@/context/problem'
 import { ProblemCard } from '../ProblemCard'
 // import { ProblemFormFields } from '../ProblemFilterForm'
-import cx from 'classnames'
 import { useRouter } from 'next/router'
 import { ROUTES } from '@/constants/routes'
 import { Empty } from '../Empty'
+import { PrButton } from '../Button'
 
 type SelectedProblemsDrawerProps = {
   open?: boolean
@@ -91,18 +91,12 @@ const DrawerWrapper = ({
             </button>
           </Form> */}
 
-          <button
-            className={cx(
-              'form-submit-button hover:opacity-80 !h-12 transition-all duration-[250] bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
-              {
-                '!opacity-100 cursor-not-allowed': disabled,
-              },
-            )}
+          <PrButton
             onClick={() => push(ROUTES.CREATE_CONTEST)}
             disabled={disabled}
           >
             Continue
-          </button>
+          </PrButton>
         </>
       }
     >
