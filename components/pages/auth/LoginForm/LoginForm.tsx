@@ -1,18 +1,18 @@
-import { Icon } from '@iconify/react';
-import { Col, Form, Input, Row } from 'antd';
+import { Icon } from '@iconify/react'
+import { Col, Form, Input, Row } from 'antd'
 // import cx from 'classnames'
-import { useState } from 'react';
+import { useState } from 'react'
 
 export type LoginFormFields = {
   name: string;
   password: string;
-};
+}
 
 // const { Option } = Select
 
 export const LoginForm = () => {
-  const [form] = Form.useForm();
-  const [isRevealingPassword, setIsRevealingPassword] = useState(false);
+  const [form] = Form.useForm()
+  const [isRevealingPassword, setIsRevealingPassword] = useState(false)
 
   //   const revalidateDiffBound = () => {
   //     form.validateFields(['lowerDiff', 'upperDiff'])
@@ -87,5 +87,5 @@ export const LoginForm = () => {
         </Col>
       </Row>
     </Form>
-  );
-};
+  )
+}

@@ -1,19 +1,19 @@
-import { Drawer } from 'antd';
+import { Drawer } from 'antd'
 // import { ProblemFormFields } from '../ProblemFilterForm'
-import { useRouter } from 'next/router';
-import { ReactNode } from 'react';
+import { useRouter } from 'next/router'
+import { ReactNode } from 'react'
 
-import { ROUTES } from '@/constants/routes';
-import { useProblemContext } from '@/context/problem';
+import { ROUTES } from '@/constants/routes'
+import { useProblemContext } from '@/context/problem'
 
-import { Button } from '../Button';
-import { Empty } from '../Empty';
-import { ProblemCard } from '../ProblemCard';
+import { Button } from '../Button'
+import { Empty } from '../Empty'
+import { ProblemCard } from '../ProblemCard'
 
 type SelectedProblemsDrawerProps = {
   open?: boolean;
   onClose: () => void;
-};
+}
 
 type SelectedProblemsDrawerWrapperProps = {
   children: ReactNode;
@@ -22,7 +22,7 @@ type SelectedProblemsDrawerWrapperProps = {
   rootClassName?: string;
   width?: string | number;
   selectedProblems: number[];
-};
+}
 
 const DrawerWrapper = ({
   open,
@@ -32,8 +32,8 @@ const DrawerWrapper = ({
   width,
   selectedProblems,
 }: SelectedProblemsDrawerWrapperProps) => {
-  const disabled = selectedProblems.length === 0;
-  const { push } = useRouter();
+  const disabled = selectedProblems.length === 0
+  const { push } = useRouter()
 
   // const onSubmit = (values: { minutes: string }) => {
   //   console.log(JSON.stringify(values))
@@ -104,29 +104,29 @@ const DrawerWrapper = ({
     >
       {children}
     </Drawer>
-  );
-};
+  )
+}
 
 export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
-  const { open, onClose } = props;
-  const { selectedProblemIds, problems } = useProblemContext();
+  const { open, onClose } = props
+  const { selectedProblemIds, problems } = useProblemContext()
 
   const drawerInner =
     selectedProblemIds.length > 0 ? (
       <div className="flex flex-col gap-4">
         {selectedProblemIds.map((p) => {
-          const currentProblem = problems.find((problem) => problem.id === p);
+          const currentProblem = problems.find((problem) => problem.id === p)
 
           return currentProblem ? (
             <ProblemCard key={currentProblem?.id} problem={currentProblem} />
-          ) : null;
+          ) : null
         })}
       </div>
     ) : (
       <div className="flex items-center h-full justify-center">
         <Empty message="No problems added" />
       </div>
-    );
+    )
 
   return (
     <>
@@ -149,5 +149,5 @@ export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
         {drawerInner}
       </DrawerWrapper>
     </>
-  );
-};
+  )
+}

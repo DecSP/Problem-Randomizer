@@ -1,14 +1,14 @@
-import { Icon } from '@iconify/react';
-import { Checkbox, Col, Form, FormInstance, Input, Row, Table } from 'antd';
-import { ColumnsType } from 'antd/es/table';
-import cx from 'classnames';
-import Link from 'next/link';
+import { Icon } from '@iconify/react'
+import { Checkbox, Col, Form, FormInstance, Input, Row, Table } from 'antd'
+import { ColumnsType } from 'antd/es/table'
+import cx from 'classnames'
+import Link from 'next/link'
 
-import { Empty } from '@/components/Empty';
-import { ProblemSourceBadge } from '@/components/ProblemSourceBadge';
-import { ROUTES } from '@/constants/routes';
-import { useProblemContext } from '@/context/problem';
-import { Problem } from '@/lib/schema';
+import { Empty } from '@/components/Empty'
+import { ProblemSourceBadge } from '@/components/ProblemSourceBadge'
+import { ROUTES } from '@/constants/routes'
+import { useProblemContext } from '@/context/problem'
+import { Problem } from '@/lib/schema'
 
 export type CreateContestFormFields = {
   title?: string;
@@ -16,7 +16,7 @@ export type CreateContestFormFields = {
   isPublic?: boolean;
   minutes?: number;
   penalty?: number;
-};
+}
 
 type ProblemFilterFormProps = {
   formInstance: FormInstance<CreateContestFormFields>;
@@ -30,7 +30,7 @@ type ProblemFilterFormProps = {
     values: CreateContestFormFields,
   ) => void;
   isContestValid?: boolean;
-};
+}
 
 export const CreateContestForm = (props: ProblemFilterFormProps) => {
   const {
@@ -39,8 +39,8 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
     disabled = false,
     handleValuesChange,
     isContestValid = false,
-  } = props;
-  const { selectedProblemIds, problems, removeProblem } = useProblemContext();
+  } = props
+  const { selectedProblemIds, problems, removeProblem } = useProblemContext()
 
   const tableColumn: ColumnsType<Problem> = [
     {
@@ -101,7 +101,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       ),
       fixed: 'right',
     },
-  ];
+  ]
 
   return (
     <>
@@ -226,5 +226,5 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
         rootClassName="w-full overflow-auto border"
       />
     </>
-  );
-};
+  )
+}

@@ -1,12 +1,12 @@
-import Image from 'next/image';
-import { ReactNode } from 'react';
+import Image from 'next/image'
+import { ReactNode } from 'react'
 
 export type AuthFormWrapperProps = {
   children: ReactNode;
-};
+}
 
 export const AuthFormWrapper = (props: AuthFormWrapperProps) => {
-  const { children } = props;
+  const { children } = props
 
   return (
     <div className="flex flex-col items-center gap-6">
@@ -56,5 +56,5 @@ export const AuthFormWrapper = (props: AuthFormWrapperProps) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

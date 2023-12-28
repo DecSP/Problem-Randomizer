@@ -1,75 +1,75 @@
-import { Icon } from '@iconify/react';
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { Icon } from '@iconify/react'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
 
-import useFetch from '@/hooks/useFetch';
-import { client } from '@/lib/apis';
+import useFetch from '@/hooks/useFetch'
+import { client } from '@/lib/apis'
 
 const SubmitSolution = () => {
-  const ws_url = process.env.NEXT_PUBLIC_WS_URL;
-  const router = useRouter();
-  const { problemId } = router.query;
-  const [code, setCode] = useState('');
-  const [socket, setSocket] = useState<WebSocket>();
-  const [receivedMessage, setReceivedMessage] = useState('Waiting for submit');
+  const ws_url = process.env.NEXT_PUBLIC_WS_URL
+  const router = useRouter()
+  const { problemId } = router.query
+  const [code, setCode] = useState('')
+  const [socket, setSocket] = useState<WebSocket>()
+  const [receivedMessage, setReceivedMessage] = useState('Waiting for submit')
   const { data, isLoading } = useFetch(
     () =>
       problemId && Number.isInteger(Number(problemId))
         ? client.getProblem(Number(problemId))
         : undefined,
     problemId ? [problemId] : undefined,
-  );
+  )
 
   useEffect(() => {
     // Connect to the WebSocket server
-    if (!ws_url) return;
-    const ws = new WebSocket(ws_url); // Replace with your WebSocket URL
+    if (!ws_url) return
+    const ws = new WebSocket(ws_url) // Replace with your WebSocket URL
 
     // Event handler for when the connection is opened
     ws.onopen = () => {
-      console.log('WebSocket connection opened');
-      setSocket(ws);
-    };
+      console.log('WebSocket connection opened')
+      setSocket(ws)
+    }
 
     // Event handler for when a message is received from the server
     ws.onmessage = (event) => {
-      const receivedData = JSON.parse(event.data);
-      console.log(receivedData);
-      setReceivedMessage(receivedData.message);
-    };
+      const receivedData = JSON.parse(event.data)
+      console.log(receivedData)
+      setReceivedMessage(receivedData.message)
+    }
 
     // Event handler for when the connection is closed
     ws.onclose = () => {
-      console.log('WebSocket connection closed');
-    };
+      console.log('WebSocket connection closed')
+    }
 
     // Clean up the WebSocket connection when the component is unmounted
     return () => {
       if (ws && ws.readyState === WebSocket.OPEN) {
-        ws.close();
+        ws.close()
       }
-    };
-  }, [ws_url]);
+    }
+  }, [ws_url])
 
   const sendMessage = () => {
-    if (!data) return;
+    if (!data) return
     if (socket && socket.readyState === WebSocket.OPEN) {
       // Send a message to the WebSocket server
-      setReceivedMessage('Submitting');
+      setReceivedMessage('Submitting')
       socket.send(
         JSON.stringify({
           source_type: data.source_type,
           code: code,
           problem_id: data.id,
         }),
-      );
+      )
     }
-  };
+  }
 
   const handleSubmit = (e: any) => {
-    e.preventDefault();
-    sendMessage();
-  };
+    e.preventDefault()
+    sendMessage()
+  }
 
   return (
     <div>
@@ -97,7 +97,7 @@ const SubmitSolution = () => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default SubmitSolution;
+export default SubmitSolution

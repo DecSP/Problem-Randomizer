@@ -1,16 +1,16 @@
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import Head from 'next/head'
+import { useEffect, useState } from 'react'
 
-import { Footer } from '../components/Footer';
-import { AuthFormWrapper } from '../components/pages/auth/AuthFormWrapper';
-import { SignUpForm } from '../components/pages/auth/SignUpForm';
+import { Footer } from '../components/Footer'
+import { AuthFormWrapper } from '../components/pages/auth/AuthFormWrapper'
+import { SignUpForm } from '../components/pages/auth/SignUpForm'
 
 const SignUpPage = () => {
-  const [isSSR, setIsSSR] = useState(true);
+  const [isSSR, setIsSSR] = useState(true)
 
   useEffect(() => {
-    setIsSSR(false);
-  }, []);
+    setIsSSR(false)
+  }, [])
 
   return !isSSR ? (
     <>
@@ -42,7 +42,7 @@ const SignUpPage = () => {
 
       <Footer />
     </>
-  ) : null;
-};
+  ) : null
+}
 
-export default SignUpPage;
+export default SignUpPage

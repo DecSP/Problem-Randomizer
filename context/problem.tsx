@@ -6,11 +6,11 @@ import {
   useContext,
   useMemo,
   useState,
-} from 'react';
+} from 'react'
 
-import { Problem } from '../lib/schema';
+import { Problem } from '../lib/schema'
 
-export type SidebarVariant = 'main' | 'app-detail';
+export type SidebarVariant = 'main' | 'app-detail'
 
 type ProblemContextValue = {
   problems: Problem[];
@@ -20,22 +20,22 @@ type ProblemContextValue = {
   addProblem: (problem: number) => void
   // eslint-disable-next-line
   removeProblem: (problem: number) => void
-};
+}
 
-const ProblemContext = createContext<ProblemContextValue | undefined>(undefined);
+const ProblemContext = createContext<ProblemContextValue | undefined>(undefined)
 
 function ProblemContextProvider({ children }: { children: ReactNode }) {
-  const [problemIds, setProblemIds] = useState<number[]>([]);
-  const [problems, setProblems] = useState<Problem[]>([]);
+  const [problemIds, setProblemIds] = useState<number[]>([])
+  const [problems, setProblems] = useState<Problem[]>([])
 
   const addProblem = (problem: number) => {
-    setProblemIds([...problemIds, problem]);
-  };
+    setProblemIds([...problemIds, problem])
+  }
 
   const removeProblem = (problem: number) => {
-    const newProblems = problemIds.filter((p) => p !== problem);
-    setProblemIds(newProblems);
-  };
+    const newProblems = problemIds.filter((p) => p !== problem)
+    setProblemIds(newProblems)
+  }
 
   const contextValue: ProblemContextValue = useMemo(
     () => ({
@@ -46,21 +46,21 @@ function ProblemContextProvider({ children }: { children: ReactNode }) {
       removeProblem,
     }),
     [problemIds],
-  );
+  )
 
   return (
     <ProblemContext.Provider value={contextValue}>
       {children}
     </ProblemContext.Provider>
-  );
+  )
 }
 
 const useProblemContext = () =>
-  useContext(ProblemContext) as ProblemContextValue;
+  useContext(ProblemContext) as ProblemContextValue
 
 export {
   ProblemContext,
   ProblemContextProvider,
   type ProblemContextValue,
   useProblemContext,
-};
+}

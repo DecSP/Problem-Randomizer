@@ -1,1 +1,1 @@
-export * from './WalkthroughDrawer';
+export * from './WalkthroughDrawer'

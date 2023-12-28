@@ -1,17 +1,17 @@
-import Image from 'next/image';
-import { useState } from 'react';
+import Image from 'next/image'
+import { useState } from 'react'
 
 import {
   AT_CODER_URL,
   CODEFORCES_URL,
   CSES_URL,
   GITHUB_ORG_URL,
-} from '@/constants/urls';
+} from '@/constants/urls'
 
-import { WalkthroughDrawer } from '../WalkthroughDrawer';
+import { WalkthroughDrawer } from '../WalkthroughDrawer'
 
 export const Footer = () => {
-  const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false);
+  const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false)
 
   return (
     <>
@@ -88,5 +88,5 @@ export const Footer = () => {
         onClose={() => setIsWalkthroughDrawerOpen(false)}
       />
     </>
-  );
-};
+  )
+}

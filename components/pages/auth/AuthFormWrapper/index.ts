@@ -1,1 +1,1 @@
-export * from './AuthFormWrapper';
+export * from './AuthFormWrapper'

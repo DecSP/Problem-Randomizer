@@ -1,7 +1,7 @@
-import { IconProps } from '@/lib/schema';
+import { IconProps } from '@/lib/schema'
 
 export const IconHelp = (props: IconProps) => {
-  const { height, width, className, ...rest } = props;
+  const { height, width, className, ...rest } = props
   return (
     <span className={className} {...rest}>
       <svg
@@ -17,5 +17,5 @@ export const IconHelp = (props: IconProps) => {
         />
       </svg>
     </span>
-  );
-};
+  )
+}

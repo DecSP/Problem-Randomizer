@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
 import {
   IconCheckFilled,
@@ -7,7 +7,7 @@ import {
   IconHelp,
   IconLoading,
   IconNotification,
-} from '.';
+} from '.'
 
 describe('Icons component', () => {
   test.each([
@@ -29,12 +29,12 @@ describe('Icons component', () => {
   ])(
     'Renders $name with default height and width',
     ({ Component, defaultSize }) => {
-      const { container } = render(<Component />);
-      const svgElement = container.querySelector('svg');
+      const { container } = render(<Component />)
+      const svgElement = container.querySelector('svg')
 
-      expect(svgElement).toHaveAttribute('height', defaultSize);
+      expect(svgElement).toHaveAttribute('height', defaultSize)
     },
-  );
+  )
 
   test.each([
     { Component: IconCheckFilled, name: 'IconCheckFilled' },
@@ -45,9 +45,9 @@ describe('Icons component', () => {
     { Component: IconLoading, name: 'IconLoading' },
     { Component: IconNotification, name: 'IconNotification' },
   ])('Renders $name with specified height and width', ({ Component }) => {
-    const { container } = render(<Component height={100} width={100} />);
-    const svgElement = container.querySelector('svg');
+    const { container } = render(<Component height={100} width={100} />)
+    const svgElement = container.querySelector('svg')
 
-    expect(svgElement).toHaveAttribute('height', '100');
-  });
-});
+    expect(svgElement).toHaveAttribute('height', '100')
+  })
+})

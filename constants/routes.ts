@@ -3,4 +3,4 @@ export const ROUTES = {
   CREATE_CONTEST: '/contest/create',
   SIGN_UP: '/sign-up',
   LOGIN: '/login',
-};
+}

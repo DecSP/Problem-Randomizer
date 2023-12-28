@@ -1,15 +1,15 @@
-import cx from 'classnames';
+import cx from 'classnames'
 
-import { PROBLEM_SOURCES } from '@/constants/problem-source';
-import { ProblemSources } from '@/types/problem-source';
+import { PROBLEM_SOURCES } from '@/constants/problem-source'
+import { ProblemSources } from '@/types/problem-source'
 
 export type ProblemSourceBadgeProps = {
   source: ProblemSources;
   className?: string;
-};
+}
 
 export const ProblemSourceBadge = (props: ProblemSourceBadgeProps) => {
-  const { source, className } = props;
+  const { source, className } = props
 
   return (
     <div
@@ -25,5 +25,5 @@ export const ProblemSourceBadge = (props: ProblemSourceBadgeProps) => {
       />
       <span className="!text-xs font-medium">{PROBLEM_SOURCES[source]}</span>
     </div>
-  );
-};
+  )
+}

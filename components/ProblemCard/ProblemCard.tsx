@@ -1,39 +1,39 @@
-import { Icon } from '@iconify/react';
-import { Card, Checkbox } from 'antd';
-import cx from 'classnames';
-import { useEffect, useState } from 'react';
+import { Icon } from '@iconify/react'
+import { Card, Checkbox } from 'antd'
+import cx from 'classnames'
+import { useEffect, useState } from 'react'
 
-import { useProblemContext } from '@/context/problem';
-import { Problem } from '@/lib/schema';
+import { useProblemContext } from '@/context/problem'
+import { Problem } from '@/lib/schema'
 
-import { ProblemSourceBadge } from '../ProblemSourceBadge';
+import { ProblemSourceBadge } from '../ProblemSourceBadge'
 
 type ProblemCardProps = {
   problem: Problem;
   showCheckbox?: boolean;
-};
+}
 
 export const ProblemCard = ({
   problem,
   showCheckbox = true,
 }: ProblemCardProps) => {
-  const { addProblem, removeProblem, selectedProblemIds } = useProblemContext();
+  const { addProblem, removeProblem, selectedProblemIds } = useProblemContext()
 
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(false)
 
   useEffect(() => {
-    setIsSelected((selectedProblemIds || []).includes(problem?.id));
-  }, [problem?.id, selectedProblemIds]);
+    setIsSelected((selectedProblemIds || []).includes(problem?.id))
+  }, [problem?.id, selectedProblemIds])
 
   const onChange = () => {
     if (!isSelected) {
-      addProblem(problem?.id);
+      addProblem(problem?.id)
     } else {
-      removeProblem(problem?.id);
+      removeProblem(problem?.id)
     }
 
-    setIsSelected(!isSelected);
-  };
+    setIsSelected(!isSelected)
+  }
 
   return (
     <Card
@@ -101,5 +101,5 @@ export const ProblemCard = ({
         <b className="!font-bold !text-xs">Contest:</b> {problem?.contest_name}
       </p>
     </Card>
-  );
-};
+  )
+}

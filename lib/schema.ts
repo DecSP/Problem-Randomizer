@@ -1,4 +1,4 @@
-import { ProblemSources } from '../types/problem-source';
+import { ProblemSources } from '../types/problem-source'
 export interface IconProps {
   height?: number;
   width?: number;

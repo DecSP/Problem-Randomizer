@@ -1,11 +1,11 @@
-import { Drawer } from 'antd';
-import Image from 'next/image';
-import { ReactNode } from 'react';
+import { Drawer } from 'antd'
+import Image from 'next/image'
+import { ReactNode } from 'react'
 
 type WalkthroughDrawerProps = {
   open?: boolean;
   onClose: () => void;
-};
+}
 
 type WalkthroughDrawerWrapperProps = {
   children: ReactNode;
@@ -13,7 +13,7 @@ type WalkthroughDrawerWrapperProps = {
   onClose: () => void;
   rootClassName?: string;
   width?: string | number;
-};
+}
 
 const DrawerWrapper = ({
   open,
@@ -38,11 +38,11 @@ const DrawerWrapper = ({
     >
       {children}
     </Drawer>
-  );
-};
+  )
+}
 
 export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
-  const { open, onClose } = props;
+  const { open, onClose } = props
 
   const drawerInner = (
     <div className="flex flex-col items-center gap-4">
@@ -74,7 +74,7 @@ export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
         <li>Set your timer (optional) and start solving the problem set.</li>
       </ul>
     </div>
-  );
+  )
 
   return (
     <>
@@ -95,5 +95,5 @@ export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
         {drawerInner}
       </DrawerWrapper>
     </>
-  );
-};
+  )
+}
