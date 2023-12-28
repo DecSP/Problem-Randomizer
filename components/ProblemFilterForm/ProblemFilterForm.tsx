@@ -12,17 +12,17 @@ import { ProblemSources } from '@/types/problem-source'
 import { Button } from '../Button'
 
 export type ProblemFormFields = {
-  source?: ProblemSources;
-  lowerDiff?: number;
-  upperDiff?: number;
-  minutes?: number;
+  source?: ProblemSources
+  lowerDiff?: number
+  upperDiff?: number
+  minutes?: number
   user?: string
 }
 
 type ProblemFilterFormProps = {
   // eslint-disable-next-line
   onSubmit: (values: ProblemFormFields) => Promise<void>
-  setProbType: Dispatch<SetStateAction<ProblemSources | undefined>>;
+  setProbType: Dispatch<SetStateAction<ProblemSources | undefined>>
   disabled?: boolean
 }
 

@@ -11,16 +11,16 @@ import { Empty } from '../Empty'
 import { ProblemCard } from '../ProblemCard'
 
 type SelectedProblemsDrawerProps = {
-  open?: boolean;
+  open?: boolean
   onClose: () => void
 }
 
 type SelectedProblemsDrawerWrapperProps = {
-  children: ReactNode;
-  open?: boolean;
-  onClose: () => void;
-  rootClassName?: string;
-  width?: string | number;
+  children: ReactNode
+  open?: boolean
+  onClose: () => void
+  rootClassName?: string
+  width?: string | number
   selectedProblems: number[]
 }
 

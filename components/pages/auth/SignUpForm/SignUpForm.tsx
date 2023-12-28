@@ -4,7 +4,7 @@ import { Col, Form, Input, Row } from 'antd'
 import { useState } from 'react'
 
 export type SignUpFormFields = {
-  name: string;
+  name: string
   password: string
 }
 

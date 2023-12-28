@@ -11,24 +11,24 @@ import { useProblemContext } from '@/context/problem'
 import { Problem } from '@/lib/schema'
 
 export type CreateContestFormFields = {
-  title?: string;
-  description?: string;
-  isPublic?: boolean;
-  minutes?: number;
+  title?: string
+  description?: string
+  isPublic?: boolean
+  minutes?: number
   penalty?: number
 }
 
 type ProblemFilterFormProps = {
-  formInstance: FormInstance<CreateContestFormFields>;
+  formInstance: FormInstance<CreateContestFormFields>
   // eslint-disable-next-line
   onSubmit: (values: CreateContestFormFields) => Promise<void>
-  disabled?: boolean;
+  disabled?: boolean
   handleValuesChange?: (
     // eslint-disable-next-line
     changedValues: any,
     // eslint-disable-next-line
     values: CreateContestFormFields,
-  ) => void;
+  ) => void
   isContestValid?: boolean
 }
 

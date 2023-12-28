@@ -13,9 +13,9 @@ import { Problem } from '../lib/schema'
 export type SidebarVariant = 'main' | 'app-detail'
 
 type ProblemContextValue = {
-  problems: Problem[];
-  setProblems: Dispatch<SetStateAction<Problem[]>>;
-  selectedProblemIds: number[];
+  problems: Problem[]
+  setProblems: Dispatch<SetStateAction<Problem[]>>
+  selectedProblemIds: number[]
   // eslint-disable-next-line
   addProblem: (problem: number) => void
   // eslint-disable-next-line

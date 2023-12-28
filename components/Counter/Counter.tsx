@@ -2,11 +2,11 @@ import cx from 'classnames'
 import { useEffect, useState } from 'react'
 
 interface CounterProps {
-  interval: number;
-  minutes: number;
-  className?: string;
-  onStart?: () => void;
-  onPause?: () => void;
+  interval: number
+  minutes: number
+  className?: string
+  onStart?: () => void
+  onPause?: () => void
   onStop?: () => void
 }
 

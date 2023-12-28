@@ -3,15 +3,15 @@ import Image from 'next/image'
 import { ReactNode } from 'react'
 
 type WalkthroughDrawerProps = {
-  open?: boolean;
+  open?: boolean
   onClose: () => void
 }
 
 type WalkthroughDrawerWrapperProps = {
-  children: ReactNode;
-  open?: boolean;
-  onClose: () => void;
-  rootClassName?: string;
+  children: ReactNode
+  open?: boolean
+  onClose: () => void
+  rootClassName?: string
   width?: string | number
 }
 

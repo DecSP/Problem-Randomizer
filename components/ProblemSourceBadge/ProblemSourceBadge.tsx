@@ -4,7 +4,7 @@ import { PROBLEM_SOURCES } from '@/constants/problem-source'
 import { ProblemSources } from '@/types/problem-source'
 
 export type ProblemSourceBadgeProps = {
-  source: ProblemSources;
+  source: ProblemSources
   className?: string
 }
 

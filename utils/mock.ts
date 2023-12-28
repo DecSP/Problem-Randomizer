@@ -3,10 +3,10 @@
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 
 export function mockNextUseRouter(props: {
-  route: string;
-  pathname: string;
-  query?: string;
-  asPath?: string;
+  route: string
+  pathname: string
+  query?: string
+  asPath?: string
   push: () => void
 }) {
   useRouter.mockImplementationOnce(() => ({

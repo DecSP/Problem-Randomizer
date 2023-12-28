@@ -39,7 +39,7 @@
         ],
         "@typescript-eslint/no-extraneous-class": "off",
         "@typescript-eslint/member-delimiter-style": [
-          "error",
+          "off",
           {
             "multiline": {
               "delimiter": "semi",

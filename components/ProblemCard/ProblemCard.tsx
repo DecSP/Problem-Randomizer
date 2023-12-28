@@ -9,7 +9,7 @@ import { Problem } from '@/lib/schema'
 import { ProblemSourceBadge } from '../ProblemSourceBadge'
 
 type ProblemCardProps = {
-  problem: Problem;
+  problem: Problem
   showCheckbox?: boolean
 }
 

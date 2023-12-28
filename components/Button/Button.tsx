@@ -2,7 +2,7 @@ import cx from 'classnames'
 import React from 'react'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'solid' | 'outline';
+  variant?: 'solid' | 'outline'
   color?: 'black' | 'white' | 'primary'
 }
 
