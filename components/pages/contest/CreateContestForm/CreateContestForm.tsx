@@ -1,7 +1,6 @@
 import { Icon } from '@iconify/react'
 import { Checkbox, Col, Form, FormInstance, Input, Row, Table } from 'antd'
 import { ColumnsType } from 'antd/es/table'
-import cx from 'classnames'
 import Link from 'next/link'
 
 import { Empty } from '@/components/Empty'
@@ -9,6 +8,8 @@ import { ProblemSourceBadge } from '@/components/ProblemSourceBadge'
 import { ROUTES } from '@/constants/routes'
 import { useProblemContext } from '@/context/problem'
 import { Problem } from '@/lib/schema'
+
+import { Button } from '../../../Button'
 
 export type CreateContestFormFields = {
   title?: string
@@ -188,18 +189,12 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
           </Col>
         </Row>
 
-        <button
-          className={cx(
-            'text-base fixed flex items-center gap-2 bottom-6 right-0 text-white bg-black hover:bg-neutral-700 transition-colors duration-[250] px-4 py-2 border-l border-y border-neutral-600 z-30',
-            {
-              'cursor-not-allowed !bg-neutral-700': !isContestValid,
-            },
-          )}
-          type="submit"
-        >
-          <Icon icon="ri:code-s-slash-line" className="shrink-0 text-sm" />{' '}
-          Start Contest
-        </button>
+        <div className="fixed bottom-6 right-0 z-30 bg-white">
+          <Button color="black" type="submit" disabled={!isContestValid}>
+            <Icon icon="ri:code-s-slash-line" className="shrink-0 text-sm" />
+            Start Contest
+          </Button>
+        </div>
       </Form>
 
       <h2 className="text-xl w-max break-words leading-9 mb-6 font-medium">

@@ -8,6 +8,7 @@ import {
   GITHUB_ORG_URL,
 } from '@/constants/urls'
 
+import { Button } from '../Button'
 import { WalkthroughDrawer } from '../WalkthroughDrawer'
 
 export const Footer = () => {
@@ -35,13 +36,20 @@ export const Footer = () => {
               <ul className="mt-2 flex flex-col gap-1">
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href={GITHUB_ORG_URL} rel="noreferrer" target="_blank">
-                    Organization
+                    <Button variant="text" color="black" className="!h-max">
+                      Organization
+                    </Button>
                   </a>
                 </li>
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
-                  <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
+                  <Button
+                    variant="text"
+                    color="black"
+                    className="!h-max"
+                    onClick={() => setIsWalkthroughDrawerOpen(true)}
+                  >
                     Walkthrough
-                  </button>
+                  </Button>
                 </li>
               </ul>
             </div>
@@ -53,17 +61,23 @@ export const Footer = () => {
               <ul className="mt-2 flex flex-col gap-1">
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href={CODEFORCES_URL} rel="noreferrer" target="_blank">
-                    Codeforces
+                    <Button variant="text" color="black" className="!h-max">
+                      Codeforces
+                    </Button>
                   </a>
                 </li>
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href={AT_CODER_URL} rel="noreferrer" target="_blank">
-                    AtCoder
+                    <Button variant="text" color="black" className="!h-max">
+                      AtCoder
+                    </Button>
                   </a>
                 </li>
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href={CSES_URL} rel="noreferrer" target="_blank">
-                    CSES
+                    <Button variant="text" color="black" className="!h-max">
+                      CSES
+                    </Button>
                   </a>
                 </li>
               </ul>

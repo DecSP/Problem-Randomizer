@@ -3,6 +3,8 @@ import { Col, Form, Input, Row } from 'antd'
 // import cx from 'classnames'
 import { useState } from 'react'
 
+import { Button } from '@/components/Button'
+
 export type SignUpFormFields = {
   name: string
   password: string
@@ -78,12 +80,9 @@ export const SignUpForm = () => {
         </Col>
 
         <Col span={24}>
-          <button
-            className="form-submit-button transition-opacity duration-[250] p-0.5 hover:opacity-80 bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600"
-            type="submit"
-          >
+          <Button className="form-submit-button" type="submit">
             Sign Up
-          </button>
+          </Button>
         </Col>
       </Row>
     </Form>

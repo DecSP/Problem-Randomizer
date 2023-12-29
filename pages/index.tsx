@@ -219,7 +219,7 @@ const Home: NextPage = () => {
 
         <Button
           color="black"
-          className="text-base fixed flex items-center gap-1 bottom-6 right-0"
+          className="fixed bottom-6 right-0 z-30"
           type="submit"
           onClick={openDrawer}
         >

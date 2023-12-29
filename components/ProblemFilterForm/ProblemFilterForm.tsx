@@ -234,7 +234,12 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
         </Col>
 
         <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
-          <Button variant="outline" type="submit" disabled={disabled}>
+          <Button
+            className="form-submit-button"
+            variant="outline"
+            type="submit"
+            disabled={disabled}
+          >
             Submit
           </Button>
         </Col>

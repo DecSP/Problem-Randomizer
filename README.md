@@ -10,6 +10,13 @@
 Create problem set and test your programming skills with various coding problems
 from Codeforces, AtCoder, etc.
 
+## Deployment
+
+| Name    | URL                                       |
+| ------- | ----------------------------------------- |
+| Web App | https://problem-randomizer.vercel.app/    |
+| UI Docs | https://ds-problem-randomizer.vercel.app/ |
+
 ## License
 
 This project is licensed under the

@@ -94,6 +94,7 @@ const DrawerWrapper = ({
 
           <Button
             disabled={disabled}
+            className="form-submit-button"
             onClick={() => push(ROUTES.CREATE_CONTEST)}
           >
             Continue
