@@ -22,14 +22,18 @@ export const Button = (props: ButtonProps) => {
   const baseClasses = cx(
     'duration-[250] h-10 flex justify-center items-center gap-2',
     {
-      'p-0.5': variant === 'outline',
+      'p-[1px]': variant === 'outline' && color !== 'primary',
+      'p-0.5': variant === 'outline' && color === 'primary',
       'py-2 px-4': variant === 'solid',
       'p-0': variant === 'text',
     },
   )
 
   const hoverClasses = cx({
-    'transition-[padding] hover:p-1': variant === 'outline',
+    'transition-[padding] hover:p-[3px]':
+      variant === 'outline' && color !== 'primary',
+    'transition-[padding] hover:p-1':
+      variant === 'outline' && color === 'primary',
     'transition-opacity hover:opacity-60': variant !== 'outline',
   })
 
@@ -82,9 +86,9 @@ export const Button = (props: ButtonProps) => {
           className={cx(
             'w-full h-full flex items-center justify-center bg-white text-neutral-900 gap-2 px-4',
             {
-              'bg-emerald-50': color === 'success',
-              'bg-red-50': color === 'danger',
-              'bg-amber-50': color === 'warning',
+              '!bg-emerald-50': color === 'success',
+              '!bg-red-50': color === 'danger',
+              '!bg-amber-50': color === 'warning',
             },
           )}
         >
