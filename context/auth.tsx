@@ -90,6 +90,11 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
             const userInfoRes = await client.getUser()
 
             if (userInfoRes?.data) {
+              notification.success({
+                message: `Welcome back, ${
+                  userInfoRes?.data?.name || userInfoRes?.data.username
+                }!`,
+              })
               setUser(userInfoRes.data)
             } else {
               notification.error({ message: 'Could not login' })

@@ -16,18 +16,18 @@ const LoginPage = () => {
     setIsSSR(false)
   }, [])
 
-  const { isAuthenticated } = useAuthContext()
+  const { isAuthenticated, user } = useAuthContext()
   const { push } = useRouter()
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && user) {
       const redirectUrl = window.localStorage.getItem(LOGIN_REDIRECTION_KEY)
 
       push(redirectUrl || ROUTES.RANDOMIZER).then(() => {
         window.localStorage.removeItem(LOGIN_REDIRECTION_KEY)
       })
     }
-  }, [push, isAuthenticated])
+  }, [push, isAuthenticated, user])
 
   return !isSSR ? (
     <>

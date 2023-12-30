@@ -132,7 +132,12 @@
 
 .ant-notification-notice-content {
   max-height: 48px !important;
+  height: max-content !important;
   padding-right: 32px !important;
+}
+
+.ant-notification-notice-message {
+  margin-top: 8px !important;
 }
 
 .ant-notification-notice-icon-info > svg {
