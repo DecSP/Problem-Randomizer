@@ -10,7 +10,15 @@ import Editor from '@monaco-editor/react'
 const ProblemContentBaseElement = ({ item }: { item: any }) => {
   const F = (elem: any): any => {
     if (typeof elem === 'string') return elem
-    return <MathJax inline>{`\\(${elem.content}\\)`}</MathJax>
+    if (elem.tag === 'var')
+      return <MathJax inline>{`\\(${elem.content}\\)`}</MathJax>
+    if (elem.tag === 'code')
+      return (
+        <code className="bg-[#ededf0] text-red-700 italic font-mono text-xl font-medium">
+          {elem.content}
+        </code>
+      )
+    return <span className="italic font-medium">{elem.content}</span>
   }
   const contents = item.content.map((item: any) => F(item))
   if (item.tag == 'p') return <p className="leading-9">{contents}</p>
