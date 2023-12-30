@@ -25,7 +25,7 @@ export const Button = (props: ButtonProps) => {
       'p-[1px]': variant === 'outline' && color !== 'primary',
       'p-0.5': variant === 'outline' && color === 'primary',
       'py-2 px-4': variant === 'solid',
-      'p-0': variant === 'text',
+      'p-0 !inline': variant === 'text',
     },
   )
 

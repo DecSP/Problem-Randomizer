@@ -27,7 +27,9 @@ export const SignUpForm = () => {
         notification.success({ message: 'Sign up successfully' })
         push(ROUTES.LOGIN)
       } else {
-        notification.error({ message: res?.message })
+        if (res?.message) {
+          notification.error({ message: res?.message })
+        }
       }
     } catch (error: any) {
       notification.error({ message: error?.message })

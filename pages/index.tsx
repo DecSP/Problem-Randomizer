@@ -5,7 +5,6 @@ import Head from 'next/head'
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/Button'
 import { Counter } from '@/components/Counter'
-import { Header } from '@/components/Header/Header'
 import { ProblemCard } from '@/components/ProblemCard'
 import {
   ProblemFilterForm,
@@ -144,8 +143,6 @@ const Home: NextPage = () => {
       </Head>
 
       <Layout>
-        <Header />
-
         <main className="relative pt-[76px] bg-white">
           <section className="relative">
             <div className="section-container px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
@@ -211,15 +208,12 @@ const Home: NextPage = () => {
             />
           ) : null}
 
-          <Button
-            color="black"
-            className="fixed bottom-6 right-0 z-30"
-            type="submit"
-            onClick={openDrawer}
-          >
-            <Icon icon="ri:arrow-right-s-line" className="shrink-0" />
-            View Selected
-          </Button>
+          <div className="fixed bottom-6 right-0 z-30 bg-white">
+            <Button color="black" type="submit" onClick={openDrawer}>
+              <Icon icon="ri:arrow-right-s-line" className="shrink-0" />
+              View Selected
+            </Button>
+          </div>
 
           <SelectedProblemsDrawer
             open={isProblemsDrawerOpen}

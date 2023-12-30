@@ -1,7 +1,6 @@
 import { Form } from 'antd'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { Header } from '@/components/Header'
 import {
   CreateContestForm,
   CreateContestFormFields,
@@ -51,8 +50,6 @@ const CreateContestPage = () => {
       </Head>
 
       <Layout>
-        <Header />
-
         <main
           className="relative pt-[76px]"
           style={{

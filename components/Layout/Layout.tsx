@@ -1,9 +1,11 @@
 import { ReactNode, useEffect } from 'react'
 import { useAuthContext } from '@/context/auth'
 import { Footer } from '../Footer'
+import { Header } from '../Header'
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   const { logout, isAuthenticated } = useAuthContext()
+
   useEffect(() => {
     if (!isAuthenticated) {
       logout()
@@ -15,6 +17,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
     <>
       {isAuthenticated ? (
         <>
+          <Header />
           {children}
           <Footer />
         </>

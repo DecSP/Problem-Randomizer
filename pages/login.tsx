@@ -1,12 +1,13 @@
-import Head from 'next/head'
 import { useEffect, useState } from 'react'
-
+import Head from 'next/head'
+import Link from 'next/link'
 import { Footer } from '@/components/Footer'
 import { AuthFormWrapper } from '@/components/pages/auth/AuthFormWrapper'
 import { LoginForm } from '@/components/pages/auth/LoginForm'
 import { LOGIN_REDIRECTION_KEY, useAuthContext } from '@/context/auth'
 import { useRouter } from 'next/router'
 import { ROUTES } from '@/constants/routes'
+import { Button } from '@/components/Button'
 
 const LoginPage = () => {
   const [isSSR, setIsSSR] = useState(true)
@@ -50,7 +51,11 @@ const LoginPage = () => {
             Welcome back!
           </h2>
           <p className="text-xs text-neutral-500 mb-6 text-center">
-            Log in to continue solving
+            Log in to continue solving, or{' '}
+            <Link href={ROUTES.SIGN_UP}>
+              <Button variant="text">sign up</Button>
+            </Link>{' '}
+            for a new account.
           </p>
           <LoginForm />
         </AuthFormWrapper>
