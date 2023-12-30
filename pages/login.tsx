@@ -48,10 +48,10 @@ const LoginPage = () => {
       >
         <AuthFormWrapper>
           <h2 className="text-lg font-medium text-center mb-2">
-            Welcome back!
+            Welcome, competitive coders!
           </h2>
           <p className="text-xs text-neutral-500 mb-6 text-center">
-            Log in to continue solving, or{' '}
+            Log in to start solving, or{' '}
             <Link href={ROUTES.SIGN_UP}>
               <Button variant="text">sign up</Button>
             </Link>{' '}

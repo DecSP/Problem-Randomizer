@@ -91,9 +91,9 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
             if (userInfoRes?.data) {
               notification.success({
-                message: `Welcome back, ${
+                message: `Hi ${
                   userInfoRes?.data?.name || userInfoRes?.data.username
-                }!`,
+                }, great to see you!`,
               })
               setUser(userInfoRes.data)
             } else {
