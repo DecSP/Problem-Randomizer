@@ -5,6 +5,12 @@ export interface IconProps {
   className?: string
 }
 
+export interface BaseResponse<T> {
+  statusCode?: number
+  message?: any
+  data: T
+}
+
 export interface Problem {
   id: number
   source_type: ProblemSources
@@ -13,3 +19,28 @@ export interface Problem {
   url: string
   rating: number
 }
+
+export interface SignUpPayload {
+  name?: string
+  username: string
+  password: string
+}
+
+export interface SignUpResponse extends BaseResponse<boolean> {}
+
+export interface LoginPayload {
+  username: string
+  password: string
+}
+
+export interface UserData {
+  name?: string
+  username: string
+}
+
+export interface LoginResponseData {
+  token: string
+  user: UserData
+}
+
+export interface LoginResponse extends BaseResponse<LoginResponseData> {}
