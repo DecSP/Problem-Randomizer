@@ -2075,6 +2075,20 @@
     "@types/mdx" "^2.0.0"
     "@types/react" ">=16"
 
+"@monaco-editor/loader@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@monaco-editor/loader/-/loader-1.4.0.tgz#f08227057331ec890fa1e903912a5b711a2ad558"
+  integrity sha512-00ioBig0x642hytVspPl7DbQyaSWRaolYie/UFNjoTdvoKPzo6xrXLhTk9ixgIKcLH5b5vDOjVNiGyY+uDCUlg==
+  dependencies:
+    state-local "^1.0.6"
+
+"@monaco-editor/react@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@monaco-editor/react/-/react-4.6.0.tgz#bcc68671e358a21c3814566b865a54b191e24119"
+  integrity sha512-RFkU9/i7cN2bsq/iTkurMWOEErmYcY6JiQI3Jn+WeR/FGISH8JbHERjpS9oRuSOPvDMJI0Z8nJeKkbOs9sBYQw==
+  dependencies:
+    "@monaco-editor/loader" "^1.4.0"
+
 "@ndelangen/get-tarball@^3.0.7":
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@ndelangen/get-tarball/-/get-tarball-3.0.9.tgz#727ff4454e65f34707e742a59e5e6b1f525d8964"
@@ -5160,6 +5174,13 @@ better-opn@^3.0.2:
   dependencies:
     open "^8.0.4"
 
+better-react-mathjax@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/better-react-mathjax/-/better-react-mathjax-2.0.3.tgz#202dc6fe5c7263278f2491516f43f70ba188122f"
+  integrity sha512-wfifT8GFOKb1TWm2+E50I6DJpLZ5kLbch283Lu043EJtwSv0XvZDjr4YfR4d2MjAhqP6SH4VjjrKgbX8R00oCQ==
+  dependencies:
+    mathjax-full "^3.2.2"
+
 big-integer@^1.6.44:
   version "1.6.52"
   resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.52.tgz#60a887f3047614a8e1bffe5d7173490a97dc8c85"
@@ -5774,6 +5795,11 @@ commander@11.1.0:
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-11.1.0.tgz#62fdce76006a68e5c1ab3314dc92e800eb83d906"
   integrity sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==
+
+commander@9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-9.2.0.tgz#6e21014b2ed90d8b7c9647230d8b7a94a4a419a9"
+  integrity sha512-e2i4wANQiSXgnrBlIatyHtP1odfUp0BbV5Y5nEGbxtIrStkEOAAzCUirvLBNXHLr7kwLvJl6V+4V3XV9x7Wd9w==
 
 commander@^2.20.0:
   version "2.20.3"
@@ -7236,6 +7262,11 @@ eslint@8.51.0:
     optionator "^0.9.3"
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
+
+esm@^3.2.25:
+  version "3.2.25"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
+  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
 
 espree@^9.6.0, espree@^9.6.1:
   version "9.6.1"
@@ -9788,6 +9819,16 @@ markdown-to-jsx@^7.1.8:
   resolved "https://registry.yarnpkg.com/markdown-to-jsx/-/markdown-to-jsx-7.3.2.tgz#f286b4d112dad3028acc1e77dfe1f653b347e131"
   integrity sha512-B+28F5ucp83aQm+OxNrPkS8z0tMKaeHiy0lHJs3LqCyDQFtWuenaIrkaVTgAm1pf1AU85LXltva86hlaT17i8Q==
 
+mathjax-full@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/mathjax-full/-/mathjax-full-3.2.2.tgz#43f02e55219db393030985d2b6537ceae82f1fa7"
+  integrity sha512-+LfG9Fik+OuI8SLwsiR02IVdjcnRCy5MufYLi0C3TdMT56L/pjB0alMVGgoWJF8pN9Rc7FESycZB9BMNWIid5w==
+  dependencies:
+    esm "^3.2.25"
+    mhchemparser "^4.1.0"
+    mj-context-menu "^0.6.1"
+    speech-rule-engine "^4.0.6"
+
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -9864,6 +9905,11 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==
+
+mhchemparser@^4.1.0:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/mhchemparser/-/mhchemparser-4.2.1.tgz#d73982e66bc06170a85b1985600ee9dabe157cb0"
+  integrity sha512-kYmyrCirqJf3zZ9t/0wGgRZ4/ZJw//VwaRVGA75C4nhE60vtnIzhl9J9ndkX/h6hxSN7pjg/cE0VxbnNM+bnDQ==
 
 micro@9.3.5-canary.3:
   version "9.3.5-canary.3"
@@ -10016,6 +10062,11 @@ minizlib@^2.1.1:
   dependencies:
     minipass "^3.0.0"
     yallist "^4.0.0"
+
+mj-context-menu@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/mj-context-menu/-/mj-context-menu-0.6.1.tgz#a043c5282bf7e1cf3821de07b13525ca6f85aa69"
+  integrity sha512-7NO5s6n10TIV96d4g2uDpG7ZDpIhMh0QNfGdJw/W47JswFcosz457wqz/b5sAKvl12sxINGFCn80NZHKwxQEXA==
 
 mkdirp-classic@^0.5.2, mkdirp-classic@^0.5.3:
   version "0.5.3"
@@ -12394,6 +12445,15 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.16.tgz#a14f64e0954f6e25cc6587bd4f392522db0d998f"
   integrity sha512-eWN+LnM3GR6gPu35WxNgbGl8rmY1AEmoMDvL/QD6zYmPWgywxWqJWNdLGT+ke8dKNWrcYgYjPpG5gbTfghP8rw==
 
+speech-rule-engine@^4.0.6:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/speech-rule-engine/-/speech-rule-engine-4.0.7.tgz#b655dacbad3dae04acc0f7665e26ef258397dd09"
+  integrity sha512-sJrL3/wHzNwJRLBdf6CjJWIlxC04iYKkyXvYSVsWVOiC2DSkHmxsqOhEeMsBA9XK+CHuNcsdkbFDnoUfAsmp9g==
+  dependencies:
+    commander "9.2.0"
+    wicked-good-xpath "1.3.0"
+    xmldom-sre "0.1.31"
+
 split2@^3.0.0, split2@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/split2/-/split2-3.2.2.tgz#bf2cf2a37d838312c249c89206fd7a17dd12365f"
@@ -12422,6 +12482,11 @@ stat-mode@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/stat-mode/-/stat-mode-0.3.0.tgz#69283b081f851582b328d2a4ace5f591ce52f54b"
   integrity sha512-QjMLR0A3WwFY2aZdV0okfFEJB5TRjkggXZjxP3A1RsWsNHNu3YPv8btmtc6iCFZ0Rul3FE93OYogvhOUClU+ng==
+
+state-local@^1.0.6:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/state-local/-/state-local-1.0.7.tgz#da50211d07f05748d53009bee46307a37db386d5"
+  integrity sha512-HTEHMNieakEnoe33shBYcZ7NX83ACUjCu8c40iOGEZsngj9zRnkqS9j1pqQPXwobB0ZcVTk27REb7COQ0UR59w==
 
 statuses@2.0.1:
   version "2.0.1"
@@ -13795,6 +13860,11 @@ which@^2.0.1:
   dependencies:
     isexe "^2.0.0"
 
+wicked-good-xpath@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/wicked-good-xpath/-/wicked-good-xpath-1.3.0.tgz#81b0e95e8650e49c94b22298fff8686b5553cf6c"
+  integrity sha512-Gd9+TUn5nXdwj/hFsPVx5cuHHiF5Bwuc30jZ4+ronF1qHK5O7HD0sgmXWSEgwKquT3ClLoKPVbO6qGwVwLzvAw==
+
 wide-align@^1.1.2:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/wide-align/-/wide-align-1.1.5.tgz#df1d4c206854369ecf3c9a4898f1b23fbd9d15d3"
@@ -13896,6 +13966,11 @@ xmlchars@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/xmlchars/-/xmlchars-2.2.0.tgz#060fe1bcb7f9c76fe2a17db86a9bc3ab894210cb"
   integrity sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==
+
+xmldom-sre@0.1.31:
+  version "0.1.31"
+  resolved "https://registry.yarnpkg.com/xmldom-sre/-/xmldom-sre-0.1.31.tgz#10860d5bab2c603144597d04bf2c4980e98067f4"
+  integrity sha512-f9s+fUkX04BxQf+7mMWAp5zk61pciie+fFLC9hX9UVvCeJQfNHRHXpeo5MPcR0EUf57PYLdt+ZO4f3Ipk2oZUw==
 
 xtend@^4.0.2, xtend@~4.0.1:
   version "4.0.2"

@@ -4,12 +4,94 @@ import React, { useEffect, useState } from 'react'
 
 import useFetch from '@/hooks/useFetch'
 import { client } from '@/lib/apis'
+import { MathJax, MathJaxContext } from 'better-react-mathjax'
+import Editor from '@monaco-editor/react'
+
+const ProblemContentBaseElement = ({ item }: { item: any }) => {
+  const F = (elem: any): any => {
+    if (typeof elem === 'string') return elem
+    return <MathJax inline>{`\\(${elem.content}\\)`}</MathJax>
+  }
+  const contents = item.content.map((item: any) => F(item))
+  if (item.tag == 'p') return <p className="leading-9">{contents}</p>
+  if (item.tag === 'li') return <li className="leading-9">{contents}</li>
+  if (item.tag === 'pre')
+    return <pre className=" bg-[#ededf0] w-full p-3 leading-9">{contents}</pre>
+}
+
+const ProblemContentElement = ({ item }: { item: any }) => {
+  if (['p', 'li', 'pre'].includes(item.tag)) {
+    return <ProblemContentBaseElement item={item} />
+  }
+  const tmp = (item.content as Array<any>).map((item: any, index) => (
+    <ProblemContentElement key={index} item={item} />
+  ))
+  return <ul className="pl-5 list-disc">{tmp}</ul>
+}
+
+const ProblemContent = ({ content }: { content: any }) => {
+  return (
+    <div className="w-1/2 overflow-auto">
+      <MathJaxContext>
+        {(content as Array<any>).map((item, index) => (
+          <>
+            <div key={index} className="mx-3 py-3">
+              <h1 className="font-bold">{item.section}</h1>
+              {(item.children as Array<any>).map((item, index) => (
+                <div key={index}>
+                  <ProblemContentElement item={item} />
+                </div>
+              ))}
+            </div>
+            <hr />
+          </>
+        ))}
+      </MathJaxContext>
+    </div>
+  )
+}
+
+const SubmitArea = ({
+  code,
+  setCode,
+  onSubmit,
+  submissionStatus,
+}: {
+  code: string
+  setCode: React.Dispatch<React.SetStateAction<string>>
+  onSubmit: () => void
+  submissionStatus: string
+}) => {
+  return (
+    <div className="w-1/2 mx-3 h-full flex flex-col bg-teal-400 overflow-auto">
+      <div className="flex-grow m-2">
+        <Editor
+          defaultLanguage="python"
+          defaultValue={code}
+          onChange={(value) => setCode(value ?? '')}
+        />
+      </div>
+      <div className="flex flex-row gap-3">
+        <div className="w-1/2">
+          <button className="h-full w-full" onClick={onSubmit}>
+            <div className="w-full h-full flex items-center justify-center bg-blue-500 active:bg-violet-600">
+              Submit
+            </div>
+          </button>
+        </div>
+        <h1 className="text-base w-max font-medium whitespace-nowrap flex-grow text-center bg-orange-300 py-3">
+          Status: {submissionStatus}
+        </h1>
+      </div>
+    </div>
+  )
+}
 
 const SubmitSolution = () => {
   const ws_url = process.env.NEXT_PUBLIC_WS_URL
   const router = useRouter()
   const { problemId } = router.query
-  const [code, setCode] = useState('')
+  const [code, setCode] = useState('# Your code here')
   const [socket, setSocket] = useState<WebSocket>()
   const [receivedMessage, setReceivedMessage] = useState('Waiting for submit')
   const { data, isLoading } = useFetch(
@@ -19,7 +101,6 @@ const SubmitSolution = () => {
         : undefined,
     problemId ? [problemId] : undefined,
   )
-
   useEffect(() => {
     // Connect to the WebSocket server
     if (!ws_url) return
@@ -66,14 +147,8 @@ const SubmitSolution = () => {
     }
   }
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault()
-    sendMessage()
-  }
-
   return (
     <div>
-      <h1>Submit Solution for Problem {problemId}</h1>
       {isLoading && (
         <div className="w-full flex justify-center p-6">
           <div className="animate-spin w-max">
@@ -82,19 +157,22 @@ const SubmitSolution = () => {
         </div>
       )}
       {data && (
-        <>
-          <div dangerouslySetInnerHTML={{ __html: data.content }} />
-          <form onSubmit={handleSubmit}>
-            <textarea
-              className="bg-cyan-200"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
+        <div className="h-screen flex flex-col">
+          <h1 className="w-full text-center text-lg font-medium p-3 border bg-blue-300">
+            Problem {data.name} - {data.contest_name} (source:{' '}
+            {data.source_type})
+          </h1>
+          <div className="flex flex-row mt-3 overflow-auto">
+            <ProblemContent content={data.content ?? []} />
+            <div className="w-0.5 bg-slate-200" />
+            <SubmitArea
+              code={code}
+              setCode={setCode}
+              submissionStatus={receivedMessage}
+              onSubmit={() => sendMessage()}
             />
-            <button type="submit">Submit</button>
-          </form>
-          <h1>Status</h1>
-          <p>{receivedMessage}</p>
-        </>
+          </div>
+        </div>
       )}
     </div>
   )
