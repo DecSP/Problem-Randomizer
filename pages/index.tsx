@@ -139,7 +139,6 @@ const Home: NextPage = () => {
           name="description"
           content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
         />
-        <link rel="icon" href="/images/prob-rand-logo.png" />
       </Head>
 
       <Layout>
