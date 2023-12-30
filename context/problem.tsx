@@ -3,12 +3,13 @@ import {
   Dispatch,
   ReactNode,
   SetStateAction,
+  useCallback,
   useContext,
   useMemo,
   useState,
 } from 'react'
 
-import { Problem } from '../lib/schema'
+import { Problem } from '@/lib/schema'
 
 export type SidebarVariant = 'main' | 'app-detail'
 
@@ -28,14 +29,20 @@ function ProblemContextProvider({ children }: { children: ReactNode }) {
   const [problemIds, setProblemIds] = useState<number[]>([])
   const [problems, setProblems] = useState<Problem[]>([])
 
-  const addProblem = (problem: number) => {
-    setProblemIds([...problemIds, problem])
-  }
+  const addProblem = useCallback(
+    (problem: number) => {
+      setProblemIds([...problemIds, problem])
+    },
+    [problemIds],
+  )
 
-  const removeProblem = (problem: number) => {
-    const newProblems = problemIds.filter((p) => p !== problem)
-    setProblemIds(newProblems)
-  }
+  const removeProblem = useCallback(
+    (problem: number) => {
+      const newProblems = problemIds.filter((p) => p !== problem)
+      setProblemIds(newProblems)
+    },
+    [problemIds],
+  )
 
   const contextValue: ProblemContextValue = useMemo(
     () => ({
@@ -45,7 +52,7 @@ function ProblemContextProvider({ children }: { children: ReactNode }) {
       addProblem,
       removeProblem,
     }),
-    [problemIds],
+    [addProblem, problemIds, problems, removeProblem],
   )
 
   return (

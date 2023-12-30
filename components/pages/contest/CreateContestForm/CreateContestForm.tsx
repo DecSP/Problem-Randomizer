@@ -8,8 +8,7 @@ import { ProblemSourceBadge } from '@/components/ProblemSourceBadge'
 import { ROUTES } from '@/constants/routes'
 import { useProblemContext } from '@/context/problem'
 import { Problem } from '@/lib/schema'
-
-import { Button } from '../../../Button'
+import { Button } from '@/components/Button'
 
 export type CreateContestFormFields = {
   title?: string
