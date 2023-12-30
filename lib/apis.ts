@@ -1,4 +1,4 @@
-import { ProblemSources } from '../types/problem-source'
+import { ProblemSources } from '@/types/problem-source'
 import fetcher from './fetcher'
 import {
   BaseResponse,
@@ -57,7 +57,7 @@ export class Client {
   }
 
   public async signUp(payload: SignUpPayload) {
-    return fetcher<SignUpResponse>(`${BASE_URL}/api/user/signup`, {
+    return fetcher<SignUpResponse>(`${BASE_URL}/api/users/signup`, {
       headers: this.privateHeaders,
       method: 'POST',
       body: JSON.stringify(payload),
@@ -65,7 +65,7 @@ export class Client {
   }
 
   public async login(payload: LoginPayload) {
-    return fetcher<LoginResponse>(`${BASE_URL}/api/user/login`, {
+    return fetcher<LoginResponse>(`${BASE_URL}/api/users/login`, {
       headers: this.privateHeaders,
       method: 'POST',
       body: JSON.stringify(payload),
@@ -73,7 +73,7 @@ export class Client {
   }
 
   public async getUser() {
-    return fetcher<BaseResponse<UserData>>(`${BASE_URL}/api/user/me`, {
+    return fetcher<BaseResponse<UserData>>(`${BASE_URL}/api/users/me`, {
       headers: this.privateHeaders,
       method: 'GET',
     })

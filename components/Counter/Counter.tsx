@@ -57,6 +57,7 @@ export const Counter = (props: CounterProps) => {
     if (count <= 0) {
       onStop?.()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count])
 
   return (

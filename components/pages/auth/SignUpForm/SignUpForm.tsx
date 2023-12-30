@@ -1,50 +1,36 @@
 import { Icon } from '@iconify/react'
-import { Col, Form, Input, Row } from 'antd'
-// import cx from 'classnames'
+import { Col, Form, Input, Row, notification } from 'antd'
 import { useState } from 'react'
-
+import { useRouter } from 'next/router'
 import { Button } from '@/components/Button'
+import { client } from '@/lib/apis'
+import { ROUTES } from '@/constants/routes'
 
 export type SignUpFormFields = {
-  name: string
-  username?: string
+  name?: string
+  username: string
   password: string
 }
-
-// const { Option } = Select
 
 export const SignUpForm = () => {
   const [form] = Form.useForm()
   const [isRevealingPassword, setIsRevealingPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-
-  //   const revalidateDiffBound = () => {
-  //     form.validateFields(['lowerDiff', 'upperDiff'])
-  //   }
-
-  //   const diffBoundValidator = (
-  //     value: string,
-  //     left: number,
-  //     right: number,
-  //     // eslint-disable-next-line
-  //     callback: (error?: string | undefined) => void,
-  //     message: string,
-  //   ) => {
-  //     const intValue = parseInt(value)
-
-  //     if (isNaN(intValue) || intValue < left || intValue > right) {
-  //       callback(message)
-  //     } else {
-  //       callback()
-  //     }
-  //   }
+  const { push } = useRouter()
 
   const onSubmit = async (values: SignUpFormFields) => {
     try {
       setIsLoading(true)
-      console.log(values)
+
+      const res = await client.signUp(values)
+      if (res?.data) {
+        notification.success({ message: 'Sign up successfully' })
+        push(ROUTES.LOGIN)
+      } else {
+        notification.error({ message: res?.message })
+      }
     } catch (error: any) {
-      console.log(error?.message)
+      notification.error({ message: error?.message })
     } finally {
       setIsLoading(false)
     }
@@ -93,6 +79,7 @@ export const SignUpForm = () => {
           </Form.Item>
           <button
             className="w-5 h-5 flex justify-center items-center"
+            type="button"
             onClick={() => setIsRevealingPassword((open) => !open)}
           >
             {isRevealingPassword ? (

@@ -35,10 +35,6 @@ const DrawerWrapper = ({
   const disabled = selectedProblems.length === 0
   const { push } = useRouter()
 
-  // const onSubmit = (values: { minutes: string }) => {
-  //   console.log(JSON.stringify(values))
-  // }
-
   return (
     <Drawer
       placement="right"

@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-
-import { Footer } from '../components/Footer'
-import { AuthFormWrapper } from '../components/pages/auth/AuthFormWrapper'
-import { SignUpForm } from '../components/pages/auth/SignUpForm'
+import { Footer } from '@/components/Footer'
+import { AuthFormWrapper } from '@/components/pages/auth/AuthFormWrapper'
+import { SignUpForm } from '@/components/pages/auth/SignUpForm'
+import { useRouter } from 'next/router'
+import { ROUTES } from '@/constants/routes'
+import { useAuthContext, LOGIN_REDIRECTION_KEY } from '@/context/auth'
 
 const SignUpPage = () => {
   const [isSSR, setIsSSR] = useState(true)
@@ -11,6 +13,18 @@ const SignUpPage = () => {
   useEffect(() => {
     setIsSSR(false)
   }, [])
+  const { isAuthenticated } = useAuthContext()
+  const { push } = useRouter()
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      const redirectUrl = window.localStorage.getItem(LOGIN_REDIRECTION_KEY)
+
+      push(redirectUrl || ROUTES.RANDOMIZER).then(() => {
+        window.localStorage.removeItem(LOGIN_REDIRECTION_KEY)
+      })
+    }
+  }, [push, isAuthenticated])
 
   return !isSSR ? (
     <>

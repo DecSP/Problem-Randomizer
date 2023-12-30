@@ -1,41 +1,32 @@
 import { Icon } from '@iconify/react'
-import { Col, Form, Input, Row } from 'antd'
-// import cx from 'classnames'
+import { Col, Form, Input, Row, notification } from 'antd'
 import { useState } from 'react'
 
 import { Button } from '@/components/Button'
+import { useAuthContext } from '@/context/auth'
 
 export type LoginFormFields = {
-  name: string
+  username: string
   password: string
 }
-
-// const { Option } = Select
 
 export const LoginForm = () => {
   const [form] = Form.useForm()
   const [isRevealingPassword, setIsRevealingPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  //   const revalidateDiffBound = () => {
-  //     form.validateFields(['lowerDiff', 'upperDiff'])
-  //   }
+  const { login } = useAuthContext()
 
-  //   const diffBoundValidator = (
-  //     value: string,
-  //     left: number,
-  //     right: number,
-  //     // eslint-disable-next-line
-  //     callback: (error?: string | undefined) => void,
-  //     message: string,
-  //   ) => {
-  //     const intValue = parseInt(value)
-
-  //     if (isNaN(intValue) || intValue < left || intValue > right) {
-  //       callback(message)
-  //     } else {
-  //       callback()
-  //     }
-  //   }
+  const onSubmit = async (values: LoginFormFields) => {
+    try {
+      setIsLoading(true)
+      await login(values)
+    } catch (error: any) {
+      notification.error({ message: error?.message })
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <Form
@@ -46,12 +37,12 @@ export const LoginForm = () => {
         password: '',
         retypePassword: '',
       }}
-      //   onFinish={}
       autoComplete="off"
+      onFinish={onSubmit}
     >
       <Row gutter={24}>
         <Col span={24}>
-          <Form.Item<LoginFormFields> label="Username" name="name">
+          <Form.Item<LoginFormFields> label="Username" name="username">
             <Input autoFocus type="text" className="!bg-transparent" />
           </Form.Item>
         </Col>
@@ -69,6 +60,7 @@ export const LoginForm = () => {
           </Form.Item>
           <button
             className="w-5 h-5 flex justify-center items-center"
+            type="button"
             onClick={() => setIsRevealingPassword((open) => !open)}
           >
             {isRevealingPassword ? (
@@ -80,7 +72,11 @@ export const LoginForm = () => {
         </Col>
 
         <Col span={24}>
-          <Button className="form-submit-button" type="submit">
+          <Button
+            className="form-submit-button"
+            type="submit"
+            loading={isLoading}
+          >
             Log In
           </Button>
         </Col>

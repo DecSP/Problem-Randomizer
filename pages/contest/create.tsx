@@ -1,22 +1,15 @@
 import { Form } from 'antd'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-
-import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import {
   CreateContestForm,
   CreateContestFormFields,
 } from '@/components/pages/contest/CreateContestForm'
 import { useProblemContext } from '@/context/problem'
+import { Layout } from '@/components/Layout'
 
 const CreateContestPage = () => {
-  const [isSSR, setIsSSR] = useState(true)
-
-  useEffect(() => {
-    setIsSSR(false)
-  }, [])
-
   const [form] = Form.useForm()
   const { selectedProblemIds } = useProblemContext()
 
@@ -46,8 +39,8 @@ const CreateContestPage = () => {
     }
   }
 
-  return !isSSR ? (
-    <div>
+  return (
+    <>
       <Head>
         <title>Create Contest | Problem Randomizer</title>
         <meta
@@ -57,38 +50,38 @@ const CreateContestPage = () => {
         <link rel="icon" href="/images/prob-rand-logo.png" />
       </Head>
 
-      <Header />
+      <Layout>
+        <Header />
 
-      <main
-        className="relative pt-[76px]"
-        style={{
-          backgroundImage:
-            'linear-gradient(to bottom, #FFF 200px, #F5F5F5 360px)',
-        }}
-      >
-        <section>
-          <div className="section-container">
-            <div className="px-6 md:px-[90px] pt-[40px] pb-[88px]">
-              <h1 className="text-2xl w-max break-words font-medium leading-9 mb-10">
-                <span className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
-                  Create Contest
-                </span>
-              </h1>
+        <main
+          className="relative pt-[76px]"
+          style={{
+            backgroundImage:
+              'linear-gradient(to bottom, #FFF 200px, #F5F5F5 360px)',
+          }}
+        >
+          <section>
+            <div className="section-container">
+              <div className="px-6 md:px-[90px] pt-[40px] pb-[88px]">
+                <h1 className="text-2xl w-max break-words font-medium leading-9 mb-10">
+                  <span className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
+                    Create Contest
+                  </span>
+                </h1>
 
-              <CreateContestForm
-                formInstance={form}
-                handleValuesChange={handleValuesChange}
-                isContestValid={isContestValid}
-                onSubmit={onSubmit}
-              />
+                <CreateContestForm
+                  formInstance={form}
+                  handleValuesChange={handleValuesChange}
+                  isContestValid={isContestValid}
+                  onSubmit={onSubmit}
+                />
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
-  ) : null
+          </section>
+        </main>
+      </Layout>
+    </>
+  )
 }
 
 export default CreateContestPage

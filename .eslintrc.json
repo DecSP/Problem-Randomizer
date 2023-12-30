@@ -18,7 +18,7 @@
           { "allowExpressions": true }
         ],
         "no-nested-ternary": "error",
-        "no-unused-vars": "error",
+        "no-unused-vars": "warn",
         "react/self-closing-comp": [
           "error",
           {
@@ -32,6 +32,7 @@
         "@typescript-eslint/space-before-function-paren": ["off", "never"],
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/no-var-requires": 0,
+        "react-hooks/exhaustive-deps": "warn",
         "unicode-bom": 0,
         "react/jsx-curly-brace-presence": [
           "warn",
@@ -69,8 +70,8 @@
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
         "@typescript-eslint/ban-types": "off",
-        "@typescript-eslint/no-unused-vars": "off",
-        "simple-import-sort/imports": "warn",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "simple-import-sort/imports": "off",
         "simple-import-sort/exports": "warn",
         "unused-imports/no-unused-imports": "warn",
         "react/jsx-sort-props": [
@@ -95,6 +96,7 @@
   },
   "plugins": [
     "react",
+    "react-hooks",
     "@typescript-eslint",
     "simple-import-sort",
     "unused-imports",
