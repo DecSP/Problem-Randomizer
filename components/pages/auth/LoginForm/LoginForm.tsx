@@ -42,7 +42,11 @@ export const LoginForm = () => {
     >
       <Row gutter={24}>
         <Col span={24}>
-          <Form.Item<LoginFormFields> label="Username" name="username">
+          <Form.Item<LoginFormFields>
+            label="Username"
+            name="username"
+            rules={[{ required: true, message: 'Please input username' }]}
+          >
             <Input autoFocus type="text" className="!bg-transparent" />
           </Form.Item>
         </Col>
@@ -52,6 +56,7 @@ export const LoginForm = () => {
             label="Password"
             name="password"
             className="flex-1"
+            rules={[{ required: true, message: 'Please choose a password' }]}
           >
             <Input
               type={isRevealingPassword ? 'text' : 'password'}
