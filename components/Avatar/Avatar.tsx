@@ -80,7 +80,7 @@ const Avatar = (props: IAvatarProps) => {
   const presenceClass = `rounded-full border-2 border-white ${PRESENCE_SIZE_CLASSES[size]} ${PRESENCE_CLASSES[presence]} || ''`
   const shapeClass = shape === 'circle' ? 'rounded-full' : 'rounded'
   const colorClass = `${COLOR_CLASSES[color]} || ''`
-  const textColorClass = color === 'black' ? 'text-white' : 'text-black'
+  const textColorClass = 'text-white'
   const presenceIcon = () => {
     if (presence === 'away') {
       return (
@@ -120,14 +120,14 @@ const Avatar = (props: IAvatarProps) => {
       </div>
       {presence !== 'none' && (
         <div
-          className={`flex justify-center items-center relative ${presenceClass}`}
+          className={`flex justify-center items-center relative ${presenceClass} shrink-0`}
         >
           {presenceIcon()}
         </div>
       )}
 
       {primaryText || secondaryText ? (
-        <div className="ml-2">
+        <div>
           {primaryText && <p className={`  font-semibold`}>{primaryText}</p>}
 
           {secondaryText && <p className={` text-xs`}>{secondaryText}</p>}
