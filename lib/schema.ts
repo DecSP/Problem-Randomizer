@@ -20,6 +20,43 @@ export interface Problem {
   rating: number
 }
 
+export interface ProblemDetail extends Problem {
+  content: Array<ProblemSection>
+}
+
+export interface ProblemSection {
+  section: string
+  children: Array<ProblemContentChild>
+}
+
+export const validProblemContentChildTagNames = [
+  'p',
+  'pre',
+  'ul',
+  'li',
+  'center',
+] as const
+export type ProblemContentChildTagName =
+  (typeof validProblemContentChildTagNames)[number]
+export function isProblemContentChildTagName(
+  str: string,
+): str is ProblemContentChildTagName {
+  return validProblemContentChildTagNames.includes(
+    str as ProblemContentChildTagName,
+  )
+}
+export interface ProblemContentChild {
+  tag: ProblemContentChildTagName
+  content: Array<ProblemContentChild | ProblemContentBaseChild>
+}
+
+export type ProblemContentBaseChild =
+  | {
+      tag: string
+      content: string
+    }
+  | string
+
 export interface SignUpPayload {
   name?: string
   username: string

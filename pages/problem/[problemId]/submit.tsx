@@ -7,47 +7,68 @@ import { client } from '@/lib/apis'
 import { MathJax, MathJaxContext } from 'better-react-mathjax'
 import Editor from '@monaco-editor/react'
 
-const ProblemContentBaseElement = ({ item }: { item: any }) => {
-  const F = (elem: any): any => {
-    if (typeof elem === 'string') return elem
-    if (elem.tag === 'var')
-      return <MathJax inline>{`\\(${elem.content}\\)`}</MathJax>
-    if (elem.tag === 'code')
-      return (
-        <code className="bg-[#ededf0] text-red-700 italic font-mono text-xl font-medium">
-          {elem.content}
-        </code>
-      )
-    return <span className="italic font-medium">{elem.content}</span>
-  }
-  const contents = item.content.map((item: any) => F(item))
-  if (item.tag == 'p') return <p className="leading-9">{contents}</p>
-  if (item.tag === 'li') return <li className="leading-9">{contents}</li>
-  if (item.tag === 'pre')
-    return <pre className=" bg-[#ededf0] w-full p-3 leading-9">{contents}</pre>
+import {
+  ProblemSection,
+  ProblemContentChild,
+  ProblemContentBaseChild,
+  isProblemContentChildTagName,
+} from '@/lib/schema'
+
+const ProblemContentChildBaseElement = ({
+  item,
+}: {
+  item: ProblemContentBaseChild
+}) => {
+  if (typeof item === 'string') return item
+  if (item.tag == 'var')
+    return <MathJax inline>{`\\(${item.content}\\)`}</MathJax>
+  return <img src={item.content} />
 }
 
-const ProblemContentElement = ({ item }: { item: any }) => {
-  if (['p', 'li', 'pre'].includes(item.tag)) {
-    return <ProblemContentBaseElement item={item} />
+const ProblemContentChildElement = ({
+  item,
+}: {
+  item: ProblemContentChild | ProblemContentBaseChild
+}) => {
+  if (typeof item === 'string' || !isProblemContentChildTagName(item.tag)) {
+    const realItem = item as ProblemContentBaseChild
+    return <ProblemContentChildBaseElement item={realItem} />
   }
-  const tmp = (item.content as Array<any>).map((item: any, index) => (
-    <ProblemContentElement key={index} item={item} />
-  ))
-  return <ul className="pl-5 list-disc">{tmp}</ul>
+
+  const realItem = item as ProblemContentChild
+  const contents = realItem.content.map(
+    (contentItem: ProblemContentChild | ProblemContentBaseChild, index) => (
+      <ProblemContentChildElement key={index} item={contentItem} />
+    ),
+  )
+
+  if (['p', 'center'].includes(realItem.tag))
+    return <p className="leading-9">{contents}</p>
+  if (realItem.tag === 'li') return <li className="leading-9">{contents}</li>
+  if (realItem.tag === 'pre')
+    return (
+      <pre className=" bg-[#ededf0] w-full p-3 leading-9 overflow-auto">
+        {contents}
+      </pre>
+    )
+  return <ul className="pl-5 list-disc">{contents}</ul>
 }
 
-const ProblemContent = ({ content }: { content: any }) => {
+const ProblemContentElement = ({
+  content,
+}: {
+  content: Array<ProblemSection>
+}) => {
   return (
     <div className="w-1/2 overflow-auto">
       <MathJaxContext>
-        {(content as Array<any>).map((item, index) => (
+        {content.map((item, index) => (
           <>
             <div key={index} className="mx-3 py-3">
               <h1 className="font-bold">{item.section}</h1>
-              {(item.children as Array<any>).map((item, index) => (
+              {item.children.map((item, index) => (
                 <div key={index}>
-                  <ProblemContentElement item={item} />
+                  <ProblemContentChildElement item={item} />
                 </div>
               ))}
             </div>
@@ -171,7 +192,7 @@ const SubmitSolution = () => {
             {data.source_type})
           </h1>
           <div className="flex flex-row mt-3 overflow-auto">
-            <ProblemContent content={data.content ?? []} />
+            <ProblemContentElement content={data.content ?? []} />
             <div className="w-0.5 bg-slate-200" />
             <SubmitArea
               code={code}
