@@ -22,7 +22,8 @@ const ProblemContentChildBaseElement = ({
   if (typeof item === 'string') return item
   if (item.tag == 'var')
     return <MathJax inline>{`\\(${item.content}\\)`}</MathJax>
-  return <img src={item.content} />
+  if (item.tag == 'img') return <img src={item.content} />
+  return <span>{item.content}</span>
 }
 
 const ProblemContentChildElement = ({
