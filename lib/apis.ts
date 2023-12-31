@@ -5,6 +5,7 @@ import {
   LoginPayload,
   LoginResponse,
   Problem,
+  ProblemDetail,
   SignUpPayload,
   SignUpResponse,
   UserData,
@@ -33,7 +34,7 @@ export class Client {
   }
 
   public async getProblem(problem_id: number) {
-    return fetcher<any>(`${BASE_URL}/api/problems/${problem_id}/`, {
+    return fetcher<ProblemDetail>(`${BASE_URL}/api/problems/${problem_id}/`, {
       method: 'GET',
     })
   }
