@@ -41,7 +41,11 @@ export const ProblemCard = ({
       title={
         <div className="flex gap-2 items-center justify-start">
           <span className="truncate">{problem?.name}</span>
-          <a href={problem.url} target="_blank" rel="noreferrer">
+          <a
+            href={`problem/${problem.id}/submit`}
+            target="_blank"
+            rel="noreferrer"
+          >
             <Icon
               icon="la:external-link-alt"
               className="shrink-0 text-base text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
