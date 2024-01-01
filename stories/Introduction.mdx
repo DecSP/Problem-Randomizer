@@ -1,0 +1,282 @@
+import { Meta } from '@storybook/blocks'
+import Image from 'next/image'
+
+import Banner from './assets/banner.png'
+import AntDesign from './assets/ant-design-logo.png'
+import MonacoEditor from './assets/monaco-editor-logo.svg'
+import NextJS from './assets/nextjs-logo.png'
+
+import Github from './assets/github.svg'
+
+export const RightArrow = () => (
+  <svg
+    viewBox="0 0 14 14"
+    width="8px"
+    height="14px"
+    style={{
+      marginLeft: '4px',
+      display: 'inline-block',
+      shapeRendering: 'inherit',
+      verticalAlign: 'middle',
+      fill: 'currentColor',
+      'path fill': 'currentColor',
+    }}
+  >
+    <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+  </svg>
+)
+
+<Meta title="Introduction" />
+
+<div className="pr-container">
+  <div className="pr-section-title">
+    <h1>Introduction to the Problem Randomizer Design System</h1>
+    <div className="pr-banner">
+      <Image width={32} height={32} layout="fixed" src={Banner} alt="Banner" />
+    </div>
+    <p>
+      Problem Randomizer is a platform designed for passionate programmers and
+      coding enthusiasts. It's not just a platform; it's a vibrant community
+      where problem-solving becomes an exhilarating journey.
+    </p>
+  </div>
+  <section>
+    <h2>What Powers Problem Randomizer?</h2>
+    <div className="pr-tech-stack-content">
+      <div className="pr-tech-stack-item">
+        <div className="pr-tech-stack-image">
+          <Image
+            width={100}
+            height={100}
+            layout="fixed"
+            src={NextJS}
+            alt="Next.js logo"
+          />
+        </div>
+        <strong>Next.js: The Foundation of a Seamless User Experience</strong>
+        <p>
+          With Next.js's powerful features, Problem Randomizer delivers faster
+          page loads, improved SEO, and a delightful user experience.
+        </p>
+      </div>
+      <div className="pr-tech-stack-item">
+        <div className="pr-tech-stack-image">
+          <Image
+            width={80}
+            height={80}
+            layout="fixed"
+            src={AntDesign}
+            alt="Ant Design logo"
+          />
+        </div>
+        <strong>Ant Design: Elegant and Feature-Rich Design System</strong>
+        <p>
+          With Ant Design's comprehensive set of components, we provide a
+          consistent and visually appealing experience to our users.
+        </p>
+      </div>
+      <div className="pr-tech-stack-item">
+        <div className="pr-tech-stack-image">
+          <Image
+            width={100}
+            height={100}
+            layout="fixed"
+            src={MonacoEditor}
+            alt="Monaco Editor logo"
+          />
+        </div>
+        <strong>Monaco Editor: A Developer's Canvas</strong>
+        <p>
+          The Monaco Editor, developed by Microsoft, is the powerhouse behind
+          Problem Randomizer's code editing experience.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Unleash the Coder in You!</h2>
+    <div className="pr-features-content">
+      <div>
+        <strong>Spawn Problems from Top Coding Platforms</strong>
+        <p>
+          Dive into a vast pool of problems sourced from renowned platforms like
+          Codeforces, AtCoder, CSES, and more. Challenge yourself with diverse
+          problem sets that cater to every skill level.
+        </p>
+      </div>
+      <div>
+        <strong>Create Your Custom Problem Sets</strong>
+        <p>
+          Craft your unique problem sets by grouping challenges that align with
+          your learning goals or competition themes. Tailor your coding
+          experience to suit your preferences and explore new realms of
+          problem-solving.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Join the Coding Revolution Today!</h2>
+    <div className="pr-join-content">
+      <div className="pr-join-links">
+        <a href="https://problem-randomizer.vercel.app" target="_blank">
+          Get started
+          <RightArrow />
+        </a>
+        <a href="https://github.com/problem-randomizer" target="_blank">
+          Visit our GitHub
+          <Image
+            width={18}
+            height={18}
+            layout="fixed"
+            src={Github}
+            alt="GitHub logo"
+          />
+        </a>
+      </div>
+      <p>
+        Visit our website to embark on a coding adventure like never before.
+        Create an account, spawn problems, build problem sets, host contests,
+        and challenge yourself to climb the ranks. Welcome to the future of
+        coding—welcome to Problem Randomizer!
+      </p>
+    </div>
+  </section>
+</div>
+
+<style>
+  {`
+  p {
+    font-size: 16px !important;
+  }
+
+  .pr-container {
+    margin-bottom: 48px;
+  }
+
+  .pr-banner {
+    border: 1px solid #E8E8E8;
+    overflow: hidden;
+  }
+
+  .pr-banner img {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 52px !important;
+    margin-bottom: 28px !important;
+  }
+
+  h2 {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    margin-top: 28px !important;
+    margin-bottom: 24px !important;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  .pr-tech-stack-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .pr-tech-stack-item p {
+    font-size: 14px !important;
+    margin-top: 8px !important;
+    line-height: 128% !important;
+  }
+
+  .pr-tech-stack-image {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+
+  .pr-tech-stack-content .pr-tech-stack-item:first-of-type .pr-tech-stack-image {
+    background-color: #000;
+  }
+
+  .pr-tech-stack-content .pr-tech-stack-item:nth-of-type(2) .pr-tech-stack-image {
+    background-color: rgb(165 180 252);
+  }
+
+  .pr-tech-stack-content .pr-tech-stack-item:nth-of-type(3) .pr-tech-stack-image {
+    background-color: rgb(110 231 183);
+  }
+
+  .pr-features-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .pr-join-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pr-join-links > a {
+    height: 48px;
+    display: flex;
+    padding: 4px 12px;
+    align-items: center;
+    gap: 6px;
+    width: max-content;
+    font-weight: 600;
+  }
+
+  .pr-join-links > a:first-child {
+    background-image: linear-gradient(to right, rgb(59 130 246), rgb(29 78 216), rgb(124 58 237));
+    color: #FFF;
+  }
+
+  .pr-join-links > a:first-child > p {
+    color: #FFF;
+  }
+
+  .pr-join-links > a:nth-child(2) {
+    border: 1px solid #000;
+  }
+
+  @media screen and (max-width: 767px) {
+    h1 {
+      font-size: 40px !important;
+    }
+
+    .pr-banner img {
+      transform: scale(1.5);
+    }
+    
+    .pr-tech-stack-content {
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    h1 {
+      font-size: 32px !important;
+    }
+
+    h2 {
+      font-size: 24px !important;
+    }
+
+    .pr-features-content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  `}
+</style>
