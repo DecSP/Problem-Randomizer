@@ -72,7 +72,7 @@
         "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/no-unused-vars": "warn",
         "simple-import-sort/imports": "off",
-        "simple-import-sort/exports": "warn",
+        "simple-import-sort/exports": "off",
         "unused-imports/no-unused-imports": "warn",
         "react/jsx-sort-props": [
           "warn",

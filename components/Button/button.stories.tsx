@@ -37,6 +37,7 @@ const colors: ButtonProps['color'][] = [
   'primary',
   'black',
   'white',
+  'info',
   'success',
   'danger',
   'warning',

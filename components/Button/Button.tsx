@@ -5,8 +5,16 @@ import React from 'react'
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'solid' | 'outline' | 'text'
-  color?: 'black' | 'white' | 'primary' | 'success' | 'danger' | 'warning'
+  color?:
+    | 'primary'
+    | 'black'
+    | 'white'
+    | 'info'
+    | 'success'
+    | 'danger'
+    | 'warning'
   loading?: boolean
+  hasBorderAnimation?: boolean
 }
 
 export const Button = (props: ButtonProps) => {
@@ -16,6 +24,7 @@ export const Button = (props: ButtonProps) => {
     children,
     loading,
     className,
+    hasBorderAnimation = true,
     ...rest
   } = props
 
@@ -31,9 +40,9 @@ export const Button = (props: ButtonProps) => {
 
   const hoverClasses = cx({
     'transition-[padding] hover:p-[3px]':
-      variant === 'outline' && color !== 'primary',
+      variant === 'outline' && hasBorderAnimation && color !== 'primary',
     'transition-[padding] hover:p-1':
-      variant === 'outline' && color === 'primary',
+      variant === 'outline' && hasBorderAnimation && color === 'primary',
     'transition-opacity hover:opacity-60': variant !== 'outline',
   })
 
@@ -52,6 +61,9 @@ export const Button = (props: ButtonProps) => {
     'text-neutral-900 bg-neutral-100 border border-neutral-200':
       color === 'white' && variant !== 'text',
     'text-neutral-500': color === 'white' && variant === 'text',
+
+    'text-white bg-blue-600': color === 'info' && variant !== 'text',
+    'text-blue-600': color === 'info' && variant === 'text',
 
     'text-white bg-emerald-500': color === 'success' && variant !== 'text',
     'text-emerald-500': color === 'success' && variant === 'text',
@@ -86,9 +98,10 @@ export const Button = (props: ButtonProps) => {
           className={cx(
             'w-full h-full flex items-center justify-center bg-white text-neutral-900 gap-2 px-4',
             {
-              '!bg-emerald-50': color === 'success',
-              '!bg-red-50': color === 'danger',
-              '!bg-amber-50': color === 'warning',
+              '!bg-blue-50 !text-blue-600': color === 'info',
+              '!bg-emerald-50 !text-emerald-600': color === 'success',
+              '!bg-red-50 !text-red-600': color === 'danger',
+              '!bg-amber-50 !text-amber-600': color === 'warning',
             },
           )}
         >
