@@ -52,7 +52,9 @@ const LoginPage = () => {
           <p className="text-xs text-neutral-500 mb-6 text-center">
             Log in to start solving, or{' '}
             <Link href={ROUTES.SIGN_UP}>
-              <Button variant="text">sign up</Button>
+              <Button variant="text" className="!h-max">
+                sign up
+              </Button>
             </Link>{' '}
             for a new account.
           </p>
