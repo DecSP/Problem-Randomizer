@@ -65,9 +65,6 @@ const TabTrigger = ({
 
   return (
     <Button
-      variant={propValue === value ? 'outline' : 'text'}
-      color={propValue === value ? 'info' : 'white'}
-      hasBorderAnimation={false}
       className={cx(
         '!flex shrink-0 rounded-sm overflow-hidden h-9 text-sm',
         {
@@ -76,6 +73,9 @@ const TabTrigger = ({
         },
         className,
       )}
+      color={propValue === value ? 'info' : 'white'}
+      hasBorderAnimation={false}
+      variant={propValue === value ? 'outline' : 'text'}
       onClick={() => {
         if (propValue !== value) {
           setValue(propValue)

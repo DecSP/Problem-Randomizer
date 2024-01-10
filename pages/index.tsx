@@ -136,8 +136,8 @@ const Home: NextPage = () => {
       <Head>
         <title>Problem Randomizer</title>
         <meta
-          name="description"
           content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
+          name="description"
         />
       </Head>
 
@@ -158,14 +158,14 @@ const Home: NextPage = () => {
                 </h1>
                 <button onClick={() => setIsWalkthroughDrawerOpen(true)}>
                   <Icon
-                    icon="ant-design:question-circle-outlined"
                     className="!text-neutral-500 hover:!text-neutral-400 transition-colors duration-[250] text-sm"
+                    icon="ant-design:question-circle-outlined"
                   />
                 </button>
               </div>
               <ProblemFilterForm
-                setProbType={setProbType}
                 disabled={isLoading || isTimerRunning}
+                setProbType={setProbType}
                 onSubmit={onSubmit}
               />
             </div>
@@ -182,7 +182,7 @@ const Home: NextPage = () => {
               {isLoading && (
                 <div className="w-full flex justify-center p-6">
                   <div className="animate-spin w-max">
-                    <Icon icon="vaadin:spinner-third" className="text-2xl" />
+                    <Icon className="text-2xl" icon="vaadin:spinner-third" />
                   </div>
                 </div>
               )}
@@ -199,9 +199,9 @@ const Home: NextPage = () => {
 
           {timerConfig.show ? (
             <Counter
+              className="fixed bottom-0 right-0"
               interval={1}
               minutes={timerConfig.minutes}
-              className="fixed bottom-0 right-0"
               onStart={() => setIsTimerRunning(true)}
               onStop={() => setIsTimerRunning(false)}
             />
@@ -209,7 +209,7 @@ const Home: NextPage = () => {
 
           <div className="fixed bottom-6 right-0 z-30 bg-white">
             <Button color="black" type="submit" onClick={openDrawer}>
-              <Icon icon="ri:arrow-right-s-line" className="shrink-0" />
+              <Icon className="shrink-0" icon="ri:arrow-right-s-line" />
               View Selected
             </Button>
           </div>

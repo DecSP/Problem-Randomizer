@@ -86,7 +86,7 @@ export const Button = (props: ButtonProps) => {
   if (loading) {
     return (
       <button className={buttonClasses} {...rest}>
-        <Icon icon="svg-spinners:3-dots-scale" className="text-2xl" />
+        <Icon className="text-2xl" icon="svg-spinners:3-dots-scale" />
       </button>
     )
   }

@@ -21,12 +21,12 @@ export const Footer = () => {
         <div className="section-container flex justify-between items-start w-full gap-12 flex-wrap">
           <div className="flex flex-col sm:flex-row gap-6 md:gap-12 items-start">
             <Image
-              priority
-              src="/images/prob-rand-logo.png"
               alt="Problem Randomizer Logo"
-              width={44}
-              height={44}
               className="select-none"
+              height={44}
+              src="/images/prob-rand-logo.png"
+              width={44}
+              priority
             />
 
             <div>
@@ -36,16 +36,16 @@ export const Footer = () => {
               <ul className="mt-2 flex flex-col gap-1">
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href={GITHUB_ORG_URL} rel="noreferrer" target="_blank">
-                    <Button variant="text" color="black" className="!h-max">
+                    <Button className="!h-max" color="black" variant="text">
                       Organization
                     </Button>
                   </a>
                 </li>
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <Button
-                    variant="text"
-                    color="black"
                     className="!h-max"
+                    color="black"
+                    variant="text"
                     onClick={() => setIsWalkthroughDrawerOpen(true)}
                   >
                     Walkthrough
@@ -61,21 +61,21 @@ export const Footer = () => {
               <ul className="mt-2 flex flex-col gap-1">
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href={CODEFORCES_URL} rel="noreferrer" target="_blank">
-                    <Button variant="text" color="black" className="!h-max">
+                    <Button className="!h-max" color="black" variant="text">
                       Codeforces
                     </Button>
                   </a>
                 </li>
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href={AT_CODER_URL} rel="noreferrer" target="_blank">
-                    <Button variant="text" color="black" className="!h-max">
+                    <Button className="!h-max" color="black" variant="text">
                       AtCoder
                     </Button>
                   </a>
                 </li>
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <a href={CSES_URL} rel="noreferrer" target="_blank">
-                    <Button variant="text" color="black" className="!h-max">
+                    <Button className="!h-max" color="black" variant="text">
                       CSES
                     </Button>
                   </a>

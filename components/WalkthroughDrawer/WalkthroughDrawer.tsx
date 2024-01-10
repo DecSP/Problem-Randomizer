@@ -24,16 +24,16 @@ const DrawerWrapper = ({
 }: WalkthroughDrawerWrapperProps) => {
   return (
     <Drawer
-      placement="right"
-      open={open}
-      width={width}
-      rootClassName={rootClassName}
       className="!bg-neutral-100"
+      open={open}
+      placement="right"
+      rootClassName={rootClassName}
       styles={{
         header: {
           backgroundColor: '#FFFFFF',
         },
       }}
+      width={width}
       onClose={onClose}
     >
       {children}
@@ -47,12 +47,12 @@ export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
   const drawerInner = (
     <div className="flex flex-col items-center gap-4">
       <Image
-        priority
-        src="/images/prob-rand-logo.png"
         alt="Problem Randomizer Logo"
-        width={80}
-        height={80}
         className="pb-2 select-none"
+        height={80}
+        src="/images/prob-rand-logo.png"
+        width={80}
+        priority
       />
       <h2 className="font-medium text-xl pb-2 text-center">
         Welcome to
@@ -88,8 +88,8 @@ export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
 
       <DrawerWrapper
         open={open}
-        width="100%"
         rootClassName="block md:hidden"
+        width="100%"
         onClose={onClose}
       >
         {drawerInner}

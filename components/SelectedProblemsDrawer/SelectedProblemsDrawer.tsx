@@ -37,11 +37,49 @@ const DrawerWrapper = ({
 
   return (
     <Drawer
-      placement="right"
-      open={open}
-      width={width}
-      rootClassName={rootClassName}
       className="!bg-neutral-100"
+      footer={
+        <>
+          {/* <Form autoComplete="off" onFinish={onSubmit}>
+          <Form.Item<ProblemFormFields>
+            label="Time (minutes)"
+            name="minutes"
+            className="!-mb-2"
+          >
+            <Input
+              type="number"
+              min={0}
+              className="!bg-transparent"
+              disabled={disabled}
+            />
+          </Form.Item>
+
+          <button
+            className={cx(
+              'form-submit-button mt-4 hover:opacity-80 !h-12 transition-all duration-[250] bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
+              {
+                '!opacity-100 cursor-not-allowed': disabled,
+              },
+            )}
+            type="submit"
+            disabled={disabled}
+          >
+            Start Solving
+          </button>
+        </Form> */}
+
+          <Button
+            className="form-submit-button"
+            disabled={disabled}
+            onClick={() => push(ROUTES.CREATE_CONTEST)}
+          >
+            Continue
+          </Button>
+        </>
+      }
+      open={open}
+      placement="right"
+      rootClassName={rootClassName}
       styles={{
         header: {
           backgroundColor: '#FFFFFF',
@@ -58,45 +96,7 @@ const DrawerWrapper = ({
             : {}),
         },
       }}
-      footer={
-        <>
-          {/* <Form autoComplete="off" onFinish={onSubmit}>
-            <Form.Item<ProblemFormFields>
-              label="Time (minutes)"
-              name="minutes"
-              className="!-mb-2"
-            >
-              <Input
-                type="number"
-                min={0}
-                className="!bg-transparent"
-                disabled={disabled}
-              />
-            </Form.Item>
-
-            <button
-              className={cx(
-                'form-submit-button mt-4 hover:opacity-80 !h-12 transition-all duration-[250] bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600',
-                {
-                  '!opacity-100 cursor-not-allowed': disabled,
-                },
-              )}
-              type="submit"
-              disabled={disabled}
-            >
-              Start Solving
-            </button>
-          </Form> */}
-
-          <Button
-            disabled={disabled}
-            className="form-submit-button"
-            onClick={() => push(ROUTES.CREATE_CONTEST)}
-          >
-            Continue
-          </Button>
-        </>
-      }
+      width={width}
       onClose={onClose}
     >
       {children}
@@ -129,8 +129,8 @@ export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
     <>
       <DrawerWrapper
         open={open}
-        selectedProblems={selectedProblemIds}
         rootClassName="hidden md:block"
+        selectedProblems={selectedProblemIds}
         onClose={onClose}
       >
         {drawerInner}
@@ -138,9 +138,9 @@ export const SelectedProblemsDrawer = (props: SelectedProblemsDrawerProps) => {
 
       <DrawerWrapper
         open={open}
+        rootClassName="block md:hidden"
         selectedProblems={selectedProblemIds}
         width="100%"
-        rootClassName="block md:hidden"
         onClose={onClose}
       >
         {drawerInner}

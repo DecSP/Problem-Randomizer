@@ -24,20 +24,20 @@ export const AuthFormWrapper = (props: AuthFormWrapperProps) => {
         </div>
         <div className="py-4 px-6 md:py-10 md:px-6 h-auto bg-neutral-100/20 md:bg-neutral-100/40 backdrop-blur-md md:max-w-xs flex flex-row justify-center md:justify-start md:flex-col items-center gap-4 md:gap-8">
           <Image
-            priority
-            src="/images/prob-rand-logo.png"
             alt="Problem Randomizer Logo"
-            width={80}
-            height={80}
             className="select-none md:mt-14 hidden md:block"
+            height={80}
+            src="/images/prob-rand-logo.png"
+            width={80}
+            priority
           />
           <Image
-            priority
-            src="/images/prob-rand-logo-gradient.png"
             alt="Problem Randomizer Logo"
-            width={48}
-            height={48}
             className="select-none md:mt-14 block md:hidden"
+            height={48}
+            src="/images/prob-rand-logo-gradient.png"
+            width={48}
+            priority
           />
 
           <h1

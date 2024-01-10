@@ -31,8 +31,8 @@ const SignUpPage = () => {
       <Head>
         <title>Sign-up | Problem Randomizer</title>
         <meta
-          name="description"
           content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
+          name="description"
         />
       </Head>
 

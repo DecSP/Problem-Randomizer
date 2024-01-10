@@ -61,7 +61,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       key: 'source_type',
       render: (value: any) => (
         <div className="min-w-[160px]">
-          <ProblemSourceBadge source={value} className="w-max" />
+          <ProblemSourceBadge className="w-max" source={value} />
         </div>
       ),
     },
@@ -87,14 +87,14 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
         <div className="flex items-center justify-end gap-2">
           <button onClick={() => removeProblem(row.id)}>
             <Icon
-              icon="la:trash"
               className="shrink-0 text-lg text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
+              icon="la:trash"
             />
           </button>
-          <a href={row.url} target="_blank" rel="noreferrer">
+          <a href={row.url} rel="noreferrer" target="_blank">
             <Icon
-              icon="la:external-link-alt"
               className="shrink-0 text-lg text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
+              icon="la:external-link-alt"
             />
           </a>
         </div>
@@ -110,9 +110,9 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       </h2>
 
       <Form
-        noValidate
-        form={formInstance}
         autoComplete="off"
+        className="mb-14 p-6 border bg-white w-full lg:w-2/3"
+        form={formInstance}
         initialValues={{
           title: '',
           description: '',
@@ -120,9 +120,9 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
           minutes: 0,
           penalty: 0,
         }}
-        className="mb-14 p-6 border bg-white w-full lg:w-2/3"
-        onValuesChange={handleValuesChange}
+        noValidate
         onFinish={onSubmit}
+        onValuesChange={handleValuesChange}
       >
         <Row gutter={24}>
           <Col span={24}>
@@ -133,7 +133,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
                 { required: true, message: 'Please input contest title' },
               ]}
             >
-              <Input type="text" className="!bg-transparent" />
+              <Input className="!bg-transparent" type="text" />
             </Form.Item>
           </Col>
 
@@ -142,44 +142,44 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
               label="Contest description"
               name="description"
             >
-              <Input type="text" className="!bg-transparent" />
+              <Input className="!bg-transparent" type="text" />
             </Form.Item>
           </Col>
 
-          <Col span={24} lg={{ span: 12 }}>
+          <Col lg={{ span: 12 }} span={24}>
             <Form.Item<CreateContestFormFields>
               label="Time (minutes)"
               name="minutes"
             >
               <Input
-                type="number"
-                min={0}
                 className="!bg-transparent"
                 disabled={disabled}
+                min={0}
+                type="number"
               />
             </Form.Item>
           </Col>
 
-          <Col span={24} lg={{ span: 12 }}>
+          <Col lg={{ span: 12 }} span={24}>
             <Form.Item<CreateContestFormFields>
               label="Penalty (minutes)"
               name="penalty"
             >
               <Input
-                type="number"
-                min={0}
                 className="!bg-transparent"
                 disabled={disabled}
+                min={0}
+                type="number"
               />
             </Form.Item>
           </Col>
 
-          <Col span={24} className="!h-max">
+          <Col className="!h-max" span={24}>
             <Form.Item<CreateContestFormFields>
+              className="!mb-0 !h-14"
               label="Public state"
               name="isPublic"
               valuePropName="checked"
-              className="!mb-0 !h-14"
             >
               <Checkbox className="">
                 <div className="h-6 overflow-hidden select-none">Is public</div>
@@ -189,8 +189,8 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
         </Row>
 
         <div className="fixed bottom-6 right-0 z-30 bg-white">
-          <Button color="black" type="submit" disabled={!isContestValid}>
-            <Icon icon="ri:code-s-slash-line" className="shrink-0 text-sm" />
+          <Button color="black" disabled={!isContestValid} type="submit">
+            <Icon className="shrink-0 text-sm" icon="ri:code-s-slash-line" />
             Start Contest
           </Button>
         </div>
@@ -203,7 +203,6 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       <Table
         columns={selectedProblemIds.length ? tableColumn : []}
         dataSource={problems.filter((p) => selectedProblemIds.includes(p.id))}
-        pagination={false}
         locale={{
           emptyText: (
             <div>
@@ -216,8 +215,9 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
             </div>
           ),
         }}
-        rowKey="id"
+        pagination={false}
         rootClassName="w-full overflow-auto border"
+        rowKey="id"
       />
     </>
   )

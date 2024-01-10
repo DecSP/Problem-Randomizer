@@ -182,7 +182,7 @@ const SubmitSolution = () => {
       {isLoading && (
         <div className="w-full flex justify-center p-6">
           <div className="animate-spin w-max">
-            <Icon icon="vaadin:spinner-third" className="text-2xl" />
+            <Icon className="text-2xl" icon="vaadin:spinner-third" />
           </div>
         </div>
       )}
