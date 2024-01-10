@@ -19,9 +19,9 @@ export const ProblemSourceBadge = (props: ProblemSourceBadgeProps) => {
       )}
     >
       <img
-        src={`/images/problem-source/${source}.png`}
         alt={`${source} logo`}
         className="select-none h-5 w-5 object-contain"
+        src={`/images/problem-source/${source}.png`}
       />
       <span className="!text-xs font-medium">{PROBLEM_SOURCES[source]}</span>
     </div>

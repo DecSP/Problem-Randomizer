@@ -8,20 +8,20 @@ export const Header = () => {
     <header className="w-screen bg-neutral-100/60 backdrop-blur-sm px-6 py-4 fixed top-0 z-40">
       <div className="section-container text-black flex justify-between items-center">
         <Image
-          priority
-          src="/images/prob-rand-logo.png"
           alt="Problem Randomizer Logo"
-          width={44}
-          height={44}
           className="select-none"
+          height={44}
+          src="/images/prob-rand-logo.png"
+          width={44}
+          priority
         />
         <div className="flex items-center">
           <a
-            href={GITHUB_ORG_URL}
-            target="_blank"
-            rel="noreferrer"
-            data-testid="help-button"
             className="text-2xl text-black hover:text-neutral-600 transition-colors duration-[250]"
+            data-testid="help-button"
+            href={GITHUB_ORG_URL}
+            rel="noreferrer"
+            target="_blank"
           >
             <Icon icon="codicon:github-inverted" />
           </a>

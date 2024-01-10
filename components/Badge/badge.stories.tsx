@@ -49,7 +49,7 @@ export const Default: Story = {
     return (
       <div className="flex gap-2.5 overflow-auto">
         {schemes.map((scheme) => (
-          <Badge key={scheme} scheme={scheme} className="capitalize">
+          <Badge key={scheme} className="capitalize" scheme={scheme}>
             {scheme}
           </Badge>
         ))}

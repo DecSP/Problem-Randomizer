@@ -57,14 +57,14 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
 
   return (
     <Form
-      noValidate
-      form={form}
       autoComplete="off"
+      form={form}
       initialValues={{
         lowerDiff: DIFFICULTY_LOWER_BOUND,
         upperDiff: DIFFICULTY_UPPER_BOUND,
         minutes: 0,
       }}
+      noValidate
       onFinish={onSubmit}
     >
       <Row gutter={24}>
@@ -77,12 +77,12 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             ]}
           >
             <Select
-              placeholder="Choose a site"
               allowClear={{
                 clearIcon: <Icon icon="ph:x-bold" />,
               }}
-              suffixIcon={<Icon icon="zondicons:arrow-down" />}
               disabled={disabled}
+              placeholder="Choose a site"
+              suffixIcon={<Icon icon="zondicons:arrow-down" />}
               onChange={(value) => {
                 setProbType(value)
               }}
@@ -96,11 +96,11 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
           </Form.Item>
         </Col>
 
-        <Col span={24} className="mb-2 block md:hidden">
+        <Col className="mb-2 block md:hidden" span={24}>
           <span className="font-semibold tracking-[2px]">Difficulty</span>
         </Col>
 
-        <Col span={12} xl={{ span: 8 }} className="hidden md:block">
+        <Col className="hidden md:block" span={12} xl={{ span: 8 }}>
           <Form.Item<ProblemFormFields>
             label="Difficulty lower bound"
             name="lowerDiff"
@@ -119,8 +119,8 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             ]}
           >
             <Input
-              type="number"
               className="!bg-transparent"
+              type="number"
               onChange={(event) => {
                 setLowerBound(
                   event?.target?.value &&
@@ -136,7 +136,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
           </Form.Item>
         </Col>
 
-        <Col span={12} xl={{ span: 8 }} className="hidden md:block">
+        <Col className="hidden md:block" span={12} xl={{ span: 8 }}>
           <Form.Item<ProblemFormFields>
             label="Difficulty upper bound"
             name="upperDiff"
@@ -155,14 +155,14 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             ]}
           >
             <Input
-              type="number"
               className="!bg-transparent"
+              type="number"
               onChange={revalidateDiffBound}
             />
           </Form.Item>
         </Col>
 
-        <Col span={12} xl={{ span: 8 }} className="md:hidden block">
+        <Col className="md:hidden block" span={12} xl={{ span: 8 }}>
           <Form.Item<ProblemFormFields>
             label="Lower bound"
             name="lowerDiff"
@@ -181,8 +181,8 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             ]}
           >
             <Input
-              type="number"
               className="!bg-transparent"
+              type="number"
               onChange={(event) => {
                 setLowerBound(
                   event?.target?.value &&
@@ -198,7 +198,7 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
           </Form.Item>
         </Col>
 
-        <Col span={12} xl={{ span: 8 }} className="md:hidden block">
+        <Col className="md:hidden block" span={12} xl={{ span: 8 }}>
           <Form.Item<ProblemFormFields>
             label="Upper bound"
             name="upperDiff"
@@ -217,28 +217,28 @@ export const ProblemFilterForm = (props: ProblemFilterFormProps) => {
             ]}
           >
             <Input
-              type="number"
               className="!bg-transparent"
+              type="number"
               onChange={revalidateDiffBound}
             />
           </Form.Item>
         </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 16 }}>
+        <Col lg={{ span: 12 }} span={24} xl={{ span: 16 }}>
           <Form.Item<ProblemFormFields>
             label="Users to exclude solved problems"
             name="user"
           >
-            <Input type="text" className="!bg-transparent" />
+            <Input className="!bg-transparent" type="text" />
           </Form.Item>
         </Col>
 
-        <Col span={24} lg={{ span: 12 }} xl={{ span: 8 }}>
+        <Col lg={{ span: 12 }} span={24} xl={{ span: 8 }}>
           <Button
             className="form-submit-button"
-            variant="outline"
-            type="submit"
             disabled={disabled}
+            type="submit"
+            variant="outline"
           >
             Submit
           </Button>

@@ -38,26 +38,11 @@ export const ProblemCard = ({
   return (
     <Card
       className="!rounded-none border-neutral-200 bg-white"
-      title={
-        <div className="flex gap-2 items-center justify-start">
-          <span className="truncate">{problem?.name}</span>
-          <a
-            href={`problem/${problem.id}/submit`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Icon
-              icon="la:external-link-alt"
-              className="shrink-0 text-base text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
-            />
-          </a>
-        </div>
-      }
       extra={
         showCheckbox ? (
           <Checkbox
-            className="flex-row-reverse"
             checked={isSelected}
+            className="flex-row-reverse"
             onChange={onChange}
           >
             <div className="h-6 overflow-hidden">
@@ -93,10 +78,25 @@ export const ProblemCard = ({
       headStyle={{
         borderColor: 'rgb(229, 231, 235)',
       }}
+      title={
+        <div className="flex gap-2 items-center justify-start">
+          <span className="truncate">{problem?.name}</span>
+          <a
+            href={`problem/${problem.id}/submit`}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <Icon
+              className="shrink-0 text-base text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
+              icon="la:external-link-alt"
+            />
+          </a>
+        </div>
+      }
     >
       <ProblemSourceBadge
-        source={problem?.source_type}
         className="mb-1.5 w-max"
+        source={problem?.source_type}
       />
       <p>
         <b className="!font-bold !text-xs">Rating:</b> {problem?.rating}

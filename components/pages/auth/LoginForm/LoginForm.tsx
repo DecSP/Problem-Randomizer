@@ -30,14 +30,14 @@ export const LoginForm = () => {
 
   return (
     <Form
-      noValidate
+      autoComplete="off"
       form={form}
       initialValues={{
         name: '',
         password: '',
         retypePassword: '',
       }}
-      autoComplete="off"
+      noValidate
       onFinish={onSubmit}
     >
       <Row gutter={24}>
@@ -47,20 +47,20 @@ export const LoginForm = () => {
             name="username"
             rules={[{ required: true, message: 'Please input username' }]}
           >
-            <Input autoFocus type="text" className="!bg-transparent" />
+            <Input className="!bg-transparent" type="text" autoFocus />
           </Form.Item>
         </Col>
 
-        <Col span={24} className="flex gap-2 items-center">
+        <Col className="flex gap-2 items-center" span={24}>
           <Form.Item<LoginFormFields>
+            className="flex-1"
             label="Password"
             name="password"
-            className="flex-1"
             rules={[{ required: true, message: 'Please choose a password' }]}
           >
             <Input
-              type={isRevealingPassword ? 'text' : 'password'}
               className="!bg-transparent"
+              type={isRevealingPassword ? 'text' : 'password'}
             />
           </Form.Item>
           <button
@@ -69,9 +69,9 @@ export const LoginForm = () => {
             onClick={() => setIsRevealingPassword((open) => !open)}
           >
             {isRevealingPassword ? (
-              <Icon icon="bi:eye" className="text-base" />
+              <Icon className="text-base" icon="bi:eye" />
             ) : (
-              <Icon icon="bi:eye-slash" className="text-base" />
+              <Icon className="text-base" icon="bi:eye-slash" />
             )}
           </button>
         </Col>
@@ -79,8 +79,8 @@ export const LoginForm = () => {
         <Col span={24}>
           <Button
             className="form-submit-button"
-            type="submit"
             loading={isLoading}
+            type="submit"
           >
             Log In
           </Button>

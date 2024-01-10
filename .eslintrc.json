@@ -77,11 +77,11 @@
         "react/jsx-sort-props": [
           "warn",
           {
+            "shorthandLast": true,
             "callbacksLast": true,
-            "shorthandFirst": true,
             "multiline": "ignore",
             "ignoreCase": true,
-            "noSortAlphabetically": true,
+            "noSortAlphabetically": false,
             "reservedFirst": true,
             "locale": "auto"
           }

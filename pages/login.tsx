@@ -34,8 +34,8 @@ const LoginPage = () => {
       <Head>
         <title>Login | Problem Randomizer</title>
         <meta
-          name="description"
           content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
+          name="description"
         />
       </Head>
 
@@ -52,7 +52,7 @@ const LoginPage = () => {
           <p className="text-xs text-neutral-500 mb-6 text-center">
             Log in to start solving, or{' '}
             <Link href={ROUTES.SIGN_UP}>
-              <Button variant="text" className="!h-max">
+              <Button className="!h-max" variant="text">
                 sign up
               </Button>
             </Link>{' '}
