@@ -13,7 +13,7 @@ import { Button, ButtonProps } from './Button'
 
 const meta: Meta<typeof Button> = {
   component: Button,
-  title: 'Components/Button',
+  title: 'Common/Button',
   tags: ['autodocs'],
   parameters: {
     docs: {
