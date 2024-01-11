@@ -1,5 +1,7 @@
 import type { StorybookConfig } from '@storybook/nextjs'
 
+const path = require('path')
+
 const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
@@ -21,6 +23,16 @@ const config: StorybookConfig = {
     autodocs: 'tag',
   },
   staticDirs: ['./public'],
+  webpackFinal: async (config: any) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@/context': path.resolve(__dirname, '/context'),
+      '@/constants': path.resolve(__dirname, '/constants'),
+      '/images': path.resolve('https://problem-randomizer.vercel.app/images'),
+    }
+
+    return config
+  },
 }
 
 export default config

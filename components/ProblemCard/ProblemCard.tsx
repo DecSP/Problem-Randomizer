@@ -10,13 +10,9 @@ import { ProblemSourceBadge } from '../ProblemSourceBadge'
 
 type ProblemCardProps = {
   problem: Problem
-  showCheckbox?: boolean
 }
 
-export const ProblemCard = ({
-  problem,
-  showCheckbox = true,
-}: ProblemCardProps) => {
+export const ProblemCard = ({ problem }: ProblemCardProps) => {
   const { addProblem, removeProblem, selectedProblemIds } = useProblemContext()
 
   const [isSelected, setIsSelected] = useState(false)
@@ -39,24 +35,19 @@ export const ProblemCard = ({
     <Card
       className="!rounded-none border-neutral-200 bg-white"
       extra={
-        showCheckbox ? (
-          <Checkbox
-            checked={isSelected}
-            className="flex-row-reverse"
-            onChange={onChange}
-          >
-            <div className="h-6 overflow-hidden">
-              <div
-                className={cx('flex flex-col transition-all duration-[250]', {
-                  '-translate-y-[24px]': isSelected,
-                })}
-              >
-                {[
-                  'Include Problem',
-                  'Include',
-                  'Exclude Problem',
-                  'Exclude',
-                ].map((label, index) => (
+        <Checkbox
+          checked={isSelected}
+          className="flex-row-reverse"
+          onChange={onChange}
+        >
+          <div className="h-6 overflow-hidden">
+            <div
+              className={cx('flex flex-col transition-all duration-[250]', {
+                '-translate-y-[24px]': isSelected,
+              })}
+            >
+              {['Include Problem', 'Include', 'Exclude Problem', 'Exclude'].map(
+                (label, index) => (
                   <span
                     key={label}
                     className={cx(
@@ -69,11 +60,11 @@ export const ProblemCard = ({
                   >
                     {label}
                   </span>
-                ))}
-              </div>
+                ),
+              )}
             </div>
-          </Checkbox>
-        ) : null
+          </div>
+        </Checkbox>
       }
       headStyle={{
         borderColor: 'rgb(229, 231, 235)',
@@ -83,6 +74,7 @@ export const ProblemCard = ({
           <span className="truncate">{problem?.name}</span>
           <a
             href={`problem/${problem.id}/submit`}
+            // href={problem?.url}
             rel="noreferrer"
             target="_blank"
           >

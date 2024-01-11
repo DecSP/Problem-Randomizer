@@ -11,7 +11,7 @@ import { TabContent, TabTrigger, Tabs, TabsList } from './Tabs'
 
 const meta: Meta<typeof Tabs> = {
   component: Tabs,
-  title: 'Components/Tabs',
+  title: 'Common/Tabs',
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -41,15 +41,15 @@ export const Default: Story = {
         <Tabs value="problems">
           <TabsList>
             <TabTrigger value="problems">Problems</TabTrigger>
-            <TabTrigger value="submisions">Submisions</TabTrigger>
+            <TabTrigger value="submissions">Submissions</TabTrigger>
             <TabTrigger value="editorials">Editorials</TabTrigger>
           </TabsList>
 
           <TabContent className="p-4" value="problems">
             Problems
           </TabContent>
-          <TabContent className="p-4" value="submisions">
-            Submisions
+          <TabContent className="p-4" value="submissions">
+            Submissions
           </TabContent>
           <TabContent className="p-4" value="editorials">
             Editorials

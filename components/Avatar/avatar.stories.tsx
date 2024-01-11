@@ -12,7 +12,7 @@ import Avatar from './Avatar'
 
 const meta: Meta<typeof Avatar> = {
   component: Avatar,
-  title: 'Components/Avatar',
+  title: 'Common/Avatar',
   tags: ['autodocs'],
   parameters: {
     docs: {

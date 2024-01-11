@@ -7,12 +7,11 @@ import {
   Title,
 } from '@storybook/blocks'
 import type { Meta, StoryObj } from '@storybook/react'
+import { ProblemSourceBadge } from './ProblemSourceBadge'
 
-import { Badge, BadgeProps } from './Badge'
-
-const meta: Meta<typeof Badge> = {
-  component: Badge,
-  title: 'Common/Badge',
+const meta: Meta<typeof ProblemSourceBadge> = {
+  component: ProblemSourceBadge,
+  title: 'Problem/ProblemSourceBadge',
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -32,27 +31,18 @@ const meta: Meta<typeof Badge> = {
   },
 }
 
-const schemes: BadgeProps['scheme'][] = [
-  'black',
-  'white',
-  'info',
-  'success',
-  'danger',
-  'warning',
-]
-
 export default meta
-type Story = StoryObj<typeof Badge>
+type Story = StoryObj<typeof ProblemSourceBadge>
 
 export const Default: Story = {
   render: () => {
     return (
-      <div className="flex gap-2.5 overflow-auto">
-        {schemes.map((scheme) => (
-          <Badge key={scheme} className="capitalize" scheme={scheme}>
-            {scheme}
-          </Badge>
-        ))}
+      <div className="overflow-auto">
+        <div className="flex gap-2.5 pb-1">
+          <ProblemSourceBadge source="codeforces" />
+          <ProblemSourceBadge source="atcoder" />
+          <ProblemSourceBadge source="cses" />
+        </div>
       </div>
     )
   },
