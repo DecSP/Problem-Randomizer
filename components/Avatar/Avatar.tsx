@@ -198,7 +198,7 @@ export const Avatar = (props: AvatarProps) => {
         {presence && !loading ? (
           <div
             className={cx(
-              'rounded-full box-content border-white flex justify-center items-center absolute shrink-0 bottom-0 animate-fade-in',
+              'rounded-full box-content border-white flex justify-center items-center absolute shrink-0 bottom-0',
               presenceClassNames[size],
               {
                 [presenceColorClassNames[presence]]: presence,
