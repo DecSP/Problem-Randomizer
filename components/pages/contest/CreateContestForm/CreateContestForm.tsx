@@ -106,7 +106,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
   return (
     <>
       <h2 className="text-xl w-max break-words leading-9 mb-6 font-medium">
-        <span className="">Contest Info</span>
+        Contest Info
       </h2>
 
       <Form
@@ -133,7 +133,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
                 { required: true, message: 'Please input contest title' },
               ]}
             >
-              <Input className="!bg-transparent" type="text" />
+              <Input className="!bg-transparent" type="text" autoFocus />
             </Form.Item>
           </Col>
 
@@ -197,7 +197,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       </Form>
 
       <h2 className="text-xl w-max break-words leading-9 mb-6 font-medium">
-        <span className="">Problem Set</span>
+        Problem Set
       </h2>
 
       <Table

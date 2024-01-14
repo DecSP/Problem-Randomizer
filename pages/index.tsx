@@ -142,9 +142,9 @@ const Home: NextPage = () => {
       </Head>
 
       <Layout>
-        <main className="relative pt-[76px] bg-white">
-          <section className="relative">
-            <div className="section-container px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
+        <main className="pt-[76px] bg-white">
+          <section className="section-container">
+            <div className="px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
               <div className="inline-flex max-w-full flex-wrap items-center gap-2 mb-10">
                 <h1 className="text-2xl w-max font-medium break-words leading-9">
                   <span

@@ -49,7 +49,7 @@ export const AuthFormWrapper = (props: AuthFormWrapperProps) => {
             Problem Randomizer
           </h1>
 
-          <p className="text-sm text-neutral-600 text-center hidden md:inline">
+          <p className="text-xs text-neutral-600 text-center hidden md:inline">
             Create problem set and test your programming skills with various
             coding problems from Codeforces, AtCoder, etc.
           </p>

@@ -67,11 +67,7 @@ export const SignUpForm = () => {
           </Form.Item>
         </Col>
 
-        <Col
-          className="flex gap-2 items-center
-        span={24} 
-        "
-        >
+        <Col className="flex gap-2 items-center" span={24}>
           <Form.Item<SignUpFormFields>
             className="flex-1"
             label="Password"

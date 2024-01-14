@@ -79,3 +79,9 @@ a {
   opacity: 1;
   transform: rotate(3deg) translate(0, -4px);
 }
+
+.section-container {
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
