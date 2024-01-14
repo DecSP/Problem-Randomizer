@@ -118,7 +118,7 @@ export const Avatar = (props: AvatarProps) => {
   ) : (
     <p
       className={cx(
-        'text-center',
+        'text-center select-none',
         ['yellow', 'white'].includes(color) ? 'text-neutral-900' : 'text-white',
         textClass,
         contentClassName,
