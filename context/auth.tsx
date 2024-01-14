@@ -9,8 +9,6 @@ import {
 } from 'react'
 import { client } from '@/lib/apis'
 import { UserData } from '@/lib/schema'
-import { useRouter } from 'next/router'
-import { ROUTES } from '@/constants/routes'
 
 interface AuthContextValues {
   isAuthenticated: boolean
@@ -71,7 +69,6 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   }, [])
 
   const [user, setUser] = useState<UserData>()
-  const { push } = useRouter()
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   useEffect(() => setIsAuthenticated(Boolean(authToken)), [authToken])
@@ -122,8 +119,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     setAuthToken(undefined)
     window.localStorage.removeItem(AUTH_TOKEN_KEY)
     client.clearAuthToken()
-    push(ROUTES.LOGIN)
-  }, [push])
+  }, [])
 
   const revalidate = async () => {
     try {

@@ -28,6 +28,7 @@ const config: StorybookConfig = {
       ...config.resolve.alias,
       '@/context': path.resolve(__dirname, '/context'),
       '@/constants': path.resolve(__dirname, '/constants'),
+      '@/lib': path.resolve(__dirname, '/lib'),
       '/images': path.resolve('https://problem-randomizer.vercel.app/images'),
     }
 

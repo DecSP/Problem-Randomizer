@@ -7,8 +7,7 @@ import {
   Title,
 } from '@storybook/blocks'
 import { Meta, StoryObj } from '@storybook/react'
-
-import Avatar from './Avatar'
+import { Avatar } from './Avatar'
 
 const meta: Meta<typeof Avatar> = {
   component: Avatar,
@@ -40,9 +39,10 @@ export const Sizes: Story = {
     return (
       <div className="overflow-x-auto">
         <div className="flex gap-2.5 items-start">
-          <Avatar name="John Doe" size="small" />
-          <Avatar name="John Doe" size="medium" />
-          <Avatar name="John Doe" size="large" />
+          <Avatar name="John Doe" presence="online" size="xs" />
+          <Avatar name="John Doe" presence="online" size="sm" />
+          <Avatar name="John Doe" presence="online" size="md" />
+          <Avatar name="John Doe" presence="online" size="lg" />
         </div>
       </div>
     )
@@ -122,12 +122,18 @@ export const showInfo: Story = {
 export const presences: Story = {
   render: () => {
     return (
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto space-y-2.5">
         <div className="flex gap-2.5 items-start">
           <Avatar name="John Doe" presence="online" />
           <Avatar name="John Doe" presence="offline" />
           <Avatar name="John Doe" presence="away" />
           <Avatar name="John Doe" presence="do-not-disturb" />
+        </div>
+        <div className="flex gap-2.5 items-start">
+          <Avatar name="John Doe" presence="online" shape="square" />
+          <Avatar name="John Doe" presence="offline" shape="square" />
+          <Avatar name="John Doe" presence="away" shape="square" />
+          <Avatar name="John Doe" presence="do-not-disturb" shape="square" />
         </div>
       </div>
     )

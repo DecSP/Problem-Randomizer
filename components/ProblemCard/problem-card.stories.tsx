@@ -7,8 +7,8 @@ import {
   Title,
 } from '@storybook/blocks'
 import type { Meta, StoryObj } from '@storybook/react'
+import { ProblemContextProvider } from '@/context/problem'
 import { ProblemCard } from './ProblemCard'
-import { ProblemContextProvider } from '../../context/problem'
 
 const meta: Meta<typeof ProblemCard> = {
   component: ProblemCard,

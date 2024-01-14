@@ -16,6 +16,7 @@ export type SidebarVariant = 'main' | 'app-detail'
 type ProblemContextValue = {
   problems: Problem[]
   setProblems: Dispatch<SetStateAction<Problem[]>>
+  setProblemIds: Dispatch<SetStateAction<number[]>>
   selectedProblemIds: number[]
   // eslint-disable-next-line
   addProblem: (problem: number) => void
@@ -49,6 +50,7 @@ function ProblemContextProvider({ children }: { children: ReactNode }) {
       problems,
       setProblems,
       selectedProblemIds: problemIds,
+      setProblemIds,
       addProblem,
       removeProblem,
     }),

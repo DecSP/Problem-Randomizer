@@ -43,11 +43,11 @@ export const Button = (props: ButtonProps) => {
       variant === 'outline' && hasBorderAnimation && color !== 'primary',
     'transition-[padding] hover:p-1':
       variant === 'outline' && hasBorderAnimation && color === 'primary',
-    'transition-opacity hover:opacity-60': variant !== 'outline',
+    'transition-opacity hover:opacity-75': variant !== 'outline',
   })
 
   const disabledClasses =
-    rest.disabled || loading ? '!opacity-40 cursor-not-allowed' : ''
+    rest.disabled || loading ? '!opacity-50 cursor-not-allowed' : ''
 
   const colorClasses = cx({
     'text-white duration-[250] bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600':

@@ -1,23 +1,27 @@
 import { Icon } from '@iconify/react'
 import React, { ImgHTMLAttributes, ReactNode } from 'react'
 import cx from 'classnames'
+import { Tooltip } from 'antd'
 
 const sizeClassNames = {
-  small: 'w-10 h-10',
-  medium: 'w-14 h-14',
-  large: 'w-20 h-20',
+  xs: 'w-7 h-7',
+  sm: 'w-10 h-10',
+  md: 'w-14 h-14',
+  lg: 'w-20 h-20',
 }
 
 const textClassNames = {
-  small: 'text-xl',
-  medium: 'text-3xl',
-  large: 'text-4xl',
+  xs: 'text-base font-medium',
+  sm: 'text-xl font-semibold',
+  md: 'text-3xl font-semibold',
+  lg: 'text-4xl font-semibold',
 }
 
 const presenceClassNames = {
-  small: 'w-2 h-2 border-2',
-  medium: 'w-3 h-3 border-[3px]',
-  large: 'w-5 h-5 border-4',
+  xs: 'w-1.5 h-1.5 border-[1.5px]',
+  sm: 'w-2 h-2 border-2',
+  md: 'w-3 h-3 border-[3px]',
+  lg: 'w-5 h-5 border-4',
 }
 
 const presenceColorClassNames = {
@@ -38,29 +42,32 @@ const colorClassNames = {
 }
 
 interface AvatarProps {
-  name?: ReactNode
+  name?: string
   color?: 'primary' | 'blue' | 'green' | 'yellow' | 'red' | 'white' | 'black'
   src?: string
-  size?: 'small' | 'medium' | 'large'
+  size?: 'xs' | 'sm' | 'md' | 'lg'
   shape?: 'circle' | 'square'
   presence?: 'online' | 'offline' | 'away' | 'do-not-disturb'
   description?: ReactNode
   className?: string
   contentClassName?: string
+  title?: ReactNode
   titleClassName?: string
   descriptionClassName?: string
   showInfo?: boolean
   imgProps?: ImgHTMLAttributes<HTMLImageElement>
+  loading?: boolean
 }
 
-const Avatar = (props: AvatarProps) => {
+export const Avatar = (props: AvatarProps) => {
   const {
     name = '',
     color = 'primary',
     src,
-    size = 'medium',
+    size = 'md',
     shape = 'circle',
-    presence = 'online',
+    presence,
+    title,
     description,
     className,
     contentClassName,
@@ -68,6 +75,7 @@ const Avatar = (props: AvatarProps) => {
     descriptionClassName,
     showInfo = false,
     imgProps,
+    loading = false,
   } = props
 
   const firstLetter = (
@@ -76,12 +84,13 @@ const Avatar = (props: AvatarProps) => {
     ''
   ).toUpperCase()
 
-  const textClass = cx('text-center font-semibold', textClassNames[size])
+  const textClass = cx('text-center', textClassNames[size])
   const shapeClass = cx({
     'rounded-full': shape === 'circle',
-    'rounded-md': shape === 'square' && size === 'small',
-    'rounded-lg': shape === 'square' && size === 'medium',
-    'rounded-xl': shape === 'square' && size === 'large',
+    'rounded-sm': shape === 'square' && size === 'xs',
+    'rounded-md': shape === 'square' && size === 'sm',
+    'rounded-lg': shape === 'square' && size === 'md',
+    'rounded-xl': shape === 'square' && size === 'lg',
   })
 
   let presenceIcon = null
@@ -109,7 +118,7 @@ const Avatar = (props: AvatarProps) => {
   ) : (
     <p
       className={cx(
-        'text-center font-semibold',
+        'text-center select-none',
         ['yellow', 'white'].includes(color) ? 'text-neutral-900' : 'text-white',
         textClass,
         contentClassName,
@@ -120,7 +129,24 @@ const Avatar = (props: AvatarProps) => {
   )
 
   let renderTitle = null
-  if (name && typeof name === 'string') {
+  if (title) {
+    if (typeof title === 'string') {
+      renderTitle = (
+        <p
+          className={cx(
+            'text-lg font-semibold text-neutral-900 truncate',
+            titleClassName,
+          )}
+        >
+          <Tooltip title={title} trigger="hover">
+            {title}
+          </Tooltip>
+        </p>
+      )
+    } else {
+      renderTitle = title
+    }
+  } else {
     renderTitle = (
       <p
         className={cx(
@@ -128,11 +154,11 @@ const Avatar = (props: AvatarProps) => {
           titleClassName,
         )}
       >
-        {name}
+        <Tooltip title={name} trigger="hover">
+          {name}
+        </Tooltip>
       </p>
     )
-  } else {
-    renderTitle = name
   }
 
   let renderDescription = null
@@ -144,7 +170,9 @@ const Avatar = (props: AvatarProps) => {
           descriptionClassName,
         )}
       >
-        {description}
+        <Tooltip title={description} trigger="hover">
+          {description}
+        </Tooltip>
       </p>
     )
   } else {
@@ -161,27 +189,24 @@ const Avatar = (props: AvatarProps) => {
         )}
       >
         <div
-          className={cx(
-            'absolute w-full h-full',
-            shapeClass,
-            {
-              'animate-pulse bg-neutral-200': src !== undefined,
-            },
-            src === undefined ? colorClassNames[color] : '',
-          )}
+          className={cx('absolute w-full h-full', shapeClass, {
+            'animate-pulse bg-neutral-200': src !== undefined || loading,
+            [colorClassNames[color]]: src === undefined && !loading,
+          })}
         />
         <div className="relative">{renderImage}</div>
-        {presence ? (
+        {presence && !loading ? (
           <div
             className={cx(
               'rounded-full box-content border-white flex justify-center items-center absolute shrink-0 bottom-0',
               presenceClassNames[size],
-              presence ? presenceColorClassNames[presence] : '',
               {
+                [presenceColorClassNames[presence]]: presence,
                 'right-0': shape === 'circle',
-                '-right-0.5': shape !== 'circle' && size === 'small',
-                '-right-1': shape !== 'circle' && size === 'medium',
-                '-right-1.5': shape !== 'circle' && size === 'large',
+                '-right-[2.5px]': shape !== 'circle' && size === 'xs',
+                '-right-0.5': shape !== 'circle' && size === 'sm',
+                '-right-1': shape !== 'circle' && size === 'md',
+                '-right-1.5': shape !== 'circle' && size === 'lg',
               },
             )}
           >
@@ -199,5 +224,3 @@ const Avatar = (props: AvatarProps) => {
     </div>
   )
 }
-
-export default Avatar
