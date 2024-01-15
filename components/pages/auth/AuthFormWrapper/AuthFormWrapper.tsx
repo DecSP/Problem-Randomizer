@@ -9,50 +9,50 @@ export const AuthFormWrapper = (props: AuthFormWrapperProps) => {
   const { children } = props
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <h1
-        className="hidden md:block bg-clip-text text-xl w-max text-center font-medium bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600"
+    <div className="flex min-h-[95vh] w-full">
+      <div
+        className="bg-cover hidden md:flex bg-center relative max-w-[40%] w-[520px] flex-col justify-center items-start gap-6 p-8"
         style={{
-          fontFamily: 'Space Grotesk',
+          backgroundImage: 'url("/images/auth-bg.svg")',
         }}
       >
-        Problem Randomizer
-      </h1>
-      <div className="flex flex-col-reverse md:flex-row shadow-lg">
-        <div className="bg-white h-auto py-8 md:py-10 px-8 md:px-14 md:max-w-md">
-          {children}
-        </div>
-        <div className="py-4 px-6 md:py-10 md:px-6 h-auto bg-neutral-100/20 md:bg-neutral-100/40 backdrop-blur-md md:max-w-xs flex flex-row justify-center md:justify-start md:flex-col items-center gap-4 md:gap-8">
-          <Image
-            alt="Problem Randomizer Logo"
-            className="select-none md:mt-14 hidden md:block"
-            height={80}
-            src="/images/prob-rand-logo.png"
-            width={80}
-            priority
-          />
-          <Image
-            alt="Problem Randomizer Logo"
-            className="select-none md:mt-14 block md:hidden"
-            height={48}
-            src="/images/prob-rand-logo-gradient.png"
-            width={48}
-            priority
-          />
-
-          <h1
-            className="md:hidden block text-lg w-max font-medium text-neutral-900"
+        <Image
+          alt="Problem Randomizer Logo"
+          className="select-none absolute top-6 left-8"
+          height={56}
+          src="/images/prob-rand-logo.png"
+          width={56}
+          priority
+        />
+        <div className="text-3xl lg:text-4xl">
+          Welcome to{' '}
+          <span
+            className="bg-clip-text w-max text-center font-medium bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600"
             style={{
               fontFamily: 'Space Grotesk',
             }}
           >
             Problem Randomizer
-          </h1>
-
-          <p className="text-xs text-neutral-600 text-center hidden md:inline">
+          </span>
+        </div>
+        <div>
+          <p className="text-xs lg:text-sm text-neutral-600 text-center hidden md:inline">
             Create problem set and test your programming skills with various
             coding problems from Codeforces, AtCoder, etc.
           </p>
+        </div>
+      </div>
+      <div className="flex flex-col-reverse md:flex-row flex-1 justify-center items-center relative">
+        <Image
+          alt="Problem Randomizer Logo"
+          className="select-none block md:hidden absolute top-6 left-6 sm:top-8 sm:left-8"
+          height={48}
+          src="/images/prob-rand-logo-gradient.png"
+          width={48}
+          priority
+        />
+        <div className="bg-white h-auto p-6 sm:p-8 md:px-14 md:max-w-lg">
+          {children}
         </div>
       </div>
     </div>
