@@ -29,19 +29,14 @@ const SignUpPage = () => {
   return !isSSR ? (
     <>
       <Head>
-        <title>Sign-up | Problem Randomizer</title>
+        <title>Sign Up | Problem Randomizer</title>
         <meta
           content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
           name="description"
         />
       </Head>
 
-      <main
-        className="min-h-[95vh] p-6 bg-cover bg-center flex justify-center items-center"
-        style={{
-          backgroundImage: 'url("/images/auth-bg.svg")',
-        }}
-      >
+      <main className="min-h-[95vh]">
         <AuthFormWrapper>
           <h2 className="text-lg font-medium text-center mb-2">
             Sign up with us today

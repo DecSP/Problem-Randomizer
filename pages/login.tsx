@@ -39,12 +39,7 @@ const LoginPage = () => {
         />
       </Head>
 
-      <main
-        className="min-h-[95vh] p-6 bg-cover bg-center flex justify-center items-center"
-        style={{
-          backgroundImage: 'url("/images/auth-bg.svg")',
-        }}
-      >
+      <main className="min-h-[95vh]">
         <AuthFormWrapper>
           <h2 className="text-lg font-medium text-center mb-2">
             Welcome, competitive coders!
