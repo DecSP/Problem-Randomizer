@@ -6,10 +6,13 @@ import {
   CODEFORCES_URL,
   CSES_URL,
   GITHUB_ORG_URL,
+  EMAIL_URL,
+  DESIGN_SYSTEM_URL,
 } from '@/constants/urls'
 
 import { Button } from '../Button'
 import { WalkthroughDrawer } from '../WalkthroughDrawer'
+import { Icon } from '@iconify/react'
 
 export const Footer = () => {
   const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false)
@@ -35,13 +38,6 @@ export const Footer = () => {
               </h3>
               <ul className="mt-2 flex flex-col gap-1">
                 <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
-                  <a href={GITHUB_ORG_URL} rel="noreferrer" target="_blank">
-                    <Button className="!h-max" color="black" variant="text">
-                      Organization
-                    </Button>
-                  </a>
-                </li>
-                <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
                   <Button
                     className="!h-max"
                     color="black"
@@ -50,6 +46,13 @@ export const Footer = () => {
                   >
                     Walkthrough
                   </Button>
+                </li>
+                <li className="text-sm text-neutral-600 hover:text-neutral-400 transition-colors duration-[250]">
+                  <a href={DESIGN_SYSTEM_URL} rel="noreferrer" target="_blank">
+                    <Button className="!h-max" color="black" variant="text">
+                      Design System
+                    </Button>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -84,15 +87,40 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="text-sm text-neutral-600 text-center">
-            Copyright &copy; 2023{' '}
-            <span
-              className="font-medium"
-              style={{ fontFamily: 'Space Grotesk' }}
-            >
-              Problem Randomizer
-            </span>
-            . All rights reserved.
+          <div className="flex flex-col-reverse sm:flex-col items-center sm:items-end gap-2 w-full sm:w-max text-neutral-600 text-center">
+            <p className="text-sm">
+              Copyright &copy; 2023{' '}
+              <span
+                className="font-medium"
+                style={{ fontFamily: 'Space Grotesk' }}
+              >
+                Problem Randomizer
+              </span>
+              . All rights reserved.
+            </p>
+            <div className="flex gap-2 items-center">
+              <a
+                className="h-6"
+                href={GITHUB_ORG_URL}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <Button className="!h-max" color="black" variant="text">
+                  <Icon
+                    className="text-2xl text-neutral-900"
+                    icon="ant-design:github-outlined"
+                  />
+                </Button>
+              </a>
+              <a className="h-6" href={EMAIL_URL}>
+                <Button className="!h-max" color="black" variant="text">
+                  <Icon
+                    className="text-2xl text-neutral-900"
+                    icon="icon-park-solid:mail-edit"
+                  />
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </footer>
