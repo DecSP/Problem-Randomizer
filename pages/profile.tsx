@@ -22,7 +22,7 @@ const ProfilePage = () => {
       </Head>
 
       <Layout>
-        <main className="pt-[76px]">
+        <main className="pt-[76px] min-h-[524px]">
           <section
             className="bg-gradient-to-r bg-cover bg-center"
             style={{
@@ -37,15 +37,15 @@ const ProfilePage = () => {
                 size="lg"
                 showInfo
               />
-              <Button color="black">
+              <Button className="text-sm" color="black">
                 <Icon icon="carbon:edit" /> Edit profile
               </Button>
             </div>
           </section>
 
-          <div className="section-container min-h-[280px] flex flex-col md:flex-row justify-between items-start gap-6 md:gap-12 px-6 md:px-[90px] py-6 md:py-[40px] max-w-screen">
+          <div className="section-container flex flex-col md:flex-row justify-between items-start gap-6 md:gap-12 px-6 md:px-[90px] py-6 md:py-[40px] max-w-screen">
             <Button
-              className="w-28"
+              className="w-24 text-sm"
               color="danger"
               variant="outline"
               onClick={logout}

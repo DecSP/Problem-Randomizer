@@ -22,6 +22,8 @@ type ProblemContextValue = {
   addProblem: (problem: number) => void
   // eslint-disable-next-line
   removeProblem: (problem: number) => void
+  isEverOpened: boolean
+  setIsEverOpened: Dispatch<SetStateAction<boolean>>
 }
 
 const ProblemContext = createContext<ProblemContextValue | undefined>(undefined)
@@ -29,6 +31,7 @@ const ProblemContext = createContext<ProblemContextValue | undefined>(undefined)
 function ProblemContextProvider({ children }: { children: ReactNode }) {
   const [problemIds, setProblemIds] = useState<number[]>([])
   const [problems, setProblems] = useState<Problem[]>([])
+  const [isEverOpened, setIsEverOpened] = useState(false)
 
   const addProblem = useCallback(
     (problem: number) => {
@@ -53,8 +56,10 @@ function ProblemContextProvider({ children }: { children: ReactNode }) {
       setProblemIds,
       addProblem,
       removeProblem,
+      isEverOpened,
+      setIsEverOpened,
     }),
-    [addProblem, problemIds, problems, removeProblem],
+    [problems, problemIds, addProblem, removeProblem, isEverOpened],
   )
 
   return (

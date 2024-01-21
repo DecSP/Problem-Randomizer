@@ -29,12 +29,12 @@ export const Button = (props: ButtonProps) => {
   } = props
 
   const baseClasses = cx(
-    'duration-[250] h-10 flex justify-center items-center gap-2',
+    'duration-[250] h-10 justify-center items-center gap-2',
     {
-      'p-[1px]': variant === 'outline' && color !== 'primary',
-      'p-0.5': variant === 'outline' && color === 'primary',
-      'py-2 px-4': variant === 'solid',
-      'p-0 !inline': variant === 'text',
+      'p-[1px] flex': variant === 'outline' && color !== 'primary',
+      'p-0.5 flex': variant === 'outline' && color === 'primary',
+      'py-2 px-4 flex': variant === 'solid',
+      'p-0 inline': variant === 'text',
     },
   )
 
@@ -62,8 +62,8 @@ export const Button = (props: ButtonProps) => {
       color === 'white' && variant !== 'text',
     'text-neutral-500': color === 'white' && variant === 'text',
 
-    'text-white bg-blue-600': color === 'info' && variant !== 'text',
-    'text-blue-600': color === 'info' && variant === 'text',
+    'text-white bg-blue-700': color === 'info' && variant !== 'text',
+    'text-blue-700': color === 'info' && variant === 'text',
 
     'text-white bg-emerald-500': color === 'success' && variant !== 'text',
     'text-emerald-500': color === 'success' && variant === 'text',
@@ -98,7 +98,7 @@ export const Button = (props: ButtonProps) => {
           className={cx(
             'w-full h-full flex items-center justify-center bg-white text-neutral-900 gap-2 px-4',
             {
-              '!bg-blue-50 !text-blue-600': color === 'info',
+              '!bg-blue-50 !text-blue-700': color === 'info',
               '!bg-emerald-50 !text-emerald-600': color === 'success',
               '!bg-red-50 !text-red-600': color === 'danger',
               '!bg-amber-50 !text-amber-600': color === 'warning',

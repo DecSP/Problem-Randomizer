@@ -39,9 +39,9 @@ export const Default: Story = {
     return (
       <div className="overflow-auto">
         <div className="flex gap-2.5 pb-1">
-          <ProblemSourceBadge source="codeforces" />
-          <ProblemSourceBadge source="atcoder" />
-          <ProblemSourceBadge source="cses" />
+          <ProblemSourceBadge className="shrink-0" source="codeforces" />
+          <ProblemSourceBadge className="shrink-0" source="atcoder" />
+          <ProblemSourceBadge className="shrink-0" source="cses" />
         </div>
       </div>
     )
