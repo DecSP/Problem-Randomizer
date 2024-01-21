@@ -116,7 +116,7 @@ export const Footer = () => {
                 <Button className="!h-max" color="black" variant="text">
                   <Icon
                     className="text-2xl text-neutral-900"
-                    icon="icon-park-solid:mail-edit"
+                    icon="mdi:email-edit-outline"
                   />
                 </Button>
               </a>

@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Problem Randomizer</title>
+        <title>Contest | Problem Randomizer</title>
         <meta
           content="Create problem set and test your programming skills with various coding problems from Codeforces, AtCoder, etc."
           name="description"

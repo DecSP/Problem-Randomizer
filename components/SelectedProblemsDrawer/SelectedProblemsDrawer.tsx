@@ -3,6 +3,7 @@ import { Drawer } from 'antd'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 
+import { Icon } from '@iconify/react'
 import { ROUTES } from '@/constants/routes'
 import { useProblemContext } from '@/context/problem'
 
@@ -37,7 +38,7 @@ const DrawerWrapper = ({
 
   return (
     <Drawer
-      className="!bg-neutral-100"
+      className="!bg-neutral-50"
       footer={
         <>
           {/* <Form autoComplete="off" onFinish={onSubmit}>
@@ -81,8 +82,11 @@ const DrawerWrapper = ({
       placement="right"
       rootClassName={rootClassName}
       styles={{
+        body: {
+          padding: 0,
+        },
         header: {
-          backgroundColor: '#FFFFFF',
+          display: 'none',
         },
         footer: {
           backgroundColor: '#FFFFFF',
@@ -99,7 +103,14 @@ const DrawerWrapper = ({
       width={width}
       onClose={onClose}
     >
-      {children}
+      <div className="h-[76px] flex items-center px-6 py-4 sticky top-0 z-50 bg-neutral-50">
+        <Button color="black" variant="text" onClick={onClose}>
+          <Icon className="text-2xl" icon="ant-design:close-outlined" />
+        </Button>
+      </div>
+      <div className="px-6 pb-6 overflow-auto h-[calc(100%-76px)]">
+        {children}
+      </div>
     </Drawer>
   )
 }
