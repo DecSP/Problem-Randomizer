@@ -56,7 +56,7 @@ export const Variants: Story = {
             {colors.map((color) => (
               <Button
                 key={`${color}-${variant}`}
-                className={cx('capitalize', {
+                className={cx('capitalize shrink-0', {
                   'w-12 !h-max': variant === 'text',
                   'w-[88px]': variant !== 'text',
                 })}
@@ -79,7 +79,7 @@ export const Colors: Story = {
       <div className="space-y-2.5 overflow-auto">
         <div className="flex gap-2.5">
           {colors.map((color) => (
-            <Button key={color} className="capitalize" color={color}>
+            <Button key={color} className="capitalize shrink-0" color={color}>
               {color}
             </Button>
           ))}
@@ -88,7 +88,7 @@ export const Colors: Story = {
           {colors.map((color) => (
             <Button
               key={`${color}-disabled`}
-              className="capitalize"
+              className="capitalize shrink-0"
               color={color}
               disabled
             >
@@ -108,7 +108,7 @@ export const Loading: Story = {
         {colors.map((color) => (
           <Button
             key={`${color}-disabled`}
-            className="w-16"
+            className="w-16 shrink-0"
             color={color}
             loading
           >
