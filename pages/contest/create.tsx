@@ -7,6 +7,7 @@ import {
 } from '@/components/pages/contest/CreateContestForm'
 import { useProblemContext } from '@/context/problem'
 import { Layout } from '@/components/Layout'
+import { client } from '@/lib/apis'
 
 const CreateContestPage = () => {
   const [form] = Form.useForm()
@@ -29,9 +30,18 @@ const CreateContestPage = () => {
     }
   }, [isFieldFilled, selectedProblemIds.length])
 
-  const onSubmit = (value: CreateContestFormFields) => {
+  const onSubmit = async (value: CreateContestFormFields) => {
     if (isContestValid) {
-      console.log(value)
+      const response = await client.createContest({
+        title: value.title ?? '', // should not be empty
+        description: value.description ?? '',
+        duration: value.minutes ?? 0, // should be required
+        is_public: value.isPublic ?? true,
+        penalty: value.penalty ?? 0,
+        start_time: new Date().toISOString(), // where to get this?
+      })
+      console.log(response)
+      // TODO: what next? go to contest page?
       return Promise.resolve()
     } else {
       return Promise.resolve()

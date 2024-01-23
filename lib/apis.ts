@@ -9,6 +9,8 @@ import {
   SignUpPayload,
   SignUpResponse,
   UserData,
+  CreateContestPayload,
+  ContestResponse,
 } from './schema'
 
 type Headers = Record<string, string>
@@ -35,6 +37,28 @@ export class Client {
 
   public async getProblem(problem_id: number) {
     return fetcher<ProblemDetail>(`${BASE_URL}/api/problems/${problem_id}/`, {
+      method: 'GET',
+    })
+  }
+
+  public async createContest(payload: CreateContestPayload) {
+    return fetcher<ContestResponse>(`${BASE_URL}/api/contests/`, {
+      headers: this.privateHeaders,
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+  }
+
+  public async getContest(contestId: number) {
+    return fetcher<ContestResponse>(`${BASE_URL}/api/contests/${contestId}/`, {
+      headers: this.privateHeaders,
+      method: 'GET',
+    })
+  }
+
+  public async getListContest() {
+    return fetcher<ContestResponse>(`${BASE_URL}/api/contests/`, {
+      headers: this.privateHeaders,
       method: 'GET',
     })
   }
