@@ -1,5 +1,6 @@
 import { Form, notification } from 'antd'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import {
   CreateContestForm,
@@ -8,8 +9,7 @@ import {
 import { useProblemContext } from '@/context/problem'
 import { Layout } from '@/components/Layout'
 import { client } from '@/lib/apis'
-import { useRouter } from 'next/router'
-import { ROUTES } from '../../constants/routes'
+import { ROUTES } from '@/constants/routes'
 
 const CreateContestPage = () => {
   const [form] = Form.useForm()
