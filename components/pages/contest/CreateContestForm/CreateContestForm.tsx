@@ -1,5 +1,14 @@
 import { Icon } from '@iconify/react'
-import { Checkbox, Col, Form, FormInstance, Input, Row, Table } from 'antd'
+import {
+  Checkbox,
+  Col,
+  Form,
+  FormInstance,
+  Input,
+  Row,
+  Table,
+  Tooltip,
+} from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import Link from 'next/link'
 
@@ -85,20 +94,24 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
     },
     {
       key: 'actions',
-      render: (row) => (
+      render: (row: Problem) => (
         <div className="flex items-center justify-end gap-2">
-          <button onClick={() => removeProblem(row.id)}>
-            <Icon
-              className="shrink-0 text-lg text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
-              icon="la:trash"
-            />
-          </button>
-          <a href={row.url} rel="noreferrer" target="_blank">
-            <Icon
-              className="shrink-0 text-lg text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
-              icon="la:external-link-alt"
-            />
-          </a>
+          <Tooltip title={`Remove ${row.name}`}>
+            <button onClick={() => removeProblem(row.id)}>
+              <Icon
+                className="shrink-0 text-lg text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
+                icon="la:trash"
+              />
+            </button>
+          </Tooltip>
+          <Tooltip title={`View ${row.name}`}>
+            <a href={row.url} rel="noreferrer" target="_blank">
+              <Icon
+                className="shrink-0 text-lg text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
+                icon="la:external-link-alt"
+              />
+            </a>
+          </Tooltip>
         </div>
       ),
       fixed: 'right',

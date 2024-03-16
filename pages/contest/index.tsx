@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       key: 'title',
       render: (value: string) => (
         <div className="w-[180px]">
-          <span>{value || ''}</span>
+          <span className="font-medium">{value || ''}</span>
         </div>
       ),
     },
@@ -96,7 +96,7 @@ const Home: NextPage = () => {
             <Link href={`${ROUTES.CONTEST}/${row.id}`}>
               <Icon
                 className="shrink-0 text-lg text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
-                icon="ic:baseline-play-arrow"
+                icon="material-symbols:play-arrow-outline"
               />
             </Link>
           </Tooltip>
@@ -121,9 +121,21 @@ const Home: NextPage = () => {
       <Layout>
         <main className="pt-[76px] bg-white">
           <section className="section-container pt-[40px] pb-[88px] px-6 md:px-[90px]">
-            <h1 className="text-2xl font-medium leading-9 mb-10">
-              Running Contests
-            </h1>
+            <div className="flex flex-col md:flex-row justify-between gap-4 mb-10">
+              <h1 className="text-2xl font-medium leading-9">
+                Running Contests
+              </h1>
+              <Link className="w-max" href={ROUTES.CREATE_CONTEST}>
+                <Button
+                  className="text-sm h-max"
+                  color="primary"
+                  variant="solid"
+                >
+                  <Icon className="text-lg" icon="ic:baseline-plus" />
+                  Create contest
+                </Button>
+              </Link>
+            </div>
             <div className="relative pb-[64px]">
               <Table
                 columns={loading ? [] : tableColumn}
@@ -239,7 +251,7 @@ const Actions = ({ endTime, id }: ActionsProps) => {
           <Link href={`${ROUTES.CONTEST}/${id}`}>
             <Icon
               className="shrink-0 text-lg text-neutral-500 hover:text-neutral-400 transition-colors duration-300"
-              icon="ic:baseline-play-arrow"
+              icon="material-symbols:play-arrow-outline"
             />
           </Link>
         </Tooltip>

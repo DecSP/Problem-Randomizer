@@ -102,6 +102,10 @@
   border-color: #9ca3af !important;
 }
 
+.ant-checkbox-inner::after {
+  border-color: #fff !important;
+}
+
 .ant-checkbox-checked .ant-checkbox-inner:hover,
 .ant-checkbox-checked .ant-checkbox-inner {
   border-color: #ffffff !important;
@@ -178,7 +182,8 @@
 }
 
 .ant-pagination-item.ant-pagination-item-active > a {
-  color: rgb(124 58 237) !important;
+  background-color: rgb(124 58 237) !important;
+  color: #fff !important;
 }
 
 .ant-pagination-item-link {
