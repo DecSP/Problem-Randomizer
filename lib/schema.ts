@@ -80,4 +80,32 @@ export interface LoginResponseData {
   user: UserData
 }
 
+export interface ContestResponseData {
+  id: number
+  title: string
+  description: string
+  is_public: boolean
+  duration: number
+  start_time: string
+  penalty: number
+  owner: number
+  participants: number[]
+  problems: number[]
+}
+
+export interface CreateContestPayload {
+  title: string
+  description: string
+  is_public: boolean
+  duration: number
+  start_time: string
+  penalty: number
+  problems: number[]
+}
+
+export interface ContestResponse extends BaseResponse<ContestResponseData> {}
+
+export interface ListContestResponse
+  extends BaseResponse<Array<ContestResponseData>> {}
+
 export interface LoginResponse extends BaseResponse<LoginResponseData> {}

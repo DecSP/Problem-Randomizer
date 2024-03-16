@@ -102,6 +102,10 @@
   border-color: #9ca3af !important;
 }
 
+.ant-checkbox-inner::after {
+  border-color: #fff !important;
+}
+
 .ant-checkbox-checked .ant-checkbox-inner:hover,
 .ant-checkbox-checked .ant-checkbox-inner {
   border-color: #ffffff !important;
@@ -153,6 +157,52 @@
 
 .ant-table-cell {
   border-bottom: 1px solid transparent !important;
+}
+
+.ant-tooltip-inner {
+  border-radius: 0 !important;
+  background-color: #000 !important;
+}
+
+.ant-tooltip-arrow::before {
+  display: none !important;
+}
+
+.ant-tooltip-arrow::after {
+  background-color: #000 !important;
+  border-radius: 0 !important;
+}
+
+.ant-pagination-item {
+  border-radius: 0 !important;
+}
+
+.ant-pagination-item.ant-pagination-item-active {
+  border-color: rgb(124 58 237) !important;
+}
+
+.ant-pagination-item.ant-pagination-item-active > a {
+  background-color: rgb(124 58 237) !important;
+  color: #fff !important;
+}
+
+.ant-pagination-item-link {
+  border-radius: 0 !important;
+}
+
+.ant-spin-container,
+.ant-spin-nested-loading {
+  position: static !important;
+}
+
+.ant-pagination {
+  padding: 16px 0;
+  margin: 0 !important;
+  /* border: 1px solid #e5e7eb !important; */
+  position: absolute !important;
+  width: 100% !important;
+  bottom: 0 !important;
+  right: 0 !important;
 }
 
 @media (max-width: 575px) {
