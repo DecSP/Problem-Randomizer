@@ -155,6 +155,51 @@
   border-bottom: 1px solid transparent !important;
 }
 
+.ant-tooltip-inner {
+  border-radius: 0 !important;
+  background-color: #000 !important;
+}
+
+.ant-tooltip-arrow::before {
+  display: none !important;
+}
+
+.ant-tooltip-arrow::after {
+  background-color: #000 !important;
+  border-radius: 0 !important;
+}
+
+.ant-pagination-item {
+  border-radius: 0 !important;
+}
+
+.ant-pagination-item.ant-pagination-item-active {
+  border-color: rgb(124 58 237) !important;
+}
+
+.ant-pagination-item.ant-pagination-item-active > a {
+  color: rgb(124 58 237) !important;
+}
+
+.ant-pagination-item-link {
+  border-radius: 0 !important;
+}
+
+.ant-spin-container,
+.ant-spin-nested-loading {
+  position: static !important;
+}
+
+.ant-pagination {
+  padding: 16px 0;
+  margin: 0 !important;
+  /* border: 1px solid #e5e7eb !important; */
+  position: absolute !important;
+  width: 100% !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
+
 @media (max-width: 575px) {
   .ant-form-item-row {
     flex-direction: row !important;

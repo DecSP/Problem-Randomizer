@@ -1,4 +1,4 @@
-import { Form } from 'antd'
+import { Form, notification } from 'antd'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import {
@@ -8,13 +8,17 @@ import {
 import { useProblemContext } from '@/context/problem'
 import { Layout } from '@/components/Layout'
 import { client } from '@/lib/apis'
+import { useRouter } from 'next/router'
+import { ROUTES } from '../../constants/routes'
 
 const CreateContestPage = () => {
   const [form] = Form.useForm()
   const { selectedProblemIds } = useProblemContext()
+  const { push } = useRouter()
 
   const [isFieldFilled, setIsFieldFilled] = useState(false)
   const [isContestValid, setIsContestValid] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleValuesChange = (_: any, values: CreateContestFormFields) => {
     const isFieldFilled = values.title !== ''
@@ -32,19 +36,27 @@ const CreateContestPage = () => {
 
   const onSubmit = async (value: CreateContestFormFields) => {
     if (isContestValid) {
-      const response = await client.createContest({
-        title: value.title ?? '', // should not be empty
-        description: value.description ?? '',
-        duration: value.minutes ?? 0, // should be required
-        is_public: value.isPublic ?? true,
-        penalty: value.penalty ?? 0,
-        start_time: new Date().toISOString(), // where to get this?
-      })
-      console.log(response)
-      // TODO: what next? go to contest page?
-      return Promise.resolve()
-    } else {
-      return Promise.resolve()
+      try {
+        setIsLoading(true)
+        await client.createContest({
+          title: value.title || '',
+          description: value.description || '',
+          duration: value.minutes || 0,
+          is_public: value.isPublic || true,
+          penalty: value.penalty || 0,
+          start_time: new Date().toISOString(),
+          problems: selectedProblemIds,
+        })
+        notification.success({ message: 'Contest created successfully!' })
+        push(ROUTES.CONTEST)
+      } catch (error: any) {
+        notification.error({
+          message:
+            error?.message || 'Cannot create contest. Please try again later.',
+        })
+      } finally {
+        setIsLoading(false)
+      }
     }
   }
 
@@ -70,15 +82,14 @@ const CreateContestPage = () => {
             <div className="section-container">
               <div className="px-6 md:px-[90px] pt-[40px] pb-[88px]">
                 <h1 className="text-2xl w-max break-words font-medium leading-9 mb-10">
-                  <span className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600">
-                    Create Contest
-                  </span>
+                  Create Contest
                 </h1>
 
                 <CreateContestForm
                   formInstance={form}
                   handleValuesChange={handleValuesChange}
                   isContestValid={isContestValid}
+                  isLoading={isLoading}
                   onSubmit={onSubmit}
                 />
               </div>

@@ -20,6 +20,7 @@ export type CreateContestFormFields = {
 
 type ProblemFilterFormProps = {
   formInstance: FormInstance<CreateContestFormFields>
+  isLoading?: boolean
   // eslint-disable-next-line
   onSubmit: (values: CreateContestFormFields) => Promise<void>
   disabled?: boolean
@@ -35,6 +36,7 @@ type ProblemFilterFormProps = {
 export const CreateContestForm = (props: ProblemFilterFormProps) => {
   const {
     formInstance,
+    isLoading = false,
     onSubmit,
     disabled = false,
     handleValuesChange,
@@ -106,17 +108,41 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
   return (
     <>
       <h2 className="text-xl w-max break-words leading-9 mb-6 font-medium">
+        Problem Set
+      </h2>
+
+      <Table
+        columns={selectedProblemIds.length ? tableColumn : []}
+        dataSource={problems.filter((p) => selectedProblemIds.includes(p.id))}
+        locale={{
+          emptyText: (
+            <div className="flex flex-col items-center">
+              <Empty message="No problems added" />
+              <Link href={ROUTES.RANDOMIZER}>
+                <Button color="black" variant="solid">
+                  Spawn some problems
+                </Button>
+              </Link>
+            </div>
+          ),
+        }}
+        pagination={false}
+        rootClassName="mb-14 w-full overflow-auto border"
+        rowKey="id"
+      />
+
+      <h2 className="text-xl w-max break-words leading-9 mb-6 font-medium">
         Contest Info
       </h2>
 
       <Form
         autoComplete="off"
-        className="mb-14 p-6 border bg-white w-full lg:w-2/3"
+        className="p-6 border bg-white w-full lg:w-2/3"
         form={formInstance}
         initialValues={{
           title: '',
           description: '',
-          isPublic: false,
+          isPublic: true,
           minutes: 0,
           penalty: 0,
         }}
@@ -133,7 +159,12 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
                 { required: true, message: 'Please input contest title' },
               ]}
             >
-              <Input className="!bg-transparent" type="text" autoFocus />
+              <Input
+                className="!bg-transparent"
+                disabled={isLoading}
+                type="text"
+                autoFocus
+              />
             </Form.Item>
           </Col>
 
@@ -142,7 +173,11 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
               label="Contest description"
               name="description"
             >
-              <Input className="!bg-transparent" type="text" />
+              <Input
+                className="!bg-transparent"
+                disabled={isLoading}
+                type="text"
+              />
             </Form.Item>
           </Col>
 
@@ -153,7 +188,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
             >
               <Input
                 className="!bg-transparent"
-                disabled={disabled}
+                disabled={disabled || isLoading}
                 min={0}
                 type="number"
               />
@@ -167,7 +202,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
             >
               <Input
                 className="!bg-transparent"
-                disabled={disabled}
+                disabled={disabled || isLoading}
                 min={0}
                 type="number"
               />
@@ -181,7 +216,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
               name="isPublic"
               valuePropName="checked"
             >
-              <Checkbox className="">
+              <Checkbox disabled>
                 <div className="h-6 overflow-hidden select-none">Is public</div>
               </Checkbox>
             </Form.Item>
@@ -189,36 +224,16 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
         </Row>
 
         <div className="fixed bottom-6 right-0 z-30 bg-white">
-          <Button color="black" disabled={!isContestValid} type="submit">
+          <Button
+            color="black"
+            disabled={!isContestValid || isLoading}
+            type="submit"
+          >
             <Icon className="shrink-0 text-sm" icon="ri:code-s-slash-line" />
             Start Contest
           </Button>
         </div>
       </Form>
-
-      <h2 className="text-xl w-max break-words leading-9 mb-6 font-medium">
-        Problem Set
-      </h2>
-
-      <Table
-        columns={selectedProblemIds.length ? tableColumn : []}
-        dataSource={problems.filter((p) => selectedProblemIds.includes(p.id))}
-        locale={{
-          emptyText: (
-            <div>
-              <Empty message="No problems added" />
-              <Link href={ROUTES.RANDOMIZER}>
-                <button className="bg-black text-white px-4 py-2 hover:opacity-60 transition-opacity duration-300">
-                  Spawn some problems
-                </button>
-              </Link>
-            </div>
-          ),
-        }}
-        pagination={false}
-        rootClassName="w-full overflow-auto border"
-        rowKey="id"
-      />
     </>
   )
 }

@@ -11,6 +11,7 @@ import {
   UserData,
   CreateContestPayload,
   ContestResponse,
+  ListContestResponse,
 } from './schema'
 
 type Headers = Record<string, string>
@@ -57,7 +58,7 @@ export class Client {
   }
 
   public async getListContest() {
-    return fetcher<ContestResponse>(`${BASE_URL}/api/contests/`, {
+    return fetcher<ListContestResponse>(`${BASE_URL}/api/contests/`, {
       headers: this.privateHeaders,
       method: 'GET',
     })
