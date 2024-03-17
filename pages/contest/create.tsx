@@ -13,7 +13,7 @@ import { ROUTES } from '@/constants/routes'
 
 const CreateContestPage = () => {
   const [form] = Form.useForm()
-  const { selectedProblemIds } = useProblemContext()
+  const { selectedProblemIds, setProblemIds } = useProblemContext()
   const { push } = useRouter()
 
   const [isFieldFilled, setIsFieldFilled] = useState(false)
@@ -48,6 +48,7 @@ const CreateContestPage = () => {
           problems: selectedProblemIds,
         })
         notification.success({ message: 'Contest created successfully!' })
+        setProblemIds([])
         push(ROUTES.CONTEST)
       } catch (error: any) {
         notification.error({
