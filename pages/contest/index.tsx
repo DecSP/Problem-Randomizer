@@ -139,7 +139,7 @@ const Home: NextPage = () => {
             <div className="relative pb-[64px]">
               <Table
                 columns={loading ? [] : tableColumn}
-                dataSource={loading ? [] : data?.data}
+                dataSource={loading ? [] : [...(data?.data || [])].reverse()}
                 locale={{
                   emptyText:
                     !loading && !data ? (
