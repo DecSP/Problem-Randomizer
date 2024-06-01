@@ -1,11 +1,11 @@
 import { Icon } from '@iconify/react'
-import { Card, Checkbox } from 'antd'
-import cx from 'classnames'
+import { Card } from 'antd'
 import { useEffect, useState } from 'react'
 
 import { useProblemContext } from '@/context/problem'
 import { Problem } from '@/lib/schema'
 
+import { Checkbox } from '../Checkbox'
 import { ProblemSourceBadge } from '../ProblemSourceBadge'
 
 type ProblemCardProps = {
@@ -37,34 +37,13 @@ export const ProblemCard = ({ problem }: ProblemCardProps) => {
       extra={
         <Checkbox
           checked={isSelected}
-          className="flex-row-reverse"
+          checkedLabel="Exclude Problem"
+          label="Include Problem"
+          mobileCheckedLabel="Exclude"
+          mobileLabel="Include"
+          rtl
           onChange={onChange}
-        >
-          <div className="h-6 overflow-hidden">
-            <div
-              className={cx('flex flex-col transition-all duration-[250]', {
-                '-translate-y-[24px]': isSelected,
-              })}
-            >
-              {['Include Problem', 'Include', 'Exclude Problem', 'Exclude'].map(
-                (label, index) => (
-                  <span
-                    key={label}
-                    className={cx(
-                      'text-right h-6 items-center justify-end select-none text-neutral-800 hover:text-neutral-500 transition-colors duration-[250]',
-                      {
-                        'flex md:hidden': index % 2 !== 0,
-                        'md:flex hidden': index % 2 === 0,
-                      },
-                    )}
-                  >
-                    {label}
-                  </span>
-                ),
-              )}
-            </div>
-          </div>
-        </Checkbox>
+        />
       }
       headStyle={{
         borderColor: 'rgb(229, 231, 235)',
