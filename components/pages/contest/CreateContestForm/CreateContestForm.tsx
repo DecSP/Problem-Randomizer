@@ -1,16 +1,8 @@
 import { Icon } from '@iconify/react'
-import {
-  Checkbox,
-  Col,
-  Form,
-  FormInstance,
-  Input,
-  Row,
-  Table,
-  Tooltip,
-} from 'antd'
+import { Col, Form, FormInstance, Input, Row, Table, Tooltip } from 'antd'
 import { ColumnsType } from 'antd/es/table'
 import Link from 'next/link'
+import { Checkbox } from '@/components/Checkbox'
 
 import { Empty } from '@/components/Empty'
 import { ProblemSourceBadge } from '@/components/ProblemSourceBadge'
@@ -229,9 +221,14 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
               name="isPublic"
               valuePropName="checked"
             >
-              <Checkbox disabled>
-                <div className="h-6 overflow-hidden select-none">Is public</div>
-              </Checkbox>
+              <Checkbox
+                label={
+                  <div className="h-6 overflow-hidden select-none">
+                    Is public
+                  </div>
+                }
+                disabled
+              />
             </Form.Item>
           </Col>
         </Row>
