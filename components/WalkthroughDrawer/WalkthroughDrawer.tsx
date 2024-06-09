@@ -79,8 +79,7 @@ export const WalkthroughDrawer = (props: WalkthroughDrawerProps) => {
       </p>
       <ul className="ml-6 list-decimal w-full">
         <li>
-          Adjust your filter and click on &lsquo;Submit&rsquo; to spawn
-          problems.
+          Adjust your filter and click on &lsquo;Submit&rsquo; to pick problems.
         </li>
         <li>Either include or exclude problems to create the problem set.</li>
         <li>Set your timer (optional) and start solving the problem set.</li>

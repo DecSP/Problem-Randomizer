@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { notification } from 'antd'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { Icon } from '@iconify/react'
 import { Button } from '@/components/Button'
 import { Counter } from '@/components/Counter'
@@ -10,7 +11,6 @@ import {
   ProblemFilterForm,
   ProblemFormFields,
 } from '@/components/ProblemFilterForm'
-import { SelectedProblemsDrawer } from '@/components/SelectedProblemsDrawer'
 import { WalkthroughDrawer } from '@/components/WalkthroughDrawer'
 import { useProblemContext } from '@/context/problem'
 import useFetch from '@/hooks/useFetch'
@@ -18,20 +18,19 @@ import { client } from '@/lib/apis'
 import { Problem } from '@/lib/schema'
 import { ProblemSources } from '@/types/problem-source'
 import { Layout } from '@/components/Layout'
+import { ROUTES } from '@/constants/routes'
 
 const Home: NextPage = () => {
   const {
     problems = [],
+    addProblem,
     setProblems,
     selectedProblemIds,
-    isEverOpened,
-    setIsEverOpened,
   } = useProblemContext()
   const [prob, setProb] = useState<Problem[]>(problems)
   const [probType, setProbType] = useState<ProblemSources | undefined>(
     undefined,
   )
-  const [isProblemsDrawerOpen, setIsProblemsDrawerOpen] = useState(false)
   const [isWalkthroughDrawerOpen, setIsWalkthroughDrawerOpen] = useState(false)
 
   const allSpawnedProblemsId = useMemo(
@@ -39,25 +38,7 @@ const Home: NextPage = () => {
     [prob],
   )
 
-  useEffect(() => {
-    if (!isEverOpened && isProblemsDrawerOpen) {
-      setIsEverOpened(true)
-    }
-  }, [isProblemsDrawerOpen, isEverOpened, setIsEverOpened])
-
-  useEffect(() => {
-    if (!isEverOpened && selectedProblemIds.length > 0) {
-      setIsProblemsDrawerOpen(true)
-      setIsEverOpened(true)
-    }
-  }, [isEverOpened, selectedProblemIds.length, setIsEverOpened])
-
-  const openDrawer = () => {
-    setIsProblemsDrawerOpen(true)
-  }
-  const closeDrawer = () => {
-    setIsProblemsDrawerOpen(false)
-  }
+  const { push } = useRouter()
 
   const [timerConfig, setTimerConfig] = useState({
     show: false,
@@ -122,6 +103,7 @@ const Home: NextPage = () => {
         Math.floor(Math.random() * problemsMeetingFilters.length)
       ]
 
+    addProblem(problem.id)
     setProblems([problem, ...prob])
     setProb([problem, ...prob])
 
@@ -149,8 +131,8 @@ const Home: NextPage = () => {
       <Layout>
         <main className="pt-[76px] bg-white">
           <section className="section-container">
-            <div className="px-6 md:px-[90px] pt-[40px] pb-[88px] md:pb-[40px]">
-              <div className="inline-flex max-w-full flex-wrap items-center gap-2 mb-10">
+            <div className="px-6 md:px-[90px] py-[40px]">
+              <div className="inline-flex max-w-full flex-wrap items-center gap-2">
                 <h1 className="text-2xl w-max font-medium break-words leading-9">
                   <span
                     className="bg-clip-text bg-gradient-to-r from-blue-500 via-blue-700 to-violet-600"
@@ -168,11 +150,6 @@ const Home: NextPage = () => {
                   />
                 </button>
               </div>
-              <ProblemFilterForm
-                disabled={isLoading || isTimerRunning}
-                setProbType={setProbType}
-                onSubmit={onSubmit}
-              />
             </div>
           </section>
 
@@ -183,22 +160,43 @@ const Home: NextPage = () => {
                 'linear-gradient(to bottom, #FFF, #F5F5F5 160px)',
             }}
           >
-            <div className="section-container px-6 md:px-[90px] pb-[88px]">
-              {isLoading && (
-                <div className="w-full flex justify-center p-6">
-                  <div className="animate-spin w-max">
-                    <Icon className="text-2xl" icon="vaadin:spinner-third" />
-                  </div>
-                </div>
-              )}
+            <div className="section-container px-6 md:px-[90px] pb-[88px] flex flex-col lg:flex-row gap-6 items-stretch">
+              <div className="w-full lg:w-[calc((100%-24px)/3)] lg:sticky lg:top-[100px] h-full">
+                <ProblemFilterForm
+                  disabled={isLoading || isTimerRunning}
+                  setProbType={setProbType}
+                  onSubmit={onSubmit}
+                />
+              </div>
 
-              {prob.length ? (
-                <div className="flex flex-col items-stretch gap-6">
-                  {prob.map((p) => (
-                    <ProblemCard key={p?.id} problem={p} />
-                  ))}
-                </div>
-              ) : null}
+              <div className="w-full lg:w-[calc((100%-24px)*2/3)]">
+                {!isLoading && !prob.length ? (
+                  <div className="w-full flex justify-center p-6">
+                    Pick some problems by selecting a source and difficulty
+                  </div>
+                ) : null}
+
+                {isLoading ? (
+                  <div className="w-full flex justify-center p-6">
+                    <div className="animate-spin w-max">
+                      <Icon className="text-2xl" icon="vaadin:spinner-third" />
+                    </div>
+                  </div>
+                ) : null}
+
+                {prob.length ? (
+                  <div className="flex flex-col items-stretch">
+                    {prob.map((p) => (
+                      <div key={p?.id} className="fade-down group">
+                        <ProblemCard
+                          className="mb-6 group-last:mb-0"
+                          problem={p}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             </div>
           </section>
 
@@ -213,16 +211,16 @@ const Home: NextPage = () => {
           ) : null}
 
           <div className="fixed bottom-6 right-0 z-30 bg-white">
-            <Button color="black" type="submit" onClick={openDrawer}>
+            <Button
+              color="black"
+              disabled={selectedProblemIds.length === 0}
+              type="submit"
+              onClick={() => push(ROUTES.CREATE_CONTEST)}
+            >
               <Icon className="shrink-0" icon="ri:arrow-right-s-line" />
-              View Selected
+              Continue
             </Button>
           </div>
-
-          <SelectedProblemsDrawer
-            open={isProblemsDrawerOpen}
-            onClose={closeDrawer}
-          />
 
           <WalkthroughDrawer
             open={isWalkthroughDrawerOpen}

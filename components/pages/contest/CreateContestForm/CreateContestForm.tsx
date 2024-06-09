@@ -125,7 +125,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
               <Empty message="No problems added" />
               <Link href={ROUTES.RANDOMIZER}>
                 <Button color="black" variant="solid">
-                  Spawn some problems
+                  Pick some problems
                 </Button>
               </Link>
             </div>
@@ -142,7 +142,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
 
       <Form
         autoComplete="off"
-        className="p-6 border bg-white w-full lg:w-2/3"
+        className="p-6 border bg-white w-full lg:w-1/2"
         form={formInstance}
         initialValues={{
           title: '',

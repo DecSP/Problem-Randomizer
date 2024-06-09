@@ -147,7 +147,7 @@ const Home: NextPage = () => {
                         <Empty message="No problems added" />
                         <Link href={ROUTES.RANDOMIZER}>
                           <Button color="black" variant="solid">
-                            Spawn some problems
+                            Pick some problems
                           </Button>
                         </Link>
                       </div>

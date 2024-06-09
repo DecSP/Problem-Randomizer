@@ -151,6 +151,11 @@
   border-radius: 0 !important;
 }
 
+.ant-table-content .ant-table-thead {
+  height: 55px !important;
+  min-height: max-content !important;
+}
+
 .ant-table-row {
   background-color: #fff !important;
 }
@@ -203,6 +208,14 @@
   width: 100% !important;
   bottom: 0 !important;
   right: 0 !important;
+}
+
+.ant-slider-track {
+  background-color: rgb(29 78 216) !important;
+}
+
+.ant-slider-handle::after {
+  box-shadow: 0 0 0 2px rgb(29 78 216) !important;
 }
 
 @media (max-width: 575px) {

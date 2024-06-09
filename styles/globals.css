@@ -5,7 +5,7 @@
 @import './ant-reset.css';
 
 :root {
-  --container-max-width: 1240px;
+  --container-max-width: 1440px;
 }
 
 html,
@@ -84,4 +84,22 @@ a {
   max-width: var(--container-max-width);
   margin-left: auto;
   margin-right: auto;
+}
+
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  100% {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+.fade-down {
+  overflow: hidden;
+  height: max-content;
+  animation: fade-down 0.8s ease-in-out;
 }

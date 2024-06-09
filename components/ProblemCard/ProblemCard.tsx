@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react'
 import { Card } from 'antd'
+import cx from 'classnames'
 import { useEffect, useState } from 'react'
 
 import { useProblemContext } from '@/context/problem'
@@ -9,10 +10,11 @@ import { Checkbox } from '../Checkbox'
 import { ProblemSourceBadge } from '../ProblemSourceBadge'
 
 type ProblemCardProps = {
+  className?: string
   problem: Problem
 }
 
-export const ProblemCard = ({ problem }: ProblemCardProps) => {
+export const ProblemCard = ({ problem, className }: ProblemCardProps) => {
   const { addProblem, removeProblem, selectedProblemIds } = useProblemContext()
 
   const [isSelected, setIsSelected] = useState(false)
@@ -33,7 +35,7 @@ export const ProblemCard = ({ problem }: ProblemCardProps) => {
 
   return (
     <Card
-      className="!rounded-none border-neutral-200 bg-white"
+      className={cx('!rounded-none border-neutral-200 bg-white', className)}
       extra={
         <Checkbox
           checked={isSelected}
