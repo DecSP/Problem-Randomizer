@@ -75,7 +75,7 @@ const Home: NextPage = () => {
               <TimeLeft
                 key={`contest-${row.id}-end-time-${endTimestamp}`}
                 endTime={dayjs(startDateTime.getTime() + endTimestamp).format(
-                  'hh:mm A, YYYY/MM/DD',
+                  'YYYY-MM-DD THH:mm',
                 )}
               />
             ) : (
@@ -95,7 +95,7 @@ const Home: NextPage = () => {
           <Actions
             key={`contest-${row.id}-actions-${endTimestamp}`}
             endTime={dayjs(startDateTime.getTime() + endTimestamp).format(
-              'hh:mm A, YYYY/MM/DD',
+              'YYYY-MM-DD THH:mm',
             )}
             id={row.id}
           />
@@ -188,7 +188,9 @@ const TimeLeft = ({ endTime }: TimeLeftProps) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const endDateTime = new Date(endTime)
+      const endDateTime = new Date(
+        dayjs(endTime, 'YYYY-MM-DD THH:mm').toISOString(),
+      )
       const currentTime = new Date()
       const timeDifference = endDateTime.getTime() - currentTime.getTime()
       setTimeLeft(Math.max(0, timeDifference))
@@ -233,7 +235,9 @@ const Actions = ({ endTime, id }: ActionsProps) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const endDateTime = new Date(endTime)
+      const endDateTime = new Date(
+        dayjs(endTime, 'YYYY-MM-DD THH:mm').toISOString(),
+      )
       const currentTime = new Date()
       const timeDifference = endDateTime.getTime() - currentTime.getTime()
       setTimeLeft(Math.max(0, timeDifference))
