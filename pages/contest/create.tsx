@@ -46,6 +46,7 @@ const CreateContestPage = () => {
           penalty: value.penalty || 0,
           start_time: new Date().toISOString(),
           problems: selectedProblemIds,
+          entry_times: value.entry_times || 0,
         })
         notification.success({ message: 'Contest created successfully!' })
         setProblemIds([])

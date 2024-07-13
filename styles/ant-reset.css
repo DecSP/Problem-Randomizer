@@ -180,6 +180,46 @@
 
 .ant-pagination-item {
   border-radius: 0 !important;
+  border: none !important;
+}
+
+.ant-dropdown {
+  width: max-content !important;
+}
+
+.ant-table-filter-column .ant-table-filter-trigger.active .anticon-filter {
+  color: rgb(29 78 216) !important;
+}
+
+.ant-table-filter-dropdown {
+  width: 200px !important;
+  border-radius: 0 !important;
+}
+
+.ant-table-filter-dropdown .ant-dropdown-menu {
+  padding: 0 !important;
+}
+
+.ant-table-filter-dropdown .ant-dropdown-menu-item {
+  border-radius: 0 !important;
+}
+
+.ant-table-filter-dropdown .ant-table-filter-dropdown-btns .ant-btn {
+  color: rgb(29 78 216) !important;
+  box-shadow: none !important;
+}
+
+.ant-table-filter-dropdown .ant-table-filter-dropdown-btns .ant-btn:hover {
+  background-color: transparent !important;
+}
+
+.ant-table-filter-dropdown .ant-dropdown-menu-item-selected {
+  background-color: #f6f6f6 !important;
+}
+
+.ant-table-wrapper .ant-table-column-sorter-up.active,
+.ant-table-wrapper .ant-table-column-sorter-down.active {
+  color: rgb(29 78 216) !important;
 }
 
 .ant-pagination-item.ant-pagination-item-active {

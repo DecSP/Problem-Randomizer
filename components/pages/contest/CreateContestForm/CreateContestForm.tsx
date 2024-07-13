@@ -10,6 +10,8 @@ import { ROUTES } from '@/constants/routes'
 import { useProblemContext } from '@/context/problem'
 import { Problem } from '@/lib/schema'
 import { Button } from '@/components/Button'
+import { PROBLEM_SOURCES } from '@/constants/problem-source'
+import { ProblemSources } from '@/types/problem-source'
 
 export type CreateContestFormFields = {
   title?: string
@@ -17,6 +19,7 @@ export type CreateContestFormFields = {
   isPublic?: boolean
   minutes?: number
   penalty?: number
+  entry_times?: number
 }
 
 type ProblemFilterFormProps = {
@@ -67,6 +70,12 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
           <ProblemSourceBadge className="w-max" source={value} />
         </div>
       ),
+      filters: Object.keys(PROBLEM_SOURCES).map((source) => ({
+        text: PROBLEM_SOURCES[source as ProblemSources],
+        value: source,
+      })),
+      onFilter: (value, row: Problem) =>
+        row.source_type.includes(value as string),
     },
     {
       title: <span className="font-semibold tracking-[2px]">Contest</span>,
@@ -83,6 +92,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
       dataIndex: 'rating',
       key: 'rating',
       render: (value: any) => <span>{value || ''}</span>,
+      sorter: (a: Problem, b: Problem) => (a?.rating || 0) - (b?.rating || 0),
     },
     {
       key: 'actions',
@@ -150,6 +160,7 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
           isPublic: true,
           minutes: 0,
           penalty: 0,
+          entry_times: 1,
         }}
         noValidate
         onFinish={onSubmit}
@@ -209,6 +220,20 @@ export const CreateContestForm = (props: ProblemFilterFormProps) => {
                 className="!bg-transparent"
                 disabled={disabled || isLoading}
                 min={0}
+                type="number"
+              />
+            </Form.Item>
+          </Col>
+
+          <Col span={24}>
+            <Form.Item<CreateContestFormFields>
+              label="Entry times (for each problem)"
+              name="entry_times"
+            >
+              <Input
+                className="!bg-transparent"
+                disabled={disabled || isLoading}
+                min={1}
                 type="number"
               />
             </Form.Item>
