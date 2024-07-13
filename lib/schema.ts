@@ -101,6 +101,7 @@ export interface CreateContestPayload {
   start_time: string
   penalty: number
   problems: number[]
+  entry_times: number
 }
 
 export interface ContestResponse extends BaseResponse<ContestResponseData> {}

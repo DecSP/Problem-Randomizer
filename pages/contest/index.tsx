@@ -44,6 +44,9 @@ const Home: NextPage = () => {
       dataIndex: 'problems',
       key: 'problems',
       render: (value: number[]) => <span>{value.length}</span>,
+      sorter: (a: ContestResponseData, b: ContestResponseData) => {
+        return (a?.problems || []).length - (b?.problems || []).length
+      },
     },
     {
       title: <span className="font-semibold tracking-[2px]">Start time</span>,
@@ -52,6 +55,11 @@ const Home: NextPage = () => {
       render: (value: string) => (
         <span>{dayjs(new Date(value)).format('hh:mm A, YYYY/MM/DD')}</span>
       ),
+      sorter: (a: ContestResponseData, b: ContestResponseData) => {
+        return (
+          new Date(a.start_time).getTime() - new Date(b.start_time).getTime()
+        )
+      },
     },
     {
       title: <span className="font-semibold tracking-[2px]">Time left</span>,
