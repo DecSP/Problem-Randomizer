@@ -5,16 +5,21 @@ import { useRouter } from 'next/router'
 import { Button } from '@/components/Button'
 import { client } from '@/lib/apis'
 import { ROUTES } from '@/constants/routes'
+import { PASSWORD_REGEX, USERNAME_REGEX } from '@/constants/regex'
+import { notifyError } from '@/utils/error'
 
 export type SignUpFormFields = {
   name?: string
   username: string
   password: string
+  confirm_password: string
 }
 
 export const SignUpForm = () => {
   const [form] = Form.useForm()
   const [isRevealingPassword, setIsRevealingPassword] = useState(false)
+  const [isRevealingConfirmPassword, setIsRevealingConfirmPassword] =
+    useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const { push } = useRouter()
 
@@ -28,7 +33,7 @@ export const SignUpForm = () => {
         push(ROUTES.LOGIN)
       } else {
         if (res?.message) {
-          notification.error({ message: res?.message })
+          notifyError(res.message)
         }
       }
     } catch (error: any) {
@@ -61,7 +66,14 @@ export const SignUpForm = () => {
           <Form.Item<SignUpFormFields>
             label="Username"
             name="username"
-            rules={[{ required: true, message: 'Please input username' }]}
+            rules={[
+              { required: true, message: 'Please input username' },
+              {
+                pattern: USERNAME_REGEX,
+                message:
+                  "Username must be at least 1-character long, contains only alphabets, digits, '-' or '_'",
+              },
+            ]}
           >
             <Input className="!bg-transparent" type="text" />
           </Form.Item>
@@ -72,7 +84,14 @@ export const SignUpForm = () => {
             className="flex-1"
             label="Password"
             name="password"
-            rules={[{ required: true, message: 'Please choose a password' }]}
+            rules={[
+              { required: true, message: 'Please choose a password' },
+              {
+                pattern: PASSWORD_REGEX,
+                message:
+                  'Password must be at least 8-character long, contains at least 1 uppercase letter, 1 digit, and 1 special character',
+              },
+            ]}
           >
             <Input
               className="!bg-transparent"
@@ -85,6 +104,46 @@ export const SignUpForm = () => {
             onClick={() => setIsRevealingPassword((open) => !open)}
           >
             {isRevealingPassword ? (
+              <Icon className="text-base" icon="bi:eye" />
+            ) : (
+              <Icon className="text-base" icon="bi:eye-slash" />
+            )}
+          </button>
+        </Col>
+
+        <Col className="flex gap-2 items-center" span={24}>
+          <Form.Item<SignUpFormFields>
+            className="flex-1"
+            label="Confirm Password"
+            name="confirm_password"
+            rules={[
+              { required: true, message: 'Please choose a password' },
+              {
+                pattern: PASSWORD_REGEX,
+                message:
+                  'Password must be at least 8 characters long, contains at least 1 uppercase letter, 1 digit, and 1 special character',
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve()
+                  }
+                  return Promise.reject(new Error('Passwords do not match'))
+                },
+              }),
+            ]}
+          >
+            <Input
+              className="!bg-transparent"
+              type={isRevealingConfirmPassword ? 'text' : 'password'}
+            />
+          </Form.Item>
+          <button
+            className="w-5 h-5 flex justify-center items-center"
+            type="button"
+            onClick={() => setIsRevealingConfirmPassword((open) => !open)}
+          >
+            {isRevealingConfirmPassword ? (
               <Icon className="text-base" icon="bi:eye" />
             ) : (
               <Icon className="text-base" icon="bi:eye-slash" />
