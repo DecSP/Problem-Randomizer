@@ -9,6 +9,7 @@ import {
 } from 'react'
 import { client } from '@/lib/apis'
 import { UserData } from '@/lib/schema'
+import { notifyError } from '@/utils/error'
 
 interface AuthContextValues {
   isAuthenticated: boolean
@@ -94,7 +95,9 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
               })
               setUser(userInfoRes.data)
             } else {
-              notification.error({ message: 'Could not login' })
+              if (userInfoRes?.message) {
+                notifyError(userInfoRes.message)
+              }
             }
           } catch (error) {
             notification.error({ message: error as any })
@@ -102,7 +105,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
           }
         } else {
           if (res?.message) {
-            notification.error({ message: res?.message })
+            notifyError(res.message)
           }
         }
       } catch (error) {

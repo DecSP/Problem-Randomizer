@@ -6,6 +6,7 @@ import { Button } from '@/components/Button'
 import { client } from '@/lib/apis'
 import { ROUTES } from '@/constants/routes'
 import { PASSWORD_REGEX, USERNAME_REGEX } from '@/constants/regex'
+import { notifyError } from '@/utils/error'
 
 export type SignUpFormFields = {
   name?: string
@@ -32,7 +33,7 @@ export const SignUpForm = () => {
         push(ROUTES.LOGIN)
       } else {
         if (res?.message) {
-          notification.error({ message: res?.message })
+          notifyError(res.message)
         }
       }
     } catch (error: any) {
@@ -70,7 +71,7 @@ export const SignUpForm = () => {
               {
                 pattern: USERNAME_REGEX,
                 message:
-                  'Username must only contain alphabets and digits, without spaces or special characters',
+                  "Username must be at least 1-character long, contains only alphabets, digits, '-' or '_'",
               },
             ]}
           >
@@ -88,7 +89,7 @@ export const SignUpForm = () => {
               {
                 pattern: PASSWORD_REGEX,
                 message:
-                  'Password must be at least 8-character long, contain at least 1 uppercase letter, 1 digit, and 1 special character',
+                  'Password must be at least 8-character long, contains at least 1 uppercase letter, 1 digit, and 1 special character',
               },
             ]}
           >
@@ -120,7 +121,7 @@ export const SignUpForm = () => {
               {
                 pattern: PASSWORD_REGEX,
                 message:
-                  'Password must be at least 8 characters long, contain at least 1 uppercase letter, 1 digit, and 1 special character',
+                  'Password must be at least 8 characters long, contains at least 1 uppercase letter, 1 digit, and 1 special character',
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
