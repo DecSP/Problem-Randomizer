@@ -37,7 +37,7 @@ const ProfilePage = () => {
                 size="lg"
                 showInfo
               />
-              <Button className="text-sm" color="black" disabled>
+              <Button className="text-sm" color="black">
                 <Icon icon="carbon:edit" /> Edit profile
               </Button>
             </div>

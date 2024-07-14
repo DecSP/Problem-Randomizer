@@ -75,6 +75,12 @@ export interface UserData {
   username: string
 }
 
+export interface UpdateUserPayload {
+  name?: string
+  username?: string
+  password?: string
+}
+
 export interface LoginResponseData {
   token: string
   user: UserData

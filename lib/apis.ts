@@ -12,6 +12,7 @@ import {
   CreateContestPayload,
   ContestResponse,
   ListContestResponse,
+  UpdateUserPayload,
 } from './schema'
 
 type Headers = Record<string, string>
@@ -102,6 +103,14 @@ export class Client {
     return fetcher<BaseResponse<UserData>>(`${BASE_URL}/api/users/me`, {
       headers: this.privateHeaders,
       method: 'GET',
+    })
+  }
+
+  public async updateUser(payload: UpdateUserPayload) {
+    return fetcher<BaseResponse<UserData>>(`${BASE_URL}/api/users/me`, {
+      headers: this.privateHeaders,
+      method: 'PUT',
+      body: JSON.stringify(payload),
     })
   }
 }
