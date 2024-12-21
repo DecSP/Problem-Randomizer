@@ -80,7 +80,7 @@ export const LoginForm = () => {
           <Button
             className="form-submit-button"
             loading={isLoading}
-            type="submit"
+            type={isLoading ? 'button' : 'submit'}
           >
             Log In
           </Button>
